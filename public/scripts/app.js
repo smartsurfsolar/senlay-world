@@ -203,7 +203,13 @@ function loadPrefs() {
     if (field) {
       state.field = field;
       const sel = document.getElementById('fieldSelect');
-      if (sel) sel.value = field;
+      if (sel) {
+        sel.value = field;
+        if (sel.value !== field) {
+          state.field = 'general';
+          sel.value = 'general';
+        }
+      }
     }
     if (apiKey) {
       state.apiKey = apiKey;
@@ -405,15 +411,28 @@ function onUnitChange() {
 // Map field selections to spot types they should prioritize
 const FIELD_SPOT_TYPES = {
   kitesurfing: ['kite', 'surf', 'sailing'],
-  surfing: ['surf', 'kite'],
   sailing: ['sailing', 'kite', 'surf'],
-  paragliding: ['paragliding', 'hiking'],
   drone: ['drone', 'city', 'general'],
-  hiking: ['hiking', 'general'],
   agriculture: ['agriculture'],
   construction: ['construction', 'city'],
-  running: ['running', 'city'],
+  hiking: ['hiking', 'general'],
+  paragliding: ['paragliding', 'hiking'],
+  fishing: ['sailing', 'surf', 'kite'],
+  events: ['city', 'general'],
   general: null // show all
+};
+
+const FIELD_LABELS = {
+  kitesurfing: 'Kitesurfing / Watersports',
+  sailing: 'Sailing / Marine',
+  drone: 'Drone / UAV Operations',
+  agriculture: 'Agriculture / Farming',
+  construction: 'Construction / Outdoor Work',
+  hiking: 'Hiking / Trekking',
+  paragliding: 'Paragliding / Aviation Weather',
+  fishing: 'Fishing / Coastal Conditions',
+  events: 'Outdoor Events',
+  general: 'General Physical-World Query'
 };
 
 function onFieldChange() {
@@ -424,13 +443,6 @@ function onFieldChange() {
   refreshSpotDropdown();
   // Reset conversation when field changes — new persona, fresh context
   if (state.connected) {
-    const FIELD_LABELS = {
-      kitesurfing: '🪁 Kitesurfing / Windsurfing', surfing: '🏄 Surfing',
-      sailing: '⛵ Sailing / Navigation', paragliding: '🪂 Paragliding / Hang Gliding',
-      drone: '🚁 Drone / UAV', hiking: '🥾 Hiking & Trekking',
-      agriculture: '🌾 Agriculture & Farming', construction: '🏗️ Construction & Outdoor Work',
-      running: '🏃 Running & Cycling', general: '🌍 General Exploration'
-    };
     document.getElementById('chatMessages').innerHTML = '';
     state.messages = [];
     addSystemMessage(`✦ Field changed to ${FIELD_LABELS[state.field] || state.field}. Ask me anything — I'm now tuned to this use case.`);
@@ -584,13 +596,6 @@ async function connectToPWM() {
 
     document.getElementById('chatMessages').innerHTML = '';
     state.messages = [];
-    const FIELD_LABELS = {
-      kitesurfing: 'Kitesurfing / Windsurfing', surfing: 'Surfing',
-      sailing: 'Sailing / Navigation', paragliding: 'Paragliding / Hang Gliding',
-      drone: 'Drone / UAV', hiking: 'Hiking & Trekking',
-      agriculture: 'Agriculture & Farming', construction: 'Construction & Outdoor Work',
-      running: 'Running & Cycling', general: 'General Exploration'
-    };
     const fieldLabel = FIELD_LABELS[state.field] || state.field;
     addSystemMessage(`✦ Senlay connected at ${state.locationName}. ${state.activeSources} sensor sources active. Mode: ${fieldLabel}. What would you like to know?`);
     updateDemoGuide();

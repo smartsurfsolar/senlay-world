@@ -50,6 +50,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
 /* ── Container ── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 .section { padding: 72px 0; }
+.section-compact { padding: 34px 0 64px; }
 .section-dark { background: var(--surface); }
 .section-cta { padding: 56px 0; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02)); }
 
@@ -64,6 +65,50 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
 .hero-sub { color: var(--text2); font-size: 18px; max-width: 600px; margin: 0 auto 28px; line-height: 1.7; }
 .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
 .hero-note { color: var(--text2); font-size: 14px; margin-top: 32px; }
+
+/* ── First-visit clarity ── */
+.clarity-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.clarity-card {
+  padding: 26px;
+  border: 1px solid rgba(16,185,129,0.18);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.025);
+}
+.clarity-card-muted {
+  border-color: var(--border);
+  background: rgba(30,41,59,0.45);
+}
+.clarity-card h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.clarity-card p {
+  color: var(--text2);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.clarity-card p:last-child {
+  margin-bottom: 0;
+}
+.clarity-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+  margin-top: 14px;
+  padding-left: 18px;
+}
+.clarity-list li {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+}
 
 /* ── Live counter strip ── */
 .live-counter { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 0 auto 40px; padding: 14px 18px; background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.18); border-radius: 12px; max-width: 680px; }
@@ -251,6 +296,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
 }
 @media (max-width: 900px) {
   .cap-grid, .use-grid { grid-template-columns: repeat(2, 1fr); }
+  .clarity-grid { grid-template-columns: 1fr; }
   .code-pair { grid-template-columns: 1fr; }
   .flow-diagram { flex-direction: column; max-width: 280px; }
   .flow-arrow { transform: rotate(90deg); }
@@ -258,6 +304,9 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
 }
 @media (max-width: 600px) {
   .cap-grid, .use-grid { grid-template-columns: 1fr; }
+  .clarity-card { padding: 20px; }
+  .clarity-card h3 { font-size: 21px; }
+  .clarity-list { grid-template-columns: 1fr; }
   .hero-title { font-size: 28px; }
   .hero { padding: 48px 16px 36px; }
   .hero-sub { font-size: 16px; }

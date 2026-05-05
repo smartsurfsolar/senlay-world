@@ -1,6 +1,6 @@
-# Public Website Root
+# Website Root
 
-This folder is the deployable static website root for Senlay World.
+This folder contains the public Senlay website.
 
 ```text
 assets/   Brand and curated public media

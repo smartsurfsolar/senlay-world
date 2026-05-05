@@ -34,5 +34,3 @@ The public website is designed to answer three questions quickly:
 - What is Senlay?
 - Why should AI agents need senses?
 - How can a developer or agent start using it?
-
-The backend platform, sensor aggregation logic, authentication, and production deployment remain private.

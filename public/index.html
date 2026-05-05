@@ -161,120 +161,19 @@
     </div>
   </section>
 
-  <!-- SECTION C: How It Works -->
+  <!-- SECTION C: Developer Path -->
   <section class="section section-dark">
     <div class="container">
-      <h3 class="section-title">Two Lines of Code. Physical-World Context for Your Agent.</h3>
-
-      <div class="code-pair">
-        <div class="code-block-wrap">
-          <div class="code-header">Request <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <pre class="code-block">curl -H "Authorization: Bearer sl_live_your_key" \
-  "https://senlay.world/api/v1/pwm?lat=36.01&amp;lng=-5.60"</pre>
+      <div class="developer-panel">
+        <div>
+          <p class="repo-kicker">For Developers and Agents</p>
+          <h3>Use Senlay when your product needs real conditions, not another generic answer.</h3>
+          <p>Implementation examples, API responses, and LLM integration snippets live in the developer docs. The homepage stays focused on what Senlay is and when it matters.</p>
         </div>
-        <div class="code-block-wrap">
-          <div class="code-header">Response <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <pre class="code-block">{
-  "status": "ok",
-  "active_sources": 11,
-  "pwm": {
-    "layers": {
-      "atmosphere": {
-        "current": {
-          "wind_speed_10m": 33,
-          "wind_gusts_10m": 61.9,
-          "temperature_2m": 16.5
-        },
-        "current_source": {
-          "mode": "hardware_with_model_fallback",
-          "overridden_fields": ["wind_speed_10m", "temperature_2m"]
-        }
-      },
-      "hydrosphere": {
-        "current": { "wave_height": 1.2 }
-      },
-      "terrain": {
-        "elevation_at_point": -6,
-        "is_ocean": true
-      }
-    }
-  },
-  "context_string": "=== SENLAY PWM === ..."
-}</pre>
-        </div>
-      </div>
-
-      <p class="code-note">The <code>context_string</code> is ready to inject directly into any LLM's system prompt, and <code>current_source</code> tells your agent when live hardware has overridden model values. No parsing. No weather-stack glue code. Just physical awareness.</p>
-    </div>
-  </section>
-
-  <!-- SECTION D: Works With Any LLM -->
-  <section class="section">
-    <div class="container">
-      <h3 class="section-title">Universal Compatibility</h3>
-      <p class="section-sub">No SDK required. No vendor lock-in. Standard REST API that works with every AI provider, every framework, every language.</p>
-
-      <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('claude',this)">Claude (Python)</button>
-        <button class="tab-btn" onclick="showTab('openai',this)">OpenAI (Python)</button>
-        <button class="tab-btn" onclick="showTab('js',this)">JavaScript</button>
-      </div>
-
-      <div id="tab-claude" class="tab-content active">
-        <div class="code-block-wrap">
-          <div class="code-header">Python + Claude <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <pre class="code-block">import anthropic, requests
-
-pwm = requests.get(
-    "https://senlay.world/api/v1/pwm",
-    params={"lat": 36.01, "lng": -5.60},
-    headers={"Authorization": "Bearer sl_live_your_key"}
-).json()
-
-client = anthropic.Anthropic()
-response = client.messages.create(
-    model="claude-sonnet-4-20250514",
-    system=f"You perceive the physical world:\n\n{pwm['context_string']}",
-    messages=[{"role": "user", "content": "Can a drone fly here safely?"}]
-)</pre>
-        </div>
-      </div>
-
-      <div id="tab-openai" class="tab-content">
-        <div class="code-block-wrap">
-          <div class="code-header">Python + OpenAI <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <pre class="code-block">from openai import OpenAI
-import requests
-
-pwm = requests.get(
-    "https://senlay.world/api/v1/pwm",
-    params={"lat": 36.01, "lng": -5.60},
-    headers={"Authorization": "Bearer sl_live_your_key"}
-).json()
-
-client = OpenAI()
-response = client.chat.completions.create(
-    model="gpt-4o",
-    messages=[
-        {"role": "system", "content": pwm["context_string"]},
-        {"role": "user", "content": "Is it safe to launch here?"}
-    ]
-)</pre>
-        </div>
-      </div>
-
-      <div id="tab-js" class="tab-content">
-        <div class="code-block-wrap">
-          <div class="code-header">JavaScript (Any LLM) <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
-          <pre class="code-block">const pwm = await fetch(
-  "https://senlay.world/api/v1/pwm?lat=36.01&amp;lng=-5.60",
-  { headers: { Authorization: "Bearer sl_live_your_key" } }
-).then(r => r.json());
-
-// Inject into ANY LLM system prompt:
-const systemPrompt = `Physical World Model:\n\n${pwm.context_string}`;
-
-// Works with Claude, GPT, Gemini, Llama, Mistral, Cohere...</pre>
+        <div class="repo-actions">
+          <a href="docs.html" class="repo-link">Developer Docs</a>
+          <a href="agents" class="repo-link">Agent Guide</a>
+          <a href="demo" class="repo-link">Try Demo</a>
         </div>
       </div>
     </div>

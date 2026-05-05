@@ -204,6 +204,28 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
   border-radius: 12px;
   background: rgba(255,255,255,0.025);
 }
+.developer-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 28px;
+  border: 1px solid rgba(16,185,129,0.18);
+  border-radius: 12px;
+  background: rgba(16,185,129,0.045);
+}
+.developer-panel h3 {
+  max-width: 720px;
+  margin-bottom: 10px;
+  font-size: 26px;
+  line-height: 1.25;
+}
+.developer-panel p:last-child {
+  max-width: 720px;
+  color: var(--text2);
+  font-size: 15px;
+  line-height: 1.7;
+}
 .repo-kicker {
   margin-bottom: 8px;
   color: var(--primary);
@@ -315,7 +337,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
   .section-title { font-size: 24px; }
   .container { padding: 0 16px; }
   .footer-links { flex-wrap: wrap; gap: 14px 18px; padding: 0 16px; }
-  .repo-panel { align-items: flex-start; flex-direction: column; padding: 22px; }
+  .repo-panel, .developer-panel { align-items: flex-start; flex-direction: column; padding: 22px; }
   .repo-actions { justify-content: flex-start; min-width: 0; width: 100%; }
   .code-block { font-size: 12px; padding: 12px; }
   .hero-buttons { gap: 10px; }

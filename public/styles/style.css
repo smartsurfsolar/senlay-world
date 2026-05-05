@@ -209,7 +209,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px 18px;
-  max-width: 860px;
+  max-width: 1080px;
   margin: 0 auto 14px;
   color: var(--text2);
   font-size: 13px;

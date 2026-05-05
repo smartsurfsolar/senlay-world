@@ -53,7 +53,7 @@ http://127.0.0.1:8080
 
 ## Contact
 
-- Email: [smartsurfsolar@gmail.com](mailto:smartsurfsolar@gmail.com)
+- Email: [viktor@senlay.world](mailto:viktor@senlay.world)
 - WhatsApp: [+84 3333 801 68](https://wa.me/84333380168)
 - LinkedIn: [Viktor Kryvotsiuk](https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/)
 - Ko-fi: [ko-fi.com/senlay](https://ko-fi.com/senlay)

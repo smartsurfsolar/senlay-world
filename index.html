@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay — Provenance-Aware Sensory Layer for AI Agents</title>
+  <meta name="description" content="Senlay gives AI agents live physical-world telemetry, source provenance, freshness, confidence, and interpretation — so agents reason from measured reality, not only training data.">
+  <meta property="og:title" content="Senlay — Evidence Layer for AI">
+  <meta property="og:description" content="Live telemetry + source provenance + confidence + interpretation. The first working bridge from AI agents to measured physical reality.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://senlay.world">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://senlay.world">
+  <link rel="icon" type="image/png" href="/LogoTransparentBackground.png?v=4">
+  <link rel="apple-touch-icon" href="/LogoTransparentBackground.png?v=4">
+  <link rel="stylesheet" href="landing.css?v=4">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="l-header">
+    <div class="l-header-inner">
+      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
+      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.l-nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="l-nav">
+        <a href="/">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo">Demo</a>
+        <a href="agents">For Agents</a>
+        <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+        <a href="register.html" class="nav-cta">Get API Key</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SECTION A: Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-badge">Sensory Infrastructure for the Agentic Era</p>
+      <h2 class="hero-title">The Sensory Layer<br>for AI Agents</h2>
+      <p class="hero-sub">Give AI agents live physical-world context &mdash; with source, freshness, confidence, and interpretation. So they can reason from measured reality, not only from static training data.</p>
+      <div class="hero-buttons">
+        <a href="register.html" class="btn-primary">Get API Key</a>
+        <a href="docs.html" class="btn-secondary">View Documentation</a>
+        <a href="demo" class="btn-ghost">Try Demo &rarr;</a>
+      </div>
+
+      <!-- Live counter -->
+      <div class="live-counter" id="liveCounter">
+        <span class="live-counter-label"><span class="pulse-dot"></span> Live</span>
+        <span class="live-stat">
+          <span class="live-stat-num" id="statSources" data-target="21">21</span>
+          <span class="live-stat-lbl">Sensor Networks</span>
+        </span>
+        <span class="live-stat">
+          <span class="live-stat-num" id="statAgents" data-target="0">&mdash;</span>
+          <span class="live-stat-lbl">Agents Connected</span>
+        </span>
+        <span class="live-stat">
+          <span class="live-stat-num" id="statSenses" data-target="0">&mdash;</span>
+          <span class="live-stat-lbl">Senses Served</span>
+        </span>
+      </div>
+
+      <!-- Flow diagram -->
+      <div class="flow-diagram">
+        <div class="flow-box flow-sensors">
+          <div class="flow-label">Sensors</div>
+          <div class="flow-items">METAR &middot; Buoys &middot; Tides<br>Models &middot; Satellite &middot; USGS</div>
+          <div class="flow-dots"></div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-box flow-senlay">
+          <div class="flow-label">SENLAY</div>
+          <div class="flow-items">Fusion Engine<br>Physical World Model</div>
+          <div class="flow-pulse"></div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-box flow-ai">
+          <div class="flow-label">AI Agent</div>
+          <div class="flow-items">Claude &middot; GPT<br>Gemini &middot; Any LLM</div>
+        </div>
+      </div>
+
+      <p class="hero-note">Built for the agentic era. Works with any LLM.</p>
+
+      <p class="hero-clarifier"><strong>&ldquo;Physical senses&rdquo; is shorthand.</strong> Senlay doesn't give AI biological perception &mdash; it gives agents live telemetry, source provenance, freshness, distance, confidence, and evidence metadata.</p>
+    </div>
+  </section>
+
+  <!-- SECTION B: Why AI Needs Senses -->
+  <section class="section">
+    <div class="container">
+      <h3 class="section-title">Why AI Agents Need Physical-World Context</h3>
+      <p class="section-sub">Most AI agents reason from training data, forecasts, and static knowledge. They can solve differential equations but don't know whether a drone can safely launch in the next 20 minutes at a specific coast, or whether the swell a sailing agent is planning around is already building. Senlay bridges the gap between digital reasoning and measured reality.</p>
+
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-icon">&#x1F321;&#xFE0F;</div>
+          <h4>Atmospheric Sensing</h4>
+          <p>Wind speed, gusts, direction, temperature, pressure, humidity, precipitation. 24-hour projection data.</p>
+          <span class="cap-source">Hardware-first where available, models as fallback</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">&#x1F30A;</div>
+          <h4>Hydrosphere Intelligence</h4>
+          <p>Wave height, swell energy, period, direction, tides, water temperature, ocean currents.</p>
+          <span class="cap-source">Marine models + buoys + tide and water-temp stations</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">&#x1F3D4;&#xFE0F;</div>
+          <h4>Lithosphere Awareness</h4>
+          <p>9-point terrain profiles, elevation, ocean depth, bathymetry, reef detection, slope analysis.</p>
+          <span class="cap-source">Global elevation models</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">&#x1F32B;&#xFE0F;</div>
+          <h4>Air Quality &amp; Safety</h4>
+          <p>PM2.5, PM10, AQI index, UV exposure levels, fire proximity alerts, seismic activity.</p>
+          <span class="cap-source">Community AQ sensors + radiation + fire + hazard feeds</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">&#x1F6F0;&#xFE0F;</div>
+          <h4>Satellite Observation</h4>
+          <p>Cloud-free imagery metadata, land cover changes, coastline monitoring, vegetation analysis.</p>
+          <span class="cap-source">Copernicus Sentinel-2</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">&#x1F50E;</div>
+          <h4>Provenance &amp; Confidence</h4>
+          <p>Every value carries its source type, station id, distance, timestamp, and confidence. Model vs hardware disagreement is surfaced, not hidden.</p>
+          <span class="cap-source">current_source + freshness + evidence metadata</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION C: How It Works -->
+  <section class="section section-dark">
+    <div class="container">
+      <h3 class="section-title">Two Lines of Code. Physical-World Context for Your Agent.</h3>
+
+      <div class="code-pair">
+        <div class="code-block-wrap">
+          <div class="code-header">Request <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <pre class="code-block">curl -H "Authorization: Bearer sl_live_your_key" \
+  "https://senlay.world/api/v1/pwm?lat=36.01&amp;lng=-5.60"</pre>
+        </div>
+        <div class="code-block-wrap">
+          <div class="code-header">Response <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <pre class="code-block">{
+  "status": "ok",
+  "active_sources": 11,
+  "pwm": {
+    "layers": {
+      "atmosphere": {
+        "current": {
+          "wind_speed_10m": 33,
+          "wind_gusts_10m": 61.9,
+          "temperature_2m": 16.5
+        },
+        "current_source": {
+          "mode": "hardware_with_model_fallback",
+          "overridden_fields": ["wind_speed_10m", "temperature_2m"]
+        }
+      },
+      "hydrosphere": {
+        "current": { "wave_height": 1.2 }
+      },
+      "terrain": {
+        "elevation_at_point": -6,
+        "is_ocean": true
+      }
+    }
+  },
+  "context_string": "=== SENLAY PWM === ..."
+}</pre>
+        </div>
+      </div>
+
+      <p class="code-note">The <code>context_string</code> is ready to inject directly into any LLM's system prompt, and <code>current_source</code> tells your agent when live hardware has overridden model values. No parsing. No weather-stack glue code. Just physical awareness.</p>
+    </div>
+  </section>
+
+  <!-- SECTION D: Works With Any LLM -->
+  <section class="section">
+    <div class="container">
+      <h3 class="section-title">Universal Compatibility</h3>
+      <p class="section-sub">No SDK required. No vendor lock-in. Standard REST API that works with every AI provider, every framework, every language.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('claude',this)">Claude (Python)</button>
+        <button class="tab-btn" onclick="showTab('openai',this)">OpenAI (Python)</button>
+        <button class="tab-btn" onclick="showTab('js',this)">JavaScript</button>
+      </div>
+
+      <div id="tab-claude" class="tab-content active">
+        <div class="code-block-wrap">
+          <div class="code-header">Python + Claude <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <pre class="code-block">import anthropic, requests
+
+pwm = requests.get(
+    "https://senlay.world/api/v1/pwm",
+    params={"lat": 36.01, "lng": -5.60},
+    headers={"Authorization": "Bearer sl_live_your_key"}
+).json()
+
+client = anthropic.Anthropic()
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    system=f"You perceive the physical world:\n\n{pwm['context_string']}",
+    messages=[{"role": "user", "content": "Can a drone fly here safely?"}]
+)</pre>
+        </div>
+      </div>
+
+      <div id="tab-openai" class="tab-content">
+        <div class="code-block-wrap">
+          <div class="code-header">Python + OpenAI <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <pre class="code-block">from openai import OpenAI
+import requests
+
+pwm = requests.get(
+    "https://senlay.world/api/v1/pwm",
+    params={"lat": 36.01, "lng": -5.60},
+    headers={"Authorization": "Bearer sl_live_your_key"}
+).json()
+
+client = OpenAI()
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": pwm["context_string"]},
+        {"role": "user", "content": "Is it safe to launch here?"}
+    ]
+)</pre>
+        </div>
+      </div>
+
+      <div id="tab-js" class="tab-content">
+        <div class="code-block-wrap">
+          <div class="code-header">JavaScript (Any LLM) <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <pre class="code-block">const pwm = await fetch(
+  "https://senlay.world/api/v1/pwm?lat=36.01&amp;lng=-5.60",
+  { headers: { Authorization: "Bearer sl_live_your_key" } }
+).then(r => r.json());
+
+// Inject into ANY LLM system prompt:
+const systemPrompt = `Physical World Model:\n\n${pwm.context_string}`;
+
+// Works with Claude, GPT, Gemini, Llama, Mistral, Cohere...</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION D2: Evidentiality / How does the agent know? -->
+  <section class="section section-dark">
+    <div class="container">
+      <h3 class="section-title">How does the agent know?</h3>
+      <p class="section-sub">Every physical-world claim needs evidence. Senlay does not only answer <em>“what is happening?”</em> &mdash; it exposes <em>how we know</em>.</p>
+      <div class="evidential-grid">
+        <div class="evidential-col">
+          <div class="evidential-head">Most AI systems</div>
+          <ul class="evidential-list neg">
+            <li>Answer from training data</li>
+            <li>Quote forecasts without timestamps</li>
+            <li>Infer from static knowledge</li>
+            <li>No source, no freshness, no confidence</li>
+          </ul>
+        </div>
+        <div class="evidential-col">
+          <div class="evidential-head pos">Agents using Senlay</div>
+          <ul class="evidential-list pos">
+            <li>See the <strong>source type</strong> (sensor / model / satellite / report)</li>
+            <li>See the <strong>timestamp</strong> and distance to the source</li>
+            <li>See whether nearby sources <strong>agree</strong></li>
+            <li>See whether forecast <strong>disagrees</strong> with live measurement</li>
+            <li>Receive interpretation + confidence, not just numbers</li>
+          </ul>
+        </div>
+      </div>
+      <p class="evidential-closer">The future of AI is not only better answers. It is <strong>better evidence behind the answer</strong>.</p>
+    </div>
+  </section>
+
+  <!-- SECTION D3: Evidence Object -->
+  <section class="section">
+    <div class="container">
+      <h3 class="section-title">The Senlay Evidence Object</h3>
+      <p class="section-sub">Every physical-world claim Senlay returns is structured as a traceable evidence object &mdash; claim, source, freshness, confidence, disagreement, and interpretation. One unit of physical-world truth, with the paperwork attached.</p>
+
+      <div class="evidence-demo">
+        <div class="evidence-card">
+          <div class="evidence-claim">
+            <div class="ev-label">Claim</div>
+            <div class="ev-value-big">Wave height is 0.7 m</div>
+          </div>
+          <div class="evidence-meta">
+            <div class="ev-row"><span class="ev-k">Evidence type</span><span class="ev-v"><span class="pill hw">measured telemetry</span></span></div>
+            <div class="ev-row"><span class="ev-k">Source</span><span class="ev-v">NDBC buoy <code>KLIH1</code></span></div>
+            <div class="ev-row"><span class="ev-k">Distance</span><span class="ev-v">18 km from target</span></div>
+            <div class="ev-row"><span class="ev-k">Freshness</span><span class="ev-v">12 minutes ago</span></div>
+            <div class="ev-row"><span class="ev-k">Confidence</span><span class="ev-v"><span class="pill conf-mh">medium-high</span></span></div>
+            <div class="ev-row"><span class="ev-k">Model disagreement</span><span class="ev-v">forecast said 0.5 m &middot; delta +0.2 m</span></div>
+            <div class="ev-row ev-interp"><span class="ev-k">Interpretation</span><span class="ev-v">Small but measurable swell; suitable for low-risk coastal activity. Live measurement runs above forecast &mdash; treat conditions as building.</span></div>
+            <div class="ev-row ev-uncert"><span class="ev-k">Uncertainty</span><span class="ev-v">Nearest buoy is 18 km away; local break conditions may vary by exposure.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-grid" style="margin-top:28px">
+        <div class="trust-card">
+          <div class="trust-icon">&#x1F4E1;</div>
+          <div class="trust-tier hw">Measured Telemetry</div>
+          <div class="trust-desc">Physical instruments measuring reality. METAR stations, ocean buoys, tide gauges, AQ monitors. Ground data, subject to distance and freshness.</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">&#x1F6F0;&#xFE0F;</div>
+          <div class="trust-tier sat">Satellite Observation</div>
+          <div class="trust-desc">Remote observation. Sentinel-2 imagery, cloud cover, land use, coastline change. Broad coverage, typically delayed.</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">&#x1F9EE;</div>
+          <div class="trust-tier model">Model / Forecast</div>
+          <div class="trust-desc">Physics-based predictions. Open-Meteo, GFS, ECMWF. Global coverage but estimates, not measurements.</div>
+        </div>
+      </div>
+      <p class="trust-note" style="margin-top:18px"><strong>When hardware and models disagree, trust hardware — but expose the disagreement.</strong> Senlay's <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px;font-size:13px">current_source</code> field tells your agent exactly which fields were overridden by live sensors and by which station.</p>
+    </div>
+  </section>
+
+  <!-- SECTION D4: Decision Pipeline -->
+  <section class="section section-dark">
+    <div class="container">
+      <h3 class="section-title">From Raw Data to Recommended Action</h3>
+      <p class="section-sub">Senlay moves agents from numbers to meaning: <strong style="color:var(--text)">Condition &rarr; Evidence &rarr; Confidence &rarr; Risk &rarr; Action</strong>. Condition, evidence and confidence are live today. Deeper risk and action reasoning is shipping with the Modifier Engine and domain packs.</p>
+      <div class="decision-pipeline">
+        <div class="pipeline-flow">
+          <div class="pipeline-step">
+            <div class="pipe-label">Condition</div>
+            <div class="pipe-value">Wind 33 km/h<br>Gusts 62 km/h</div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipe-label">Evidence</div>
+            <div class="pipe-value">METAR 4.2 km<br>updated 8 min ago</div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipe-label">Confidence</div>
+            <div class="pipe-value" style="color:var(--primary)">medium-high<br>(live sensor)</div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipe-label">Risk</div>
+            <div class="pipe-value" style="color:#EF4444">HIGH<br>gust factor 1.9&times;</div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipe-label">Action</div>
+            <div class="pipe-value">Do not launch.<br>Re-check in 2h.</div>
+          </div>
+        </div>
+        <p class="pipeline-example">Illustrative example. The <em>condition</em>, <em>evidence</em>, and <em>confidence</em> columns are live API fields today; <em>risk</em> and <em>action</em> are being extended through the Modifier Engine and the forthcoming domain packs (drones, maritime, agriculture).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION D5: Early Modifier Engine (Honesty block) -->
+  <section class="section">
+    <div class="container">
+      <div class="honesty-block">
+        <div class="honesty-label">Early Access &middot; Build-in-Public</div>
+        <h3 class="honesty-title">The Modifier Engine is still early.</h3>
+        <p>Senlay today includes working demos of basic physics-based calculators and early environmental modifier logic &mdash; terrain-wind hints, wave modifiers, temperature lapse, gust-factor analysis, hazard flags. These demos show the direction of the Physical World Model.</p>
+        <p>They are <strong>not yet a complete, validated physical simulation engine</strong>. Advanced modifiers &mdash; terrain-aware wind, coastal risk, drone turbulence, agriculture microclimate, multi-source confidence scoring, and sensor/model disagreement detection &mdash; require further engineering, calibration, and validation.</p>
+        <p class="honesty-close">The goal isn't to pretend every cliff, current, rotor zone, wave system, or microclimate is already modelled. The goal is to build the first working bridge from raw environmental data toward provenance-aware physical reasoning for AI agents &mdash; and to do it in the open.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION E: Use Cases -->
+  <section class="section section-dark">
+    <div class="container">
+      <h3 class="section-title">From Kitesurfing to Search &amp; Rescue</h3>
+
+      <div class="use-grid">
+        <div class="use-card">
+          <div class="use-icon">&#x1F3C4;</div>
+          <h4>Water Sports Intelligence</h4>
+          <p>AI coaches grounded in live wind, wave, and sensor data. Our live demo shows, field by field, when nearby hardware stations disagree with the model in real time.</p>
+          <a href="demo" class="use-link">Try Live Demo &rarr;</a>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">&#x1F681;</div>
+          <h4>Drone Operations</h4>
+          <p>Pre-flight assessment from real sensor data. Wind at altitude, terrain clearance, air quality, and visibility &mdash; the context your flight AI needs for go/no-go decisions.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">&#x1F33E;</div>
+          <h4>Precision Agriculture</h4>
+          <p>Combine atmospheric data, UV, air quality, and satellite imagery for crop management. Your agricultural AI agent understands what's happening in the field right now.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">&#x1F50D;</div>
+          <h4>Search &amp; Rescue</h4>
+          <p>Drift prediction from currents, wind, and bathymetry. Give rescue coordination AI real-time environmental awareness.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">&#x1F916;</div>
+          <h4>Autonomous Systems</h4>
+          <p>Any robot, vehicle, or agent operating in the physical world needs to perceive that world. Senlay is the perception layer.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">&#x1F6A2;</div>
+          <h4>Maritime Routing</h4>
+          <p>Wave-current interaction, port-approach wind, sea-spray visibility, fuel-optimised routing. Ocean conditions AI can actually reason about.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION F: Live Data Proof -->
+  <section class="section">
+    <div class="container">
+      <h3 class="section-title">Real Sensors. Real Data. Right Now.</h3>
+      <div class="live-ticker" id="liveTicker">
+        <div class="ticker-track" id="tickerTrack">Loading sensor data...</div>
+      </div>
+      <p class="ticker-meta" id="tickerMeta"></p>
+    </div>
+  </section>
+
+  <!-- SECTION G: CTA -->
+  <section class="section section-cta">
+    <div class="container" style="text-align:center">
+      <h3 class="section-title" style="margin-bottom:16px">Give Your AI Physical Senses</h3>
+      <p class="section-sub" style="margin-bottom:24px">Free tier. No credit card. Start in 30 seconds.</p>
+      <div class="hero-buttons" style="justify-content:center">
+        <a href="register.html" class="btn-primary">Get Your API Key</a>
+        <a href="docs.html" class="btn-secondary">Read the Docs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="l-footer">
+    <p class="footer-brand">SENLAY &mdash; Sensory Intelligence Layer for AI</p>
+    <p class="footer-sub">Giving AI eyes, ears, and skin in the physical world</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="demo">Demo</a>
+      <a href="agents">For Agents</a>
+      <a href="moltbook">For Moltbook</a>
+      <a href="register.html">Register</a>
+      <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="support.html">Support Us</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a>
+      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
+      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
+      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
+      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></p>
+    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+  </footer>
+
+  <script src="landing.js"></script>
+</body>
+</html>

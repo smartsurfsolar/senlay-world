@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay Roadmap — What We're Building</title>
+  <meta name="description" content="Senlay product roadmap. See what's live, what's next, and where the Sensory Intelligence Layer for AI is heading.">
+  <link rel="icon" type="image/png" href="/LogoTransparentBackground.png?v=4">
+  <link rel="apple-touch-icon" href="/LogoTransparentBackground.png?v=4">
+  <link rel="stylesheet" href="landing.css?v=4">
+  <style>
+    .road-container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+    .road-title { font-size: 32px; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 8px; }
+    .road-sub { color: var(--text2); font-size: 15px; text-align: center; line-height: 1.8; margin-bottom: 48px; }
+    .phase { margin-bottom: 40px; }
+    .phase-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .phase-badge { padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+    .badge-live { background: rgba(16,185,129,0.15); color: var(--primary); }
+    .badge-building { background: rgba(251,191,36,0.15); color: #FBBf24; }
+    .badge-planned { background: rgba(148,163,184,0.15); color: var(--text2); }
+    .badge-future { background: rgba(125,211,252,0.15); color: var(--code); }
+    .phase-title { font-size: 20px; font-weight: 700; }
+    .road-items { list-style: none; padding: 0; }
+    .road-items li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text2); line-height: 1.7; }
+    .road-items li:last-child { border-bottom: none; }
+    .item-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+    .item-text strong { color: var(--text); }
+    .divider { height: 1px; background: var(--border); margin: 40px 0; }
+    .mission { text-align: center; margin: 48px 0 16px; padding: 40px 24px; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(56,189,248,0.05)); border: 1px solid rgba(16,185,129,0.25); border-radius: 14px; }
+    .mission-title { font-size: 13px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+    .mission-text { font-size: 20px; font-weight: 600; line-height: 1.5; color: var(--text); max-width: 680px; margin: 0 auto; }
+    .mission-text em { color: var(--primary); font-style: italic; }
+    .road-cta { text-align: center; margin-top: 32px; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+    .road-cta h4 { font-size: 18px; margin-bottom: 8px; }
+    .road-cta p { color: var(--text2); font-size: 14px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <header class="l-header">
+    <div class="l-header-inner">
+      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
+      <nav class="l-nav">
+        <a href="/">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo">Demo</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+        <a href="register.html" class="nav-cta">Get API Key</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="road-container">
+    <h2 class="road-title">Roadmap</h2>
+    <p class="road-sub">Where Senlay is today and where we're heading. Now / Next / Later, kept honest.<br>Built in public by a solo founder.</p>
+
+    <!-- PHASE 1: LIVE -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge badge-live">LIVE</span>
+        <span class="phase-title">Core Platform</span>
+      </div>
+      <ul class="road-items">
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Physical World Model API</strong> &mdash; real-time environmental data for any coordinate on Earth via single REST endpoint</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>21 sensor sources</strong> &mdash; Open-Meteo models, METAR aviation stations, NDBC ocean buoys, NOAA tides, USGS seismic, Sentinel-2 satellite, NWS observations, air quality, water temperature, space weather, radiation monitoring, and more</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>110 curated sensor locations</strong> &mdash; global coverage across 6 continents, plus city search for any location</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Early Modifier Engine</strong> &mdash; working demos of physics-based calculators: terrain-wind hints (ridge speedup, lee rotor, valley channeling), wave modifiers (shoaling, breaking cap), temperature lapse, gust-factor analysis, hazard flags. <em>Proof-of-direction, not yet a fully validated simulation engine.</em></span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Source &amp; freshness metadata</strong> &mdash; every PWM response surfaces <code>current_source</code> per layer, including which fields were overridden by live hardware vs. model.</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Calculated Insights</strong> &mdash; Beaufort scale, gust factor analysis, wave energy index, wind trends (past + forecast), model vs hardware cross-reference, hazard flags</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Expert AI system prompt</strong> &mdash; kitesurfing safety scoring, kite size recommendations, red flag system, session timing intelligence</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Claude tool calling</strong> &mdash; AI can dynamically refresh sensors for different locations mid-conversation</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Developer tools</strong> &mdash; API key management, PWM sandbox, unit conversion (metric/imperial/knots/m&middot;s), system health monitor</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Universal LLM compatibility</strong> &mdash; works with Claude, GPT, Gemini, Llama, Mistral &mdash; any model that accepts a system prompt</span></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PHASE 2: BUILDING NOW -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge badge-building">BUILDING</span>
+        <span class="phase-title">Q2 2026</span>
+      </div>
+      <ul class="road-items">
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Senlay Evidence Object (v1)</strong> &mdash; structured per-claim payload: source type, source id, distance, freshness, confidence, model disagreement, interpretation, uncertainty. Promotes <code>context_string</code> from prose to traceable evidence.</span></li>
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Confidence scoring &amp; freshness decay</strong> &mdash; per-field confidence levels that decay with distance and time-since-measurement. Sensor agreement metrics across nearby stations.</span></li>
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Sensor / model disagreement detection</strong> &mdash; explicit flags when live measurement diverges from forecast, with delta and direction.</span></li>
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Modifier Engine v1 (validated)</strong> &mdash; promote the early demos into calibrated terrain-wind, wave, coastal and microclimate modifiers with documented assumptions.</span></li>
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Self-hosted weather models</strong> &mdash; run Open-Meteo locally for unlimited API calls, zero dependency on external rate limits.</span></li>
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Historical data layer</strong> &mdash; &ldquo;what were conditions here 3 hours / 3 days / 3 months ago?&rdquo; for trend analysis and anomaly detection.</span></li>
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Webhook alerts</strong> &mdash; &ldquo;notify me when wind at Tarifa exceeds 20 km/h&rdquo; &mdash; condition-based push notifications for AI agents.</span></li>
+        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Expanded METAR coverage</strong> &mdash; target 100% of curated sensor locations backed by live hardware airport data.</span></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PHASE 3: PLANNED -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge badge-planned">PLANNED</span>
+        <span class="phase-title">Q3&ndash;Q4 2026</span>
+      </div>
+      <ul class="road-items">
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Marine / Watersports</strong> &mdash; coastal risk modifiers, sea-state interpretation, rider/board safety logic. Senlay's first validated domain pack &mdash; built on the SmartSurf proving ground.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Drones</strong> &mdash; pre-flight environmental assessment endpoint for UAS/eVTOL: terrain-aware wind at altitude, turbulence/exposure logic, visibility, no-fly conditions.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Agriculture</strong> &mdash; spray-drift risk, frost prediction, evapotranspiration, soil-moisture proxy, UV crop stress &mdash; precision-farming context without dedicated hardware.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Maritime routing layer</strong> &mdash; ship fuel optimisation, wave-current interaction, sea-spray visibility, port-approach wind assessment.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Plausibility / spoofing checks</strong> &mdash; physical-plausibility tests on incoming readings; flag manipulated, stuck, or contextually impossible values before they reach the agent.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Multi-agent shared world model</strong> &mdash; multiple AI agents subscribing to the same location get a synchronised, evidence-tagged environmental picture.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>SDK packages</strong> &mdash; Python, JavaScript, Go client libraries for faster integration.</span></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PHASE 4: EARLY 2027 -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge badge-planned">PLANNED</span>
+        <span class="phase-title">Q1&ndash;Q2 2027</span>
+      </div>
+      <ul class="road-items">
+        <li><span class="item-icon">&#x1F9ED;</span><span class="item-text"><strong>Skipper Intelligence</strong> &mdash; teaching LLMs to interpret bathymetry and wind shadows. AI agents will read the ocean floor, coastlines, and terrain the way experienced skippers do &mdash; anticipating choppy water, lee zones, and channel effects from geometry alone.</span></li>
+        <li><span class="item-icon">&#x1F4E1;</span><span class="item-text"><strong>100+ Certified Ground Truth nodes</strong> &mdash; expansion of verified, high-precision sensor nodes in high-risk maritime zones: Cape of Good Hope, Strait of Gibraltar, Tsugaru Strait, Drake Passage, Malacca Strait. When life is on the line, AI needs data it can trust.</span></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PHASE 5: FUTURE VISION -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge badge-future">FUTURE</span>
+        <span class="phase-title">2027+</span>
+      </div>
+      <ul class="road-items">
+        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Federated sensor network</strong> &mdash; any IoT device can contribute data to the Physical World Model. SmartSurf hardware trackers as first-party sensors.</span></li>
+        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>P3 Modifiers</strong> &mdash; soil conditions, acoustic propagation, electromagnetic/comms interference, building-level urban wind, solar farm optimization</span></li>
+        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Insurance & parametric triggers</strong> &mdash; verified microclimate data for parametric weather insurance, claims verification, property risk scoring</span></li>
+        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Digital twin integration</strong> &mdash; real-world state sync for simulation environments, RL training, autonomous system validation</span></li>
+        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Universal Physical World API</strong> &mdash; the endgame: one API call returns complete physical reality for any coordinate, any altitude, any time. The "Google Maps for environmental intelligence."</span></li>
+      </ul>
+    </div>
+
+    <div class="mission">
+      <h3 class="mission-title">The Mission</h3>
+      <p class="mission-text">Building a world where AI protects humans from physical hazards it can finally <em>see</em>.</p>
+    </div>
+
+    <div class="road-cta">
+      <h4>Shape the Roadmap</h4>
+      <p>Senlay is built by a solo founder. Your feedback directly shapes what gets built next.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="register.html" class="btn-primary" style="text-decoration:none">Get Free API Key</a>
+        <a href="support.html" class="btn-secondary" style="text-decoration:none">Support Senlay</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="l-footer">
+    <p class="footer-brand">SENLAY</p>
+    <p class="footer-sub">Sensory Intelligence Layer for AI</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+      <a href="docs.html">Docs</a>
+      <a href="demo">Demo</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="support.html">Support Us</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a>
+      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
+      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
+      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
+      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+  </footer>
+</body>
+</html>

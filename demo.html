@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay Demo — AI with Physical World Awareness</title>
+  <meta name="description" content="Live demo: AI that senses wind, waves, terrain, and air quality in real-time. Try the Senlay Physical World Model.">
+  <link rel="icon" type="image/png" href="/LogoTransparentBackground.png?v=4">
+  <link rel="apple-touch-icon" href="/LogoTransparentBackground.png?v=4">
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+        <span class="logo-sub">Sensory Intelligence Layer</span>
+      </div>
+      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo">Demo</a>
+        <a href="agents">For Agents</a>
+        <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+        <a href="register.html" class="nav-cta">Get API Key</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+    <p class="header-tagline">Connect any AI to the Physical World</p>
+  </header>
+
+  <!-- SETUP PANEL -->
+  <section id="setupPanel" class="setup-panel">
+    <div class="setup-grid">
+
+      <!-- A. AI Provider -->
+      <div class="setup-card">
+        <div class="setup-label">AI Provider</div>
+        <select id="providerSelect" onchange="onProviderChange()">
+          <option value="demo">Demo Mode (Claude)</option>
+          <option value="anthropic">Claude (your key)</option>
+          <option value="openai">OpenAI GPT-4o (your key)</option>
+        </select>
+        <div id="apiKeyRow" class="api-key-row hidden">
+          <input type="password" id="userApiKey" placeholder="Paste your API key" oninput="onApiKeyInput()">
+          <label class="remember-toggle">
+            <input type="checkbox" id="rememberApiKey" onchange="onRememberApiKeyChange()">
+            <span>Remember this key on this browser</span>
+          </label>
+          <small>Your key is sent directly to the AI provider. By default, it stays only in this browser session unless you choose to remember it.</small>
+        </div>
+      </div>
+
+      <!-- B. Location -->
+      <div class="setup-card">
+        <div class="setup-label">Location</div>
+        <div class="preset-block">
+          <div class="preset-title">Instant Try</div>
+          <div class="preset-grid">
+            <button class="preset-btn" onclick="usePresetLocation('tarifa')">Tarifa</button>
+            <button class="preset-btn" onclick="usePresetLocation('nazare')">Nazaré</button>
+            <button class="preset-btn" onclick="usePresetLocation('lisbon')">Lisbon</button>
+            <button class="preset-btn" onclick="usePresetLocation('san_francisco')">San Francisco</button>
+          </div>
+          <details class="preset-more">
+            <summary>More live places</summary>
+            <div class="preset-grid preset-grid-more">
+              <button class="preset-btn" onclick="usePresetLocation('berlin')">Berlin</button>
+              <button class="preset-btn" onclick="usePresetLocation('reykjavik')">Reykjavik</button>
+              <button class="preset-btn" onclick="usePresetLocation('cape_town')">Cape Town</button>
+              <button class="preset-btn" onclick="usePresetLocation('tokyo')">Tokyo</button>
+              <button class="preset-btn" onclick="usePresetLocation('hossegor')">Hossegor</button>
+              <button class="preset-btn" onclick="usePresetLocation('maui')">Maui</button>
+              <button class="preset-btn" onclick="usePresetLocation('mui_ne')">Mui Ne</button>
+              <button class="preset-btn" onclick="usePresetLocation('rio')">Rio</button>
+            </div>
+          </details>
+          <small>One click selects a live place and connects immediately in Demo Mode.</small>
+        </div>
+        <button class="btn-outline" onclick="useGeolocation()">&#x1F4CD; Use My Location</button>
+        <div class="city-search">
+          <input type="text" id="citySearch" placeholder="Search city or place..." onkeydown="if(event.key==='Enter')searchCity()">
+          <button class="btn-sm" onclick="searchCity()">&#x1F50D;</button>
+        </div>
+        <select id="spotSelect" onchange="onSpotSelect()">
+          <option value="">Or select sensor location...</option>
+        </select>
+        <div id="locationDisplay" class="location-display"></div>
+      </div>
+
+      <!-- C. Field + Connection + Units -->
+      <div class="setup-card">
+        <div class="setup-label">Field / Use Case</div>
+        <select id="fieldSelect" onchange="onFieldChange()" style="margin-bottom:8px">
+          <option value="kitesurfing">🪁 Kitesurfing / Windsurfing</option>
+          <option value="surfing">🏄 Surfing</option>
+          <option value="sailing">⛵ Sailing / Navigation</option>
+          <option value="paragliding">🪂 Paragliding / Hang Gliding</option>
+          <option value="drone">🚁 Drone / UAV Operations</option>
+          <option value="hiking">🥾 Hiking & Trekking</option>
+          <option value="agriculture">🌾 Agriculture & Farming</option>
+          <option value="construction">🏗️ Construction & Outdoor Work</option>
+          <option value="running">🏃 Running & Cycling</option>
+          <option value="general">🌍 General Exploration</option>
+        </select>
+        <div class="setup-label" style="margin-top:8px">Units & Connection</div>
+        <select id="unitSelect" onchange="onUnitChange()" style="margin-bottom:8px">
+          <option value="metric">Metric (km/h, °C, m)</option>
+          <option value="imperial">Imperial (mph, °F, ft)</option>
+          <option value="knots">Nautical (kts, °C, m)</option>
+          <option value="ms">Scientific (m/s, °C, m)</option>
+        </select>
+        <div id="connectionStatus" class="conn-status disconnected">
+          <span class="conn-dot"></span> Not connected
+        </div>
+        <button id="connectBtn" class="btn-connect" onclick="connectToPWM()">Connect to Physical World</button>
+        <div id="connDetails" class="conn-details hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLAPSED STATUS BAR (shown after connect) -->
+  <div id="statusBar" class="status-bar hidden" onclick="toggleSetup()">
+    <span class="conn-dot connected"></span>
+    <span id="statusBarText">Connected</span>
+    <span class="status-expand">&#x25BC;</span>
+  </div>
+
+  <!-- MAIN AREA -->
+  <main id="mainArea" class="main-area hidden">
+    <div class="main-grid">
+
+      <!-- LEFT: Chat -->
+      <div class="chat-panel">
+        <div class="chat-header">
+          <span id="chatProviderLabel">Claude + Physical World Model</span>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+          <!-- Messages appear here -->
+        </div>
+        <div class="chat-input-bar">
+          <input type="text" id="chatInput" placeholder="Ask anything about the world around you..." onkeydown="if(event.key==='Enter')sendMessage()">
+          <button id="sendBtn" onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: Sensor Feed -->
+      <div class="sensor-panel">
+        <div class="sensor-header">
+          <span class="pulse-dot"></span> AI SENSOR FEED &mdash; LIVE
+        </div>
+        <div id="sensorFeed" class="sensor-feed">
+          <p class="sensor-placeholder">Connect to see live data</p>
+        </div>
+        <div id="sensorTimestamp" class="sensor-timestamp"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- LIVE TICKER -->
+  <div id="ticker" class="ticker hidden">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-brand">SENLAY &mdash; Sensory Intelligence Layer for AI</p>
+    <p class="footer-sub">Giving AI eyes, ears, and skin in the physical world</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="demo">Demo</a>
+      <a href="agents">For Agents</a>
+      <a href="moltbook">For Moltbook</a>
+      <a href="register.html">Register</a>
+      <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="support.html">Support Us</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a>
+      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
+      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
+      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
+      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-attrib" style="font-size:12px;color:#94A3B8;margin-bottom:8px">Weather data by <a href="https://open-meteo.com/" style="color:#94A3B8;text-decoration:underline">Open-Meteo.com</a></p>
+    <p class="footer-cta">&copy; 2026 Senlay. Built in Vietnam.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

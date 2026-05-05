@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay Pricing — Free During Beta</title>
+  <meta name="description" content="Senlay pricing plans. Free during beta. Future plans for Pro and Enterprise tiers.">
+  <link rel="icon" type="image/png" href="/LogoTransparentBackground.png?v=4">
+  <link rel="apple-touch-icon" href="/LogoTransparentBackground.png?v=4">
+  <link rel="stylesheet" href="landing.css?v=4">
+  <style>
+    .price-container { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .price-title { font-size: 32px; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 8px; }
+    .price-sub { color: var(--text2); font-size: 15px; text-align: center; line-height: 1.8; margin-bottom: 40px; }
+    .beta-banner { background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.03)); border: 1px solid rgba(16,185,129,0.25); border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 40px; }
+    .beta-banner h3 { font-size: 20px; color: var(--primary); margin-bottom: 8px; }
+    .beta-banner p { color: var(--text2); font-size: 14px; line-height: 1.7; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+    .plan-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; position: relative; }
+    .plan-card.featured { border-color: var(--primary); }
+    .plan-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #0F172A; padding: 3px 14px; border-radius: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+    .plan-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .plan-price { font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+    .plan-price span { font-size: 14px; color: var(--text2); font-weight: 400; }
+    .plan-note { font-size: 13px; color: var(--text2); margin-bottom: 16px; }
+    .plan-features { list-style: none; padding: 0; margin-bottom: 20px; }
+    .plan-features li { padding: 6px 0; font-size: 14px; color: var(--text2); display: flex; align-items: flex-start; gap: 8px; }
+    .plan-features li::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+    .plan-btn { display: block; width: 100%; padding: 12px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .plan-btn-primary { background: var(--primary); color: #0F172A; }
+    .plan-btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .plan-btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+    .future-label { display: inline-block; padding: 2px 8px; background: rgba(148,163,184,0.15); color: var(--text2); border-radius: 4px; font-size: 11px; font-weight: 600; margin-bottom: 8px; }
+    .faq-section { margin-top: 48px; }
+    .faq-section h3 { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 24px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 12px; }
+    .faq-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .faq-item p { color: var(--text2); font-size: 14px; line-height: 1.7; }
+    .kofi-section { text-align: center; margin-top: 48px; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+    .kofi-section h4 { font-size: 18px; margin-bottom: 8px; }
+    .kofi-section p { color: var(--text2); font-size: 14px; margin-bottom: 16px; line-height: 1.7; }
+    .kofi-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #FF5E5B; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 15px; transition: transform 0.15s; }
+    .kofi-btn:hover { transform: translateY(-2px); }
+    @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="l-header">
+    <div class="l-header-inner">
+      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
+      <nav class="l-nav">
+        <a href="/">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo">Demo</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+        <a href="register.html" class="nav-cta">Get API Key</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="price-container">
+    <h2 class="price-title">Pricing</h2>
+    <p class="price-sub">Senlay is currently in open beta. All features are free while we build.</p>
+
+    <div class="beta-banner">
+      <h3>&#x1F389; Open Beta &mdash; Everything Free</h3>
+      <p>Senlay is in active development. During beta, all API access is free with generous limits.<br>Help us test, give feedback, and shape the platform before full launch.</p>
+    </div>
+
+    <div class="plans-grid">
+      <!-- Free -->
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0 <span>/month</span></div>
+        <div class="plan-note">Available now. No credit card.</div>
+        <ul class="plan-features">
+          <li>100 API calls/day</li>
+          <li>All 21 sensor sources</li>
+          <li>Full Physical World Model</li>
+          <li>Early Modifier Engine &mdash; physics-based calculators &amp; demos</li>
+          <li>Calculated insights & hazard flags</li>
+          <li>context_string for LLM injection</li>
+          <li>System health monitoring</li>
+          <li>Community support</li>
+        </ul>
+        <a href="register.html" class="plan-btn plan-btn-primary">Get Free API Key</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card featured">
+        <span class="future-label">AFTER LAUNCH</span>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$29 <span>/month</span></div>
+        <div class="plan-note">For developers and small teams.</div>
+        <ul class="plan-features">
+          <li>10,000 API calls/day</li>
+          <li>Everything in Free</li>
+          <li>Webhook condition alerts</li>
+          <li>Historical data access (30 days)</li>
+          <li>Priority sensor refresh</li>
+          <li>Batch location queries</li>
+          <li>Email support</li>
+        </ul>
+        <a href="register.html" class="plan-btn plan-btn-secondary">Get Free Key (Pro later)</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="plan-card">
+        <span class="future-label">AFTER LAUNCH</span>
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Custom</div>
+        <div class="plan-note">For companies and high-volume agents.</div>
+        <ul class="plan-features">
+          <li>Unlimited API calls</li>
+          <li>Everything in Pro</li>
+          <li>Dedicated infrastructure</li>
+          <li>Custom modifier profiles</li>
+          <li>Historical data (1 year+)</li>
+          <li>SLA &amp; uptime guarantee</li>
+          <li>Direct Slack/engineering support</li>
+          <li>On-premise deployment option</li>
+        </ul>
+        <a href="support.html" class="plan-btn plan-btn-secondary">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h3>Questions</h3>
+
+      <div class="faq-item">
+        <h4>When will paid plans launch?</h4>
+        <p>We're in open beta through Q2 2026. Paid plans will launch once we've validated the platform with real developer usage. All beta users will get early access pricing.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Will free tier always exist?</h4>
+        <p>Yes. A free tier with reasonable limits will always be available. We believe developers should be able to test and prototype without a credit card.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>What counts as an API call?</h4>
+        <p>One call to <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">/api/v1/pwm</code> = one API call. This returns the full Physical World Model &mdash; 21 sensor sources, early modifier demos, source/freshness metadata, and the <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">context_string</code> ready for any LLM.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Can I use Senlay commercially during beta?</h4>
+        <p>Yes. The beta is fully functional and you're welcome to integrate it into products. Just know that during beta, we may have occasional downtime for upgrades. Paid plans will include SLAs.</p>
+      </div>
+    </div>
+
+    <!-- Ko-fi -->
+    <div class="kofi-section">
+      <h4>Support Independent Development</h4>
+      <p>Senlay is built by a solo founder. No VC funding, no corporate backing.<br>If Senlay is useful to you, consider supporting the project.</p>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener" class="kofi-btn">&#9749; Support on Ko-fi</a>
+    </div>
+  </div>
+
+  <footer class="l-footer">
+    <p class="footer-brand">SENLAY</p>
+    <p class="footer-sub">Sensory Intelligence Layer for AI</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+      <a href="docs.html">Docs</a>
+      <a href="demo">Demo</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="support.html">Support Us</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a>
+      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
+      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
+      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
+      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+  </footer>
+</body>
+</html>

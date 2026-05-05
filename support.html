@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Senlay</title>
+  <link rel="icon" type="image/png" href="/LogoTransparentBackground.png?v=4">
+  <link rel="apple-touch-icon" href="/LogoTransparentBackground.png?v=4">
+  <link rel="stylesheet" href="landing.css?v=4">
+  <style>
+    .support-container { max-width: 720px; margin: 0 auto; padding: 56px 24px; }
+    .support-title { font-size: 30px; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 8px; }
+    .support-sub { color: var(--text2); font-size: 15px; text-align: center; line-height: 1.8; margin-bottom: 36px; }
+
+    .support-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 18px; }
+    .support-card h3 { font-size: 17px; color: var(--text); margin-bottom: 12px; }
+    .support-card h4 { font-size: 14px; color: var(--primary); margin: 16px 0 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .support-card p { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 12px; }
+    .support-card a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .support-card a:hover { text-decoration: underline; }
+
+    .about-card { background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02)); border: 1px solid rgba(16,185,129,0.18); border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+    .about-card h3 { font-size: 20px; color: var(--primary); margin-bottom: 14px; }
+    .about-card p { font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 14px; }
+    .about-card p.muted { color: var(--text2); }
+    .about-card .signature { font-style: italic; color: var(--text2); font-size: 13px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+
+    .kofi-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; align-items: center; }
+    .kofi-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: #FF5E5B; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none !important; font-size: 14px; transition: transform 0.15s; }
+    .kofi-btn:hover { transform: translateY(-2px); text-decoration: none !important; }
+    .kofi-note { font-size: 13px; color: var(--text2); }
+
+    .contact-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-label { font-size: 11px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; min-width: 90px; }
+    .contact-value { font-size: 14px; color: var(--text); flex: 1; }
+    .contact-value a { color: var(--primary); text-decoration: none; }
+    .contact-value a:hover { text-decoration: underline; }
+
+    .faq-item { margin-bottom: 14px; }
+    .faq-item summary { cursor: pointer; font-size: 14px; color: var(--text); font-weight: 600; padding: 8px 0; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::before { content: '▸ '; color: var(--primary); transition: transform 0.2s; display: inline-block; }
+    .faq-item[open] summary::before { transform: rotate(90deg); }
+    .faq-item summary:hover { color: var(--primary); }
+    .faq-item p { font-size: 13px; color: var(--text2); line-height: 1.7; padding: 4px 0 8px 18px; }
+
+    @media (max-width: 600px) {
+      .support-container { padding: 32px 16px; }
+      .contact-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .about-card { padding: 22px 18px; }
+      .kofi-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="l-header">
+    <div class="l-header-inner">
+      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
+      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.l-nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="l-nav">
+        <a href="/">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo">Demo</a>
+        <a href="agents">For Agents</a>
+        <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+        <a href="register.html" class="nav-cta">Get API Key</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="support-container">
+    <h2 class="support-title">Support &amp; About</h2>
+    <p class="support-sub">Senlay is an independent project built by a solo founder in Vietnam.<br>Here's the story, and how to get help.</p>
+
+    <!-- About Me -->
+    <div class="about-card">
+      <h3>The Human Behind the Sensory Layer</h3>
+
+      <h4 style="color:var(--primary);font-size:13px;margin-bottom:6px">Who I Am</h4>
+      <p>I'm <strong>Viktor Kryvotsiuk</strong> &#127482;&#127462; — born in Mykolaiv, Ukraine in 1985, now based in Mui Ne, Vietnam. For more than twenty years I've lived close to wind and water: kitesurfing, surfing, hydrofoiling, sailing, paragliding. For more than ten of those years I've worked as a kitesurfing instructor in Vietnam &mdash; thousands of hours on the water with adults and kids, in fair conditions and in trouble. The ocean taught me to read wind, current, and weather the slow honest way: by being wrong, by being scared, and by paying attention.</p>
+      <p>I'm also a self-taught engineer. I design hardware housings, 3D-print prototypes, write the firmware, configure tracking servers, and test everything in real saltwater rather than on a bench. I'm the father of a daughter named Vivi &mdash; she's a big part of why I keep building.</p>
+
+      <h4 style="color:var(--primary);font-size:13px;margin-bottom:6px">SmartSurf — Where This All Started</h4>
+      <p>My main project is <strong><a href="https://smartsurf.global/" target="_blank" rel="noopener">SmartSurf</a></strong> &mdash; an AI-powered safety and coaching platform for water-sport athletes, built around a dedicated waterproof GPS tracker.</p>
+      <p>The tracker is a sealed, button-less device cast in epoxy resin, IP68 to 10m, charged by solar and wireless, controlled magnetically, with global-roaming SIM and an SOS sequence built in. It mounts to your board, knows when a session starts, detects when board and rider drift apart, and can fire an alert when something goes wrong. The companion app (<a href="https://app.smartsurf.global" target="_blank" rel="noopener">app.smartsurf.global</a>) overlays your GPS track with real environmental conditions at your exact time and location and turns it into discipline-specific coaching for twin-tip, kitefoil, wing foil, windsurf, and SUP.</p>
+      <p>SmartSurf wasn't invented for a pitch deck. It came directly from years of watching boards drift away, riders get lost, wind drop without warning, and instructors lose visual contact with students at the worst possible moment. It's been in development since the COVID period, through prototype after prototype, and is now in real use with beta riders. Self-funded. Zero investors. Built one part at a time.</p>
+
+      <h4 style="color:var(--primary);font-size:13px;margin-bottom:6px">Why Senlay Exists</h4>
+      <p>To do its job, SmartSurf needs the truth about the water and the sky &mdash; right now, at the rider's exact coordinates. That meant fusing METAR stations, ocean buoys, NOAA tide gauges, swell models, air-quality networks, and satellite data into one coherent picture. After years of building that fusion layer for SmartSurf, I realised something: <em>AI agents are blind in exactly the same way SmartSurf riders used to be</em>. They can write essays about wind shear and swell period, but they've never sensed a single gust. They guess. They hallucinate. They confidently invent conditions.</p>
+      <p>Senlay is the sensor-fusion backbone from SmartSurf, opened up so any AI agent &mdash; or any developer &mdash; can call it. Same hardware-first principle: when a real METAR cup spinning on a runway disagrees with a forecast model, trust the cup. Senlay cross-references both and flags the discrepancy.</p>
+
+      <h4 style="color:var(--primary);font-size:13px;margin-bottom:6px">A Ukrainian Building From Vietnam</h4>
+      <p>I'm a Ukrainian working from the other side of the world, building physical and digital tools that have to survive real conditions. Vietnam is where most of my recent transformation happened &mdash; teaching, building, falling, rebuilding. I care about things that are honest, durable, and useful. Not pretty on a render. Useful on the water, in the air, in the field.</p>
+
+      <h4 style="color:var(--primary);font-size:13px;margin-bottom:6px">How Your Support Helps</h4>
+      <p>Senlay is free while it grows. Running it costs real money &mdash; VPS, database, premium sensor APIs (NASA FIRMS, WeatherFlow, Wunderground), domain, SSL, and time. If Senlay helped your agent feel the wind, please consider buying me a coffee. Every contribution buys server time, keeps the free tier open, and helps me keep both Senlay and SmartSurf moving forward without compromising on what they're meant to be.</p>
+
+      <div class="kofi-row">
+        <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener" class="kofi-btn">&#9749; Buy Me a Coffee on Ko-fi</a>
+        <span class="kofi-note">100% goes to keeping Senlay &amp; SmartSurf running.</span>
+      </div>
+
+      <p class="signature">&mdash; Viktor. Built with salt, wind, solder, and too much coffee. Mui Ne, Vietnam.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="support-card">
+      <h3>Contact</h3>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-value"><a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">WhatsApp</span>
+        <span class="contact-value"><a href="https://wa.me/84333380168" target="_blank" rel="noopener">+84 3333 801 68</a> &nbsp;<span style="color:var(--text2);font-size:12px">(English / Vietnamese)</span></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Telegram / Phone</span>
+        <span class="contact-value"><a href="tel:+84333380168">+84 3333 801 68</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Ko-fi</span>
+        <span class="contact-value"><a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">ko-fi.com/senlay</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value"><a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">Viktor Kryvotsiuk</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Moltbook</span>
+        <span class="contact-value"><a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">senlayfather</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">X</span>
+        <span class="contact-value"><a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">@SenlayDaddy</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Facebook</span>
+        <span class="contact-value"><a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Viktor Kryvotsiuk</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">Mui Ne, Vietnam &#127483;&#127475;</span>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="support-card">
+      <h3>Common Questions</h3>
+      <details class="faq-item">
+        <summary>How do I get an API key?</summary>
+        <p>Register at <a href="register.html">senlay.world/register</a> — free, no credit card required. You'll get 100 requests/day immediately. AI agents can also use <code>/api/v1/agent-register</code> with no password.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What counts as one request?</summary>
+        <p>Each call to <code>/api/v1/pwm</code> or <code>/api/v1/sense</code> counts as one request. Cached responses (same coordinate within 5 minutes) don't count toward your limit.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which locations are supported?</summary>
+        <p>Any coordinate on Earth. Sensor density varies — coastal and urban areas have the most hardware sensors. Inland and remote areas rely more on model data (still accurate, just less cross-referenced).</p>
+      </details>
+      <details class="faq-item">
+        <summary>How fresh is the data?</summary>
+        <p>Model data updates every 15 minutes. Hardware sensors (METAR, NDBC buoys, NOAA tide gauges) report every 5–60 minutes depending on the station. Senlay caches each coordinate for 5 minutes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use Senlay with my own AI model?</summary>
+        <p>Yes. The <code>/api/v1/pwm</code> endpoint returns a <code>context_string</code> you can inject into any LLM — Claude, GPT-4, Llama, Mistral, anything. See the <a href="docs.html">docs</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>I'm building an AI agent — how do I integrate?</summary>
+        <p>Use <code>/api/v1/agent-register</code> to get a key without passwords, then call <code>/api/v1/sense</code> for plain-text output optimized for LLM consumption. See <a href="docs.html#agentic">agentic tooling docs</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if a sensor is wrong?</summary>
+        <p>Hardware sensors win over models. Senlay cross-references both and flags discrepancies in the PWM context. If you spot bad data, email me with the coordinates and timestamp — I'll investigate.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a paid tier?</summary>
+        <p>Pro tier ($29/month, 10,000 req/day) is on the waitlist — join from the <a href="dashboard.html">dashboard</a>. Enterprise is custom — email me.</p>
+      </details>
+    </div>
+
+    <!-- Bug report -->
+    <div class="support-card">
+      <h3>Report a Bug</h3>
+      <p>Found incorrect data, a broken endpoint, or unexpected behavior? Email <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a> with:</p>
+      <ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:20px;margin-bottom:8px">
+        <li>The coordinates you queried</li>
+        <li>The timestamp (UTC if possible)</li>
+        <li>What you expected vs. what you got</li>
+        <li>Your API key prefix (first 12 chars only — never paste the full key)</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="l-footer">
+    <p class="footer-brand">SENLAY &mdash; Sensory Intelligence Layer for AI</p>
+    <p class="footer-sub">Giving AI eyes, ears, and skin in the physical world</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="demo">Demo</a>
+      <a href="agents">For Agents</a>
+      <a href="moltbook">For Moltbook</a>
+      <a href="register.html">Register</a>
+      <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="support.html">Support Us</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a>
+      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
+      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
+      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
+      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> &middot; CC BY 4.0</p>
+    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+  </footer>
+</body>
+</html>

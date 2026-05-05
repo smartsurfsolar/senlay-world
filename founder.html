@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founder - Viktor Kryvotsiuk - Senlay</title>
+  <meta name="description" content="Viktor Kryvotsiuk, founder of Senlay: waterman, instructor, hardware builder, and solo founder building physical senses for AI.">
+  <link rel="icon" type="image/png" href="/founder-selected/SenlayLogo.png?v=5">
+  <link rel="apple-touch-icon" href="/founder-selected/SenlayLogo.png?v=5">
+  <link rel="stylesheet" href="landing.css?v=4">
+  <style>
+    :root {
+      --founder-ink: var(--text);
+      --founder-muted: var(--text2);
+      --founder-soft: var(--surface);
+      --founder-deep: var(--bg);
+      --founder-line: var(--border);
+      --founder-green: var(--primary);
+      --founder-blue: var(--code);
+      --founder-gold: var(--primary);
+      --founder-coral: var(--primary);
+    }
+
+    body {
+      background: var(--founder-deep);
+      color: var(--founder-ink);
+    }
+
+    .founder-page {
+      background: var(--bg);
+    }
+
+    .f-hero {
+      position: relative;
+      min-height: 78svh;
+      display: grid;
+      align-items: end;
+      padding: 84px 24px 64px;
+      overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .f-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.5) 38%, rgba(15, 23, 42, 0.12) 68%, rgba(15, 23, 42, 0.26) 100%),
+        linear-gradient(0deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.16) 52%, rgba(15, 23, 42, 0.04) 100%),
+        url("/founder-selected/FoilingSittingStyle.jpg");
+      background-size: 118% auto;
+      background-repeat: no-repeat;
+      background-position: 54% 74%;
+      z-index: -2;
+    }
+
+    .f-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0), var(--bg));
+      z-index: -1;
+    }
+
+    .f-hero-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 720px) minmax(260px, 360px);
+      gap: 32px;
+      align-items: end;
+    }
+
+    .kicker,
+    .section-kicker,
+    .caption,
+    .fact-label {
+      font-family: var(--mono);
+      letter-spacing: 0;
+    }
+
+    .kicker {
+      color: var(--founder-green);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .f-hero h1 {
+      font-size: 56px;
+      line-height: 1.04;
+      margin: 0 0 18px;
+      color: #fff;
+      letter-spacing: 0;
+      max-width: 680px;
+    }
+
+    .hero-lede {
+      font-size: 20px;
+      line-height: 1.55;
+      color: #dbe7e5;
+      max-width: 640px;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-facts {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(30, 41, 59, 0.68);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .fact {
+      display: grid;
+      gap: 2px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .fact:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .fact-label {
+      color: var(--founder-green);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .fact-value {
+      color: var(--founder-ink);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .story-band {
+      border-bottom: 1px solid var(--founder-line);
+    }
+
+    .story-band.alt {
+      background: var(--surface);
+    }
+
+    .story-band.warm {
+      background: var(--bg);
+    }
+
+    .story-wrap {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 76px 24px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .section-kicker {
+      color: var(--founder-green);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 34px;
+      line-height: 1.16;
+      margin: 0 0 18px;
+      letter-spacing: 0;
+      color: #fff;
+    }
+
+    .lead {
+      font-size: 19px;
+      line-height: 1.58;
+      color: #d6e3e1;
+      margin: 0 0 20px;
+    }
+
+    .copy {
+      color: var(--founder-muted);
+      font-size: 16px;
+      line-height: 1.78;
+      max-width: 760px;
+    }
+
+    .copy p {
+      margin: 0 0 16px;
+    }
+
+    .copy strong {
+      color: var(--founder-ink);
+      font-weight: 700;
+    }
+
+    .quote {
+      margin: 28px 0 0;
+      padding: 22px 0 22px 22px;
+      border-left: 4px solid var(--founder-gold);
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1.45;
+      font-weight: 700;
+      max-width: 720px;
+    }
+
+    .photo-frame,
+    .evidence-card,
+    .metric,
+    .credential {
+      border: 1px solid var(--founder-line);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .photo-frame img,
+    .photo-frame video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #05080d;
+    }
+
+    .photo-frame.contain img {
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .caption {
+      color: #b5c4c1;
+      font-size: 12px;
+      line-height: 1.45;
+      padding: 10px 12px 12px;
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .portrait-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .portrait-stack .photo-frame:first-child {
+      aspect-ratio: 4 / 3;
+    }
+
+    .portrait-stack .photo-frame:last-child {
+      aspect-ratio: 3 / 2;
+    }
+
+    .chapter {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .chapter.reverse {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+
+    .chapter.reverse .chapter-copy {
+      order: 2;
+    }
+
+    .chapter.reverse .chapter-media {
+      order: 1;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .media-grid .wide {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 10;
+    }
+
+    .media-grid .tall {
+      aspect-ratio: 3 / 4;
+    }
+
+    .media-grid .landscape {
+      aspect-ratio: 4 / 3;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .evidence-card {
+      min-height: 100%;
+    }
+
+    .evidence-card .photo-frame {
+      border: 0;
+      border-radius: 0;
+      aspect-ratio: 4 / 3;
+    }
+
+    .evidence-card h3 {
+      font-size: 16px;
+      margin: 14px 14px 6px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .evidence-card p {
+      color: var(--founder-muted);
+      font-size: 14px;
+      line-height: 1.55;
+      margin: 0 14px 16px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .metric {
+      padding: 18px;
+    }
+
+    .metric strong {
+      display: block;
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      margin-bottom: 8px;
+      font-family: var(--mono);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--founder-muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+      max-width: 760px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      padding: 0 0 14px;
+      border-bottom: 1px solid var(--founder-line);
+    }
+
+    .timeline-row:last-child {
+      border-bottom: 0;
+    }
+
+    .timeline-row time {
+      color: var(--founder-gold);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .timeline-row p {
+      margin: 0;
+      color: var(--founder-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .gallery-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .gallery-head p {
+      color: var(--founder-muted);
+      max-width: 520px;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .gallery {
+      columns: 4 220px;
+      column-gap: 12px;
+    }
+
+    .gallery .photo-frame {
+      break-inside: avoid;
+      margin: 0 0 12px;
+    }
+
+    .gallery .photo-frame img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .credentials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .credential {
+      padding: 18px;
+    }
+
+    .credential h3 {
+      color: var(--founder-green);
+      font-size: 15px;
+      line-height: 1.35;
+      margin: 0 0 8px;
+      letter-spacing: 0;
+    }
+
+    .credential p {
+      color: var(--founder-muted);
+      font-size: 14px;
+      line-height: 1.58;
+      margin: 0;
+    }
+
+    .final-cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid rgba(16, 185, 129, 0.32);
+      background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02));
+      border-radius: 8px;
+    }
+
+    .final-cta h2 {
+      margin-bottom: 10px;
+    }
+
+    .final-cta p {
+      color: var(--founder-muted);
+      margin: 0;
+      max-width: 700px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 980px) {
+      .f-hero-inner,
+      .intro-grid,
+      .chapter,
+      .chapter.reverse,
+      .final-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .chapter.reverse .chapter-copy,
+      .chapter.reverse .chapter-media {
+        order: initial;
+      }
+
+      .hero-facts {
+        max-width: 520px;
+      }
+
+      .evidence-grid,
+      .metrics,
+      .credentials {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-head {
+        display: block;
+      }
+
+      .gallery-head p {
+        margin-top: 10px;
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .f-hero {
+        min-height: auto;
+        padding: 72px 18px 42px;
+      }
+
+      .f-hero::before {
+        background-image:
+          linear-gradient(0deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.28) 72%),
+          url("/founder-selected/FoilingSittingStyle.jpg");
+        background-size: auto 118%;
+        background-repeat: no-repeat;
+        background-position: 56% 74%;
+      }
+
+      .f-hero h1 {
+        font-size: 38px;
+      }
+
+      .hero-lede {
+        font-size: 17px;
+      }
+
+      .story-wrap {
+        padding: 56px 18px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      .media-grid,
+      .evidence-grid,
+      .metrics,
+      .credentials {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .quote {
+        font-size: 19px;
+        padding-left: 16px;
+      }
+
+      .final-cta {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="l-header">
+    <div class="l-header-inner">
+      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
+      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.l-nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="l-nav">
+        <a href="/">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo">Demo</a>
+        <a href="agents">For Agents</a>
+        <a href="founder.html" class="active">Founder</a>
+        <a href="login.html">Sign In</a>
+        <a href="register.html" class="nav-cta">Get API Key</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="founder-page">
+    <section class="f-hero">
+      <div class="f-hero-inner">
+        <div>
+          <div class="kicker">Founder and Builder of Senlay</div>
+          <h1>Viktor Kryvotsiuk</h1>
+          <p class="hero-lede">A waterman, instructor, industrial climber, and hardware builder. I built Senlay from years of reading wind, water, and risk in the real world.</p>
+          <div class="hero-actions">
+            <a href="demo" class="btn-primary">Try Senlay</a>
+            <a href="#story" class="btn-secondary">Read the Story</a>
+          </div>
+        </div>
+        <aside class="hero-facts" aria-label="Founder facts">
+          <div class="fact">
+            <div class="fact-label">Domain</div>
+            <div class="fact-value">20 years in kite, surf, hydrofoil, paragliding, and coastal safety.</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Craft</div>
+            <div class="fact-value">Solar trackers, board mounts, intercoms, and ocean-tested hardware.</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Home Base</div>
+            <div class="fact-value">Hoi An, Vietnam. Built from the beach and the workshop.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="story-band" id="story">
+      <div class="story-wrap intro-grid">
+        <div>
+          <div class="section-kicker">The Short Version</div>
+          <h2>Senlay did not start in an office. It started with a life spent reading conditions.</h2>
+          <div class="copy">
+            <p>Before Senlay, I spent years teaching people to move safely in wind, waves, and changing weather. That kind of work trains a different instinct: you learn to read the water before it explains itself, to notice the gust before a student feels it, and to treat physics as something with consequences.</p>
+            <p>I also kept building. Rope-access work taught respect for margins. Kitesurfing taught wind systems. Paragliding taught calm decision-making. SmartSurf hardware taught how hard it is to make something work in salt water, sunlight, impact, and beach life.</p>
+            <p><strong>Senlay grew from that same habit:</strong> notice what is really happening, trust real measurements, and help people make better decisions.</p>
+          </div>
+          <p class="quote">"For most of my life I had the ideas. AI tools finally gave me the hands to build them."</p>
+        </div>
+        <div class="portrait-stack">
+          <figure class="photo-frame">
+            <img src="/founder-selected/MeTeachingWithRadio.JPG" alt="Viktor teaching with a radio on the beach" loading="lazy">
+            <figcaption class="caption">Instructor mode: reading wind, student, beach traffic, and risk at the same time.</figcaption>
+          </figure>
+          <figure class="photo-frame">
+            <img src="/founder-selected/MeHangingOnRoapsWithBagOfToolsOn15FloorBuilding.jpg" alt="Viktor doing rope access work on a high-rise building" loading="lazy">
+            <figcaption class="caption">Industrial rope-access work: a practical education in gravity and margins.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-band alt">
+      <div class="story-wrap chapter">
+        <div class="chapter-copy">
+          <div class="section-kicker">Water First</div>
+          <h2>I have lived inside this problem for years.</h2>
+          <p class="lead">Weather apps show numbers. On the beach, those numbers have to become decisions.</p>
+          <div class="copy">
+            <p>I learned the problem through repetition: students arriving overpowered, boards drifting away, gusts turning a good session into a rescue, and forecasts missing the local effect that everyone on the beach could feel.</p>
+            <p>Kitesurfing, surfing, hydrofoil, and paragliding all punish shallow answers. The useful question is never only "what is the wind?" It is: where is it coming from, what shaped it, what is changing, and what should a human do now?</p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>20+</strong><span>years on water and wind sports</span></div>
+            <div class="metric"><strong>100s</strong><span>of students and beach-side decisions</span></div>
+            <div class="metric"><strong>4</strong><span>domains: kite, surf, foil, paraglide</span></div>
+            <div class="metric"><strong>1</strong><span>core habit: test in the real world</span></div>
+          </div>
+        </div>
+        <div class="chapter-media media-grid">
+          <figure class="photo-frame wide">
+            <img src="/founder-selected/TeachingOnTheBeach.jpg" alt="Viktor teaching on a beach with waves behind him" loading="lazy">
+            <figcaption class="caption">Teaching on the beach where the data has to become a decision.</figcaption>
+          </figure>
+          <figure class="photo-frame landscape">
+            <img src="/founder-selected/PreparingForKiteSession.jpg" alt="Preparing a kite before a session" loading="lazy">
+          </figure>
+          <figure class="photo-frame landscape">
+            <img src="/founder-selected/RidingTwintipSriLanka.JPG" alt="Viktor riding a twintip kiteboard in Sri Lanka" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-band">
+      <div class="story-wrap chapter reverse">
+        <div class="chapter-copy">
+          <div class="section-kicker">SmartSurf Hardware</div>
+          <h2>SmartSurf came first: small trackers tested on real boards.</h2>
+          <p class="lead">Before Senlay, the answer was hardware that had to survive the ocean.</p>
+          <div class="copy">
+            <p>SmartSurf started from a simple beach problem: lost boards and separated riders. The prototypes became solar-powered GPS trackers, board-integrated mounts, SOS concepts, and charging experiments that lived on real boards instead of presentation slides.</p>
+            <p>Every generation made the idea sharper. A tracker can tell you where a board is. But real safety also needs wind, waves, tide, terrain, and timing in one clear picture.</p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-row"><time>Gen 1</time><p>Black epoxy-sealed tracker experiments with external solar support and board placement tests.</p></div>
+            <div class="timeline-row"><time>Gen 2</time><p>Yellow solar prototype family: larger panel, board-top integration, real beach and water exposure.</p></div>
+            <div class="timeline-row"><time>Gen 3</time><p>SOS thinking, wireless charging tests, board mounts, and paired communication hardware.</p></div>
+          </div>
+        </div>
+        <div class="chapter-media media-grid">
+          <figure class="photo-frame wide">
+            <img src="/founder-selected/SmartSurfYellowProto.JPG" alt="Yellow SmartSurf prototype close-up" loading="lazy">
+            <figcaption class="caption">Yellow SmartSurf prototype: solar surface, sealed body, visible field iteration.</figcaption>
+          </figure>
+          <figure class="photo-frame landscape">
+            <img src="/founder-selected/VeryFirstPrototype.jpg" alt="Very first SmartSurf prototype on a board" loading="lazy">
+          </figure>
+          <figure class="photo-frame landscape">
+            <img src="/founder-selected/BlackVersionPrototyping2.jpeg" alt="Black SmartSurf prototype on a board" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-band warm">
+      <div class="story-wrap">
+        <div class="section-kicker">From the Water</div>
+        <h2>A life spent building in the real world.</h2>
+        <p class="lead">The same story runs through the beach, the workshop, and family life: notice the conditions, build what is needed, test it outside.</p>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <figure class="photo-frame"><img src="/founder-selected/MyWorkShop.jpg" alt="Viktor's electronics and prototyping workshop" loading="lazy"></figure>
+            <h3>The Workshop</h3>
+            <p>A small room where boards, batteries, tools, and ideas turn into working things.</p>
+          </article>
+          <article class="evidence-card">
+            <figure class="photo-frame"><img src="/founder-selected/SmartSurfTrackerPrototypesOnFoilboards.JPG" alt="SmartSurf tracker prototypes on foilboards" loading="lazy"></figure>
+            <h3>Tested on Boards</h3>
+            <p>The trackers were mounted on real boards, near real water, with sand, heat, and impact waiting.</p>
+          </article>
+          <article class="evidence-card">
+            <figure class="photo-frame"><img src="/founder-selected/PreFlightCheckParagliding.JPG" alt="Viktor in paragliding gear before flight" loading="lazy"></figure>
+            <h3>Respect for Wind</h3>
+            <p>Paragliding teaches the same lesson in another language: wind, timing, and margins matter.</p>
+          </article>
+          <article class="evidence-card">
+            <figure class="photo-frame"><img src="/founder-selected/MeAndViVi.jpeg" alt="Viktor holding his daughter near the sea" loading="lazy"></figure>
+            <h3>Why It Matters</h3>
+            <p>This is not abstract for me. My family lives near the sea, and the sea deserves respect.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-band alt">
+      <div class="story-wrap chapter">
+        <div class="chapter-copy">
+          <div class="section-kicker">From Hardware to Senlay</div>
+          <h2>The work moved from one board to the wider world.</h2>
+          <p class="lead">SmartSurf showed me the problem. Senlay became the larger answer.</p>
+          <div class="copy">
+            <p>SmartSurf taught me that location alone is not enough. A useful assistant also needs wind, waves, terrain, air quality, time, and risk in one clear picture.</p>
+            <p>That became Senlay: a way for AI to ask what is happening outside and get an answer grounded in real-world data, not guesswork.</p>
+          </div>
+          <div class="hero-actions">
+            <a href="docs.html" class="btn-primary">Read the Docs</a>
+            <a href="agents" class="btn-secondary">For AI Agents</a>
+          </div>
+        </div>
+        <div class="chapter-media media-grid">
+          <figure class="photo-frame wide contain">
+            <img src="/founder-selected/SmartSurf3DmodelCase.jpg" alt="3D model of SmartSurf case in slicing software" loading="lazy">
+            <figcaption class="caption">The same habit, translated: draw it, build it, test it, improve it.</figcaption>
+          </figure>
+          <figure class="photo-frame landscape">
+            <img src="/founder-selected/DesigningAndPlanningDualChargingSystem.JPG" alt="Planning a dual charging system for SmartSurf hardware" loading="lazy">
+          </figure>
+          <figure class="photo-frame landscape">
+            <img src="/founder-selected/SmartSurfIntercomV2.jpg" alt="SmartSurf intercom prototype hardware on a bench" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-band">
+      <div class="story-wrap">
+        <div class="gallery-head">
+          <div>
+            <div class="section-kicker">Selected Moments</div>
+            <h2>Water, workshop, and family.</h2>
+          </div>
+          <p>A small selected gallery from the founder story: the sea, the workshop, prototypes, teaching, and family life.</p>
+        </div>
+        <div class="gallery" aria-label="Founder selected shots gallery">
+          <figure class="photo-frame"><img src="/founder-selected/BlackProtoWithExtraSolarPanel.jpeg" alt="Black prototype with extra solar panel" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/BlackVersionPrototyping.jpeg" alt="Black prototype mounted during testing" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/BlackVersionPrototyping2.jpeg" alt="Black prototype with solar panel" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/CarvingOnTheWave.JPG" alt="Viktor carving on a wave" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/DesigningAndPlanningDualChargingSystem.JPG" alt="Planning a dual charging system" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/DesigningSmartSurfIntercom.jpg" alt="Designing the SmartSurf intercom" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/FirstSmartSurfIntercomProto.jpg" alt="First SmartSurf intercom prototype" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/FoilingSittingStyle.jpg" alt="Foiling sitting style on the water" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/GpsTrackerForDog.JPG" alt="GPS tracker electronics on a table" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/InWorkshopPrototypingSmartsurfIntercom.jpg" alt="Prototyping SmartSurf intercom in the workshop" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/LayingOnMyMoto.JPG" alt="Viktor lying on a motorbike near the beach" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/MeAndViVi.jpeg" alt="Viktor holding his daughter by the sea" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/MeAndViviWalking.jpeg" alt="Viktor walking with his daughter on the beach" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/MeAssistingKiteLaunchingHoldingViviInOneHand.jpeg" alt="Viktor assisting a kite launch while holding his daughter" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/MeHangingOnRoapsWithBagOfToolsOn15FloorBuilding.jpg" alt="Viktor hanging on ropes with tools on a high-rise" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/MeTeachingWithRadio.JPG" alt="Viktor teaching with a radio" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/MotoOnTHeSurfTrip.jpg" alt="Motorbike on a surf trip" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/MyWorkShop.jpg" alt="Viktor's workshop" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/OrangeProtoWithSOSOnTHeTwintip.jpg" alt="Orange SOS prototype on a twintip board" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/PreFlightCheckParagliding.JPG" alt="Pre-flight paragliding check" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/PreparingForKiteSession.jpg" alt="Preparing for a kite session" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/PrototypingSmartSurfBoardBuiltInTracker.jpeg" alt="Prototyping a SmartSurf board built-in tracker" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/PrototypingSmartSurfBoardBuiltInTracker2.jpeg" alt="Second SmartSurf board tracker prototype" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/PrototypingSmartSurfIntercom.jpg" alt="Prototyping the SmartSurf intercom" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/RidingTwintipSriLanka.JPG" alt="Riding a twintip in Sri Lanka" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/Slising3DModelBeforePrinting.JPG" alt="Slicing a 3D model before printing" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurf3DmodelCase.jpg" alt="SmartSurf 3D model case" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfBoartProtoReady2.jpeg" alt="SmartSurf board prototype ready" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfIntercomV2.jpg" alt="SmartSurf intercom version two" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfOnTheSurfBoard.JPG" alt="SmartSurf tracker on a surfboard" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfOnTheSurfBoard2.JPG" alt="SmartSurf tracker on a second surfboard" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfTrackerOnTheWirelessCharging2.jpg" alt="SmartSurf tracker on wireless charging" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfTrackerOnTheWirellessCharging.jpg" alt="SmartSurf tracker wireless charging close-up" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfTrackerPrototypesOnFoilboards.JPG" alt="SmartSurf tracker prototypes on foilboards" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/SmartSurfYellowProto.JPG" alt="SmartSurf yellow prototype" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/TeachingOnTheBeach.jpg" alt="Teaching on the beach" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/VeryFirstPrototype.jpg" alt="The very first SmartSurf prototype" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/WaveInVietnam.jpg" alt="Wave in Vietnam" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/WaveInVietnam2.jpg" alt="Second wave in Vietnam" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/WorkshopPhoto2.jpg" alt="Workshop photo with prototyping bench" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/YellowProto.JPG" alt="Yellow SmartSurf prototype close-up" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/YellowSmartSurfOnTheHelmetWithSOS.jpg" alt="Yellow SmartSurf on a helmet with SOS" loading="lazy"></figure>
+          <figure class="photo-frame"><img src="/founder-selected/smartSurfBoardProtoReady.jpeg" alt="SmartSurf board prototype ready on the beach" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-band alt">
+      <div class="story-wrap">
+        <div class="section-kicker">Experience</div>
+        <h2>What I bring to Senlay.</h2>
+        <div class="credentials">
+          <article class="credential">
+            <h3>Kite and Water-Sports Instructor</h3>
+            <p>Years of direct teaching experience in real wind and wave conditions, where safety depends on reading subtle changes fast.</p>
+          </article>
+          <article class="credential">
+            <h3>Hardware Prototyper</h3>
+            <p>Solar trackers, board mounts, charging experiments, 3D-printed cases, epoxy sealing, and live ocean testing.</p>
+          </article>
+          <article class="credential">
+            <h3>Paragliding and Rope Access</h3>
+            <p>Two disciplines that make risk visible: launch margins, vertical exposure, weather shifts, and consequence-aware decisions.</p>
+          </article>
+          <article class="credential">
+            <h3>Learning Fast with AI Tools</h3>
+            <p>I use AI tools to build faster, but the direction comes from years outside with real equipment and real weather.</p>
+          </article>
+          <article class="credential">
+            <h3>Senlay Live</h3>
+            <p>A live product with a demo, docs, and a working way for AI to understand real-world conditions.</p>
+          </article>
+          <article class="credential">
+            <h3>The Mission</h3>
+            <p>Give AI enough physical awareness to help protect people, equipment, and work in the real world.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-wrap">
+      <div class="final-cta">
+        <div>
+          <h2>Built from water, weather, and work.</h2>
+          <p>Senlay is live because I have lived both sides of the problem: the human side of risk, and the builder side of making things survive outside.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="https://wa.me/84333380168" target="_blank" rel="noopener" class="btn-secondary">Contact Viktor</a>
+          <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener" class="btn-secondary">Support on Ko-fi</a>
+          <a href="register.html" class="btn-primary">Get API Key</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="l-footer">
+    <p class="footer-brand">SENLAY - Sensory Intelligence Layer for AI</p>
+    <p class="footer-sub">Giving AI eyes, ears, and skin in the physical world</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="demo">Demo</a>
+      <a href="agents">For Agents</a>
+      <a href="moltbook">For Moltbook</a>
+      <a href="founder.html">Founder</a>
+      <a href="register.html">Register</a>
+      <a href="login.html">Sign In</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="support.html">Support Us</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a>
+      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
+      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
+      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
+      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+  </footer>
+</body>
+</html>

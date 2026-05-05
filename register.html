@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay — Get Your API Key</title>
+  <link rel="icon" type="image/png" href="/LogoTransparentBackground.png?v=4">
+  <link rel="apple-touch-icon" href="/LogoTransparentBackground.png?v=4">
+  <link rel="stylesheet" href="landing.css?v=4">
+  <style>
+    .reg-container { max-width: 500px; margin: 0 auto; padding: 48px 24px; }
+    .reg-title { font-size: 28px; font-weight: 800; color: var(--primary); margin-bottom: 8px; text-align: center; }
+    .reg-sub { color: var(--text2); font-size: 15px; margin-bottom: 32px; text-align: center; }
+    .reg-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+    .form-group input { width: 100%; padding: 12px 14px; background: #0F172A; border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 15px; outline: none; }
+    .form-group input:focus { border-color: var(--primary); }
+    .alert { padding: 12px 16px; border-radius: 6px; font-size: 14px; margin-bottom: 16px; }
+    .alert-ok { background: rgba(16,185,129,0.1); color: var(--primary); }
+    .alert-err { background: rgba(239,68,68,0.1); color: var(--danger); }
+    .key-display { background: #0B1120; border: 1px solid var(--border); padding: 16px; border-radius: 8px; font-family: var(--mono); font-size: 15px; color: var(--primary); word-break: break-all; margin: 12px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .copy-btn-key { padding: 6px 14px; background: var(--primary); color: #0F172A; border: none; border-radius: 4px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .reg-link { font-size: 14px; color: var(--text2); text-align: center; margin-top: 20px; }
+    .reg-link a { color: var(--primary); text-decoration: none; }
+    .hidden { display: none !important; }
+
+    /* Code example tabs */
+    .ex-tabs { display: flex; gap: 4px; margin-top: 18px; margin-bottom: 0; border-bottom: 1px solid var(--border); }
+    .ex-tab { padding: 8px 14px; background: transparent; border: none; color: var(--text2); font-size: 12px; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; }
+    .ex-tab:hover { color: var(--text); }
+    .ex-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .ex-pane { display: none; position: relative; }
+    .ex-pane.active { display: block; }
+    .ex-code { background: #0B1120; border: 1px solid var(--border); border-top: none; border-radius: 0 0 6px 6px; padding: 14px 16px; font-family: var(--mono); font-size: 12px; color: var(--code); white-space: pre; overflow-x: auto; line-height: 1.6; margin-bottom: 16px; }
+    .ex-copy { position: absolute; top: 8px; right: 8px; padding: 4px 10px; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--primary); font-size: 10px; font-weight: 700; border-radius: 4px; cursor: pointer; }
+    .ex-copy:hover { background: rgba(16,185,129,0.25); }
+    .next-steps { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.18); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; }
+    .next-steps h4 { font-size: 13px; color: var(--primary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .next-steps ol { padding-left: 20px; font-size: 13px; color: var(--text2); line-height: 1.8; }
+    .next-steps ol li strong { color: var(--text); }
+    @media (max-width: 600px) {
+      .reg-container { padding: 32px 14px; }
+      .reg-card { padding: 22px 18px; }
+      .key-display { font-size: 12px; flex-direction: column; align-items: flex-start; }
+      .ex-tabs { flex-wrap: wrap; }
+      .ex-tab { padding: 7px 11px; font-size: 11px; }
+      .ex-code { font-size: 11px; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="l-header">
+    <div class="l-header-inner">
+      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
+      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.l-nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="l-nav">
+        <a href="/">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo">Demo</a>
+        <a href="agents">For Agents</a>
+        <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+        <a href="register.html" class="nav-cta">Get API Key</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="reg-container">
+    <h2 class="reg-title">Get Your API Key</h2>
+    <p class="reg-sub">Connect any AI agent to the Physical World in minutes</p>
+
+    <div id="alertBox"></div>
+
+    <div id="registerForm" class="reg-card">
+      <div class="form-group">
+        <label>Name (optional)</label>
+        <input type="text" id="regName" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="regEmail" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="Min 8 characters">
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" id="regConfirm" placeholder="Confirm password">
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:8px" onclick="doRegister()">Create Account</button>
+    </div>
+
+    <div id="successView" class="reg-card hidden">
+      <div class="alert alert-ok">&#10003; Account created! Here is your API key:</div>
+      <div class="key-display">
+        <span id="apiKeyDisplay"></span>
+        <button class="copy-btn-key" onclick="copyKey()">COPY</button>
+      </div>
+      <p style="font-size:13px;color:#ffa502;margin-bottom:16px">&#9888; Save this key now — you won't see it in full again.</p>
+
+      <div class="next-steps">
+        <h4>What's Next</h4>
+        <ol>
+          <li><strong>Save your key</strong> — paste it into your password manager or env file</li>
+          <li><strong>Try a request</strong> — pick your language below</li>
+          <li><strong>Read the docs</strong> — see all 21 sensor sources at <a href="docs.html" style="color:var(--primary)">/docs</a></li>
+        </ol>
+      </div>
+
+      <p style="font-size:14px;color:var(--text2);margin-bottom:6px">Quick start example:</p>
+      <div class="ex-tabs">
+        <button class="ex-tab active" onclick="showEx('curl', this)">curl</button>
+        <button class="ex-tab" onclick="showEx('python', this)">Python</button>
+        <button class="ex-tab" onclick="showEx('js', this)">JavaScript</button>
+        <button class="ex-tab" onclick="showEx('claude', this)">Claude SDK</button>
+      </div>
+
+      <div id="ex-curl" class="ex-pane active">
+        <div class="ex-code" id="code-curl">curl -H "Authorization: Bearer YOUR_KEY" \
+  "https://senlay.world/api/v1/sense?lat=36.01&amp;lng=-5.60"</div>
+        <button class="ex-copy" onclick="copyEx('code-curl', this)">COPY</button>
+      </div>
+
+      <div id="ex-python" class="ex-pane">
+        <div class="ex-code" id="code-python">import requests
+
+API_KEY = "YOUR_KEY"
+headers = {"Authorization": f"Bearer {API_KEY}"}
+
+# Plain text — easiest to inject into LLM context
+r = requests.get(
+    "https://senlay.world/api/v1/sense",
+    headers=headers,
+    params={"lat": 36.01, "lng": -5.60}
+)
+print(r.text)
+
+# Or full JSON with all sensor data
+r = requests.get(
+    "https://senlay.world/api/v1/pwm",
+    headers=headers,
+    params={"lat": 36.01, "lng": -5.60}
+)
+data = r.json()
+print(data["context_string"])</div>
+        <button class="ex-copy" onclick="copyEx('code-python', this)">COPY</button>
+      </div>
+
+      <div id="ex-js" class="ex-pane">
+        <div class="ex-code" id="code-js">const API_KEY = "YOUR_KEY";
+
+// Plain text — drop straight into your prompt
+const res = await fetch(
+  "https://senlay.world/api/v1/sense?lat=36.01&amp;lng=-5.60",
+  { headers: { Authorization: `Bearer ${API_KEY}` } }
+);
+const sensoryContext = await res.text();
+console.log(sensoryContext);
+
+// Or full JSON
+const json = await fetch(
+  "https://senlay.world/api/v1/pwm?lat=36.01&amp;lng=-5.60",
+  { headers: { Authorization: `Bearer ${API_KEY}` } }
+).then(r =&gt; r.json());
+console.log(json.context_string);</div>
+        <button class="ex-copy" onclick="copyEx('code-js', this)">COPY</button>
+      </div>
+
+      <div id="ex-claude" class="ex-pane">
+        <div class="ex-code" id="code-claude">import anthropic, requests
+
+senlay = requests.get(
+    "https://senlay.world/api/v1/sense",
+    headers={"Authorization": "Bearer YOUR_KEY"},
+    params={"lat": 36.01, "lng": -5.60}
+).text
+
+client = anthropic.Anthropic()
+msg = client.messages.create(
+    model="claude-sonnet-4-6",
+    max_tokens=1024,
+    messages=[{
+        "role": "user",
+        "content": f"{senlay}\n\nGiven these conditions, "
+                   f"is it safe to kitesurf right now?"
+    }]
+)
+print(msg.content[0].text)</div>
+        <button class="ex-copy" onclick="copyEx('code-claude', this)">COPY</button>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:8px">
+        <a href="demo" class="btn-primary" style="text-decoration:none;text-align:center;flex:1;display:block">Try Demo</a>
+        <a href="docs.html" class="btn-secondary" style="text-decoration:none;text-align:center;flex:1;display:block">Read Docs</a>
+        <a href="dashboard.html" class="btn-secondary" style="text-decoration:none;text-align:center;flex:1;display:block">Dashboard</a>
+      </div>
+    </div>
+
+    <p class="reg-link">Already have an account? <a href="dashboard.html">Sign in</a></p>
+  </div>
+
+  <footer class="l-footer">
+    <p class="footer-brand">SENLAY &mdash; Sensory Intelligence Layer for AI</p>
+    <p class="footer-sub">Giving AI eyes, ears, and skin in the physical world</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="demo">Demo</a>
+      <a href="agents">For Agents</a>
+      <a href="moltbook">For Moltbook</a>
+      <a href="register.html">Register</a>
+      <a href="founder.html">Founder</a>
+      <a href="login.html">Sign In</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="support.html">Support Us</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:smartsurfsolar@gmail.com">smartsurfsolar@gmail.com</a>
+      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
+      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
+      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
+      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
+      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
+      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></p>
+    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+  </footer>
+
+  <script>
+    function showAlert(msg, type) {
+      const box = document.getElementById('alertBox');
+      box.innerHTML = '';
+      const div = document.createElement('div');
+      div.className = 'alert alert-' + (type === 'error' ? 'err' : 'ok');
+      div.textContent = msg;
+      box.appendChild(div);
+    }
+    async function doRegister() {
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const confirm = document.getElementById('regConfirm').value;
+      if (!email || !password) { showAlert('Email and password required', 'error'); return; }
+      if (password.length < 8) { showAlert('Password must be at least 8 characters', 'error'); return; }
+      if (password !== confirm) { showAlert('Passwords do not match', 'error'); return; }
+      try {
+        const res = await fetch('/api/register', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({email, password, name}) });
+        const data = await res.json();
+        if (data.error) { showAlert(data.error, 'error'); return; }
+        document.getElementById('apiKeyDisplay').textContent = data.apiKey;
+        document.getElementById('registerForm').classList.add('hidden');
+        document.getElementById('successView').classList.remove('hidden');
+        document.getElementById('alertBox').innerHTML = '';
+      } catch (e) { showAlert('Connection error', 'error'); }
+    }
+    function copyKey() {
+      const key = document.getElementById('apiKeyDisplay').textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        const btn = document.querySelector('.copy-btn-key');
+        btn.textContent = 'COPIED!';
+        setTimeout(() => btn.textContent = 'COPY', 2000);
+      });
+    }
+    function showEx(name, btn) {
+      document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.ex-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('ex-' + name).classList.add('active');
+    }
+    function copyEx(id, btn) {
+      // Replace placeholder with actual key when copying
+      const apiKey = document.getElementById('apiKeyDisplay').textContent || 'YOUR_KEY';
+      const code = document.getElementById(id).textContent.replace(/YOUR_KEY/g, apiKey);
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'COPIED!';
+        setTimeout(() => btn.textContent = 'COPY', 2000);
+      });
+    }
+  </script>
+</body>
+</html>

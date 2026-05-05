@@ -21,3 +21,14 @@ founder.html.bak*
 
 # Dependency folders if tooling is added later.
 node_modules/
+
+# Build outputs if the static site later gains a build step.
+dist/
+build/
+.cache/
+.parcel-cache/
+.vite/
+
+# Hosting metadata
+.vercel/
+.netlify/

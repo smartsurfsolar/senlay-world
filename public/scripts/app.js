@@ -32,7 +32,7 @@ const DEMO_PRESETS = {
   tokyo: { lat: 35.6762, lng: 139.6503, name: 'Tokyo, Japan' },
   hossegor: { lat: 43.6651, lng: -1.4442, name: 'Hossegor, France' },
   maui: { lat: 20.7984, lng: -156.3319, name: 'Maui, Hawaii' },
-  mui_ne: { lat: 10.9333, lng: 108.2833, name: 'Mui Ne, Vietnam' },
+  hoi_an: { lat: 15.8801, lng: 108.3380, name: 'Hội An, Vietnam' },
   rio: { lat: -22.9068, lng: -43.1729, name: 'Rio de Janeiro, Brazil' }
 };
 

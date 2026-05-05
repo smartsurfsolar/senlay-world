@@ -134,9 +134,26 @@ function syncApiKeyStorage() {
 }
 
 function applyLocation(lat, lng, name) {
+  const hadConnection = state.connected;
   state.lat = lat;
   state.lng = lng;
   state.locationName = name;
+  if (hadConnection) {
+    state.connected = false;
+    state.sensors = null;
+    state.satellite = null;
+    state.extended = null;
+    state.pwmFetchedAt = null;
+    document.getElementById('mainArea')?.classList.add('hidden');
+    document.getElementById('statusBar')?.classList.add('hidden');
+    document.getElementById('setupPanel')?.classList.remove('collapsed');
+    const statusEl = document.getElementById('connectionStatus');
+    if (statusEl) {
+      statusEl.className = 'conn-status disconnected';
+      statusEl.innerHTML = '<span class="conn-dot"></span> Location changed. Connect again for fresh data.';
+    }
+    document.getElementById('connDetails')?.classList.add('hidden');
+  }
   const display = document.getElementById('locationDisplay');
   if (display) {
     display.textContent = `📍 ${name} (${lat}, ${lng})`;
@@ -144,6 +161,7 @@ function applyLocation(lat, lng, name) {
   const spotSelect = document.getElementById('spotSelect');
   if (spotSelect) spotSelect.value = '';
   savePrefs();
+  updateDemoGuide();
 }
 
 // ─── Browser persistence ─────────────────────────────────────────────
@@ -201,11 +219,112 @@ function loadPrefs() {
   } catch (_) {}
 }
 
+function currentGuideStep() {
+  const hasProvider = state.provider === 'demo' || !!state.apiKey;
+  const hasLocation = state.lat !== null && state.lng !== null;
+  const hasQuestion = state.messages.some(m => m.role === 'user');
+  if (!hasProvider) return 1;
+  if (!hasLocation) return 2;
+  if (!state.connected) return 3;
+  if (!hasQuestion) return 4;
+  return 5;
+}
+
+function updateDemoGuide() {
+  const steps = document.querySelectorAll('.guide-step');
+  if (!steps.length) return;
+  const current = currentGuideStep();
+  steps.forEach(step => {
+    const n = Number(step.dataset.guideStep);
+    step.classList.toggle('complete', n < current);
+    step.classList.toggle('active', n === current || (current > 4 && n === 4));
+  });
+  const status = document.getElementById('guideStatus');
+  if (!status) return;
+  const messages = {
+    1: 'Start with Demo Mode, or choose a provider and paste your key.',
+    2: 'Choose a place and use case. Presets are the fastest path.',
+    3: 'Connect to load the live data behind the answer.',
+    4: 'Ask a question or use a prompt chip below the chat.',
+    5: 'Demo complete. Change the place, use case, or units to compare another scenario.'
+  };
+  status.textContent = messages[current] || messages[5];
+  const action = document.getElementById('guideAction');
+  if (action) {
+    const actions = {
+      1: 'Use Demo Mode',
+      2: 'Choose Place',
+      3: 'Connect Now',
+      4: 'Try a Question',
+      5: 'Run Another Place'
+    };
+    action.textContent = actions[current] || actions[5];
+  }
+}
+
+function setDemoMode() {
+  const select = document.getElementById('providerSelect');
+  if (select) {
+    select.value = 'demo';
+    onProviderChange();
+  }
+  focusDemoStep('location');
+}
+
+function advanceDemoGuide() {
+  const current = currentGuideStep();
+  if (current === 1) {
+    setDemoMode();
+    return;
+  }
+  if (current === 2) {
+    focusDemoStep('location');
+    return;
+  }
+  if (current === 3) {
+    connectToPWM();
+    return;
+  }
+  if (current === 4) {
+    usePrompt('Is it safe for this activity right now?');
+    return;
+  }
+  focusDemoStep('location');
+}
+
+function focusDemoStep(step) {
+  const map = {
+    mode: 'providerCard',
+    location: 'locationCard',
+    connect: 'connectCard',
+    ask: 'chatInput'
+  };
+  if (step === 'connect' && state.lat === null) {
+    step = 'location';
+  }
+  if (step === 'ask' && !state.connected) {
+    step = state.lat === null ? 'location' : 'connect';
+  }
+  if (['mode', 'location', 'connect'].includes(step)) {
+    document.getElementById('setupPanel')?.classList.remove('collapsed');
+  }
+  const target = document.getElementById(map[step]);
+  if (!target) return;
+  document.querySelectorAll('.setup-card.guide-focus').forEach(el => el.classList.remove('guide-focus'));
+  if (target.classList.contains('setup-card')) {
+    target.classList.add('guide-focus');
+    setTimeout(() => target.classList.remove('guide-focus'), 1800);
+  }
+  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (target.matches('input, select, button')) target.focus();
+}
+
 // ─── Init ───────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   loadPrefs();
   loadSpots();
   loadTicker();
+  updateDemoGuide();
   // Auto-detect location if user hasn't set one yet
   if (state.lat === null && navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -229,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
           })
           .catch(() => {});
         savePrefs();
+        updateDemoGuide();
       },
       () => {} // silently fail — user can pick manually
     );
@@ -259,18 +379,21 @@ function onProviderChange() {
     if (input && state.apiKey) input.value = state.apiKey;
   }
   savePrefs();
+  updateDemoGuide();
 }
 
 function onRememberApiKeyChange() {
   const input = document.getElementById('userApiKey');
   state.apiKey = input ? input.value.trim() : state.apiKey;
   syncApiKeyStorage();
+  updateDemoGuide();
 }
 
 function onApiKeyInput() {
   const input = document.getElementById('userApiKey');
   state.apiKey = input ? input.value.trim() : '';
   syncApiKeyStorage();
+  updateDemoGuide();
 }
 
 function onUnitChange() {
@@ -312,6 +435,7 @@ function onFieldChange() {
     state.messages = [];
     addSystemMessage(`✦ Field changed to ${FIELD_LABELS[state.field] || state.field}. Ask me anything — I'm now tuned to this use case.`);
   }
+  updateDemoGuide();
 }
 
 function refreshSpotDropdown() {
@@ -380,13 +504,7 @@ function usePresetLocation(key) {
   const preset = DEMO_PRESETS[key];
   if (!preset) return;
   applyLocation(preset.lat, preset.lng, preset.name);
-  const hasUserKey = !!document.getElementById('userApiKey')?.value.trim();
-  if (state.provider === 'demo' || hasUserKey) {
-    connectToPWM();
-    return;
-  }
-  document.getElementById('locationDisplay').textContent =
-    `📍 ${preset.name} (${preset.lat}, ${preset.lng}) — enter your API key and connect`;
+  focusDemoStep('connect');
 }
 
 async function searchCity() {
@@ -475,10 +593,12 @@ async function connectToPWM() {
     };
     const fieldLabel = FIELD_LABELS[state.field] || state.field;
     addSystemMessage(`✦ Senlay connected at ${state.locationName}. ${state.activeSources} sensor sources active. Mode: ${fieldLabel}. What would you like to know?`);
+    updateDemoGuide();
 
   } catch (e) {
     statusEl.className = 'conn-status disconnected';
     statusEl.textContent = 'Connection failed: ' + e.message;
+    updateDemoGuide();
   }
 
   btn.disabled = false;
@@ -776,6 +896,18 @@ function addUserMessage(text) {
   div.textContent = text;
   container.appendChild(div);
   container.scrollTop = container.scrollHeight;
+  updateDemoGuide();
+}
+
+function usePrompt(text) {
+  const input = document.getElementById('chatInput');
+  if (!input) return;
+  input.value = text;
+  if (state.connected) {
+    sendMessage();
+  } else {
+    focusDemoStep(state.lat === null ? 'location' : 'connect');
+  }
 }
 
 function addAiMessage(htmlContent) {

@@ -33,12 +33,44 @@
     <p class="header-tagline">Connect any AI to the Physical World</p>
   </header>
 
+  <section class="demo-guide" aria-label="Demo steps">
+    <div class="guide-head">
+      <div class="guide-copy">
+        <p class="guide-kicker">Guided Demo</p>
+        <h1>Try Senlay with a real place.</h1>
+        <p>Demo Mode works without an API key. Pick a place, connect, then ask what the current conditions mean.</p>
+      </div>
+      <div class="guide-action-box">
+        <p id="guideStatus" class="guide-status">Start with Demo Mode, choose a place, then connect.</p>
+        <button id="guideAction" class="guide-action" type="button" onclick="advanceDemoGuide()">Start Demo</button>
+      </div>
+    </div>
+    <div class="guide-steps">
+      <button class="guide-step active" type="button" data-guide-step="1" onclick="setDemoMode()">
+        <span class="guide-num">1</span>
+        <span><strong>Start</strong><small>Use Demo Mode without an API key.</small></span>
+      </button>
+      <button class="guide-step" type="button" data-guide-step="2" onclick="focusDemoStep('location')">
+        <span class="guide-num">2</span>
+        <span><strong>Place</strong><small>Pick a preset, search a city, or use your location.</small></span>
+      </button>
+      <button class="guide-step" type="button" data-guide-step="3" onclick="focusDemoStep('connect')">
+        <span class="guide-num">3</span>
+        <span><strong>Connect</strong><small>Senlay fetches live data for that place.</small></span>
+      </button>
+      <button class="guide-step" type="button" data-guide-step="4" onclick="focusDemoStep('ask')">
+        <span class="guide-num">4</span>
+        <span><strong>Ask</strong><small>Ask a question or use a prompt chip.</small></span>
+      </button>
+    </div>
+  </section>
+
   <!-- SETUP PANEL -->
   <section id="setupPanel" class="setup-panel">
     <div class="setup-grid">
 
       <!-- A. AI Provider -->
-      <div class="setup-card">
+      <div id="providerCard" class="setup-card">
         <div class="setup-label">AI Provider</div>
         <select id="providerSelect" onchange="onProviderChange()">
           <option value="demo">Demo Mode (Claude)</option>
@@ -56,7 +88,7 @@
       </div>
 
       <!-- B. Location -->
-      <div class="setup-card">
+      <div id="locationCard" class="setup-card">
         <div class="setup-label">Location</div>
         <div class="preset-block">
           <div class="preset-title">Instant Try</div>
@@ -79,7 +111,7 @@
               <button class="preset-btn" onclick="usePresetLocation('rio')">Rio</button>
             </div>
           </details>
-          <small>One click selects a live place and connects immediately in Demo Mode.</small>
+          <small>Choose a place first. The next step connects it to the Physical World Model.</small>
         </div>
         <button class="btn-outline" onclick="useGeolocation()">&#x1F4CD; Use My Location</button>
         <div class="city-search">
@@ -93,7 +125,7 @@
       </div>
 
       <!-- C. Field + Connection + Units -->
-      <div class="setup-card">
+      <div id="connectCard" class="setup-card">
         <div class="setup-label">Field / Use Case</div>
         <select id="fieldSelect" onchange="onFieldChange()" style="margin-bottom:8px">
           <option value="kitesurfing">🪁 Kitesurfing / Windsurfing</option>
@@ -145,6 +177,11 @@
         <div class="chat-input-bar">
           <input type="text" id="chatInput" placeholder="Ask anything about the world around you..." onkeydown="if(event.key==='Enter')sendMessage()">
           <button id="sendBtn" onclick="sendMessage()">Send</button>
+        </div>
+        <div id="promptChips" class="prompt-chips">
+          <button type="button" onclick="usePrompt('Is it safe for this activity right now?')">Safety verdict</button>
+          <button type="button" onclick="usePrompt('What changed compared with a normal forecast?')">Sensor difference</button>
+          <button type="button" onclick="usePrompt('Give me a concise action plan for the next hour.')">Next hour plan</button>
         </div>
       </div>
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Founder - Viktor Kryvotsiuk - Senlay</title>
-  <meta name="description" content="Viktor Kryvotsiuk, founder of Senlay: waterman, instructor, hardware builder, and solo founder building physical senses for AI.">
+  <meta name="description" content="Viktor Kryvotsiuk, founder of Senlay: waterman, instructor, hardware builder, and solo founder building live physical-world context for AI agents.">
   <link rel="icon" type="image/png" href="/assets/founder-selected/SenlayLogo.png?v=5">
   <link rel="apple-touch-icon" href="/assets/founder-selected/SenlayLogo.png?v=5">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
@@ -157,10 +157,56 @@
       background: var(--bg);
     }
 
+    .story-band.compact {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
     .story-wrap {
       width: min(1180px, 100%);
       margin: 0 auto;
       padding: 76px 24px;
+    }
+
+    .story-wrap.snapshot-wrap {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+      gap: 28px;
+      align-items: start;
+      padding-top: 36px;
+      padding-bottom: 38px;
+    }
+
+    .snapshot-wrap h2 {
+      font-size: 28px;
+      margin-bottom: 0;
+    }
+
+    .founder-snapshot {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .snapshot-card {
+      border: 1px solid var(--founder-line);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .snapshot-card h3 {
+      color: var(--founder-green);
+      font-size: 14px;
+      line-height: 1.35;
+      margin: 0 0 8px;
+      letter-spacing: 0;
+    }
+
+    .snapshot-card p {
+      color: var(--founder-muted);
+      font-size: 14px;
+      line-height: 1.58;
+      margin: 0;
     }
 
     .intro-grid {
@@ -413,6 +459,45 @@
       column-gap: 12px;
     }
 
+    .gallery-details {
+      border: 1px solid var(--founder-line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+    }
+
+    .gallery-toggle {
+      cursor: pointer;
+      padding: 16px 18px;
+      color: var(--founder-ink);
+      font-size: 15px;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    .gallery-toggle::-webkit-details-marker {
+      display: none;
+    }
+
+    .gallery-toggle::after {
+      content: "Open";
+      float: right;
+      color: var(--founder-green);
+      font-size: 13px;
+    }
+
+    .gallery-details[open] .gallery-toggle {
+      border-bottom: 1px solid var(--founder-line);
+    }
+
+    .gallery-details[open] .gallery-toggle::after {
+      content: "Close";
+    }
+
+    .gallery-details .gallery {
+      padding: 12px;
+    }
+
     .gallery .photo-frame {
       break-inside: avoid;
       margin: 0 0 12px;
@@ -482,6 +567,7 @@
       .intro-grid,
       .chapter,
       .chapter.reverse,
+      .story-wrap.snapshot-wrap,
       .final-cta {
         grid-template-columns: 1fr;
       }
@@ -497,6 +583,7 @@
 
       .evidence-grid,
       .metrics,
+      .founder-snapshot,
       .credentials {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -552,6 +639,7 @@
       .media-grid,
       .evidence-grid,
       .metrics,
+      .founder-snapshot,
       .credentials {
         grid-template-columns: 1fr;
       }
@@ -596,10 +684,10 @@
         <div>
           <div class="kicker">Founder and Builder of Senlay</div>
           <h1>Viktor Kryvotsiuk</h1>
-          <p class="hero-lede">A waterman, instructor, industrial climber, and hardware builder. I built Senlay from years of reading wind, water, and risk in the real world.</p>
+          <p class="hero-lede">Solo founder with 20 years of field experience and a live product: Senlay turns environmental telemetry into usable context for AI agents.</p>
           <div class="hero-actions">
             <a href="demo" class="btn-primary">Try Senlay</a>
-            <a href="#story" class="btn-secondary">Read the Story</a>
+            <a href="#snapshot" class="btn-secondary">20-sec Summary</a>
           </div>
         </div>
         <aside class="hero-facts" aria-label="Founder facts">
@@ -615,7 +703,34 @@
             <div class="fact-label">Home Base</div>
             <div class="fact-value">Hoi An, Vietnam. Built from the beach and the workshop.</div>
           </div>
+          <div class="fact">
+            <div class="fact-label">Live Product</div>
+            <div class="fact-value">Working demo, docs, API key flow, and public platform overview.</div>
+          </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="story-band compact" id="snapshot">
+      <div class="story-wrap snapshot-wrap">
+        <div>
+          <div class="section-kicker">20-Second Summary</div>
+          <h2>Founder-market fit: real-world risk, hardware, and live data.</h2>
+        </div>
+        <div class="founder-snapshot">
+          <article class="snapshot-card">
+            <h3>Problem Lived</h3>
+            <p>Years of teaching and riding in changing wind and water made the missing context obvious.</p>
+          </article>
+          <article class="snapshot-card">
+            <h3>Builder Proof</h3>
+            <p>Solar trackers, board mounts, intercom prototypes, and a live API built from field constraints.</p>
+          </article>
+          <article class="snapshot-card">
+            <h3>Why Senlay</h3>
+            <p>AI agents need current physical context before they can make reliable real-world decisions.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -776,7 +891,9 @@
           </div>
           <p>A small selected gallery from the founder story: the sea, the workshop, prototypes, teaching, and family life.</p>
         </div>
-        <div class="gallery" aria-label="Founder selected shots gallery">
+        <details class="gallery-details">
+          <summary class="gallery-toggle">Selected proof gallery</summary>
+          <div class="gallery" aria-label="Founder selected shots gallery">
           <figure class="photo-frame"><img src="/assets/founder-selected/BlackProtoWithExtraSolarPanel.jpeg" alt="Black prototype with extra solar panel" loading="lazy"></figure>
           <figure class="photo-frame"><img src="/assets/founder-selected/BlackVersionPrototyping.jpeg" alt="Black prototype mounted during testing" loading="lazy"></figure>
           <figure class="photo-frame"><img src="/assets/founder-selected/BlackVersionPrototyping2.jpeg" alt="Black prototype with solar panel" loading="lazy"></figure>
@@ -819,8 +936,9 @@
           <figure class="photo-frame"><img src="/assets/founder-selected/WorkshopPhoto2.jpg" alt="Workshop photo with prototyping bench" loading="lazy"></figure>
           <figure class="photo-frame"><img src="/assets/founder-selected/YellowProto.JPG" alt="Yellow SmartSurf prototype close-up" loading="lazy"></figure>
           <figure class="photo-frame"><img src="/assets/founder-selected/YellowSmartSurfOnTheHelmetWithSOS.jpg" alt="Yellow SmartSurf on a helmet with SOS" loading="lazy"></figure>
-          <figure class="photo-frame"><img src="/assets/founder-selected/smartSurfBoardProtoReady.jpeg" alt="SmartSurf board prototype ready on the beach" loading="lazy"></figure>
-        </div>
+            <figure class="photo-frame"><img src="/assets/founder-selected/smartSurfBoardProtoReady.jpeg" alt="SmartSurf board prototype ready on the beach" loading="lazy"></figure>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -865,7 +983,7 @@
         </div>
         <div class="cta-actions">
           <a href="https://wa.me/84333380168" target="_blank" rel="noopener" class="btn-secondary">Contact Viktor</a>
-          <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener" class="btn-secondary">Support on Ko-fi</a>
+          <a href="docs.html" class="btn-secondary">Read Docs</a>
           <a href="register.html" class="btn-primary">Get API Key</a>
         </div>
       </div>

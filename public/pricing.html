@@ -36,11 +36,10 @@
     .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 12px; }
     .faq-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
     .faq-item p { color: var(--text2); font-size: 14px; line-height: 1.7; }
-    .kofi-section { text-align: center; margin-top: 48px; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
-    .kofi-section h4 { font-size: 18px; margin-bottom: 8px; }
-    .kofi-section p { color: var(--text2); font-size: 14px; margin-bottom: 16px; line-height: 1.7; }
-    .kofi-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #FF5E5B; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 15px; transition: transform 0.15s; }
-    .kofi-btn:hover { transform: translateY(-2px); }
+    .pilot-section { text-align: center; margin-top: 48px; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+    .pilot-section h4 { font-size: 18px; margin-bottom: 8px; }
+    .pilot-section p { color: var(--text2); font-size: 14px; margin: 0 auto 16px; line-height: 1.7; max-width: 620px; }
+    .pilot-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
     @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -151,11 +150,13 @@
       </div>
     </div>
 
-    <!-- Ko-fi -->
-    <div class="kofi-section">
-      <h4>Support Independent Development</h4>
-      <p>Senlay is built by a solo founder. No VC funding, no corporate backing.<br>If Senlay is useful to you, consider supporting the project.</p>
-      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener" class="kofi-btn">&#9749; Support on Ko-fi</a>
+    <div class="pilot-section">
+      <h4>Need higher limits or pilot access?</h4>
+      <p>If you are evaluating Senlay for an agent product, research workflow, or enterprise integration, contact us for beta limits, pilot support, and launch pricing.</p>
+      <div class="pilot-actions">
+        <a href="support.html" class="plan-btn plan-btn-primary" style="width:auto;min-width:180px">Talk to Senlay</a>
+        <a href="docs.html" class="plan-btn plan-btn-secondary" style="width:auto;min-width:180px">Review API Docs</a>
+      </div>
     </div>
   </div>
 
@@ -170,13 +171,12 @@
       <a href="demo">Demo</a>
       <a href="pricing.html">Pricing</a>
       <a href="roadmap.html">Roadmap</a>
-      <a href="support.html">Support Us</a>
+      <a href="support.html">Contact</a>
     </div>
     <div class="footer-contact">
       <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
       <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
       <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
-      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
       <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
       <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>

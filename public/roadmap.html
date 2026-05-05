@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Senlay Roadmap — What We're Building</title>
-  <meta name="description" content="Senlay product roadmap. See what's live, what's next, and where the Sensory Intelligence Layer for AI is heading.">
+  <meta name="description" content="Senlay roadmap for the physical-world context API: evidence, confidence, pilot domains, and infrastructure for AI agents.">
   <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
@@ -53,7 +53,7 @@
 
   <div class="road-container">
     <h2 class="road-title">Roadmap</h2>
-    <p class="road-sub">Where Senlay is today and where we're heading. Now / Next / Later, kept honest.<br>Built in public by a solo founder.</p>
+    <p class="road-sub">Where Senlay is today and where it is heading: reliable API access, evidence and confidence, and focused pilots for drone, outdoor, agriculture, marine, and safety software.</p>
 
     <!-- PHASE 1: LIVE -->
     <div class="phase">
@@ -68,7 +68,7 @@
         <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Early Modifier Engine</strong> &mdash; working demos of physics-based calculators: terrain-wind hints (ridge speedup, lee rotor, valley channeling), wave modifiers (shoaling, breaking cap), temperature lapse, gust-factor analysis, hazard flags. <em>Proof-of-direction, not yet a fully validated simulation engine.</em></span></li>
         <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Source &amp; freshness metadata</strong> &mdash; every PWM response surfaces <code>current_source</code> per layer, including which fields were overridden by live hardware vs. model.</span></li>
         <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Calculated Insights</strong> &mdash; Beaufort scale, gust factor analysis, wave energy index, wind trends (past + forecast), model vs hardware cross-reference, hazard flags</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Expert AI system prompt</strong> &mdash; kitesurfing safety scoring, kite size recommendations, red flag system, session timing intelligence</span></li>
+        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Demo domain prompts</strong> &mdash; drone, outdoor work, agriculture, marine, watersports, hiking, paragliding, fishing, events, and general physical-world queries.</span></li>
         <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Claude tool calling</strong> &mdash; AI can dynamically refresh sensors for different locations mid-conversation</span></li>
         <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Developer tools</strong> &mdash; API key management, PWM sandbox, unit conversion (metric/imperial/knots/m&middot;s), system health monitor</span></li>
         <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Universal LLM compatibility</strong> &mdash; works with Claude, GPT, Gemini, Llama, Mistral &mdash; any model that accepts a system prompt</span></li>
@@ -81,7 +81,7 @@
     <div class="phase">
       <div class="phase-header">
         <span class="phase-badge badge-building">BUILDING</span>
-        <span class="phase-title">Q2 2026</span>
+        <span class="phase-title">Evidence, Reliability, and Pilot Readiness</span>
       </div>
       <ul class="road-items">
         <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Senlay Evidence Object (v1)</strong> &mdash; structured per-claim payload: source type, source id, distance, freshness, confidence, model disagreement, interpretation, uncertainty. Promotes <code>context_string</code> from prose to traceable evidence.</span></li>
@@ -104,9 +104,10 @@
         <span class="phase-title">Q3&ndash;Q4 2026</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Marine / Watersports</strong> &mdash; coastal risk modifiers, sea-state interpretation, rider/board safety logic. Senlay's first validated domain pack &mdash; built on the SmartSurf proving ground.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Drones</strong> &mdash; pre-flight environmental assessment endpoint for UAS/eVTOL: terrain-aware wind at altitude, turbulence/exposure logic, visibility, no-fly conditions.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Drone / UAV Operations</strong> &mdash; pre-flight environmental assessment endpoint: terrain-aware wind at altitude, gust exposure, visibility, precipitation, and operational risk flags.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Construction / Outdoor Work</strong> &mdash; wind, heat, air-quality, lightning, and site-exposure context for crews and autonomous planning agents.</span></li>
         <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Agriculture</strong> &mdash; spray-drift risk, frost prediction, evapotranspiration, soil-moisture proxy, UV crop stress &mdash; precision-farming context without dedicated hardware.</span></li>
+        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Marine / Watersports</strong> &mdash; coastal risk modifiers, sea-state interpretation, rider/board safety logic, and route-level context from the SmartSurf proving ground.</span></li>
         <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Maritime routing layer</strong> &mdash; ship fuel optimisation, wave-current interaction, sea-spray visibility, port-approach wind assessment.</span></li>
         <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Plausibility / spoofing checks</strong> &mdash; physical-plausibility tests on incoming readings; flag manipulated, stuck, or contextually impossible values before they reach the agent.</span></li>
         <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Multi-agent shared world model</strong> &mdash; multiple AI agents subscribing to the same location get a synchronised, evidence-tagged environmental picture.</span></li>
@@ -147,22 +148,22 @@
 
     <div class="mission">
       <h3 class="mission-title">The Mission</h3>
-      <p class="mission-text">Building a world where AI protects humans from physical hazards it can finally <em>see</em>.</p>
+      <p class="mission-text">Give AI systems reliable physical-world context before they make real-world decisions.</p>
     </div>
 
     <div class="road-cta">
-      <h4>Shape the Roadmap</h4>
-      <p>Senlay is built by a solo founder. Your feedback directly shapes what gets built next.</p>
+      <h4>Build With Senlay</h4>
+      <p>If you are building drone, outdoor work, agriculture, marine, or safety software, talk to us about beta pilot access.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <a href="register.html" class="btn-primary" style="text-decoration:none">Get Free API Key</a>
-        <a href="support.html" class="btn-secondary" style="text-decoration:none">Support Senlay</a>
+        <a href="support.html" class="btn-secondary" style="text-decoration:none">Talk to Senlay</a>
       </div>
     </div>
   </div>
 
   <footer class="l-footer">
     <p class="footer-brand">SENLAY</p>
-    <p class="footer-sub">Sensory Intelligence Layer for AI</p>
+    <p class="footer-sub">Giving AI agents live physical-world context.</p>
     <div class="footer-links">
       <a href="/">Home</a>
       <a href="founder.html">Founder</a>
@@ -171,13 +172,12 @@
       <a href="demo">Demo</a>
       <a href="pricing.html">Pricing</a>
       <a href="roadmap.html">Roadmap</a>
-      <a href="support.html">Support Us</a>
+      <a href="support.html">Contact</a>
     </div>
     <div class="footer-contact">
       <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
       <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
       <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
-      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
       <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
       <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>

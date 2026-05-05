@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay Pricing — Free During Beta</title>
-  <meta name="description" content="Senlay pricing plans. Free during beta. Future plans for Pro and Enterprise tiers.">
+  <title>Senlay Pricing — API Plans for AI Agents</title>
+  <meta name="description" content="Senlay pricing for developers, startups, and teams building AI agents that need live physical-world context.">
   <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
@@ -61,26 +61,26 @@
 
   <div class="price-container">
     <h2 class="price-title">Pricing</h2>
-    <p class="price-sub">Senlay is currently in open beta. All features are free while we build.</p>
+    <p class="price-sub">Open beta access is available now. Production pricing will be usage-based for developers, teams, and enterprise pilots building with physical-world context.</p>
 
     <div class="beta-banner">
-      <h3>&#x1F389; Open Beta &mdash; Everything Free</h3>
-      <p>Senlay is in active development. During beta, all API access is free with generous limits.<br>Help us test, give feedback, and shape the platform before full launch.</p>
+      <h3>Open Beta &mdash; Free Developer Access</h3>
+      <p>Use Senlay now to test real agent workflows: drone checks, outdoor work, agriculture, marine routing, and coastal safety. Beta users help shape limits, pricing, and pilot features before launch.</p>
     </div>
 
     <div class="plans-grid">
       <!-- Free -->
       <div class="plan-card">
-        <div class="plan-name">Free</div>
+        <div class="plan-name">Free Beta</div>
         <div class="plan-price">$0 <span>/month</span></div>
         <div class="plan-note">Available now. No credit card.</div>
         <ul class="plan-features">
           <li>100 API calls/day</li>
           <li>All 21 sensor sources</li>
           <li>Full Physical World Model</li>
-          <li>Early Modifier Engine &mdash; physics-based calculators &amp; demos</li>
-          <li>Calculated insights & hazard flags</li>
-          <li>context_string for LLM injection</li>
+          <li>Agent-ready context string</li>
+          <li>Source, freshness, and confidence metadata</li>
+          <li>Calculated insights and hazard flags</li>
           <li>System health monitoring</li>
           <li>Community support</li>
         </ul>
@@ -90,38 +90,36 @@
       <!-- Pro -->
       <div class="plan-card featured">
         <span class="future-label">AFTER LAUNCH</span>
-        <div class="plan-name">Pro</div>
+        <div class="plan-name">Pro Developer</div>
         <div class="plan-price">$29 <span>/month</span></div>
-        <div class="plan-note">For developers and small teams.</div>
+        <div class="plan-note">For developers shipping prototypes and early products.</div>
         <ul class="plan-features">
-          <li>10,000 API calls/day</li>
+          <li>10,000 API calls/month</li>
           <li>Everything in Free</li>
-          <li>Webhook condition alerts</li>
-          <li>Historical data access (30 days)</li>
-          <li>Priority sensor refresh</li>
+          <li>Higher rate limits</li>
           <li>Batch location queries</li>
+          <li>Saved locations and reusable prompts</li>
+          <li>Source/freshness/confidence details</li>
           <li>Email support</li>
         </ul>
         <a href="register.html" class="plan-btn plan-btn-secondary">Get Free Key (Pro later)</a>
       </div>
 
-      <!-- Enterprise -->
+      <!-- Team / Enterprise -->
       <div class="plan-card">
         <span class="future-label">AFTER LAUNCH</span>
-        <div class="plan-name">Enterprise</div>
-        <div class="plan-price">Custom</div>
-        <div class="plan-note">For companies and high-volume agents.</div>
+        <div class="plan-name">Team / Enterprise</div>
+        <div class="plan-price">From $199</div>
+        <div class="plan-note">For operational pilots, agent products, and high-volume teams.</div>
         <ul class="plan-features">
-          <li>Unlimited API calls</li>
+          <li>100,000+ API calls/month</li>
           <li>Everything in Pro</li>
-          <li>Dedicated infrastructure</li>
-          <li>Custom modifier profiles</li>
-          <li>Historical data (1 year+)</li>
-          <li>SLA &amp; uptime guarantee</li>
-          <li>Direct Slack/engineering support</li>
-          <li>On-premise deployment option</li>
+          <li>Team API keys and usage controls</li>
+          <li>Pilot support for drone, outdoor, agriculture, marine, or safety workflows</li>
+          <li>Custom limits and private sensor options</li>
+          <li>SLA and direct engineering support for enterprise deployments</li>
         </ul>
-        <a href="support.html" class="plan-btn plan-btn-secondary">Contact Us</a>
+        <a href="support.html" class="plan-btn plan-btn-secondary">Talk to Senlay</a>
       </div>
     </div>
 
@@ -131,7 +129,7 @@
 
       <div class="faq-item">
         <h4>When will paid plans launch?</h4>
-        <p>We're in open beta through Q2 2026. Paid plans will launch once we've validated the platform with real developer usage. All beta users will get early access pricing.</p>
+        <p>We're in open beta while the API is validated with real developer and pilot usage. Paid plans will launch when limits, support expectations, and production reliability are clear.</p>
       </div>
 
       <div class="faq-item">
@@ -141,18 +139,23 @@
 
       <div class="faq-item">
         <h4>What counts as an API call?</h4>
-        <p>One call to <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">/api/v1/pwm</code> = one API call. This returns the full Physical World Model &mdash; 21 sensor sources, early modifier demos, source/freshness metadata, and the <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">context_string</code> ready for any LLM.</p>
+        <p>One call to <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">/api/v1/pwm</code> = one API call. This returns the Physical World Model &mdash; live and model data, source/freshness metadata, confidence signals, interpretation, and a <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">context_string</code> ready for any LLM.</p>
       </div>
 
       <div class="faq-item">
         <h4>Can I use Senlay commercially during beta?</h4>
         <p>Yes. The beta is fully functional and you're welcome to integrate it into products. Just know that during beta, we may have occasional downtime for upgrades. Paid plans will include SLAs.</p>
       </div>
+
+      <div class="faq-item">
+        <h4>Who is Senlay priced for first?</h4>
+        <p>First paid customers are teams building AI agents or applications where physical conditions affect a real decision: drones, outdoor work, agriculture, marine routing, coastal safety, and field operations.</p>
+      </div>
     </div>
 
     <div class="pilot-section">
       <h4>Need higher limits or pilot access?</h4>
-      <p>If you are evaluating Senlay for an agent product, research workflow, or enterprise integration, contact us for beta limits, pilot support, and launch pricing.</p>
+      <p>If you are evaluating Senlay for drone, outdoor work, agriculture, marine, or safety software, contact us for beta limits, pilot support, and launch pricing.</p>
       <div class="pilot-actions">
         <a href="support.html" class="plan-btn plan-btn-primary" style="width:auto;min-width:180px">Talk to Senlay</a>
         <a href="docs.html" class="plan-btn plan-btn-secondary" style="width:auto;min-width:180px">Review API Docs</a>
@@ -162,7 +165,7 @@
 
   <footer class="l-footer">
     <p class="footer-brand">SENLAY</p>
-    <p class="footer-sub">Sensory Intelligence Layer for AI</p>
+    <p class="footer-sub">Giving AI agents live physical-world context.</p>
     <div class="footer-links">
       <a href="/">Home</a>
       <a href="founder.html">Founder</a>

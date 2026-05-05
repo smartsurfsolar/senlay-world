@@ -578,7 +578,7 @@ async function connectToPWM() {
     state.pwmFetchedAt = Date.now();
 
     statusEl.className = 'conn-status connected';
-    statusEl.innerHTML = '<span class="conn-dot"></span> ✓ ' + providerName + ' is now sensing your environment';
+    statusEl.innerHTML = '<span class="conn-dot"></span> ✓ ' + providerName + ' is connected to physical context';
 
     const details = document.getElementById('connDetails');
     details.classList.remove('hidden');
@@ -637,8 +637,8 @@ function renderSensorFeed() {
   if (atm) {
     html += `<div class="sensor-section">
       <div class="sensor-section-title">🌬️ ATMOSPHERE ${sourceBadge(atmSource)}</div>
-      <div class="sensor-row"><span class="sense-verb">Sensing:</span> <span class="sense-value">Wind ${cWind(atm.wind_speed_10m)} ${uL('wind')} from ${atm.wind_direction_10m}° (gusts ${cWind(atm.wind_gusts_10m)})</span></div>
-      <div class="sensor-row"><span class="sense-verb">Perceiving:</span> <span class="sense-value">Temperature ${cTemp(atm.temperature_2m)}${uL('temp')} (feels ${cTemp(atm.apparent_temperature)}${uL('temp')})</span></div>
+      <div class="sensor-row"><span class="sense-verb">Wind:</span> <span class="sense-value">${cWind(atm.wind_speed_10m)} ${uL('wind')} from ${atm.wind_direction_10m}° (gusts ${cWind(atm.wind_gusts_10m)})</span></div>
+      <div class="sensor-row"><span class="sense-verb">Temperature:</span> <span class="sense-value">${cTemp(atm.temperature_2m)}${uL('temp')} (feels ${cTemp(atm.apparent_temperature)}${uL('temp')})</span></div>
       <div class="sensor-row"><span class="sense-verb">Reading:</span> <span class="sense-value">Pressure ${cPress(atm.pressure_msl)} ${uL('press')}</span></div>
       <div class="sensor-row"><span class="sense-verb">Detecting:</span> <span class="sense-value">Humidity ${atm.relative_humidity_2m}% | Clouds ${atm.cloud_cover}%</span></div>
       <div class="sensor-row"><span class="sense-verb">Source:</span> <span class="sense-value">${escHtml(sourceSummary(atmSource))}</span></div>
@@ -651,12 +651,12 @@ function renderSensorFeed() {
   if (hyd && hyd.wave_height != null) {
     html += `<div class="sensor-section">
       <div class="sensor-section-title">🌊 HYDROSPHERE ${sourceBadge(hydSource)}</div>
-      <div class="sensor-row"><span class="sense-verb">Sensing:</span> <span class="sense-value">Waves ${cWave(hyd.wave_height)} ${uL('wave')} (${hyd.wave_period}s period)</span></div>`;
+      <div class="sensor-row"><span class="sense-verb">Waves:</span> <span class="sense-value">${cWave(hyd.wave_height)} ${uL('wave')} (${hyd.wave_period}s period)</span></div>`;
     if (hyd.swell_wave_height != null) {
       html += `<div class="sensor-row"><span class="sense-verb">Detecting:</span> <span class="sense-value">Swell ${cWave(hyd.swell_wave_height)} ${uL('wave')} from ${hyd.swell_wave_direction}°</span></div>`;
     }
     if (hyd.water_temperature_c != null) {
-      html += `<div class="sensor-row"><span class="sense-verb">Feeling:</span> <span class="sense-value">Water ${cTemp(hyd.water_temperature_c)}${uL('temp')}</span></div>`;
+      html += `<div class="sensor-row"><span class="sense-verb">Water:</span> <span class="sense-value">${cTemp(hyd.water_temperature_c)}${uL('temp')}</span></div>`;
     }
     html += `<div class="sensor-row"><span class="sense-verb">Source:</span> <span class="sense-value">${escHtml(sourceSummary(hydSource))}</span></div>`;
     html += `</div>`;

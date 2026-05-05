@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay Demo — AI with Physical World Awareness</title>
-  <meta name="description" content="Live demo: AI that senses wind, waves, terrain, and air quality in real-time. Try the Senlay Physical World Model.">
+  <title>Senlay Demo — Physical-World Context for AI Agents</title>
+  <meta name="description" content="Guided demo of Senlay: live physical-world context for AI agents using weather, wind, waves, tides, air quality, terrain, and environmental risk.">
   <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="stylesheet" href="/styles/style.css?v=4">
@@ -16,7 +16,7 @@
     <div class="header-inner">
       <div class="logo-area">
         <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
-        <span class="logo-sub">Sensory Intelligence Layer</span>
+        <span class="logo-sub">Physical-World Context API</span>
       </div>
       <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav class="nav">
@@ -30,7 +30,7 @@
         <a href="dashboard.html">Dashboard</a>
       </nav>
     </div>
-    <p class="header-tagline">Connect any AI to the Physical World</p>
+    <p class="header-tagline">Physical-world context for AI agents</p>
   </header>
 
   <section class="demo-guide" aria-label="Demo steps">
@@ -175,7 +175,7 @@
           <!-- Messages appear here -->
         </div>
         <div class="chat-input-bar">
-          <input type="text" id="chatInput" placeholder="Ask anything about the world around you..." onkeydown="if(event.key==='Enter')sendMessage()">
+          <input type="text" id="chatInput" placeholder="Ask a physical-world question about this place..." onkeydown="if(event.key==='Enter')sendMessage()">
           <button id="sendBtn" onclick="sendMessage()">Send</button>
         </div>
         <div id="promptChips" class="prompt-chips">
@@ -188,7 +188,7 @@
       <!-- RIGHT: Sensor Feed -->
       <div class="sensor-panel">
         <div class="sensor-header">
-          <span class="pulse-dot"></span> AI SENSOR FEED &mdash; LIVE
+          <span class="pulse-dot"></span> PHYSICAL CONTEXT FEED &mdash; LIVE
         </div>
         <div id="sensorFeed" class="sensor-feed">
           <p class="sensor-placeholder">Connect to see live data</p>
@@ -205,7 +205,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p class="footer-brand">SENLAY &mdash; Sensory Intelligence Layer for AI</p>
+    <p class="footer-brand">SENLAY &mdash; Physical-World Context API for AI Agents</p>
     <p class="footer-sub">Giving AI agents live physical-world context.</p>
     <div class="footer-links">
       <a href="/">Home</a>
@@ -219,13 +219,12 @@
       <a href="dashboard.html">Dashboard</a>
       <a href="pricing.html">Pricing</a>
       <a href="roadmap.html">Roadmap</a>
-      <a href="support.html">Support Us</a>
+      <a href="support.html">Contact</a>
     </div>
     <div class="footer-contact">
       <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
       <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
       <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
-      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
       <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
       <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>

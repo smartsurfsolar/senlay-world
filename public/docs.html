@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay API Documentation — Physical World Model for AI</title>
-  <meta name="description" content="API documentation for Senlay. Learn how to give any AI agent real-time physical world awareness with one API call.">
+  <title>Senlay API Docs — Physical-World Context API for AI Agents</title>
+  <meta name="description" content="API documentation for Senlay. Connect AI agents to measurable real-world conditions with source, freshness, confidence, and interpretation.">
   <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
@@ -101,7 +101,8 @@
 
       <!-- OVERVIEW -->
       <h2 id="overview">Overview</h2>
-      <p>Senlay provides the <strong style="color:var(--text)">Physical World Model (PWM)</strong> — a real-time, multi-layered representation of physical reality at any coordinate on Earth. One API call aggregates data from <strong style="color:var(--text)">21 sensor networks</strong> — including hardware weather stations, ocean buoys, tide gauges, seismometers, and satellites — into a unified response your AI can immediately understand.</p>
+      <p>Senlay is a physical-world context API for AI agents and applications. It is not a weather API wrapper: each response is built to give agents current conditions, source provenance, freshness, confidence, and interpretation for a real location.</p>
+      <p>The <strong style="color:var(--text)">Physical World Model (PWM)</strong> is a real-time, multi-layered representation of physical conditions at any coordinate on Earth. One API call aggregates data from <strong style="color:var(--text)">21 data networks</strong> &mdash; including hardware weather stations, ocean buoys, tide gauges, seismometers, models, and satellites &mdash; into a unified response your AI can immediately use.</p>
       <p>The response includes a pre-formatted <code>context_string</code> ready to inject directly into any LLM's context. No parsing required. Your agent receives live physical-world context with source and confidence attached.</p>
       <p><strong style="color:var(--text)">Measured observations vs. predictions.</strong> METAR stations, ocean buoys, and tide gauges produce <em>measured</em> readings. Weather models produce <em>predicted</em> values. When they disagree, Senlay gives hardware a higher evidence weight &mdash; while still exposing freshness, distance to the source, data quality, and uncertainty so your agent can reason about how much to trust any single value.</p>
 
@@ -269,7 +270,7 @@ conditions as building. Local break conditions may vary by exposure.</pre>
         <pre class="code-block">curl -H "Authorization: Bearer sl_live_your_key" \
   "https://senlay.world/api/v1/sense?lat=36.01&lng=-5.60"</pre>
       </div>
-      <p>Returns the full Physical World Model as a plain text block. No parsing needed — just read it and your AI can perceive the world.</p>
+      <p>Returns the full Physical World Model as a plain text block. No parsing needed &mdash; inject it into your agent so it can reason from current physical context.</p>
 
       <!-- AGENT REGISTER -->
       <h2 id="agent-register"><span class="method-badge method-post">POST</span> /api/v1/agent-register</h2>
@@ -457,7 +458,7 @@ conditions as building. Local break conditions may vary by exposure.</pre>
       <div class="code-block-wrap">
         <div class="code-header">Python <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
         <pre class="code-block">def sense_physical_world(lat, lng):
-    """Call this when your AI needs to perceive physical conditions."""
+    """Call this when your AI needs to evaluate physical conditions."""
     response = requests.get(
         "https://senlay.world/api/v1/sense",
         params={"lat": lat, "lng": lng},
@@ -533,7 +534,7 @@ pwm = requests.get(
 client = anthropic.Anthropic()
 response = client.messages.create(
     model="claude-sonnet-4-6",
-    system=f"You perceive the physical world:\n\n{pwm['context_string']}",
+    system=f"Use this current physical-world context:\n\n{pwm['context_string']}",
     messages=[{"role": "user", "content": "Is it safe to fly a drone here?"}]
 )</pre>
       </div>
@@ -596,7 +597,7 @@ context = requests.get(
   </div>
 
   <footer class="l-footer">
-    <p class="footer-brand">SENLAY &mdash; Sensory Intelligence Layer for AI</p>
+    <p class="footer-brand">SENLAY &mdash; Physical-World Context API for AI Agents</p>
     <p class="footer-sub">Giving AI agents live physical-world context.</p>
     <div class="footer-links">
       <a href="/">Home</a>
@@ -610,13 +611,12 @@ context = requests.get(
       <a href="dashboard.html">Dashboard</a>
       <a href="pricing.html">Pricing</a>
       <a href="roadmap.html">Roadmap</a>
-      <a href="support.html">Support Us</a>
+      <a href="support.html">Contact</a>
     </div>
     <div class="footer-contact">
       <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
       <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
       <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
-      <a href="https://ko-fi.com/senlay" target="_blank" rel="noopener">Ko-fi</a>
       <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
       <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>

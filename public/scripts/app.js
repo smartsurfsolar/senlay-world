@@ -13,7 +13,7 @@ let state = {
   activeSources: 5,
   spots: [],
   units: 'metric',
-  field: 'kitesurfing',
+  field: 'drone',
   pwmFetchedAt: null  // timestamp of last sensor data fetch
 };
 
@@ -34,6 +34,24 @@ const DEMO_PRESETS = {
   maui: { lat: 20.7984, lng: -156.3319, name: 'Maui, Hawaii' },
   hoi_an: { lat: 15.8801, lng: 108.3380, name: 'Hoi An, Vietnam' },
   rio: { lat: -22.9068, lng: -43.1729, name: 'Rio de Janeiro, Brazil' }
+};
+
+const DEMO_SCENARIOS = {
+  drone: {
+    field: 'drone',
+    preset: 'san_francisco',
+    prompt: 'Can a drone safely fly here now? Give a go/no-go answer and explain the physical evidence.'
+  },
+  watersports: {
+    field: 'kitesurfing',
+    preset: 'tarifa',
+    prompt: 'Is this beach safe for kitesurfing right now? Explain wind, gusts, waves, and uncertainty.'
+  },
+  fieldwork: {
+    field: 'construction',
+    preset: 'berlin',
+    prompt: 'Are conditions safe for outdoor work here now? Consider wind, weather, air quality, temperature, and practical restrictions.'
+  }
 };
 
 // Unit conversion helpers
@@ -296,6 +314,29 @@ function advanceDemoGuide() {
     return;
   }
   focusDemoStep('location');
+}
+
+function loadDemoScenario(key) {
+  const scenario = DEMO_SCENARIOS[key];
+  if (!scenario) return;
+  const providerSelect = document.getElementById('providerSelect');
+  if (providerSelect) {
+    providerSelect.value = 'demo';
+    onProviderChange();
+  }
+  const fieldSelect = document.getElementById('fieldSelect');
+  if (fieldSelect) {
+    fieldSelect.value = scenario.field;
+    onFieldChange();
+  } else {
+    state.field = scenario.field;
+  }
+  usePresetLocation(scenario.preset);
+  const chatInput = document.getElementById('chatInput');
+  if (chatInput) chatInput.value = scenario.prompt;
+  const status = document.getElementById('guideStatus');
+  if (status) status.textContent = 'Scenario loaded. Connect to fetch live physical data, then send the prepared question.';
+  focusDemoStep('connect');
 }
 
 function focusDemoStep(step) {

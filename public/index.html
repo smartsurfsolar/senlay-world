@@ -17,7 +17,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="l-header">
     <div class="l-header-inner">
       <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
@@ -35,19 +34,17 @@
     </div>
   </header>
 
-  <!-- SECTION A: Hero -->
   <section class="hero">
     <div class="hero-content">
       <p class="hero-badge">Not another weather app. A physical-world context API for AI agents.</p>
-      <h2 class="hero-title">Physical-World Context<br>for AI Agents</h2>
-      <p class="hero-sub">Senlay is for AI agents and applications that need to make decisions based on real physical conditions &mdash; wind, waves, weather, tides, air quality, terrain, and environmental risk.</p>
+      <h2 class="hero-title">The Physical-World Context API for AI Agents</h2>
+      <p class="hero-sub">Senlay gives AI applications one API call for live wind, waves, weather, tides, air quality, terrain, sensor data, and environmental risk, with source, freshness, confidence, and interpretation.</p>
       <div class="hero-buttons">
-        <a href="register.html" class="btn-primary">Get API Key</a>
-        <a href="docs.html" class="btn-secondary">View Documentation</a>
-        <a href="demo" class="btn-ghost">Try Demo</a>
+        <a href="demo" class="btn-primary">Try Drone Demo</a>
+        <a href="register.html" class="btn-secondary">Get API Key</a>
+        <a href="docs.html" class="btn-ghost">View Documentation</a>
       </div>
 
-      <!-- Live counter -->
       <div class="live-counter" id="liveCounter">
         <span class="live-counter-label"><span class="pulse-dot"></span> Live</span>
         <span class="live-stat">
@@ -64,7 +61,6 @@
         </span>
       </div>
 
-      <!-- Flow diagram -->
       <div class="flow-diagram">
         <div class="flow-box flow-sensors">
           <div class="flow-label">Sensors</div>
@@ -81,7 +77,7 @@
         </div>
       </div>
 
-      <p class="hero-note">Built for drones, marine systems, farms, outdoor operations, and agent workflows that need measured context. Works with any LLM.</p>
+      <p class="hero-note">Built first for developers building agents and applications for drones, field operations, agriculture, marine routing, and outdoor safety.</p>
 
       <p class="hero-clarifier"><strong>Measured context, not biological senses.</strong> Senlay gives agents live telemetry, source provenance, freshness, distance, confidence, and evidence metadata.</p>
     </div>
@@ -111,55 +107,53 @@
     </div>
   </section>
 
-  <!-- SECTION B: Why AI Needs Senses -->
   <section class="section">
     <div class="container">
-      <h3 class="section-title">Why AI Agents Need Physical-World Context</h3>
-      <p class="section-sub">Most AI agents reason from training data, forecasts, and static knowledge. They can solve differential equations but don't know whether a drone can safely launch in the next 20 minutes at a specific coast, or whether the swell a sailing agent is planning around is already building. Senlay bridges the gap between digital reasoning and measured reality.</p>
+      <h3 class="section-title">Who uses Senlay?</h3>
+      <p class="section-sub">Senlay is for software teams whose agents need to make physical-world decisions, not just produce text. The first wedge is AI products for drones and field operations; expansion follows into agriculture, marine, safety, and autonomous systems.</p>
 
       <div class="cap-grid">
         <div class="cap-card">
-          <h4>Atmospheric Sensing</h4>
-          <p>Wind speed, gusts, direction, temperature, pressure, humidity, precipitation. 24-hour projection data.</p>
-          <span class="cap-source">Hardware-first where available, models as fallback</span>
+          <h4>AI Agent Developers</h4>
+          <p>Teams adding real-time physical context to LLM agents, copilots, workflow automations, and decision tools.</p>
+          <span class="cap-source">Primary customer</span>
         </div>
         <div class="cap-card">
-          <h4>Hydrosphere Intelligence</h4>
-          <p>Wave height, swell energy, period, direction, tides, water temperature, ocean currents.</p>
-          <span class="cap-source">Marine models + buoys + tide and water-temp stations</span>
+          <h4>Drone / UAV Software</h4>
+          <p>Pre-flight checks that need wind, gusts, visibility, precipitation, terrain exposure, and confidence in the data.</p>
+          <span class="cap-source">Best first wedge</span>
         </div>
         <div class="cap-card">
-          <h4>Lithosphere Awareness</h4>
-          <p>9-point terrain profiles, elevation, ocean depth, bathymetry, reef detection, slope analysis.</p>
-          <span class="cap-source">Global elevation models</span>
+          <h4>Outdoor Work Platforms</h4>
+          <p>Construction, utilities, site safety, and field-service tools where weather, heat, wind, and air quality affect work.</p>
+          <span class="cap-source">Second market</span>
         </div>
         <div class="cap-card">
-          <h4>Air Quality &amp; Safety</h4>
-          <p>PM2.5, PM10, AQI index, UV exposure levels, fire proximity alerts, seismic activity.</p>
-          <span class="cap-source">Community AQ sensors + radiation + fire + hazard feeds</span>
+          <h4>Agriculture AI</h4>
+          <p>Farm agents that need weather, UV, air quality, terrain, crop-risk signals, and operational timing context.</p>
+          <span class="cap-source">Expansion market</span>
         </div>
         <div class="cap-card">
-          <h4>Satellite Observation</h4>
-          <p>Cloud-free imagery metadata, land cover changes, coastline monitoring, vegetation analysis.</p>
-          <span class="cap-source">Copernicus Sentinel-2</span>
+          <h4>Marine and Coastal Apps</h4>
+          <p>Sailing, fisheries, watersports, coastal safety, and routing products that need wind, waves, tides, and currents.</p>
+          <span class="cap-source">Founder advantage</span>
         </div>
         <div class="cap-card">
-          <h4>Provenance &amp; Confidence</h4>
-          <p>Every value carries its source type, station id, distance, timestamp, and confidence. Model vs hardware disagreement is surfaced, not hidden.</p>
-          <span class="cap-source">current_source + freshness + evidence metadata</span>
+          <h4>Future Markets</h4>
+          <p>Search and rescue, insurance, robotics, and digital twins, after reliability, validation, and domain packs mature.</p>
+          <span class="cap-source">Not the current focus</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION C: Developer Path -->
   <section class="section section-dark">
     <div class="container">
       <div class="developer-panel">
         <div>
-          <p class="repo-kicker">For Developers and Agents</p>
-          <h3>Use Senlay when your product needs real conditions, not another generic answer.</h3>
-          <p>Implementation examples, API responses, and LLM integration snippets live in the developer docs. The homepage stays focused on what Senlay is and when it matters.</p>
+          <p class="repo-kicker">Why Not Just Weather APIs?</p>
+          <h3>Weather APIs return conditions. Senlay returns agent-ready context for decisions.</h3>
+          <p>Senlay combines model data, live sensors, terrain, marine sources, air quality, source provenance, freshness, confidence, and interpretation. It is designed to be dropped into an agent prompt or workflow when the answer must explain what the data means.</p>
         </div>
         <div class="repo-actions">
           <a href="docs.html" class="repo-link">Developer Docs</a>
@@ -170,7 +164,6 @@
     </div>
   </section>
 
-  <!-- SECTION D2: Evidentiality / How does the agent know? -->
   <section class="section section-dark">
     <div class="container">
       <h3 class="section-title">How does the agent know?</h3>
@@ -200,83 +193,6 @@
     </div>
   </section>
 
-  <!-- SECTION D3: Evidence Object -->
-  <section class="section">
-    <div class="container">
-      <h3 class="section-title">The Senlay Evidence Object</h3>
-      <p class="section-sub">Every physical-world claim Senlay returns is structured as a traceable evidence object &mdash; claim, source, freshness, confidence, disagreement, and interpretation. One unit of physical-world truth, with the paperwork attached.</p>
-
-      <div class="evidence-demo">
-        <div class="evidence-card">
-          <div class="evidence-claim">
-            <div class="ev-label">Claim</div>
-            <div class="ev-value-big">Wave height is 0.7 m</div>
-          </div>
-          <div class="evidence-meta">
-            <div class="ev-row"><span class="ev-k">Evidence type</span><span class="ev-v"><span class="pill hw">measured telemetry</span></span></div>
-            <div class="ev-row"><span class="ev-k">Source</span><span class="ev-v">NDBC buoy <code>KLIH1</code></span></div>
-            <div class="ev-row"><span class="ev-k">Distance</span><span class="ev-v">18 km from target</span></div>
-            <div class="ev-row"><span class="ev-k">Freshness</span><span class="ev-v">12 minutes ago</span></div>
-            <div class="ev-row"><span class="ev-k">Confidence</span><span class="ev-v"><span class="pill conf-mh">medium-high</span></span></div>
-            <div class="ev-row"><span class="ev-k">Model disagreement</span><span class="ev-v">forecast said 0.5 m &middot; delta +0.2 m</span></div>
-            <div class="ev-row ev-interp"><span class="ev-k">Interpretation</span><span class="ev-v">Small but measurable swell; suitable for low-risk coastal activity. Live measurement runs above forecast &mdash; treat conditions as building.</span></div>
-            <div class="ev-row ev-uncert"><span class="ev-k">Uncertainty</span><span class="ev-v">Nearest buoy is 18 km away; local break conditions may vary by exposure.</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="trust-grid" style="margin-top:28px">
-        <div class="trust-card">
-          <div class="trust-tier hw">Measured Telemetry</div>
-          <div class="trust-desc">Physical instruments measuring reality. METAR stations, ocean buoys, tide gauges, AQ monitors. Ground data, subject to distance and freshness.</div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-tier sat">Satellite Observation</div>
-          <div class="trust-desc">Remote observation. Sentinel-2 imagery, cloud cover, land use, coastline change. Broad coverage, typically delayed.</div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-tier model">Model / Forecast</div>
-          <div class="trust-desc">Physics-based predictions. Open-Meteo, GFS, ECMWF. Global coverage but estimates, not measurements.</div>
-        </div>
-      </div>
-      <p class="trust-note" style="margin-top:18px"><strong>When hardware and models disagree, trust hardware — but expose the disagreement.</strong> Senlay's <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px;font-size:13px">current_source</code> field tells your agent exactly which fields were overridden by live sensors and by which station.</p>
-    </div>
-  </section>
-
-  <!-- SECTION D4: Decision Pipeline -->
-  <section class="section section-dark">
-    <div class="container">
-      <h3 class="section-title">From Raw Data to Recommended Action</h3>
-      <p class="section-sub">Senlay moves agents from numbers to meaning: <strong style="color:var(--text)">Condition, Evidence, Confidence, Risk, Action</strong>. Condition, evidence and confidence are live today. Deeper risk and action reasoning is shipping with the Modifier Engine and domain packs.</p>
-      <div class="decision-pipeline">
-        <div class="pipeline-flow">
-          <div class="pipeline-step">
-            <div class="pipe-label">Condition</div>
-            <div class="pipe-value">Wind 33 km/h<br>Gusts 62 km/h</div>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipe-label">Evidence</div>
-            <div class="pipe-value">METAR 4.2 km<br>updated 8 min ago</div>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipe-label">Confidence</div>
-            <div class="pipe-value" style="color:var(--primary)">medium-high<br>(live sensor)</div>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipe-label">Risk</div>
-            <div class="pipe-value" style="color:#EF4444">HIGH<br>gust factor 1.9&times;</div>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipe-label">Action</div>
-            <div class="pipe-value">Do not launch.<br>Re-check in 2h.</div>
-          </div>
-        </div>
-        <p class="pipeline-example">Illustrative example. The <em>condition</em>, <em>evidence</em>, and <em>confidence</em> columns are live API fields today; <em>risk</em> and <em>action</em> are being extended through the Modifier Engine and the forthcoming domain packs (drones, maritime, agriculture).</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION D5: Early Modifier Engine (Honesty block) -->
   <section class="section">
     <div class="container">
       <div class="honesty-block">
@@ -289,42 +205,40 @@
     </div>
   </section>
 
-  <!-- SECTION E: Use Cases -->
   <section class="section section-dark">
     <div class="container">
-      <h3 class="section-title">Infrastructure for Physical-World Decisions</h3>
+      <h3 class="section-title">What Senlay returns</h3>
+      <p class="section-sub">One API response gives an agent the measurable state of a place, the evidence behind that state, and the limits of confidence.</p>
 
       <div class="use-grid">
         <div class="use-card">
-          <h4>Water Sports Intelligence</h4>
-          <p>AI coaches grounded in live wind, wave, and sensor data. Our live demo shows, field by field, when nearby hardware stations disagree with the model in real time.</p>
-          <a href="demo" class="use-link">Try Live Demo</a>
+          <h4>Current Physical Conditions</h4>
+          <p>Wind, gusts, weather, waves, tides, currents, air quality, terrain, satellite data, hazards, and sensor availability.</p>
         </div>
         <div class="use-card">
-          <h4>Drone Operations</h4>
-          <p>Pre-flight assessment from real sensor data. Wind at altitude, terrain clearance, air quality, and visibility &mdash; the context your flight AI needs for go/no-go decisions.</p>
+          <h4>Source and Freshness</h4>
+          <p>Which source produced each value, how fresh it is, how far away the station is, and whether it is measured or model-derived.</p>
         </div>
         <div class="use-card">
-          <h4>Precision Agriculture</h4>
-          <p>Combine atmospheric data, UV, air quality, and satellite imagery for crop management. Your agricultural AI agent understands what's happening in the field right now.</p>
+          <h4>Confidence and Disagreement</h4>
+          <p>When live hardware and forecasts disagree, Senlay surfaces that difference instead of hiding it inside a single number.</p>
         </div>
         <div class="use-card">
-          <h4>Search &amp; Rescue</h4>
-          <p>Drift prediction from currents, wind, and bathymetry. Give rescue coordination AI real-time environmental awareness.</p>
+          <h4>Agent-Ready Context</h4>
+          <p>A plain-language context string that can be injected into any LLM, plus structured data for applications.</p>
         </div>
         <div class="use-card">
-          <h4>Autonomous Systems</h4>
-          <p>Any robot, vehicle, or agent operating in the physical world needs current environmental context. Senlay is the context layer.</p>
+          <h4>Practical Interpretation</h4>
+          <p>Not only “wind is 33 km/h,” but why gust spread, exposure, terrain, and source quality change the decision.</p>
         </div>
         <div class="use-card">
-          <h4>Maritime Routing</h4>
-          <p>Wave-current interaction, port-approach wind, sea-spray visibility, fuel-optimised routing. Ocean conditions AI can actually reason about.</p>
+          <h4>Clear Boundaries</h4>
+          <p>Senlay does not claim to answer everything. It answers physical-condition questions where measurable data exists.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION F: Live Data Proof -->
   <section class="section">
     <div class="container">
       <h3 class="section-title">Real Sensors. Real Data. Right Now.</h3>
@@ -351,11 +265,10 @@
     </div>
   </section>
 
-  <!-- SECTION G: CTA -->
   <section class="section section-cta">
     <div class="container" style="text-align:center">
-      <h3 class="section-title" style="margin-bottom:16px">Give Your AI Physical-World Context</h3>
-      <p class="section-sub" style="margin-bottom:24px">Free tier. No credit card. Start in 30 seconds.</p>
+      <h3 class="section-title" style="margin-bottom:16px">Build agents that know the conditions outside.</h3>
+      <p class="section-sub" style="margin-bottom:24px">Free beta access. No credit card. Start with a real drone, field, marine, or agriculture scenario.</p>
       <div class="hero-buttons" style="justify-content:center">
         <a href="register.html" class="btn-primary">Get Your API Key</a>
         <a href="docs.html" class="btn-secondary">Read the Docs</a>
@@ -363,7 +276,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="l-footer">
     <p class="footer-brand">SENLAY &mdash; Physical-World Context API for AI Agents</p>
     <p class="footer-sub">Giving AI agents live physical-world context.</p>

@@ -162,7 +162,8 @@ curl https://senlay.world/api/v1/stats
 |---|---:|---:|
 | Free Beta | 100 API calls/day | $0 |
 | Pro Developer | 10,000 API calls/month | $29/month |
-| Team / Enterprise | Custom limits | From $199/month |
+| Startup / Team | 100,000+ API calls/month | From $199/month |
+| Enterprise | Custom limits and pilot support | Custom |
 
 ## Tool Definition
 

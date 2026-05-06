@@ -99,7 +99,6 @@
 
     <main class="docs-main">
 
-      <!-- OVERVIEW -->
       <h2 id="overview">Overview</h2>
       <p>Senlay is a physical-world context API for AI agents and applications. It is not a weather API wrapper: each response is built to give agents current conditions, source provenance, freshness, confidence, and interpretation for a real location.</p>
       <p>The <strong style="color:var(--text)">Physical World Model (PWM)</strong> is a real-time, multi-layered representation of physical conditions at any coordinate on Earth. One API call aggregates data from <strong style="color:var(--text)">21 data networks</strong> &mdash; including hardware weather stations, ocean buoys, tide gauges, seismometers, models, and satellites &mdash; into a unified response your AI can immediately use.</p>
@@ -143,7 +142,6 @@ Forecast underestimates the live measurement by 0.2 m &mdash; treat
 conditions as building. Local break conditions may vary by exposure.</pre>
       </div>
 
-      <!-- AUTHENTICATION -->
       <h2 id="auth">Authentication</h2>
       <p>All <code>/api/v1/*</code> endpoints require a Bearer token:</p>
       <div class="code-block-wrap">
@@ -152,7 +150,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
       </div>
       <p>Get your key: <a href="register.html" style="color:var(--primary)">senlay.world/register</a> — free, no credit card.</p>
 
-      <!-- QUICK START -->
       <h2 id="quickstart">Quick Start</h2>
       <div class="code-block-wrap">
         <div class="code-header">curl <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
@@ -166,7 +163,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
   "https://senlay.world/api/v1/sense?lat=36.01&lng=-5.60"</pre>
       </div>
 
-      <!-- ENDPOINTS -->
       <h2 id="pwm"><span class="method-badge method-get">GET</span> /api/v1/pwm</h2>
       <p>Full Physical World Model — structured JSON with all sensor data, extended hardware readings, satellite data, and the pre-formatted context string.</p>
 
@@ -258,7 +254,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
         </tbody>
       </table>
 
-      <!-- SENSE -->
       <h2 id="sense"><span class="method-badge method-get">GET</span> /api/v1/sense</h2>
       <p>Simplified endpoint — returns <strong style="color:var(--text)">only the context_string as plain text</strong>. Content-Type: <code>text/plain</code>. Ideal for agents that don't want to parse JSON.</p>
 
@@ -272,7 +267,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
       </div>
       <p>Returns the full Physical World Model as a plain text block. No parsing needed &mdash; inject it into your agent so it can reason from current physical context.</p>
 
-      <!-- AGENT REGISTER -->
       <h2 id="agent-register"><span class="method-badge method-post">POST</span> /api/v1/agent-register</h2>
       <p>Dedicated registration for AI agents — <strong style="color:var(--text)">no password needed</strong>. Only <code>agentName</code> is required. If you supply <code>ownerEmail</code> too, we dedupe on the <code>(ownerEmail, agentName)</code> pair so stateless agents that re-register each session get the SAME key back instead of piling up orphan rows.</p>
 
@@ -312,7 +306,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
       </div>
       <p>If <code>existing</code> is <code>true</code>, we returned a previously-issued key because <code>(ownerEmail, agentName)</code> was already registered.</p>
 
-      <!-- AGENT LOOKUP -->
       <h2 id="agent-lookup"><span class="method-badge method-post">POST</span> /api/v1/agent-lookup</h2>
       <p>Discover what agents you've registered under an email address. Returns agent names with <strong style="color:var(--text)">masked key previews only</strong> (first 12 + last 4 chars). Full keys are never returned by this endpoint. To recover the full key, call <code>/api/v1/agent-register</code> again with the same <code>(ownerEmail, agentName)</code> — dedupe returns the original key. Rate-limited 10/hour per email.</p>
 
@@ -345,7 +338,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
 }</pre>
       </div>
 
-      <!-- REGISTER -->
       <h2 id="register"><span class="method-badge method-post">POST</span> /api/register</h2>
       <p>Standard registration for developers (with password).</p>
       <table class="docs-table">
@@ -358,7 +350,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
       </table>
       <p>Response: <code>{ success, apiKey }</code></p>
 
-      <!-- LOGIN -->
       <h2 id="login"><span class="method-badge method-post">POST</span> /api/login</h2>
       <p>Login for dashboard access.</p>
       <table class="docs-table">
@@ -370,17 +361,14 @@ conditions as building. Local break conditions may vary by exposure.</pre>
       </table>
       <p>Response: <code>{ success, userId, apiKeys }</code></p>
 
-      <!-- SPOTS -->
       <h2 id="spots"><span class="method-badge method-get">GET</span> /api/spots</h2>
       <p>Returns all curated sensor locations. No authentication required.</p>
       <p>Response: JSON array of spots with <code>name</code>, <code>country</code>, <code>lat</code>, <code>lng</code>, <code>type</code>, <code>notes</code>.</p>
 
-      <!-- CONDITIONS -->
       <h2 id="conditions"><span class="method-badge method-get">GET</span> /api/conditions</h2>
       <p>Returns current wind + wave data for curated spots. Cached 30 minutes. No authentication required.</p>
       <p>Response: JSON array with <code>name</code>, <code>wind_speed</code>, <code>wind_direction</code>, <code>wind_gusts</code>, <code>temperature</code>, <code>wave_height</code>, <code>wave_period</code>, <code>swell_height</code>.</p>
 
-      <!-- DATA SOURCES -->
       <h2 id="sources">Data Sources</h2>
       <p>Senlay aggregates data from 21 sensor networks. Not all sources have data at every location — coastal areas have the most hardware sensors. The API always returns what's available.</p>
 
@@ -413,7 +401,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
 
       <p><span class="badge badge-green">HARDWARE</span> sources are real physical instruments measuring reality. <span class="badge badge-blue">MODEL</span> sources are computer forecasts. <span class="badge badge-yellow">SATELLITE</span> sources are orbital observation data. When hardware and models disagree, <strong style="color:var(--text)">trust HARDWARE</strong>.</p>
 
-      <!-- AGENTIC TOOLING -->
       <h2 id="agentic">Agentic Tooling</h2>
       <p>Use Senlay as a function/tool in AI agent frameworks. Let the AI decide when it needs physical world data.</p>
 
@@ -467,7 +454,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
     return response.text  # Ready to inject into context</pre>
       </div>
 
-      <!-- UNDERSTANDING THE PWM -->
       <h2 id="understanding">Understanding the PWM</h2>
 
       <h3>The context_string</h3>
@@ -489,7 +475,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
         <li><code>wind_cross_reference.confidence</code> — "high" (3+ sensors agree) or "moderate" (2 sensors)</li>
       </ul>
 
-      <!-- ERROR HANDLING -->
       <h2 id="errors">Error Handling</h2>
       <table class="docs-table">
         <thead><tr><th>Code</th><th>Meaning</th><th>Response</th></tr></thead>
@@ -503,7 +488,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
       </table>
       <p>Some sensor sources may fail independently — the API still returns successfully with whatever data is available. Check <code>active_sources</code> to see how many sources responded.</p>
 
-      <!-- RATE LIMITS -->
       <h2 id="limits">Rate Limits</h2>
       <p>Senlay is currently in <strong style="color:var(--primary)">open beta</strong> &mdash; all features are free to use. The free tier includes 100 API calls per day. Cached responses for the same location within 5 minutes don't count against your limit.</p>
       <p>For details on future plans and pricing, see the <a href="pricing.html" style="color:var(--primary)">Pricing page</a>.</p>
@@ -517,7 +501,6 @@ conditions as building. Local break conditions may vary by exposure.</pre>
         <li>Per-source health reporting and cross-referencing</li>
       </ul>
 
-      <!-- CODE EXAMPLES -->
       <h2 id="examples">Code Examples</h2>
 
       <h3>Python + Claude</h3>

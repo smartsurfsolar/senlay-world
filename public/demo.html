@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <div class="logo-area">
@@ -37,13 +36,27 @@
     <div class="guide-head">
       <div class="guide-copy">
         <p class="guide-kicker">Guided Demo</p>
-        <h1>Try Senlay with a real place.</h1>
-        <p>Demo Mode works without an API key. Pick a place, connect, then ask a physical-condition question about safety, wind, waves, tides, air quality, terrain, or environmental risk. It is not a general search demo.</p>
+        <h1>Prove the API with a real decision.</h1>
+        <p>Demo Mode works without an API key. Pick a serious use case, connect once, then ask for a decision based on live conditions. The demo shows the core product: one API call, physical data, sources, freshness, confidence, and an AI-ready interpretation.</p>
       </div>
       <div class="guide-action-box">
         <p id="guideStatus" class="guide-status">Start with Demo Mode, choose a place, then connect.</p>
         <button id="guideAction" class="guide-action" type="button" onclick="advanceDemoGuide()">Start Demo</button>
       </div>
+    </div>
+    <div class="scenario-strip" aria-label="Demo scenarios">
+      <button class="scenario-card" type="button" onclick="loadDemoScenario('drone')">
+        <strong>Drone flight</strong>
+        <span>Can a drone safely fly here now?</span>
+      </button>
+      <button class="scenario-card" type="button" onclick="loadDemoScenario('watersports')">
+        <strong>Kitesurfing / watersports</strong>
+        <span>Are wind and waves safe at this beach?</span>
+      </button>
+      <button class="scenario-card" type="button" onclick="loadDemoScenario('fieldwork')">
+        <strong>Outdoor work / agriculture</strong>
+        <span>Are conditions safe for field work?</span>
+      </button>
     </div>
     <div class="guide-steps">
       <button class="guide-step active" type="button" data-guide-step="1" onclick="setDemoMode()">
@@ -65,11 +78,9 @@
     </div>
   </section>
 
-  <!-- SETUP PANEL -->
   <section id="setupPanel" class="setup-panel">
     <div class="setup-grid">
 
-      <!-- A. AI Provider -->
       <div id="providerCard" class="setup-card">
         <div class="setup-label">AI Provider</div>
         <select id="providerSelect" onchange="onProviderChange()">
@@ -87,7 +98,6 @@
         </div>
       </div>
 
-      <!-- B. Location -->
       <div id="locationCard" class="setup-card">
         <div class="setup-label">Location</div>
         <div class="preset-block">
@@ -124,15 +134,14 @@
         <div id="locationDisplay" class="location-display"></div>
       </div>
 
-      <!-- C. Field + Connection + Units -->
       <div id="connectCard" class="setup-card">
         <div class="setup-label">Field / Use Case</div>
         <select id="fieldSelect" onchange="onFieldChange()" style="margin-bottom:8px">
-          <option value="kitesurfing">Kitesurfing / Watersports</option>
-          <option value="sailing">Sailing / Marine</option>
           <option value="drone">Drone / UAV Operations</option>
-          <option value="agriculture">Agriculture / Farming</option>
           <option value="construction">Construction / Outdoor Work</option>
+          <option value="agriculture">Agriculture / Farming</option>
+          <option value="sailing">Sailing / Marine</option>
+          <option value="kitesurfing">Kitesurfing / Watersports</option>
           <option value="hiking">Hiking / Trekking</option>
           <option value="paragliding">Paragliding / Aviation Weather</option>
           <option value="fishing">Fishing / Coastal Conditions</option>
@@ -155,37 +164,32 @@
     </div>
   </section>
 
-  <!-- COLLAPSED STATUS BAR (shown after connect) -->
   <div id="statusBar" class="status-bar hidden" onclick="toggleSetup()">
     <span class="conn-dot connected"></span>
     <span id="statusBarText">Connected</span>
     <span class="status-expand">Details</span>
   </div>
 
-  <!-- MAIN AREA -->
   <main id="mainArea" class="main-area hidden">
     <div class="main-grid">
 
-      <!-- LEFT: Chat -->
       <div class="chat-panel">
         <div class="chat-header">
           <span id="chatProviderLabel">Claude + Physical World Model</span>
         </div>
         <div id="chatMessages" class="chat-messages">
-          <!-- Messages appear here -->
         </div>
         <div class="chat-input-bar">
           <input type="text" id="chatInput" placeholder="Ask a physical-world question about this place..." onkeydown="if(event.key==='Enter')sendMessage()">
           <button id="sendBtn" onclick="sendMessage()">Send</button>
         </div>
         <div id="promptChips" class="prompt-chips">
-          <button type="button" onclick="usePrompt('Is it safe for this activity right now?')">Safety verdict</button>
-          <button type="button" onclick="usePrompt('What changed compared with a normal forecast?')">Sensor difference</button>
-          <button type="button" onclick="usePrompt('Give me a concise action plan for the next hour.')">Next hour plan</button>
+          <button type="button" onclick="usePrompt('Can a drone safely fly here now? Give a go/no-go answer and explain the physical evidence.')">Drone go/no-go</button>
+          <button type="button" onclick="usePrompt('Which values are measured by sensors, which are forecast/model data, and how fresh are they?')">Source check</button>
+          <button type="button" onclick="usePrompt('Give me the practical action for the next hour based on wind, weather, air quality, terrain, and risk.')">Next hour action</button>
         </div>
       </div>
 
-      <!-- RIGHT: Sensor Feed -->
       <div class="sensor-panel">
         <div class="sensor-header">
           <span class="pulse-dot"></span> PHYSICAL CONTEXT FEED &mdash; LIVE
@@ -198,12 +202,10 @@
     </div>
   </main>
 
-  <!-- LIVE TICKER -->
   <div id="ticker" class="ticker hidden">
     <div class="ticker-track" id="tickerTrack"></div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <p class="footer-brand">SENLAY &mdash; Physical-World Context API for AI Agents</p>
     <p class="footer-sub">Giving AI agents live physical-world context.</p>

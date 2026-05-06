@@ -84,6 +84,14 @@
     .nav { display: flex; gap: 20px; align-items: center; }
     .nav a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
     .nav a:hover { color: var(--primary); }
+    .nav-menu { position: relative; }
+    .nav-menu summary { display: inline-flex; align-items: center; gap: 7px; color: var(--text2); font-size: 14px; font-weight: 500; cursor: pointer; list-style: none; transition: color 0.2s; }
+    .nav-menu summary::-webkit-details-marker { display: none; }
+    .nav-menu summary::after { content: ""; width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg); margin-top: -4px; }
+    .nav-menu[open] summary, .nav-menu summary:hover { color: var(--primary); }
+    .nav-menu-panel { position: absolute; top: calc(100% + 12px); left: 0; min-width: 168px; display: grid; gap: 2px; padding: 8px; background: rgba(10,14,26,0.98); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 18px 40px rgba(0,0,0,0.28); z-index: 200; }
+    .nav-menu-panel a { display: block; padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
+    .nav-menu-panel a:hover { background: rgba(16,185,129,0.08); }
     .nav-cta {
       padding: 8px 18px; background: var(--primary); color: #0a0e1a !important;
       border-radius: 6px; font-weight: 700 !important; font-size: 13px !important;
@@ -476,27 +484,25 @@
 
     /* ── Footer ── */
     .footer {
-      padding: 40px 24px; border-top: 1px solid var(--border);
-      text-align: center;
+      padding: 44px 24px 28px; border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.12);
     }
-    .footer-brand { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: var(--text3); }
-    .footer-sub { font-size: 13px; color: var(--text3); margin: 4px 0 16px; }
-    .footer-links { display: flex; justify-content: center; gap: 24px; }
-    .footer-links a { color: var(--text3); text-decoration: none; font-size: 13px; }
-    .footer-links a:hover { color: var(--primary); }
-    .footer-contact {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      max-width: 1080px;
-      margin: 18px auto 14px;
-      color: var(--text2);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .footer-contact a { color: var(--text2); text-decoration: none; }
-    .footer-contact a:hover { color: var(--primary); text-decoration: underline; }
+    .footer-shell { max-width: 1120px; margin: 0 auto; }
+    .footer-main { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(0, 1.55fr); gap: 40px; align-items: start; }
+    .footer-brand { font-size: 15px; font-weight: 800; letter-spacing: 2px; color: var(--text); }
+    .footer-sub { max-width: 360px; font-size: 14px; color: var(--text2); margin: 8px 0 16px; line-height: 1.65; }
+    .footer-copy, .footer-cta { font-size: 12px; color: var(--text3); }
+    .footer-nav-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .footer-col h4 { margin-bottom: 10px; color: var(--text); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-col a { display: block; width: fit-content; color: var(--text2); text-decoration: none; font-size: 13px; line-height: 1.7; margin: 5px 0; }
+    .footer-col a:hover { color: var(--primary); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 18px; margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--text3); font-size: 12px; }
+    .footer-bottom-links { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-end; }
+    .footer-bottom a { color: var(--text3); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--primary); }
+    .footer-attrib { font-size: 12px; color: var(--text3); margin-top: 12px; }
+    .footer-attrib a { color: var(--text3); text-decoration: underline; }
+    .footer-attrib a:hover { color: var(--primary); }
 
     /* ── Responsive ── */
     .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
@@ -514,6 +520,8 @@
       .nav { display: none; flex-direction: column; position: absolute; top: calc(100% + 4px); left: -32px; right: -32px; background: rgba(10,14,26,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 12px; z-index: 101; }
       .nav.open { display: flex; }
       .nav .nav-cta { text-align: center; display: block; }
+      .nav-menu, .nav-menu summary { width: 100%; }
+      .nav-menu-panel { position: static; width: 100%; margin-top: 8px; box-shadow: none; background: rgba(255,255,255,0.035); }
       .hero-title { font-size: 36px; }
       .hero { padding: 60px 16px 40px; }
       .live-body { grid-template-columns: repeat(2, 1fr); }
@@ -523,6 +531,9 @@
       .sensor-grid { grid-template-columns: repeat(2, 1fr); }
       .connect-header h2 { font-size: 28px; }
       .moltbook-header h2 { font-size: 26px; }
+      .footer-main, .footer-nav-grid { grid-template-columns: 1fr; gap: 24px; }
+      .footer-bottom { flex-direction: column; }
+      .footer-bottom-links { justify-content: flex-start; }
     }
     @media (max-width: 480px) {
       .hero-title { font-size: 28px; }
@@ -545,13 +556,25 @@
       <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav class="nav">
         <a href="/">Home</a>
-        <a href="docs.html">Docs</a>
-        <a href="demo">Demo</a>
-        <a href="agents">For Agents</a>
-        <a href="founder.html">Founder</a>
-      <a href="login.html">Sign In</a>
-        <a href="register.html" class="nav-cta">Get API Key</a>
-        <a href="dashboard.html">Dashboard</a>
+        <details class="nav-menu">
+          <summary>Product</summary>
+          <div class="nav-menu-panel">
+            <a href="demo">Demo</a>
+            <a href="agents">For Agents</a>
+            <a href="docs.html">Docs</a>
+          </div>
+        </details>
+        <a href="pricing.html">Pricing</a>
+        <details class="nav-menu">
+          <summary>Company</summary>
+          <div class="nav-menu-panel">
+            <a href="founder.html">Founder</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="support.html">Contact</a>
+          </div>
+        </details>
+        <a href="login.html">Sign In</a>
+        <a href="pricing.html" class="nav-cta">Get API Key</a>
       </nav>
     </div>
   </header>
@@ -815,42 +838,54 @@ curl -s https://senlay.world/skill.md > ~/.moltbot/skills/senlay/SKILL.md</pre>
     <h2 class="cta-title">Stop Guessing From Static Context.</h2>
     <p class="cta-sub">Free tier. No credit card. Connect an agent to live physical context in 30 seconds.</p>
     <div class="cta-buttons">
-      <a href="register.html" class="btn-primary">Get API Key</a>
+      <a href="pricing.html" class="btn-primary">Get API Key</a>
       <a href="docs.html" class="btn-secondary">API Documentation</a>
       <a href="/skill.md" class="btn-ghost">Read skill.md</a>
     </div>
   </section>
 
   <footer class="footer">
-    <p class="footer-brand">SENLAY — Physical-World Context API for AI Agents</p>
-    <p class="footer-sub">Giving AI agents live physical-world context.</p>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="docs.html">Docs</a>
-      <a href="demo">Demo</a>
-      <a href="agents">For Agents</a>
-      <a href="moltbook">For Moltbook</a>
-      <a href="register.html">Register</a>
-      <a href="founder.html">Founder</a>
-      <a href="login.html">Sign In</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="support.html">Contact</a>
+    <div class="footer-shell">
+      <div class="footer-main">
+        <div class="footer-about">
+          <p class="footer-brand">SENLAY</p>
+          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
+          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+        </div>
+        <div class="footer-nav-grid">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="demo">Demo</a>
+            <a href="docs.html">Docs</a>
+            <a href="agents">For Agents</a>
+            <a href="pricing.html">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="founder.html">Founder</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="support.html">Contact</a>
+            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
+            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Open beta for developers, pilots, and agent builders.</span>
+        <div class="footer-bottom-links">
+          <a href="pricing.html">API Access</a>
+          <a href="login.html">Sign In</a>
+          <a href="support.html">Pilot Contact</a>
+        </div>
+      </div>
+      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
     </div>
-    <div class="footer-contact">
-      <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
-      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
-      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
-      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
-      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">GitHub: Platform</a>
-      <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">GitHub: Website</a>
-    </div>
-    <p style="font-size:12px;color:var(--text3);margin-top:12px">Weather data by <a href="https://open-meteo.com/" style="color:var(--text3);text-decoration:underline">Open-Meteo.com</a></p>
-    <p style="font-size:12px;color:var(--text3);margin-top:6px">&copy; 2026 Senlay. Built in Vietnam.</p>
   </footer>
 
   <script>

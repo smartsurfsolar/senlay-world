@@ -667,13 +667,25 @@
       <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.l-nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav class="l-nav">
         <a href="/">Home</a>
-        <a href="docs.html">Docs</a>
-        <a href="demo">Demo</a>
-        <a href="agents">For Agents</a>
-        <a href="founder.html" class="active">Founder</a>
+        <details class="nav-menu">
+          <summary>Product</summary>
+          <div class="nav-menu-panel">
+            <a href="demo">Demo</a>
+            <a href="agents">For Agents</a>
+            <a href="docs.html">Docs</a>
+          </div>
+        </details>
+        <a href="pricing.html">Pricing</a>
+        <details class="nav-menu">
+          <summary>Company</summary>
+          <div class="nav-menu-panel">
+            <a href="founder.html">Founder</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="support.html">Contact</a>
+          </div>
+        </details>
         <a href="login.html">Sign In</a>
-        <a href="register.html" class="nav-cta">Get API Key</a>
-        <a href="dashboard.html">Dashboard</a>
+        <a href="pricing.html" class="nav-cta">Get API Key</a>
       </nav>
     </div>
   </header>
@@ -984,41 +996,54 @@
         <div class="cta-actions">
           <a href="https://wa.me/84333380168" target="_blank" rel="noopener" class="btn-secondary">Contact Viktor</a>
           <a href="docs.html" class="btn-secondary">Read Docs</a>
-          <a href="register.html" class="btn-primary">Get API Key</a>
+          <a href="pricing.html" class="btn-primary">Get API Key</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="l-footer">
-    <p class="footer-brand">SENLAY - Physical-World Context API for AI Agents</p>
-    <p class="footer-sub">Giving AI agents live physical-world context.</p>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="docs.html">Docs</a>
-      <a href="demo">Demo</a>
-      <a href="agents">For Agents</a>
-      <a href="moltbook">For Moltbook</a>
-      <a href="founder.html">Founder</a>
-      <a href="register.html">Register</a>
-      <a href="login.html">Sign In</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="support.html">Contact</a>
+    <div class="footer-shell">
+      <div class="footer-main">
+        <div class="footer-about">
+          <p class="footer-brand">SENLAY</p>
+          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
+          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+        </div>
+        <div class="footer-nav-grid">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="demo">Demo</a>
+            <a href="docs.html">Docs</a>
+            <a href="agents">For Agents</a>
+            <a href="pricing.html">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="founder.html">Founder</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="support.html">Contact</a>
+            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
+            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Open beta for developers, pilots, and agent builders.</span>
+        <div class="footer-bottom-links">
+          <a href="pricing.html">API Access</a>
+          <a href="login.html">Sign In</a>
+          <a href="support.html">Pilot Contact</a>
+        </div>
+      </div>
+      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
     </div>
-    <div class="footer-contact">
-      <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
-      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
-      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
-      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
-      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">GitHub: Platform</a>
-      <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">GitHub: Website</a>
-    </div>
-    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
   </footer>
 </body>
 </html>

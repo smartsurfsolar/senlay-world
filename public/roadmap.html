@@ -40,12 +40,25 @@
       <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
       <nav class="l-nav">
         <a href="/">Home</a>
-        <a href="docs.html">Docs</a>
-        <a href="demo">Demo</a>
+        <details class="nav-menu">
+          <summary>Product</summary>
+          <div class="nav-menu-panel">
+            <a href="demo">Demo</a>
+            <a href="agents">For Agents</a>
+            <a href="docs.html">Docs</a>
+          </div>
+        </details>
         <a href="pricing.html">Pricing</a>
-        <a href="founder.html">Founder</a>
-      <a href="login.html">Sign In</a>
-        <a href="register.html" class="nav-cta">Get API Key</a>
+        <details class="nav-menu">
+          <summary>Company</summary>
+          <div class="nav-menu-panel">
+            <a href="founder.html">Founder</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="support.html">Contact</a>
+          </div>
+        </details>
+        <a href="login.html">Sign In</a>
+        <a href="pricing.html" class="nav-cta">Get API Key</a>
       </nav>
     </div>
   </header>
@@ -149,37 +162,54 @@
       <h4>Build With Senlay</h4>
       <p>If you are building drone, outdoor work, agriculture, marine, or safety software, talk to us about beta pilot access.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a href="register.html" class="btn-primary" style="text-decoration:none">Get Free API Key</a>
+        <a href="pricing.html" class="btn-primary" style="text-decoration:none">Get Free API Key</a>
         <a href="support.html" class="btn-secondary" style="text-decoration:none">Talk to Senlay</a>
       </div>
     </div>
   </div>
 
   <footer class="l-footer">
-    <p class="footer-brand">SENLAY</p>
-    <p class="footer-sub">Giving AI agents live physical-world context.</p>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="founder.html">Founder</a>
-      <a href="login.html">Sign In</a>
-      <a href="docs.html">Docs</a>
-      <a href="demo">Demo</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="support.html">Contact</a>
+    <div class="footer-shell">
+      <div class="footer-main">
+        <div class="footer-about">
+          <p class="footer-brand">SENLAY</p>
+          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
+          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
+        </div>
+        <div class="footer-nav-grid">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="demo">Demo</a>
+            <a href="docs.html">Docs</a>
+            <a href="agents">For Agents</a>
+            <a href="pricing.html">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="founder.html">Founder</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="support.html">Contact</a>
+            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
+            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Open beta for developers, pilots, and agent builders.</span>
+        <div class="footer-bottom-links">
+          <a href="pricing.html">API Access</a>
+          <a href="login.html">Sign In</a>
+          <a href="support.html">Pilot Contact</a>
+        </div>
+      </div>
+      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
     </div>
-    <div class="footer-contact">
-      <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-      <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp: +84 3333 801 68</a>
-      <a href="tel:+84333380168">Telegram / phone: +84 3333 801 68</a>
-      <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.moltbook.com/u/senlayfather" target="_blank" rel="noopener">Moltbook</a>
-      <a href="https://x.com/SenlayDaddy" target="_blank" rel="noopener">X</a>
-      <a href="https://www.facebook.com/ViktorKryvotsiuk" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">GitHub: Platform</a>
-      <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">GitHub: Website</a>
-    </div>
-    <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
   </footer>
 </body>
 </html>

@@ -114,12 +114,12 @@
         <p style="font-size:13px;color:var(--text2);margin-bottom:12px">See exactly what your AI will receive. Pick a preset or enter coordinates.</p>
         <div class="preset-row">
           <span class="preset-label">Presets:</span>
-          <button class="preset-btn" onclick="fillPreset(36.01,-5.60,'Tarifa, Spain')">&#127932; Tarifa</button>
-          <button class="preset-btn" onclick="fillPreset(15.88,108.34,'Hoi An, Vietnam')">&#127965; Hoi An</button>
-          <button class="preset-btn" onclick="fillPreset(39.60,-9.07,'Nazaré, Portugal')">&#127754; Nazaré</button>
-          <button class="preset-btn" onclick="fillPreset(35.45,139.65,'Tokyo Bay, Japan')">&#127750; Tokyo Bay</button>
-          <button class="preset-btn" onclick="fillPreset(-33.92,18.42,'Cape Town, SA')">&#127956; Cape Town</button>
-          <button class="preset-btn" onclick="fillPreset(64.13,-21.94,'Reykjavik, Iceland')">&#127757; Reykjavik</button>
+          <button class="preset-btn" onclick="fillPreset(36.01,-5.60,'Tarifa, Spain')">Tarifa</button>
+          <button class="preset-btn" onclick="fillPreset(15.88,108.34,'Hoi An, Vietnam')">Hoi An</button>
+          <button class="preset-btn" onclick="fillPreset(39.60,-9.07,'Nazaré, Portugal')">Nazaré</button>
+          <button class="preset-btn" onclick="fillPreset(35.45,139.65,'Tokyo Bay, Japan')">Tokyo Bay</button>
+          <button class="preset-btn" onclick="fillPreset(-33.92,18.42,'Cape Town, SA')">Cape Town</button>
+          <button class="preset-btn" onclick="fillPreset(64.13,-21.94,'Reykjavik, Iceland')">Reykjavik</button>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <input type="number" id="sandboxLat" placeholder="Latitude" step="0.001" value="36.01" style="width:120px;padding:8px 12px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none">
@@ -133,7 +133,7 @@
 
       <!-- Waitlist -->
       <div class="waitlist-box" style="margin-top:20px">
-        <h4>&#x1F680; Pro Tier &mdash; Coming Soon</h4>
+        <h4>Pro Tier &mdash; Coming Soon</h4>
         <p>Higher rate limits, premium sensor data, historical data access, and webhook notifications for condition changes.</p>
         <div class="waitlist-row">
           <input type="email" id="waitlistEmail" placeholder="Your email" style="padding:10px 14px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:14px;outline:none">
@@ -259,7 +259,7 @@
         }
 
         // Meta info
-        let metaHtml = `<span>&#x23F1; ${elapsed}ms</span><span>Sources: ${data.active_sources || '?'}</span>`;
+        let metaHtml = `<span>Latency: ${elapsed}ms</span><span>Sources: ${data.active_sources || '?'}</span>`;
         if (data.health) {
           const ok = data.health.filter(h => h.has_data).length;
           const total = data.health.length;
@@ -283,7 +283,7 @@
       try {
         const res = await fetch('/api/waitlist', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({email}) });
         const data = await res.json();
-        document.getElementById('waitlistMsg').innerHTML = data.success ? '<span style="color:var(--primary)">&#x2713; Added to Pro waitlist!</span>' : `<span style="color:var(--danger)">${data.error}</span>`;
+        document.getElementById('waitlistMsg').innerHTML = data.success ? '<span style="color:var(--primary)">Added to Pro waitlist.</span>' : `<span style="color:var(--danger)">${data.error}</span>`;
       } catch (e) {
         document.getElementById('waitlistMsg').innerHTML = '<span style="color:var(--danger)">Error</span>';
       }

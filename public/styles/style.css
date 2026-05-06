@@ -219,7 +219,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
 .preset-more { margin: 6px 0 8px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; }
 .preset-more summary { cursor: pointer; list-style: none; color: var(--text2); font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
 .preset-more summary::-webkit-details-marker { display: none; }
-.preset-more summary::before { content: '▸'; color: var(--accent); transition: transform 0.2s ease; }
+.preset-more summary::before { content: ''; display: none; }
 .preset-more[open] summary::before { transform: rotate(90deg); }
 .preset-grid-more { margin-top: 10px; }
 
@@ -247,7 +247,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); line
 .status-bar { display: flex; align-items: center; gap: 10px; padding: 10px 24px; background: var(--surface);
   border-bottom: 1px solid rgba(255,255,255,0.06); cursor: pointer; font-size: 13px; color: var(--text2); }
 .status-bar.hidden { display: none; }
-.status-expand { margin-left: auto; font-size: 10px; }
+.status-expand { margin-left: auto; font-size: 12px; color: var(--text2); }
 
 /* ── MAIN AREA ── */
 .main-area { padding: 0 24px 24px; flex: 1; }

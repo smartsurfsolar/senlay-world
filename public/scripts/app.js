@@ -156,7 +156,7 @@ function applyLocation(lat, lng, name) {
   }
   const display = document.getElementById('locationDisplay');
   if (display) {
-    display.textContent = `📍 ${name} (${lat}, ${lng})`;
+    display.textContent = `${name} (${lat}, ${lng})`;
   }
   const spotSelect = document.getElementById('spotSelect');
   if (spotSelect) spotSelect.value = '';
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.lat = +pos.coords.latitude.toFixed(4);
         state.lng = +pos.coords.longitude.toFixed(4);
         state.locationName = `My Location`;
-        document.getElementById('locationDisplay').textContent = `📍 My Location (${state.lat}, ${state.lng})`;
+        document.getElementById('locationDisplay').textContent = `My Location (${state.lat}, ${state.lng})`;
         // Reverse geocode for nicer name
         fetch(`https://nominatim.openstreetmap.org/reverse?lat=${state.lat}&lon=${state.lng}&format=json&zoom=10`, { headers: { 'User-Agent': 'senlay.world' } })
           .then(r => r.json())
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const parts = [data.address.city || data.address.town || data.address.village, data.address.country].filter(Boolean);
               if (parts.length) {
                 state.locationName = parts.join(', ');
-                document.getElementById('locationDisplay').textContent = `📍 ${state.locationName} (${state.lat}, ${state.lng})`;
+                document.getElementById('locationDisplay').textContent = `${state.locationName} (${state.lat}, ${state.lng})`;
               }
             }
           })
@@ -445,7 +445,7 @@ function onFieldChange() {
   if (state.connected) {
     document.getElementById('chatMessages').innerHTML = '';
     state.messages = [];
-    addSystemMessage(`✦ Field changed to ${FIELD_LABELS[state.field] || state.field}. Ask me anything — I'm now tuned to this use case.`);
+    addSystemMessage(`Field changed to ${FIELD_LABELS[state.field] || state.field}. Ask me anything — I'm now tuned to this use case.`);
   }
   updateDemoGuide();
 }
@@ -524,21 +524,21 @@ async function searchCity() {
   const query = input.value.trim();
   if (!query) return;
   input.disabled = true;
-  document.getElementById('locationDisplay').textContent = '🔍 Searching...';
+  document.getElementById('locationDisplay').textContent = 'Searching...';
   try {
     const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`, {
       headers: { 'User-Agent': 'senlay.world' }
     });
     const data = await res.json();
     if (!data || data.length === 0) {
-      document.getElementById('locationDisplay').textContent = '❌ Place not found. Try another name.';
+      document.getElementById('locationDisplay').textContent = 'Place not found. Try another name.';
       input.disabled = false;
       return;
     }
     const place = data[0];
     applyLocation(parseFloat(place.lat), parseFloat(place.lon), place.display_name.split(',').slice(0, 2).join(',').trim());
   } catch (e) {
-    document.getElementById('locationDisplay').textContent = '❌ Search failed: ' + escHtml(e.message);
+    document.getElementById('locationDisplay').textContent = 'Search failed: ' + escHtml(e.message);
   }
   input.disabled = false;
 }
@@ -578,7 +578,7 @@ async function connectToPWM() {
     state.pwmFetchedAt = Date.now();
 
     statusEl.className = 'conn-status connected';
-    statusEl.innerHTML = '<span class="conn-dot"></span> ✓ ' + providerName + ' is connected to physical context';
+    statusEl.innerHTML = '<span class="conn-dot"></span> ' + providerName + ' is connected to physical context';
 
     const details = document.getElementById('connDetails');
     details.classList.remove('hidden');
@@ -597,7 +597,7 @@ async function connectToPWM() {
     document.getElementById('chatMessages').innerHTML = '';
     state.messages = [];
     const fieldLabel = FIELD_LABELS[state.field] || state.field;
-    addSystemMessage(`✦ Senlay connected at ${state.locationName}. ${state.activeSources} sensor sources active. Mode: ${fieldLabel}. What would you like to know?`);
+    addSystemMessage(`Senlay connected at ${state.locationName}. ${state.activeSources} sensor sources active. Mode: ${fieldLabel}. What would you like to know?`);
     updateDemoGuide();
 
   } catch (e) {
@@ -636,7 +636,7 @@ function renderSensorFeed() {
   const atmSource = layers.atmosphere?.current_source;
   if (atm) {
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">🌬️ ATMOSPHERE ${sourceBadge(atmSource)}</div>
+      <div class="sensor-section-title">ATMOSPHERE ${sourceBadge(atmSource)}</div>
       <div class="sensor-row"><span class="sense-verb">Wind:</span> <span class="sense-value">${cWind(atm.wind_speed_10m)} ${uL('wind')} from ${atm.wind_direction_10m}° (gusts ${cWind(atm.wind_gusts_10m)})</span></div>
       <div class="sensor-row"><span class="sense-verb">Temperature:</span> <span class="sense-value">${cTemp(atm.temperature_2m)}${uL('temp')} (feels ${cTemp(atm.apparent_temperature)}${uL('temp')})</span></div>
       <div class="sensor-row"><span class="sense-verb">Reading:</span> <span class="sense-value">Pressure ${cPress(atm.pressure_msl)} ${uL('press')}</span></div>
@@ -650,10 +650,10 @@ function renderSensorFeed() {
   const hydSource = layers.hydrosphere?.current_source;
   if (hyd && hyd.wave_height != null) {
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">🌊 HYDROSPHERE ${sourceBadge(hydSource)}</div>
+      <div class="sensor-section-title">HYDROSPHERE ${sourceBadge(hydSource)}</div>
       <div class="sensor-row"><span class="sense-verb">Waves:</span> <span class="sense-value">${cWave(hyd.wave_height)} ${uL('wave')} (${hyd.wave_period}s period)</span></div>`;
     if (hyd.swell_wave_height != null) {
-      html += `<div class="sensor-row"><span class="sense-verb">Detecting:</span> <span class="sense-value">Swell ${cWave(hyd.swell_wave_height)} ${uL('wave')} from ${hyd.swell_wave_direction}°</span></div>`;
+      html += `<div class="sensor-row"><span class="sense-verb">Swell:</span> <span class="sense-value">${cWave(hyd.swell_wave_height)} ${uL('wave')} from ${hyd.swell_wave_direction}°</span></div>`;
     }
     if (hyd.water_temperature_c != null) {
       html += `<div class="sensor-row"><span class="sense-verb">Water:</span> <span class="sense-value">${cTemp(hyd.water_temperature_c)}${uL('temp')}</span></div>`;
@@ -669,15 +669,15 @@ function renderSensorFeed() {
       ? `Depth ${cElev(Math.abs(ter.elevation_at_point))} ${uL('elev')} (ocean)`
       : `Elevation ${cElev(ter.elevation_at_point)} ${uL('elev')}`;
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">🏔️ TERRAIN <span class="badge-model">MODEL</span></div>
-      <div class="sensor-row"><span class="sense-verb">Detecting:</span> <span class="sense-value">${label}</span></div>
+      <div class="sensor-section-title">TERRAIN <span class="badge-model">MODEL</span></div>
+      <div class="sensor-row"><span class="sense-verb">Terrain:</span> <span class="sense-value">${label}</span></div>
       <div class="sensor-row"><span class="sense-verb">Profile:</span> <span class="sense-value">${ter.depth_profile.map(d => cElev(d) + uL('elev')).join(', ')}</span></div>
     </div>`;
   }
 
   // Satellite
   html += `<div class="sensor-section">
-    <div class="sensor-section-title">🛰️ SATELLITE</div>`;
+    <div class="sensor-section-title">SATELLITE</div>`;
   if (state.satellite?.google_satellite_url) {
     html += `<img src="${escHtml(state.satellite.google_satellite_url)}" style="width:100%;border-radius:6px;margin:6px 0" alt="Satellite view">`;
   } else if (state.lat && state.lng) {
@@ -698,10 +698,10 @@ function renderSensorFeed() {
   const aq = layers.air_quality?.current;
   const aqSource = layers.air_quality?.current_source;
   if (aq) {
-    const uvWarn = aq.uv_index >= 8 ? ' ⚠️ Very High' : aq.uv_index >= 6 ? ' ⚠️ High' : '';
+    const uvWarn = aq.uv_index >= 8 ? ' Very High' : aq.uv_index >= 6 ? ' High' : '';
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">🫁 AIR QUALITY ${sourceBadge(aqSource, 'FUSED')}</div>
-      <div class="sensor-row"><span class="sense-verb">Monitoring:</span> <span class="sense-value">AQI ${aq.european_aqi} | PM2.5: ${aq.pm2_5} µg/m³</span></div>
+      <div class="sensor-section-title">AIR QUALITY ${sourceBadge(aqSource, 'FUSED')}</div>
+      <div class="sensor-row"><span class="sense-verb">AQI:</span> <span class="sense-value">${aq.european_aqi} | PM2.5: ${aq.pm2_5} µg/m³</span></div>
       <div class="sensor-row"><span class="sense-verb">UV Index:</span> <span class="sense-value">${aq.uv_index}${escHtml(uvWarn)}</span></div>
       <div class="sensor-row"><span class="sense-verb">Source:</span> <span class="sense-value">${escHtml(sourceSummary(aqSource))}</span></div>
     </div>`;
@@ -712,9 +712,9 @@ function renderSensorFeed() {
   const alerts = ext.weather_alerts || [];
   if (alerts.length > 0) {
     html += `<div class="sensor-section" style="border-left:3px solid var(--red)">
-      <div class="sensor-section-title">🚨 WEATHER ALERTS <span class="badge-hw">LIVE</span></div>`;
+      <div class="sensor-section-title">WEATHER ALERTS <span class="badge-hw">LIVE</span></div>`;
     for (const a of alerts.slice(0, 3)) {
-      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--red)">⚠️ ${escHtml(a.event || a.headline || 'Alert')}</span></div>`;
+      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--red)">${escHtml(a.event || a.headline || 'Alert')}</span></div>`;
       if (a.area) html += `<div class="sensor-row" style="padding-left:20px"><span class="sense-value" style="font-size:11px">${escHtml(a.area)}</span></div>`;
     }
     html += `</div>`;
@@ -724,7 +724,7 @@ function renderSensorFeed() {
   const windSensors = ext.wind_sensors || [];
   if (windSensors.length > 0) {
     html += `<div class="sensor-section hw-border">
-      <div class="sensor-section-title">📡 LIVE WIND SENSORS <span class="badge-hw">HARDWARE</span></div>`;
+      <div class="sensor-section-title">LIVE WIND SENSORS <span class="badge-hw">HARDWARE</span></div>`;
     for (const s of windSensors.slice(0, 3)) {
       html += `<div class="sensor-row"><span class="sense-verb">[${escHtml(s.source.toUpperCase())}]</span> <span class="sense-value">${escHtml(s.name)} (${s.distance_km}km)</span></div>`;
       if (s.wind_speed_kmh != null) {
@@ -737,18 +737,18 @@ function renderSensorFeed() {
     }
     if (ext.wind_cross_reference) {
       const xr = ext.wind_cross_reference;
-      html += `<div class="sensor-row" style="margin-top:6px"><span class="sense-verb">Cross-ref:</span> <span class="sense-value">${xr.sensor_count} sensors avg ${cWind(xr.average_kmh)} ${uL('wind')} (${cWind(xr.min_kmh)}-${cWind(xr.max_kmh)}) ✓</span></div>`;
+      html += `<div class="sensor-row" style="margin-top:6px"><span class="sense-verb">Cross-ref:</span> <span class="sense-value">${xr.sensor_count} sensors avg ${cWind(xr.average_kmh)} ${uL('wind')} (${cWind(xr.min_kmh)}-${cWind(xr.max_kmh)})</span></div>`;
     }
     html += `</div>`;
   } else {
-    html += `<div class="sensor-section"><div class="sensor-section-title">📡 LIVE WIND SENSORS</div><div class="sensor-row"><span class="sense-value" style="color:var(--text2)">No sensors nearby. Using model data.</span></div></div>`;
+    html += `<div class="sensor-section"><div class="sensor-section-title">LIVE WIND SENSORS</div><div class="sensor-row"><span class="sense-value" style="color:var(--text2)">No sensors nearby. Using model data.</span></div></div>`;
   }
 
   // ── EXTENDED: Ocean Buoys ──
   const buoys = ext.buoys || [];
   if (buoys.length > 0) {
     html += `<div class="sensor-section hw-border">
-      <div class="sensor-section-title">🔴 OCEAN BUOY <span class="badge-hw">HARDWARE</span></div>`;
+      <div class="sensor-section-title">OCEAN BUOY <span class="badge-hw">HARDWARE</span></div>`;
     for (const b of buoys.slice(0, 2)) {
       html += `<div class="sensor-row"><span class="sense-verb">Buoy ${escHtml(b.station_id)}:</span> <span class="sense-value">${escHtml(b.name)} (${b.distance_km}km)</span></div>`;
       if (b.wave_height_m != null) html += `<div class="sensor-row" style="padding-left:36px"><span class="sense-value">Waves: ${cWave(b.wave_height_m)} ${uL('wave')} (${b.wave_period_s}s)</span></div>`;
@@ -762,7 +762,7 @@ function renderSensorFeed() {
   const waterTemps = ext.water_temperature || [];
   if (waterTemps.length > 0) {
     html += `<div class="sensor-section hw-border">
-      <div class="sensor-section-title">🌡️ WATER TEMP <span class="badge-hw">HARDWARE</span></div>`;
+      <div class="sensor-section-title">WATER TEMP <span class="badge-hw">HARDWARE</span></div>`;
     for (const w of waterTemps.slice(0, 2)) {
       const waterTemp = w.water_temp_c != null ? w.water_temp_c : w.temp_c;
       html += `<div class="sensor-row"><span class="sense-verb">${escHtml(w.name || 'Station')}:</span> <span class="sense-value">${cTemp(waterTemp)}${uL('temp')} (${w.distance_km}km)</span></div>`;
@@ -774,7 +774,7 @@ function renderSensorFeed() {
   const tides = ext.tides;
   if (tides) {
     html += `<div class="sensor-section hw-border">
-      <div class="sensor-section-title">🌊 TIDE <span class="badge-hw">HARDWARE</span></div>
+      <div class="sensor-section-title">TIDE <span class="badge-hw">HARDWARE</span></div>
       <div class="sensor-row"><span class="sense-verb">Station:</span> <span class="sense-value">${escHtml(tides.name)} (${tides.distance_km}km)</span></div>`;
     if (tides.current_level_m != null) html += `<div class="sensor-row"><span class="sense-verb">Level:</span> <span class="sense-value">${cElev(tides.current_level_m)} ${uL('elev')} MLLW</span></div>`;
     if (tides.next_high) html += `<div class="sensor-row"><span class="sense-verb">Next high:</span> <span class="sense-value">${escHtml(tides.next_high.time)} (${cElev(tides.next_high.height_m)} ${uL('elev')})</span></div>`;
@@ -786,12 +786,12 @@ function renderSensorFeed() {
   const space = ext.space_weather;
   if (space) {
     const kp = space.kp_index;
-    const kpLabel = kp == null ? 'N/A' : kp < 3 ? `Kp ${kp} (Quiet)` : kp < 5 ? `Kp ${kp} (Unsettled)` : `Kp ${kp} ⚠️ STORM`;
+    const kpLabel = kp == null ? 'N/A' : kp < 3 ? `Kp ${kp} (Quiet)` : kp < 5 ? `Kp ${kp} (Unsettled)` : `Kp ${kp} STORM`;
     const kpColor = kp >= 5 ? 'var(--yellow)' : 'inherit';
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">☀️ SPACE WEATHER</div>
+      <div class="sensor-section-title">SPACE WEATHER</div>
       <div class="sensor-row"><span class="sense-verb">Geomagnetic:</span> <span class="sense-value" style="color:${kpColor}">${escHtml(kpLabel)}</span></div>`;
-    if (space.aurora_visibility) html += `<div class="sensor-row"><span class="sense-value" style="color:var(--green)">🟢 Aurora possible — ${escHtml(space.aurora_visibility)}</span></div>`;
+    if (space.aurora_visibility) html += `<div class="sensor-row"><span class="sense-value" style="color:var(--green)">Aurora possible — ${escHtml(space.aurora_visibility)}</span></div>`;
     if (space.solar_wind_speed) html += `<div class="sensor-row"><span class="sense-verb">Solar wind:</span> <span class="sense-value">${space.solar_wind_speed} km/s</span></div>`;
     html += `</div>`;
   }
@@ -800,9 +800,9 @@ function renderSensorFeed() {
   const events = ext.natural_events || [];
   if (events.length > 0) {
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">🌍 NATURAL EVENTS</div>`;
+      <div class="sensor-section-title">NATURAL EVENTS</div>`;
     for (const e of events.slice(0, 3)) {
-      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--yellow)">⚡ ${escHtml(e.title || e.type)} (${e.distance_km || '?'}km)</span></div>`;
+      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--yellow)">${escHtml(e.title || e.type)} (${e.distance_km || '?'}km)</span></div>`;
     }
     html += `</div>`;
   }
@@ -812,9 +812,9 @@ function renderSensorFeed() {
   const activeVolcanoes = volcanoes.filter(v => v.alert_level && v.alert_level !== 'Normal');
   if (activeVolcanoes.length > 0) {
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">🌋 VOLCANOES</div>`;
+      <div class="sensor-section-title">VOLCANOES</div>`;
     for (const v of activeVolcanoes.slice(0, 2)) {
-      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--red)">🔴 ${escHtml(v.name)} — ${escHtml(v.alert_level)} (${v.distance_km}km)</span></div>`;
+      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--red)">${escHtml(v.name)} — ${escHtml(v.alert_level)} (${v.distance_km}km)</span></div>`;
     }
     html += `</div>`;
   }
@@ -823,7 +823,7 @@ function renderSensorFeed() {
   const radiation = ext.radiation || [];
   if (radiation.length > 0) {
     html += `<div class="sensor-section">
-      <div class="sensor-section-title">☢️ RADIATION</div>`;
+      <div class="sensor-section-title">RADIATION</div>`;
     for (const r of radiation.slice(0, 2)) {
       html += `<div class="sensor-row"><span class="sense-verb">${escHtml(r.name || 'Sensor')}:</span> <span class="sense-value">${r.value} ${escHtml(r.unit || 'cpm')} (${r.distance_km}km)</span></div>`;
     }
@@ -833,24 +833,24 @@ function renderSensorFeed() {
   // ── EXTENDED: Seismic ──
   const quakes = ext.earthquakes || [];
   html += `<div class="sensor-section">
-    <div class="sensor-section-title">🌋 SEISMIC</div>`;
+    <div class="sensor-section-title">SEISMIC</div>`;
   if (quakes.length > 0) {
     for (const q of quakes.slice(0, 2)) {
-      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--yellow)">⚠️ M${q.magnitude} — ${q.distance_km}km away</span></div>`;
+      html += `<div class="sensor-row"><span class="sense-value" style="color:var(--yellow)">M${q.magnitude} — ${q.distance_km}km away</span></div>`;
     }
   } else {
-    html += `<div class="sensor-row"><span class="sense-value">No activity within 500km ✓</span></div>`;
+    html += `<div class="sensor-row"><span class="sense-value">No activity within 500km</span></div>`;
   }
   html += `</div>`;
 
   // ── EXTENDED: Fires ──
   const fires = ext.fires || [];
   html += `<div class="sensor-section">
-    <div class="sensor-section-title">🔥 FIRES</div>`;
+    <div class="sensor-section-title">FIRES</div>`;
   if (fires.length > 0) {
-    html += `<div class="sensor-row"><span class="sense-value" style="color:var(--red)">⚠️ ${fires.length} active fire(s) within 100km</span></div>`;
+    html += `<div class="sensor-row"><span class="sense-value" style="color:var(--red)">${fires.length} active fire(s) within 100km</span></div>`;
   } else {
-    html += `<div class="sensor-row"><span class="sense-value">No fires within 100km ✓</span></div>`;
+    html += `<div class="sensor-row"><span class="sense-value">No fires within 100km</span></div>`;
   }
   html += `</div>`;
 
@@ -858,12 +858,12 @@ function renderSensorFeed() {
   const healthData = state.health || [];
   if (healthData.length > 0) {
     html += `<div class="sensor-section" style="border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;margin-top:12px">
-      <div class="sensor-section-title">⚡ SYSTEM HEALTH</div>`;
+      <div class="sensor-section-title">SYSTEM HEALTH</div>`;
     for (const h of healthData) {
-      const icon = h.status === 'ok' && h.has_data ? '🟢' : h.status === 'ok' ? '⚪' : '🔴';
+      const statusLabel = h.status === 'ok' && h.has_data ? 'OK' : h.status === 'ok' ? 'NO DATA' : 'ERROR';
       const latColor = h.latency_ms < 500 ? 'var(--green)' : h.latency_ms < 2000 ? 'var(--yellow)' : 'var(--red)';
       html += `<div class="sensor-row" style="display:flex;justify-content:space-between;padding-right:8px">
-        <span>${icon} ${escHtml(h.source.replace(/_/g,' '))}</span>
+        <span>${statusLabel} ${escHtml(h.source.replace(/_/g,' '))}</span>
         <span style="color:${latColor};font-size:11px">${h.latency_ms}ms</span>
       </div>`;
     }
@@ -1036,8 +1036,8 @@ async function loadTicker() {
     const items = conditions.map(c => {
       const wind = c.wind_speed != null ? `${c.wind_speed}km/h` : '--';
       const temp = c.temperature != null ? `${c.temperature}°C` : '';
-      const wave = c.wave_height != null ? `🌊${c.wave_height}m` : '';
-      const warn = (c.wave_height && c.wave_height > 3) ? ' ⚠️' : '';
+      const wave = c.wave_height != null ? `${c.wave_height}m waves` : '';
+      const warn = (c.wave_height && c.wave_height > 3) ? ' high waves' : '';
       const detail = wave || temp; // show waves for ocean, temp for land
       return `<span><span class="spot-name">${escHtml(c.name)}</span> ${escHtml(wind)} ${escHtml(detail)}${warn}</span>`;
     }).join('');

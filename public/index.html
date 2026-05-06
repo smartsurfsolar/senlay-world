@@ -44,7 +44,7 @@
       <div class="hero-buttons">
         <a href="register.html" class="btn-primary">Get API Key</a>
         <a href="docs.html" class="btn-secondary">View Documentation</a>
-        <a href="demo" class="btn-ghost">Try Demo &rarr;</a>
+        <a href="demo" class="btn-ghost">Try Demo</a>
       </div>
 
       <!-- Live counter -->
@@ -69,15 +69,12 @@
         <div class="flow-box flow-sensors">
           <div class="flow-label">Sensors</div>
           <div class="flow-items">METAR &middot; Buoys &middot; Tides<br>Models &middot; Satellite &middot; USGS</div>
-          <div class="flow-dots"></div>
         </div>
-        <div class="flow-arrow">&rarr;</div>
         <div class="flow-box flow-senlay">
           <div class="flow-label">SENLAY</div>
           <div class="flow-items">Fusion Engine<br>Physical World Model</div>
           <div class="flow-pulse"></div>
         </div>
-        <div class="flow-arrow">&rarr;</div>
         <div class="flow-box flow-ai">
           <div class="flow-label">AI Agent</div>
           <div class="flow-items">Claude &middot; GPT<br>Gemini &middot; Any LLM</div>
@@ -122,37 +119,31 @@
 
       <div class="cap-grid">
         <div class="cap-card">
-          <div class="cap-icon">&#x1F321;&#xFE0F;</div>
           <h4>Atmospheric Sensing</h4>
           <p>Wind speed, gusts, direction, temperature, pressure, humidity, precipitation. 24-hour projection data.</p>
           <span class="cap-source">Hardware-first where available, models as fallback</span>
         </div>
         <div class="cap-card">
-          <div class="cap-icon">&#x1F30A;</div>
           <h4>Hydrosphere Intelligence</h4>
           <p>Wave height, swell energy, period, direction, tides, water temperature, ocean currents.</p>
           <span class="cap-source">Marine models + buoys + tide and water-temp stations</span>
         </div>
         <div class="cap-card">
-          <div class="cap-icon">&#x1F3D4;&#xFE0F;</div>
           <h4>Lithosphere Awareness</h4>
           <p>9-point terrain profiles, elevation, ocean depth, bathymetry, reef detection, slope analysis.</p>
           <span class="cap-source">Global elevation models</span>
         </div>
         <div class="cap-card">
-          <div class="cap-icon">&#x1F32B;&#xFE0F;</div>
           <h4>Air Quality &amp; Safety</h4>
           <p>PM2.5, PM10, AQI index, UV exposure levels, fire proximity alerts, seismic activity.</p>
           <span class="cap-source">Community AQ sensors + radiation + fire + hazard feeds</span>
         </div>
         <div class="cap-card">
-          <div class="cap-icon">&#x1F6F0;&#xFE0F;</div>
           <h4>Satellite Observation</h4>
           <p>Cloud-free imagery metadata, land cover changes, coastline monitoring, vegetation analysis.</p>
           <span class="cap-source">Copernicus Sentinel-2</span>
         </div>
         <div class="cap-card">
-          <div class="cap-icon">&#x1F50E;</div>
           <h4>Provenance &amp; Confidence</h4>
           <p>Every value carries its source type, station id, distance, timestamp, and confidence. Model vs hardware disagreement is surfaced, not hidden.</p>
           <span class="cap-source">current_source + freshness + evidence metadata</span>
@@ -236,17 +227,14 @@
 
       <div class="trust-grid" style="margin-top:28px">
         <div class="trust-card">
-          <div class="trust-icon">&#x1F4E1;</div>
           <div class="trust-tier hw">Measured Telemetry</div>
           <div class="trust-desc">Physical instruments measuring reality. METAR stations, ocean buoys, tide gauges, AQ monitors. Ground data, subject to distance and freshness.</div>
         </div>
         <div class="trust-card">
-          <div class="trust-icon">&#x1F6F0;&#xFE0F;</div>
           <div class="trust-tier sat">Satellite Observation</div>
           <div class="trust-desc">Remote observation. Sentinel-2 imagery, cloud cover, land use, coastline change. Broad coverage, typically delayed.</div>
         </div>
         <div class="trust-card">
-          <div class="trust-icon">&#x1F9EE;</div>
           <div class="trust-tier model">Model / Forecast</div>
           <div class="trust-desc">Physics-based predictions. Open-Meteo, GFS, ECMWF. Global coverage but estimates, not measurements.</div>
         </div>
@@ -259,7 +247,7 @@
   <section class="section section-dark">
     <div class="container">
       <h3 class="section-title">From Raw Data to Recommended Action</h3>
-      <p class="section-sub">Senlay moves agents from numbers to meaning: <strong style="color:var(--text)">Condition &rarr; Evidence &rarr; Confidence &rarr; Risk &rarr; Action</strong>. Condition, evidence and confidence are live today. Deeper risk and action reasoning is shipping with the Modifier Engine and domain packs.</p>
+      <p class="section-sub">Senlay moves agents from numbers to meaning: <strong style="color:var(--text)">Condition, Evidence, Confidence, Risk, Action</strong>. Condition, evidence and confidence are live today. Deeper risk and action reasoning is shipping with the Modifier Engine and domain packs.</p>
       <div class="decision-pipeline">
         <div class="pipeline-flow">
           <div class="pipeline-step">
@@ -308,33 +296,27 @@
 
       <div class="use-grid">
         <div class="use-card">
-          <div class="use-icon">&#x1F3C4;</div>
           <h4>Water Sports Intelligence</h4>
           <p>AI coaches grounded in live wind, wave, and sensor data. Our live demo shows, field by field, when nearby hardware stations disagree with the model in real time.</p>
-          <a href="demo" class="use-link">Try Live Demo &rarr;</a>
+          <a href="demo" class="use-link">Try Live Demo</a>
         </div>
         <div class="use-card">
-          <div class="use-icon">&#x1F681;</div>
           <h4>Drone Operations</h4>
           <p>Pre-flight assessment from real sensor data. Wind at altitude, terrain clearance, air quality, and visibility &mdash; the context your flight AI needs for go/no-go decisions.</p>
         </div>
         <div class="use-card">
-          <div class="use-icon">&#x1F33E;</div>
           <h4>Precision Agriculture</h4>
           <p>Combine atmospheric data, UV, air quality, and satellite imagery for crop management. Your agricultural AI agent understands what's happening in the field right now.</p>
         </div>
         <div class="use-card">
-          <div class="use-icon">&#x1F50D;</div>
           <h4>Search &amp; Rescue</h4>
           <p>Drift prediction from currents, wind, and bathymetry. Give rescue coordination AI real-time environmental awareness.</p>
         </div>
         <div class="use-card">
-          <div class="use-icon">&#x1F916;</div>
           <h4>Autonomous Systems</h4>
           <p>Any robot, vehicle, or agent operating in the physical world needs current environmental context. Senlay is the context layer.</p>
         </div>
         <div class="use-card">
-          <div class="use-icon">&#x1F6A2;</div>
           <h4>Maritime Routing</h4>
           <p>Wave-current interaction, port-approach wind, sea-spray visibility, fuel-optimised routing. Ocean conditions AI can actually reason about.</p>
         </div>

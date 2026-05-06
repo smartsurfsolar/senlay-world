@@ -24,8 +24,8 @@ async function loadTicker() {
 
     const items = conditions.map(c => {
       const wind = c.wind_speed != null ? `${c.wind_speed}km/h` : '--';
-      const wave = c.wave_height != null ? ` 🌊${c.wave_height}m` : '';
-      const warn = (c.wave_height && c.wave_height > 3) ? ' ⚠️' : '';
+      const wave = c.wave_height != null ? ` ${c.wave_height}m waves` : '';
+      const warn = (c.wave_height && c.wave_height > 3) ? ' high waves' : '';
       return `<span><span class="spot-name">${c.name}</span> ${wind}${wave}${warn}</span>`;
     }).join('');
 
@@ -33,7 +33,7 @@ async function loadTicker() {
     document.getElementById('tickerMeta').textContent =
       `Monitoring ${conditions.length} sensor locations globally. Aggregating data from weather models, ocean buoys, METAR aviation stations, tide gauges, and air quality sensors.`;
   } catch (e) {
-    document.getElementById('tickerTrack').innerHTML = 'Sensor network active — <a href="demo" style="color:var(--primary,#10B981);text-decoration:underline">view live data in Demo &rarr;</a>';
+    document.getElementById('tickerTrack').innerHTML = 'Sensor network active — <a href="demo" style="color:var(--primary,#10B981);text-decoration:underline">view live data in Demo</a>';
   }
 }
 

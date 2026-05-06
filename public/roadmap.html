@@ -23,7 +23,6 @@
     .road-items { list-style: none; padding: 0; }
     .road-items li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text2); line-height: 1.7; }
     .road-items li:last-child { border-bottom: none; }
-    .item-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
     .item-text strong { color: var(--text); }
     .divider { height: 1px; background: var(--border); margin: 40px 0; }
     .mission { text-align: center; margin: 48px 0 16px; padding: 40px 24px; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(56,189,248,0.05)); border: 1px solid rgba(16,185,129,0.25); border-radius: 14px; }
@@ -62,16 +61,16 @@
         <span class="phase-title">Core Platform</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Physical World Model API</strong> &mdash; real-time environmental data for any coordinate on Earth via single REST endpoint</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>21 sensor sources</strong> &mdash; Open-Meteo models, METAR aviation stations, NDBC ocean buoys, NOAA tides, USGS seismic, Sentinel-2 satellite, NWS observations, air quality, water temperature, space weather, radiation monitoring, and more</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>110 curated sensor locations</strong> &mdash; global coverage across 6 continents, plus city search for any location</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Early Modifier Engine</strong> &mdash; working demos of physics-based calculators: terrain-wind hints (ridge speedup, lee rotor, valley channeling), wave modifiers (shoaling, breaking cap), temperature lapse, gust-factor analysis, hazard flags. <em>Proof-of-direction, not yet a fully validated simulation engine.</em></span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Source &amp; freshness metadata</strong> &mdash; every PWM response surfaces <code>current_source</code> per layer, including which fields were overridden by live hardware vs. model.</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Calculated Insights</strong> &mdash; Beaufort scale, gust factor analysis, wave energy index, wind trends (past + forecast), model vs hardware cross-reference, hazard flags</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Demo domain prompts</strong> &mdash; drone, outdoor work, agriculture, marine, watersports, hiking, paragliding, fishing, events, and general physical-world queries.</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Claude tool calling</strong> &mdash; AI can dynamically refresh sensors for different locations mid-conversation</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Developer tools</strong> &mdash; API key management, PWM sandbox, unit conversion (metric/imperial/knots/m&middot;s), system health monitor</span></li>
-        <li><span class="item-icon">&#x2705;</span><span class="item-text"><strong>Universal LLM compatibility</strong> &mdash; works with Claude, GPT, Gemini, Llama, Mistral &mdash; any model that accepts a system prompt</span></li>
+        <li><span class="item-text"><strong>Physical World Model API</strong> &mdash; real-time environmental data for any coordinate on Earth via single REST endpoint</span></li>
+        <li><span class="item-text"><strong>21 sensor sources</strong> &mdash; Open-Meteo models, METAR aviation stations, NDBC ocean buoys, NOAA tides, USGS seismic, Sentinel-2 satellite, NWS observations, air quality, water temperature, space weather, radiation monitoring, and more</span></li>
+        <li><span class="item-text"><strong>110 curated sensor locations</strong> &mdash; global coverage across 6 continents, plus city search for any location</span></li>
+        <li><span class="item-text"><strong>Early Modifier Engine</strong> &mdash; working demos of physics-based calculators: terrain-wind hints (ridge speedup, lee rotor, valley channeling), wave modifiers (shoaling, breaking cap), temperature lapse, gust-factor analysis, hazard flags. <em>Proof-of-direction, not yet a fully validated simulation engine.</em></span></li>
+        <li><span class="item-text"><strong>Source &amp; freshness metadata</strong> &mdash; every PWM response surfaces <code>current_source</code> per layer, including which fields were overridden by live hardware vs. model.</span></li>
+        <li><span class="item-text"><strong>Calculated Insights</strong> &mdash; Beaufort scale, gust factor analysis, wave energy index, wind trends (past + forecast), model vs hardware cross-reference, hazard flags</span></li>
+        <li><span class="item-text"><strong>Demo domain prompts</strong> &mdash; drone, outdoor work, agriculture, marine, watersports, hiking, paragliding, fishing, events, and general physical-world queries.</span></li>
+        <li><span class="item-text"><strong>Claude tool calling</strong> &mdash; AI can dynamically refresh sensors for different locations mid-conversation</span></li>
+        <li><span class="item-text"><strong>Developer tools</strong> &mdash; API key management, PWM sandbox, unit conversion (metric/imperial/knots/m&middot;s), system health monitor</span></li>
+        <li><span class="item-text"><strong>Universal LLM compatibility</strong> &mdash; works with Claude, GPT, Gemini, Llama, Mistral &mdash; any model that accepts a system prompt</span></li>
       </ul>
     </div>
 
@@ -84,14 +83,14 @@
         <span class="phase-title">Evidence, Reliability, and Pilot Readiness</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Senlay Evidence Object (v1)</strong> &mdash; structured per-claim payload: source type, source id, distance, freshness, confidence, model disagreement, interpretation, uncertainty. Promotes <code>context_string</code> from prose to traceable evidence.</span></li>
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Confidence scoring &amp; freshness decay</strong> &mdash; per-field confidence levels that decay with distance and time-since-measurement. Sensor agreement metrics across nearby stations.</span></li>
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Sensor / model disagreement detection</strong> &mdash; explicit flags when live measurement diverges from forecast, with delta and direction.</span></li>
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Modifier Engine v1 (validated)</strong> &mdash; promote the early demos into calibrated terrain-wind, wave, coastal and microclimate modifiers with documented assumptions.</span></li>
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Self-hosted weather models</strong> &mdash; run Open-Meteo locally for unlimited API calls, zero dependency on external rate limits.</span></li>
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Historical data layer</strong> &mdash; &ldquo;what were conditions here 3 hours / 3 days / 3 months ago?&rdquo; for trend analysis and anomaly detection.</span></li>
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Webhook alerts</strong> &mdash; &ldquo;notify me when wind at Tarifa exceeds 20 km/h&rdquo; &mdash; condition-based push notifications for AI agents.</span></li>
-        <li><span class="item-icon">&#x1F527;</span><span class="item-text"><strong>Expanded METAR coverage</strong> &mdash; target 100% of curated sensor locations backed by live hardware airport data.</span></li>
+        <li><span class="item-text"><strong>Senlay Evidence Object (v1)</strong> &mdash; structured per-claim payload: source type, source id, distance, freshness, confidence, model disagreement, interpretation, uncertainty. Promotes <code>context_string</code> from prose to traceable evidence.</span></li>
+        <li><span class="item-text"><strong>Confidence scoring &amp; freshness decay</strong> &mdash; per-field confidence levels that decay with distance and time-since-measurement. Sensor agreement metrics across nearby stations.</span></li>
+        <li><span class="item-text"><strong>Sensor / model disagreement detection</strong> &mdash; explicit flags when live measurement diverges from forecast, with delta and direction.</span></li>
+        <li><span class="item-text"><strong>Modifier Engine v1 (validated)</strong> &mdash; promote the early demos into calibrated terrain-wind, wave, coastal and microclimate modifiers with documented assumptions.</span></li>
+        <li><span class="item-text"><strong>Self-hosted weather models</strong> &mdash; run Open-Meteo locally for unlimited API calls, zero dependency on external rate limits.</span></li>
+        <li><span class="item-text"><strong>Historical data layer</strong> &mdash; &ldquo;what were conditions here 3 hours / 3 days / 3 months ago?&rdquo; for trend analysis and anomaly detection.</span></li>
+        <li><span class="item-text"><strong>Webhook alerts</strong> &mdash; &ldquo;notify me when wind at Tarifa exceeds 20 km/h&rdquo; &mdash; condition-based push notifications for AI agents.</span></li>
+        <li><span class="item-text"><strong>Expanded METAR coverage</strong> &mdash; target 100% of curated sensor locations backed by live hardware airport data.</span></li>
       </ul>
     </div>
 
@@ -104,14 +103,14 @@
         <span class="phase-title">Q3&ndash;Q4 2026</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Drone / UAV Operations</strong> &mdash; pre-flight environmental assessment endpoint: terrain-aware wind at altitude, gust exposure, visibility, precipitation, and operational risk flags.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Construction / Outdoor Work</strong> &mdash; wind, heat, air-quality, lightning, and site-exposure context for crews and autonomous planning agents.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Agriculture</strong> &mdash; spray-drift risk, frost prediction, evapotranspiration, soil-moisture proxy, UV crop stress &mdash; precision-farming context without dedicated hardware.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Domain Pack: Marine / Watersports</strong> &mdash; coastal risk modifiers, sea-state interpretation, rider/board safety logic, and route-level context from the SmartSurf proving ground.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Maritime routing layer</strong> &mdash; ship fuel optimisation, wave-current interaction, sea-spray visibility, port-approach wind assessment.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Plausibility / spoofing checks</strong> &mdash; physical-plausibility tests on incoming readings; flag manipulated, stuck, or contextually impossible values before they reach the agent.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>Multi-agent shared world model</strong> &mdash; multiple AI agents subscribing to the same location get a synchronised, evidence-tagged environmental picture.</span></li>
-        <li><span class="item-icon">&#x1F4CB;</span><span class="item-text"><strong>SDK packages</strong> &mdash; Python, JavaScript, Go client libraries for faster integration.</span></li>
+        <li><span class="item-text"><strong>Domain Pack: Drone / UAV Operations</strong> &mdash; pre-flight environmental assessment endpoint: terrain-aware wind at altitude, gust exposure, visibility, precipitation, and operational risk flags.</span></li>
+        <li><span class="item-text"><strong>Domain Pack: Construction / Outdoor Work</strong> &mdash; wind, heat, air-quality, lightning, and site-exposure context for crews and autonomous planning agents.</span></li>
+        <li><span class="item-text"><strong>Domain Pack: Agriculture</strong> &mdash; spray-drift risk, frost prediction, evapotranspiration, soil-moisture proxy, UV crop stress &mdash; precision-farming context without dedicated hardware.</span></li>
+        <li><span class="item-text"><strong>Domain Pack: Marine / Watersports</strong> &mdash; coastal risk modifiers, sea-state interpretation, rider/board safety logic, and route-level context from the SmartSurf proving ground.</span></li>
+        <li><span class="item-text"><strong>Maritime routing layer</strong> &mdash; ship fuel optimisation, wave-current interaction, sea-spray visibility, port-approach wind assessment.</span></li>
+        <li><span class="item-text"><strong>Plausibility / spoofing checks</strong> &mdash; physical-plausibility tests on incoming readings; flag manipulated, stuck, or contextually impossible values before they reach the agent.</span></li>
+        <li><span class="item-text"><strong>Multi-agent shared world model</strong> &mdash; multiple AI agents subscribing to the same location get a synchronised, evidence-tagged environmental picture.</span></li>
+        <li><span class="item-text"><strong>SDK packages</strong> &mdash; Python, JavaScript, Go client libraries for faster integration.</span></li>
       </ul>
     </div>
 
@@ -124,8 +123,8 @@
         <span class="phase-title">Q1&ndash;Q2 2027</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-icon">&#x1F9ED;</span><span class="item-text"><strong>Skipper Intelligence</strong> &mdash; teaching LLMs to interpret bathymetry and wind shadows. AI agents will read the ocean floor, coastlines, and terrain the way experienced skippers do &mdash; anticipating choppy water, lee zones, and channel effects from geometry alone.</span></li>
-        <li><span class="item-icon">&#x1F4E1;</span><span class="item-text"><strong>100+ Certified Ground Truth nodes</strong> &mdash; expansion of verified, high-precision sensor nodes in high-risk maritime zones: Cape of Good Hope, Strait of Gibraltar, Tsugaru Strait, Drake Passage, Malacca Strait. When life is on the line, AI needs data it can trust.</span></li>
+        <li><span class="item-text"><strong>Skipper Intelligence</strong> &mdash; teaching LLMs to interpret bathymetry and wind shadows. AI agents will read the ocean floor, coastlines, and terrain the way experienced skippers do &mdash; anticipating choppy water, lee zones, and channel effects from geometry alone.</span></li>
+        <li><span class="item-text"><strong>100+ Certified Ground Truth nodes</strong> &mdash; expansion of verified, high-precision sensor nodes in high-risk maritime zones: Cape of Good Hope, Strait of Gibraltar, Tsugaru Strait, Drake Passage, Malacca Strait. When life is on the line, AI needs data it can trust.</span></li>
       </ul>
     </div>
 
@@ -138,11 +137,11 @@
         <span class="phase-title">2027+</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Federated sensor network</strong> &mdash; any IoT device can contribute data to the Physical World Model. SmartSurf hardware trackers as first-party sensors.</span></li>
-        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>P3 Modifiers</strong> &mdash; soil conditions, acoustic propagation, electromagnetic/comms interference, building-level urban wind, solar farm optimization</span></li>
-        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Insurance & parametric triggers</strong> &mdash; verified microclimate data for parametric weather insurance, claims verification, property risk scoring</span></li>
-        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Digital twin integration</strong> &mdash; real-world state sync for simulation environments, RL training, autonomous system validation</span></li>
-        <li><span class="item-icon">&#x1F52D;</span><span class="item-text"><strong>Universal Physical World API</strong> &mdash; the endgame: one API call returns complete physical reality for any coordinate, any altitude, any time. The "Google Maps for environmental intelligence."</span></li>
+        <li><span class="item-text"><strong>Federated sensor network</strong> &mdash; any IoT device can contribute data to the Physical World Model. SmartSurf hardware trackers as first-party sensors.</span></li>
+        <li><span class="item-text"><strong>P3 Modifiers</strong> &mdash; soil conditions, acoustic propagation, electromagnetic/comms interference, building-level urban wind, solar farm optimization</span></li>
+        <li><span class="item-text"><strong>Insurance & parametric triggers</strong> &mdash; verified microclimate data for parametric weather insurance, claims verification, property risk scoring</span></li>
+        <li><span class="item-text"><strong>Digital twin integration</strong> &mdash; real-world state sync for simulation environments, RL training, autonomous system validation</span></li>
+        <li><span class="item-text"><strong>Universal Physical World API</strong> &mdash; the endgame: one API call returns complete physical reality for any coordinate, any altitude, any time. The "Google Maps for environmental intelligence."</span></li>
       </ul>
     </div>
 

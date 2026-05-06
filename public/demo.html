@@ -113,10 +113,10 @@
           </details>
           <small>Choose a place first. The next step connects it to the Physical World Model.</small>
         </div>
-        <button class="btn-outline" onclick="useGeolocation()">&#x1F4CD; Use My Location</button>
+        <button class="btn-outline" onclick="useGeolocation()">Use My Location</button>
         <div class="city-search">
           <input type="text" id="citySearch" placeholder="Search city or place..." onkeydown="if(event.key==='Enter')searchCity()">
-          <button class="btn-sm" onclick="searchCity()">&#x1F50D;</button>
+          <button class="btn-sm" onclick="searchCity()">Search</button>
         </div>
         <select id="spotSelect" onchange="onSpotSelect()">
           <option value="">Or select sensor location...</option>
@@ -159,7 +159,7 @@
   <div id="statusBar" class="status-bar hidden" onclick="toggleSetup()">
     <span class="conn-dot connected"></span>
     <span id="statusBarText">Connected</span>
-    <span class="status-expand">&#x25BC;</span>
+    <span class="status-expand">Details</span>
   </div>
 
   <!-- MAIN AREA -->

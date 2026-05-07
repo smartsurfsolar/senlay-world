@@ -2,11 +2,11 @@
   <img src="public/assets/brand/SenlayLogo-header.png" alt="Senlay" width="220">
 </p>
 
-# Senlay World
+# Senlay — Sensory Intelligence Layer for AI Agents
 
-**Live physical-world context for AI agents.**
+**Senlay is a sensory intelligence layer that connects AI agents to the physical world.**
 
-Senlay helps software understand what is happening outside: wind, weather, ocean state, terrain, air quality, seismic activity, and other real-world signals. It is built for developers and AI agents that need current conditions, not guesses.
+Senlay gives AI agents real-time awareness of weather, ocean, terrain, air quality, satellite data, sensor data, and physical-world context. It is built for developers and AI teams that need current conditions, source, freshness, confidence, and interpretation before software makes a real-world decision.
 
 [senlay.world](https://senlay.world) · [API Docs](public/docs.html) · [Founder Story](public/founder.html) · [Support](public/support.html)
 

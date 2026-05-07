@@ -1,14 +1,16 @@
 ---
 name: senlay
 version: 1.2.0
-description: Connect AI agents to live physical-world context: wind, waves, weather, tides, terrain, air quality, satellite data, sensor data, and environmental risk at any coordinate on Earth.
+description: Senlay is a sensory intelligence layer that connects AI agents to the physical world: weather, ocean, terrain, air quality, satellite data, sensor data, and environmental risk at real coordinates.
 homepage: https://senlay.world
 metadata: {"category":"physical_world_context","api_base":"https://senlay.world/api/v1","sensor_networks":"21","source_count":"21"}
 ---
 
-# Senlay - Physical-World Context API for AI Agents
+# Senlay - Sensory Intelligence Layer for AI Agents
 
-Senlay gives AI agents and applications current physical context for real-world decisions.
+Senlay is a sensory intelligence layer that connects AI agents to the physical world.
+
+It gives AI agents and applications current physical context for real-world decisions.
 
 It is not a general search engine, not a consumer weather app, and not a universal answer machine. Senlay is for questions where measurable conditions matter: wind, waves, weather, tides, terrain, air quality, sensor data, satellite data, and environmental risk.
 

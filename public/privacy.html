@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Notice | Senlay</title>
+  <meta name="description" content="How Senlay handles account, API, location, telemetry, and bring-your-own-key data.">
+  <link rel="canonical" href="https://senlay.cloud/privacy.html">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles/public-rebuild.css">
+  <style>
+    .legal-hero { padding: 64px clamp(18px, 4vw, 54px) 36px; border-bottom: 1px solid var(--line); }
+    .legal-hero h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
+    .legal { max-width: 820px; margin: 0 auto; padding: 48px 18px 84px; }
+    .legal h2 { margin: 42px 0 12px; font-size: 1.55rem; }
+    .legal h3 { margin: 26px 0 8px; }
+    .legal p, .legal li { color: var(--muted); line-height: 1.75; }
+    .legal li + li { margin-top: 8px; }
+    .legal .notice { padding: 18px; border: 1px solid var(--line); border-left: 4px solid var(--blue); background: var(--white); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">S</span><span>SENLAY</span></a>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation">Menu</button>
+    <nav class="site-nav" data-nav aria-label="Primary navigation">
+      <a href="/demo">Demo</a><a href="/docs.html">Docs</a><a href="/pricing.html">Pricing</a><a href="/support.html">Contact</a><a href="/login.html" class="nav-strong">Sign in</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="legal-hero">
+      <div class="wrap narrow"><span class="eyebrow">Legal</span><h1>Privacy Notice</h1><p class="lead">How Senlay handles data when you browse the site, use the demo, create an account, or call the API.</p><p>Effective: July 11, 2026</p></div>
+    </section>
+    <article class="legal">
+      <p class="notice"><strong>Short version:</strong> Senlay uses account and request data to provide and secure the service. A provider key pasted into the demo travels through Senlay's server to the provider you choose; it is not sent directly from your browser. Full Senlay API keys are displayed once and are not returned in account profiles.</p>
+
+      <h2>1. Who is responsible</h2>
+      <p>Senlay operates the Senlay platform and is responsible for the processing described here. Privacy questions and requests can be sent to <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>.</p>
+
+      <h2>2. Data we handle</h2>
+      <h3>Account and authentication data</h3>
+      <ul>
+        <li>Name, email address, password hash, sign-in provider identifiers, session records, account tier, and account timestamps.</li>
+        <li>Senlay API-key hashes, masked previews, labels, status, creation dates, and usage counters. A full API key is returned only when it is created.</li>
+        <li>For passwordless agent registration: agent name, optional owner email, credential hashes, masked previews, and a hashed recovery credential. New credentials are displayed only in the registration or authorized rotation response.</li>
+      </ul>
+
+      <h3>Requests and physical-world data</h3>
+      <p>We process coordinates, selected activities or fields, search text, prompts, device or tracker telemetry you submit, request times, endpoint paths, response status, source-health results, and related operational metadata. Coordinates may be sent to upstream weather, marine, mapping, geocoding, satellite, or sensor providers needed to answer the request.</p>
+
+      <h3>Bring-your-own model keys</h3>
+      <ul>
+        <li><strong>Pasted demo key:</strong> your browser sends the key over HTTPS to Senlay. Senlay uses it server-side to proxy the selected model request. Pasted keys are not intentionally stored in Senlay's database. Session mode keeps the key in browser memory or session storage; “remember” mode stores it on that device until you remove it or clear site data.</li>
+        <li><strong>Saved paid-tier key:</strong> if you explicitly save a model-provider key in your profile, Senlay encrypts it server-side. The dashboard later returns only a masked preview, not the full secret.</li>
+        <li>The selected model provider receives the prompt and relevant physical-world context under that provider's own terms and privacy notice.</li>
+      </ul>
+
+      <h3>Technical, visitor analytics, and support data</h3>
+      <p>Our server and reverse proxy may record IP address, user agent, request path, status, timing, security events, and error details. First-party visitor analytics records page path, referrer origin and path, broad browser and device type, a random pseudonymous visitor identifier, and a daily rotating hash derived from the IP address; the analytics database does not store the raw IP address. If that browser signs in, its pseudonymous visitor record may be linked to the account. We do not need full API keys or request bodies in ordinary access logs and ask users not to put secrets in prompts, URLs, support messages, or public posts. If you contact us, we process the contents and contact details needed to respond.</p>
+
+      <h2>3. Browser storage and permissions</h2>
+      <p>Senlay uses local storage or session storage for choices such as session sign-in, selected location, units, setup state, and an optional remembered provider key. A first-party cookie keeps a random visitor identifier for audience measurement and repeat-visitor counts. Google sign-in may use short-lived state cookies or equivalent session controls. Geolocation is requested only after you activate a location control; your browser controls whether permission is granted.</p>
+
+      <h2>4. Why we use data</h2>
+      <ul>
+        <li>Provide accounts, API access, physical-world responses, maps, model chat, and support.</li>
+        <li>Authenticate users, enforce quotas, prevent abuse, investigate failures, and protect the service.</li>
+        <li>Maintain source freshness, improve reliability, and understand aggregate service usage.</li>
+        <li>Meet legal obligations and enforce the <a href="/terms.html">Terms of Use</a>.</li>
+      </ul>
+
+      <h2>5. Providers and disclosures</h2>
+      <p>Depending on the feature and location, data may be processed by hosting and infrastructure vendors, identity providers, model providers you select, and environmental or mapping sources such as Open-Meteo, NOAA, OpenStreetMap/Nominatim, map-tile providers, satellite services, and configured commercial sensor networks. Coverage changes by location. We may also disclose data when legally required or necessary to protect users and the service. Senlay does not sell personal information.</p>
+
+      <h2>6. Retention</h2>
+      <p>Account and credential metadata is retained while the account is active and as needed for security, audit, backup, and legal purposes. Sessions expire or can be revoked. First-party page-view analytics is normally retained for 90 days, while operational logs and caches are retained only as long as reasonably needed for reliability and security. Browser-stored data remains until it expires or you remove it. Upstream providers apply their own retention rules.</p>
+
+      <h2>7. Security</h2>
+      <p>We use measures such as HTTPS, password hashing, hashed Senlay API keys, scoped sessions, masked key previews, encryption for explicitly saved model keys, rate limits, and restricted server-side secrets. No service can guarantee absolute security. Revoke or rotate a credential and contact us promptly if you suspect exposure.</p>
+
+      <h2>8. Your choices and rights</h2>
+      <p>You can deny geolocation, use manual coordinates, avoid “remember” mode, sign out, clear browser storage, revoke provider keys at their issuer, and request account access, correction, export, or deletion where applicable. Contact us using the address above. We may need to verify your identity before acting on a request.</p>
+
+      <h2>9. Children, international use, and changes</h2>
+      <p>Senlay is a developer and operational service and is not directed to children. Data may be processed in countries other than your own. We may update this notice as the service and its providers change; the effective date above identifies the current version.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div><strong>SENLAY</strong><p>Spot-level physical-world verification. Decision support only.</p></div><div><a href="/privacy.html" aria-current="page">Privacy</a><a href="/terms.html">Terms</a><a href="/support.html">Contact</a><a href="/">Home</a></div></footer>
+  <script src="/scripts/public-rebuild.js"></script>
+</body>
+</html>

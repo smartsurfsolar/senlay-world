@@ -2,7 +2,7 @@
 
 ## Senlay in One Sentence
 
-Senlay is a sensory intelligence layer that gives AI agents live physical-world context from weather, ocean, terrain, air-quality, seismic, and environmental data sources.
+Senlay provides verified physical context for systems that act outside, using available weather, ocean, terrain, air-quality, seismic and environmental sources.
 
 ## The Problem
 

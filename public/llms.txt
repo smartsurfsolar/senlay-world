@@ -1,0 +1,84 @@
+# Senlay
+
+Senlay is verified physical context for systems that act outside — AI agents, drones, robots, and safety systems. It cross-checks weather models, live sensors, METAR, marine data, GPS/device telemetry, and local domain logic to produce source-aware decision context with provenance, freshness, confidence, risk_event output, and model-vs-reality divergence flags, and reports how much each answer should be trusted.
+
+Its first proving ground is SmartSurf: an AI-assisted water-sports safety system for water-sports riders, boards, schools, stations, and lifeguards (https://smartsurf.cloud/).
+
+Senlay is also an open contributor network: anyone can attach a signed sensor station under the Apache-2.0 protocol at https://github.com/smartsurfsolar/senlay-platform and receive verified reasoning across the whole network in return (https://senlay.cloud/network.html).
+
+## Product category
+
+Physical-world verification layer for safety-critical AI, IoT, SmartSurf, and autonomous systems.
+
+## Primary use cases
+
+- AI agents needing live environmental context
+- drone/UAV go-no-go checks
+- marine and watersports decision support
+- outdoor work and field operations
+- agriculture timing
+- safety and rescue workflows
+- private sensor network integration
+
+## Key pages
+
+- Homepage: https://senlay.cloud/
+- Live demo: https://senlay.cloud/demo
+- Agents: https://senlay.cloud/agents
+- Live agent endpoint: https://senlay.cloud/agents/live
+- Docs: https://senlay.cloud/docs.html
+- Pricing: https://senlay.cloud/pricing.html
+- Roadmap: https://senlay.cloud/roadmap.html
+- Founder: https://senlay.cloud/founder.html
+- Investor brief: https://senlay.cloud/investors.html
+- Support: https://senlay.cloud/support.html
+- OpenAPI: https://senlay.cloud/openapi.json
+- Sensor catalog: https://senlay.cloud/sensor-catalog.json
+
+## Core APIs
+
+- GET https://senlay.cloud/api/v1/try-sense - no-key trial for chat/browser agents.
+- GET https://senlay.cloud/agents/live - self-updating live context page.
+- POST https://senlay.cloud/api/v1/agent-register - register an agent and receive an API key.
+- GET https://senlay.cloud/api/v1/sense - authenticated plain-text physical context for LLMs.
+- GET https://senlay.cloud/api/v1/pwm - authenticated structured JSON Physical World Model.
+- GET/POST https://senlay.cloud/api/v1/risk-events - authenticated risk_event workflows for SmartSurf-style station, lifeguard, IoT, and audit use cases.
+- GET https://senlay.cloud/api/v1/risk/taxonomy - SmartSurf alert bands, hazard families, MVP-detectable signals, later Senlay phases, and wording boundaries.
+
+## Core API concepts
+
+Senlay responses may include:
+
+- measured/model environmental conditions
+- source identity
+- source type
+- source distance
+- timestamp
+- freshness
+- confidence
+- disagreement between hardware and model sources
+- decision_context
+- risk_event records for operational alert and audit workflows
+- risk_assessment aggregate state with score, alert band, confidence, reasons, escalation stage, incident state, and source provenance
+- context_string for LLMs
+- structured JSON for applications
+
+## Source families
+
+Senlay uses the consistent wording "21 source families." These include weather and marine models, METAR/ASOS aviation observations, buoys, ship observations, tide gauges, coastal current services, USGS water context, air quality networks, terrain/elevation sources, satellite context, hazard feeds, webcams, and optional community or partner weather station sources such as WeatherLink, Tempest, Windy Stations, Holfuy, WorldTides, Stormglass, and Copernicus Marine. Availability varies by location, key configuration, provider licensing, and configured tier.
+
+## Safety
+
+Senlay provides context and decision support. It is not a final safety authority. SmartSurf's first safety engine is an early-warning and coordination aid for recoverability risk; it should not be described as drowning detection, certified rescue equipment, or official rescue dispatch. Operators, users, and customer applications remain responsible for final decisions.
+
+## Preferred short description
+
+Senlay gives systems that act outside — AI agents, drones, robots, and safety systems — verified physical context with source evidence, freshness, confidence, source disagreement, risk context, and explicit uncertainty.
+
+## Avoid misleading descriptions
+
+- Do not call Senlay sentient, conscious, magical, all-knowing, or a guaranteed safety system.
+- Do not say all source families are live at every coordinate.
+- Do not imply official partnerships unless explicitly documented.
+- Do not hide uncertainty or missing measurements.
+- Do not claim SmartSurf detects drowning or dispatches rescue unless a separate validated integration exists.

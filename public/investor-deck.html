@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay Investor Deck - Reciprocal Verification Network</title>
+  <meta name="description" content="Senlay investor deck: a reciprocal verification network. Contribute a sensor and get the network back; consume without contributing and pay. SmartSurf is the proving ground.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
+  <link rel="stylesheet" href="/styles/investor-deck.css?v=1">
+<link rel="stylesheet" href="/styles/dark-map-override.css?v=20260516-0536"></head>
+<body>
+    <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+      </div>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <details class="nav-menu">
+          <summary>Product</summary>
+          <div class="nav-menu-panel">
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
+          </div>
+        </details>
+        <a href="/pricing.html">Pricing</a>
+        <details class="nav-menu">
+          <summary>Company</summary>
+          <div class="nav-menu-panel">
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
+          </div>
+        </details>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="deck-page">
+    <p class="deck-section-label">Reviewed pitch deck / rebuilt in current Senlay style</p>
+
+    <section class="deck-slide" id="slide-01">
+      <div>
+        <p class="slide-kicker">Reciprocal verification network</p>
+        <h1>Senlay.</h1>
+        <p class="slide-lead">What is happening here? Can I operate here safely? How sure are we? Contribute a sensor and get the network back; consume without contributing and pay.</p>
+        <div class="metric-strip">
+          <div class="metric"><strong>21</strong><span>source families reasoned over &mdash; raw material, not the moat.</span></div>
+          <div class="metric"><strong>Live</strong><span>open contributor protocol, Apache 2.0, HMAC-signed ingestion in production.</span></div>
+          <div class="metric"><strong>Sep 2026</strong><span>reciprocal network model, live at senlay.cloud.</span></div>
+          <div class="metric"><strong>$500K</strong><span>pre-seed ask to prove the network with real external usage.</span></div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>senlay.cloud</span><span>01 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-02">
+      <div>
+        <p class="slide-kicker">Problem</p>
+        <h2>AI systems are entering real workflows. They need physical-world evidence.</h2>
+        <div class="slide-grid">
+          <div class="slide-card red">
+            <span class="slide-label">Today</span>
+            <ul>
+              <li>Agents plan drone missions, outdoor crews, vessel routes, and crop timing.</li>
+              <li>They reason in text. They do not measure conditions.</li>
+              <li>They rely on generic forecasts, stale dashboards, device pings, or training-data guesses.</li>
+            </ul>
+          </div>
+          <div class="slide-card green">
+            <span class="slide-label">When it matters</span>
+            <p>Wind, gusts, waves, air quality, terrain, tides, and sensor freshness change the answer. A confident generic answer can be operationally wrong.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Decision made on text vs. decision made on measurement</span><span>02 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-03">
+      <div>
+        <p class="slide-kicker">Insight</p>
+        <h2>The missing layer is not more weather data. It is decision-ready physical evidence.</h2>
+        <div class="quote-panel">Weather API: "wind is 18 knots."<br>Senlay: "wind is 18 knots, gusts are rising, the live station is fresher than the forecast, confidence is medium-high, and this matters for this decision."</div>
+      </div>
+      <div class="slide-footer"><span>Weather values become decision context</span><span>03 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-04">
+      <div>
+        <p class="slide-kicker">Product</p>
+        <h2>One verification request. Live physical-world verification for a coordinate.</h2>
+        <div class="flow-stack">
+          <div class="flow-step"><span class="num">01</span><p>Agent asks about a place and domain.</p></div>
+          <div class="flow-step"><span class="num">02</span><p>Senlay gathers sensors, models, marine, air, terrain, and hazard signals.</p></div>
+          <div class="flow-step"><span class="num">03</span><p>Values carry source, freshness, distance, and confidence.</p></div>
+          <div class="flow-step"><span class="num">04</span><p>Live and forecast disagreement is surfaced.</p></div>
+          <div class="flow-step"><span class="num">05</span><p>Response includes agent-ready decision context and risk-event output when the workflow needs escalation.</p></div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Conditions + evidence + interpretation</span><span>04 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-05">
+      <div>
+        <p class="slide-kicker">Demo</p>
+        <h2>Drone go/no-go in one verification request.</h2>
+        <div class="slide-grid">
+          <div class="slide-card">
+            <span class="slide-label">Question</span>
+            <p>"Can a drone safely fly here, now?"</p>
+          </div>
+          <div class="slide-card green">
+            <span class="slide-label">Senlay response</span>
+            <div class="status-line"><span class="status-key">Wind</span><span class="status-value">9.4 m/s, gusts 14.1 m/s</span></div>
+            <div class="status-line"><span class="status-key">Evidence</span><span class="status-value">METAR 4.2 km away, 6 min old</span></div>
+            <div class="status-line"><span class="status-key">Disagreement</span><span class="status-value">Forecast underestimates; live trusted</span></div>
+            <div class="status-line"><span class="status-key">Action</span><span class="status-value"><span class="tag yellow">HOLD</span> - re-check in 20 min</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>One verification request, structured decision, visible evidence</span><span>05 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-06">
+      <div>
+        <p class="slide-kicker">Why now</p>
+        <h2>Agents are moving from chat into real-world workflows.</h2>
+        <div class="slide-grid three">
+          <div class="slide-card"><span class="slide-label">2022</span><h3>Chatbots</h3><p>LLMs answer questions and draft text.</p></div>
+          <div class="slide-card"><span class="slide-label">2024</span><h3>Copilots</h3><p>LLMs help humans inside tools and workflows.</p></div>
+          <div class="slide-card green"><span class="slide-label">2026</span><h3>Operational agents</h3><p>Agents schedule, route, plan, and trigger real actions. Physical context becomes infrastructure.</p></div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>The context layer for physical decisions is missing</span><span>06 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-07">
+      <div>
+        <p class="slide-kicker">Market and wedge</p>
+        <h2>Water sports is the wedge, not the ceiling.</h2>
+        <table class="slide-table">
+          <thead>
+            <tr><th>Stage</th><th>Market</th><th>Why it works</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="tag">Now</span></td><td>SmartSurf schools, stations, and serious riders</td><td>The domain where the founder can tell instantly whether the answer is true. Proving ground for the evidence engine.</td></tr>
+            <tr><td><span class="tag blue">Now, parallel</span></td><td>Contributors: stations, marinas, farms, research sites</td><td>Attach a sensor, receive the network back. No cash. Coverage and distribution, not revenue.</td></tr>
+            <tr><td><span class="tag yellow">Revenue</span></td><td>Drone/BVLOS, robotics, lifting, insurance, marine ops</td><td>Systems that act and will never install hardware. They need the answer, not the network.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer"><span>Same evidence engine, two sides that don't compete for the same budget</span><span>07 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-08">
+      <div>
+        <p class="slide-kicker">Business model</p>
+        <h2>Contribute or pay.</h2>
+        <table class="slide-table">
+          <thead>
+            <tr><th>Mode</th><th>Price</th><th>For</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1 &middot; Contribute a sensor</td><td>$0 forever</td><td>Coverage and distribution &mdash; not revenue.</td></tr>
+            <tr><td>2 &middot; Developer API</td><td>$0&ndash;$29/mo</td><td>Outdoor apps, IoT products, agent frameworks. Self-serve.</td></tr>
+            <tr><td>3 &middot; Operational safety</td><td>from $199/mo</td><td>Structured risk events for schools, stations, fleets &mdash; the layer SmartSurf validates.</td></tr>
+            <tr><td>4&ndash;6 &middot; Vertical / network / private instance</td><td>custom</td><td>Insurance, agriculture, drone ops; reciprocal fleet integration; bring-your-own-sources. Direction, not committed timeline.</td></tr>
+          </tbody>
+        </table>
+        <p class="slide-lead">Revenue comes from systems that act and will never install hardware. Coverage comes from people who already own instruments. The two sides do not compete for the same budget.</p>
+      </div>
+      <div class="slide-footer"><span>Contributors are coverage. Consumers are revenue.</span><span>08 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-09">
+      <div>
+        <p class="slide-kicker">Moat &mdash; named honestly</p>
+        <h2>WeatherXM and Synoptic are inputs, not opponents. The moat is trust scoring, not raw data.</h2>
+        <div class="slide-grid three">
+          <div class="slide-card"><span class="slide-label">WeatherXM</span><p>~10,000 stations, 81 countries, ~$13M raised. A good weather network &mdash; and a source family Senlay reasons over, not a competitor.</p></div>
+          <div class="slide-card green"><span class="slide-label">Contributed data quality</span><p>The failure mode that has defeated volunteer networks for two decades. Senlay is structurally immune: trust scoring was the product before the network existed. A poor sensor is weighted low, not rejected.</p></div>
+          <div class="slide-card"><span class="slide-label">Station trust levels</span><p>Documentation moves the starting point. Behaviour moves the weight, permanently, in both directions &mdash; not purchasable.</p></div>
+          <div class="slide-card"><span class="slide-label">Place memory</span><p>What compounds is not station count. A coordinate queried 61 times reasons better than one queried twice &mdash; generated by usage, sold by no vendor.</p></div>
+          <div class="slide-card"><span class="slide-label">Sources are substitutable</span><p>Data sources and language models are interchangeable. The judgement between them &mdash; normalization, weighting, divergence, refusal to infer &mdash; is not.</p></div>
+          <div class="slide-card"><span class="slide-label">A data vendor can't copy this</span><p>Giving network access for data attacks a vendor's own pricing. For Senlay it's the growth mechanism.</p></div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Open protocol, closed trust engine</span><span>09 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-10">
+      <div>
+        <p class="slide-kicker">Founder</p>
+        <h2>Founder-market fit through 20 years of real-world wind, water, and risk.</h2>
+        <div class="slide-grid">
+          <div class="slide-card green">
+            <span class="slide-label">Viktor Kryvotsiuk</span>
+            <ul>
+              <li>Sole human founder, Hoi An, Vietnam.</li>
+              <li>20+ years certified kitesurfing instructor.</li>
+              <li>IYT International Bareboat Skipper, Power &amp; Sail up to 24 m.</li>
+              <li>1NCE Certified IoT Integrator.</li>
+              <li>Built SmartSurf GPS safety tracker hardware before Senlay.</li>
+            </ul>
+          </div>
+          <div class="slide-card">
+            <span class="slide-label">Why this matters</span>
+            <p>The product value is not knowing that wind exists. It is knowing what a raw number means in field conditions, where sensor placement, gusts, exposure, water state, and weak signals change the decision.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Lived domain expertise + agent-native execution</span><span>10 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-11">
+      <div>
+        <p class="slide-kicker">Traction and roadmap</p>
+        <h2>Live platform. Open contributor protocol. Building toward external usage.</h2>
+        <table class="slide-table">
+          <thead>
+            <tr><th>Window</th><th>Proof</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Live today</td><td>API, docs, demo, dashboard, MCP server, open contributor protocol (Apache 2.0), HMAC-signed station ingestion in production, controlled source-health status.</td></tr>
+            <tr><td>Next 30 days</td><td>Signed evidence receipts, OGC SensorThings adapter, first external API keys tracked honestly.</td></tr>
+            <tr><td>Next 12 months</td><td>Contributor stations beyond the founder's own network, one reciprocal network-provider integration, paying consumers across developer and operational-safety tiers.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer"><span>Raise the next round on evidence, not only narrative</span><span>11 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-12">
+      <div>
+        <p class="slide-kicker">Ask</p>
+        <h2>$500K pre-seed. Pre-revenue, no paying customers &mdash; said plainly.</h2>
+        <div class="slide-grid">
+          <div class="slide-card green">
+            <span class="slide-label">Use of funds</span>
+            <ul>
+              <li>Signed evidence receipts (closes the output half of the provenance chain).</li>
+              <li>OGC SensorThings adapter &mdash; turns "attach a sensor" into "attach the network you already run."</li>
+              <li>API reliability and monitoring.</li>
+              <li>SmartSurf risk-event proof as the operational-safety tier.</li>
+              <li>Senior backend engineering support.</li>
+            </ul>
+          </div>
+          <div class="slide-card">
+            <span class="slide-label">Month 12 targets</span>
+            <ul>
+              <li>External API keys issued to people never met, with real request volume.</li>
+              <li>Contributor stations live beyond the founder's own network.</li>
+              <li>One reciprocal network-provider integration.</li>
+              <li>Paying consumers across the developer/operational-safety tiers.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>viktor@senlay.cloud</span><span>12 / 19</span></div>
+    </section>
+
+    <p class="deck-section-label">New live-evidence investor brief / rebuilt into the same deck</p>
+
+    <section class="deck-slide" id="slide-13">
+      <div>
+        <p class="slide-kicker">Live evidence inside</p>
+        <h2>Spot-level verification for outdoor AI apps.</h2>
+        <p class="slide-lead">The newer investor brief sharpens the thesis: Senlay is not just better answers. It is better evidence behind the answer.</p>
+        <div class="metric-strip">
+          <div class="metric"><strong>Live</strong><span>hardware, model, satellite, terrain, and marine context.</span></div>
+          <div class="metric"><strong>Trust</strong><span>source hierarchy, freshness, distance, and confidence.</span></div>
+          <div class="metric"><strong>Compare</strong><span>hardware vs. forecast model divergence.</span></div>
+          <div class="metric"><strong>Explain</strong><span>agent-readable interpretation and boundaries.</span></div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>New slides / source: Senlay_Investor_Brief.pdf</span><span>13 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-14">
+      <div>
+        <p class="slide-kicker">Failure mode</p>
+        <h2>Agents confidently hallucinate about the physical world.</h2>
+        <div class="slide-grid three">
+          <div class="slide-card red"><span class="slide-label">Stale</span><p>A browser or agent cache can replay two-hour-old "live" conditions unless dynamic endpoints are explicitly uncached.</p></div>
+          <div class="slide-card red"><span class="slide-label">Generic</span><p>A forecast may be reasonable for the region but wrong at the beach, ridge, field, marina, or launch site.</p></div>
+          <div class="slide-card red"><span class="slide-label">No confidence</span><p>Without source and disagreement, the answer sounds certain even when the evidence is weak.</p></div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Problem sharpened by real agent testing</span><span>14 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-15">
+      <div>
+        <p class="slide-kicker">Live case</p>
+        <h2>Hoi An: "Can I kite right now?"</h2>
+        <div class="slide-grid">
+          <div class="slide-card red">
+            <span class="slide-label">Without Senlay</span>
+            <p>The agent gives generic advice from a forecast-like answer. It cannot inspect local sensor freshness, hardware/model divergence, gust factor, waves, or terrain exposure.</p>
+          </div>
+          <div class="slide-card green">
+            <span class="slide-label">With Senlay</span>
+            <p>The agent receives current wind, gusts, wave state, direction, source labels, distance, confidence, and a kitesurf-specific interpretation with warnings and recheck guidance.</p>
+          </div>
+        </div>
+        <p class="slide-lead">Same question. Different answer because the agent gets measurable context.</p>
+      </div>
+      <div class="slide-footer"><span>Kitesurfing is a vivid proof case, not the only market</span><span>15 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-16">
+      <div>
+        <p class="slide-kicker">Forecast trust score</p>
+        <h2>Senlay checks whether the forecast itself deserves trust.</h2>
+        <table class="slide-table">
+          <thead>
+            <tr><th>Signal</th><th>Hardware</th><th>Forecast model</th><th>Interpretation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Wind speed</td><td>Nearby station first</td><td>Model trend</td><td>Use hardware as anchor; model as comparison.</td></tr>
+            <tr><td>Gust factor</td><td>Live gust/speed ratio</td><td>Often smoothed</td><td>High gust factor lowers confidence for beginner decisions.</td></tr>
+            <tr><td>Trend</td><td>Observed change</td><td>Forecast trajectory</td><td>Agreement increases forecast trust; divergence lowers it.</td></tr>
+            <tr><td>Verdict</td><td><span class="tag">Evidence</span></td><td><span class="tag yellow">Prediction</span></td><td>Do not hide disagreement inside one number.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer"><span>Hardware/model divergence becomes a product field</span><span>16 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-17">
+      <div>
+        <p class="slide-kicker">Sensor hierarchy</p>
+        <h2>Closest valid hardware anchors. Farther hardware audits.</h2>
+        <div class="flow-stack">
+          <div class="flow-step"><span class="num">01</span><p>Find nearest real hardware sensor with valid QC.</p></div>
+          <div class="flow-step"><span class="num">02</span><p>Apply minimum local modifiers: terrain elevation where available; marine depth modifiers only with validated bathymetry.</p></div>
+          <div class="flow-step"><span class="num">03</span><p>Use farther sensors to compare trend and detect suspicious divergence.</p></div>
+          <div class="flow-step"><span class="num">04</span><p>Compare live observations with forecast models.</p></div>
+          <div class="flow-step"><span class="num">05</span><p>Return trust score and explain why the forecast can or cannot be trusted here.</p></div>
+        </div>
+        <p class="slide-lead">This rule applies across locations and domains: nearest trustworthy measurement first, model and remote sensors as context.</p>
+      </div>
+      <div class="slide-footer"><span>Local truth path before broad model context</span><span>17 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-18">
+      <div>
+        <p class="slide-kicker">Founder velocity</p>
+        <h2>Agents found real bugs. Senlay shipped fixes and re-verified.</h2>
+        <div class="slide-grid">
+          <div class="slide-card yellow">
+            <span class="slide-label">Found by agent testing</span>
+            <ul>
+              <li>Kelvin values passing through as Celsius.</li>
+              <li>VPD unit confusion.</li>
+              <li>Agent-facing endpoint cache risk.</li>
+              <li>UI mode mismatch between kitesurfing and drone prompts.</li>
+            </ul>
+          </div>
+          <div class="slide-card green">
+            <span class="slide-label">What this proves</span>
+            <p>Senlay is being tested by the exact class of customer it serves: AI agents that need physical context, source freshness, and clean interpretation. The product improves under agent pressure.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Fast loop: agent feedback -> fix -> deploy -> re-check</span><span>18 / 19</span></div>
+    </section>
+
+    <section class="deck-slide" id="slide-19">
+      <div>
+        <p class="slide-kicker">Thesis</p>
+        <h2>Not a physical context layer. What is happening at this spot, and can something go out there.</h2>
+        <p class="slide-lead">Concrete, coordinate-level, outdoor, multi-domain, safety-relevant, and explicit about the limits of its own knowledge. Coverage comes from participants; revenue comes from systems that act.</p>
+        <div class="callout-big">$500K pre-seed.</div>
+        <div class="slide-grid">
+          <div class="slide-card green"><span class="slide-label">Build</span><p>Signed evidence receipts, OGC SensorThings adapter, reliability, monitoring.</p></div>
+          <div class="slide-card"><span class="slide-label">Prove</span><p>External API keys issued to people never met, contributor stations beyond the founder's own network, first paying consumers.</p></div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>viktor@senlay.cloud / senlay.cloud</span><span>19 / 19</span></div>
+    </section>
+
+    <p class="print-note">Tip: use the browser print dialog to export this rebuilt HTML deck to PDF. The source combines the reviewed 12-slide pitch materials with the 7-slide live-evidence investor brief.</p>
+  </main>
+<footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
+      </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+  <script src="/scripts/header-menu.js"></script>
+</body>
+</html>

@@ -3,79 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay Demo — Physical-World Context for AI Agents</title>
-  <meta name="description" content="Guided demo of Senlay: live physical-world context for AI agents using weather, wind, waves, tides, air quality, terrain, and environmental risk.">
-  <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
-  <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
-  <link rel="stylesheet" href="/styles/style.css?v=4">
+  <title>Senlay Demo - Verify a Local Outdoor Decision</title>
+  <meta name="description" content="Try Senlay live verification for wind, waves, weather, tide, source evidence, freshness, confidence, uncertainty, and SmartSurf-style risk reasoning.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <meta property="og:title" content="Senlay Demo - Verify a Local Outdoor Decision">
+  <meta property="og:description" content="Try Senlay live verification for wind, waves, weather, tide, source evidence, freshness, confidence, uncertainty, and SmartSurf-style risk reasoning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://senlay.cloud/demo">
+  <meta property="og:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Senlay Demo - Verify a Local Outdoor Decision">
+  <meta name="twitter:description" content="Try Senlay live verification for wind, waves, weather, tide, source evidence, freshness, confidence, uncertainty, and SmartSurf-style risk reasoning.">
+  <meta name="twitter:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <link rel="canonical" href="https://senlay.cloud/demo">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles/style.css?v=11">
+  <link rel="stylesheet" href="/vendor/maplibre-gl/maplibre-gl.css">
+  <script>
+    const demoParams = new URLSearchParams(window.location.search);
+    if (demoParams.get('embed') === 'homepage') {
+      document.documentElement.classList.add('demo-embed-mode');
+    }
+    if (demoParams.get('compact') === '1') {
+      document.documentElement.classList.add('demo-compact-mode');
+    }
+    // Preselect scenario + place from the embed URL. No autoconnect; the visitor clicks Connect.
+    window.addEventListener('DOMContentLoaded', () => {
+      const s = demoParams.get('scenario');
+      const p = demoParams.get('preset');
+      try { if (s && typeof loadDemoScenario === 'function') loadDemoScenario(s); } catch (e) {}
+      try { if (p && typeof usePresetLocation === 'function') usePresetLocation(p); } catch (e) {}
+    });
+  </script>
+  <style>
+    .demo-embed-mode body { background: #0f172a; }
+    .demo-embed-mode .header,
+    .demo-embed-mode .footer,
+    .demo-embed-mode .senlay-unified-footer { display: none; }
+    .demo-embed-mode .demo-guide { padding-top: 22px; }
+    .demo-embed-mode .ticker { position: sticky; bottom: 0; }
+    .demo-compact-mode .guide-steps,
+    .demo-compact-mode #settingsCard { display: none; }
+    .demo-compact-mode .demo-guide { padding: 18px 24px; }
+    .demo-compact-mode .guide-head { grid-template-columns: 1fr; gap: 12px; }
+    .demo-compact-mode .guide-copy h1 { font-size: 30px; margin-bottom: 8px; }
+    .demo-compact-mode .guide-copy p { font-size: 15px; }
+    .demo-compact-mode .setup-panel { padding: 18px 24px 24px; }
+    .demo-compact-mode .setup-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .demo-compact-mode .setup-card { min-height: 0; }
+    .demo-compact-mode .main-area { padding: 18px 24px 24px; }
+    @media (max-width: 820px) {
+      .demo-compact-mode .setup-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="/styles/dark-map-override.css?v=20260622-map">
+  <style>
+    .layer-map {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(16,185,129,0.12), transparent 28%),
+        linear-gradient(rgba(46,117,182,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46,117,182,0.10) 1px, transparent 1px),
+        #eaf2f5 !important;
+    }
+    .layer-map .maplibregl-ctrl-group,
+    .layer-map .maplibregl-ctrl-attrib {
+      background: rgba(255,255,255,0.92) !important;
+      color: #253241 !important;
+      border-color: rgba(15,35,54,0.16) !important;
+    }
+    .layer-map .maplibregl-ctrl-attrib a {
+      color: #1f5f8f !important;
+    }
+  </style>
 </head>
 <body>
 
-  <header class="header">
+    <header class="header">
     <div class="header-inner">
       <div class="logo-area">
         <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
       </div>
-      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav class="nav">
         <a href="/">Home</a>
         <details class="nav-menu">
           <summary>Product</summary>
           <div class="nav-menu-panel">
-            <a href="demo">Demo</a>
-            <a href="agents">For Agents</a>
-            <a href="docs.html">Docs</a>
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
           </div>
         </details>
-        <a href="pricing.html">Pricing</a>
+        <a href="/pricing.html">Pricing</a>
         <details class="nav-menu">
           <summary>Company</summary>
           <div class="nav-menu-panel">
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
           </div>
         </details>
-        <a href="login.html">Sign In</a>
-        <a href="pricing.html" class="nav-cta">Get API Key</a>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
       </nav>
     </div>
   </header>
 
+  <main id="demoContent">
   <section class="demo-guide" aria-label="Demo steps">
     <div class="guide-head">
       <div class="guide-copy">
-        <p class="guide-kicker">Guided Demo</p>
-        <h1>Prove the API with a real decision.</h1>
-        <p>Demo Mode works without an API key. Pick a serious use case, connect once, then ask for a decision based on live conditions. The demo shows the core product: one API call, physical data, sources, freshness, confidence, and an AI-ready interpretation.</p>
-      </div>
-      <div class="guide-action-box">
+        <p class="guide-kicker">Guided Verification Demo</p>
+        <h1>Watch Senlay verify a local outdoor decision.</h1>
+        <p>Pick the activity, choose any place in the world, connect once, then ask for a plain human decision based on nearby live conditions.</p>
+        <p class="demo-safety-note">Senlay provides context, evidence, and decision support. It is not a safety authority. Final decisions remain with operators, users, and customer applications.</p>
         <p id="guideStatus" class="guide-status">Start with Demo Mode, choose a place, then connect.</p>
-        <button id="guideAction" class="guide-action" type="button" onclick="advanceDemoGuide()">Start Demo</button>
       </div>
-    </div>
-    <div class="scenario-strip" aria-label="Demo scenarios">
-      <button class="scenario-card" type="button" onclick="loadDemoScenario('drone')">
-        <strong>Drone flight</strong>
-        <span>Can a drone safely fly here now?</span>
-      </button>
-      <button class="scenario-card" type="button" onclick="loadDemoScenario('watersports')">
-        <strong>Kitesurfing / watersports</strong>
-        <span>Are wind and waves safe at this beach?</span>
-      </button>
-      <button class="scenario-card" type="button" onclick="loadDemoScenario('fieldwork')">
-        <strong>Outdoor work / agriculture</strong>
-        <span>Are conditions safe for field work?</span>
-      </button>
     </div>
     <div class="guide-steps">
       <button class="guide-step active" type="button" data-guide-step="1" onclick="setDemoMode()">
         <span class="guide-num">1</span>
-        <span><strong>Start</strong><small>Use Demo Mode without an API key.</small></span>
+        <span><strong>Use Case</strong><small>Choose the activity first.</small></span>
       </button>
       <button class="guide-step" type="button" data-guide-step="2" onclick="focusDemoStep('location')">
         <span class="guide-num">2</span>
-        <span><strong>Place</strong><small>Pick a preset, search a city, or use your location.</small></span>
+        <span><strong>Place</strong><small>Search any city/place, pin coordinates, or use your location.</small></span>
       </button>
       <button class="guide-step" type="button" data-guide-step="3" onclick="focusDemoStep('connect')">
         <span class="guide-num">3</span>
@@ -91,62 +146,9 @@
   <section id="setupPanel" class="setup-panel">
     <div class="setup-grid">
 
-      <div id="providerCard" class="setup-card">
-        <div class="setup-label">AI Provider</div>
-        <select id="providerSelect" onchange="onProviderChange()">
-          <option value="demo">Demo Mode (Claude)</option>
-          <option value="anthropic">Claude (your key)</option>
-          <option value="openai">OpenAI GPT-4o (your key)</option>
-        </select>
-        <div id="apiKeyRow" class="api-key-row hidden">
-          <input type="password" id="userApiKey" placeholder="Paste your API key" oninput="onApiKeyInput()">
-          <label class="remember-toggle">
-            <input type="checkbox" id="rememberApiKey" onchange="onRememberApiKeyChange()">
-            <span>Remember this key on this browser</span>
-          </label>
-          <small>Your key is sent directly to the AI provider. By default, it stays only in this browser session unless you choose to remember it.</small>
-        </div>
-      </div>
-
-      <div id="locationCard" class="setup-card">
-        <div class="setup-label">Location</div>
-        <div class="preset-block">
-          <div class="preset-title">Instant Try</div>
-          <div class="preset-grid">
-            <button class="preset-btn" onclick="usePresetLocation('tarifa')">Tarifa</button>
-            <button class="preset-btn" onclick="usePresetLocation('nazare')">Nazaré</button>
-            <button class="preset-btn" onclick="usePresetLocation('lisbon')">Lisbon</button>
-            <button class="preset-btn" onclick="usePresetLocation('san_francisco')">San Francisco</button>
-          </div>
-          <details class="preset-more">
-            <summary>More live places</summary>
-            <div class="preset-grid preset-grid-more">
-              <button class="preset-btn" onclick="usePresetLocation('berlin')">Berlin</button>
-              <button class="preset-btn" onclick="usePresetLocation('reykjavik')">Reykjavik</button>
-              <button class="preset-btn" onclick="usePresetLocation('cape_town')">Cape Town</button>
-              <button class="preset-btn" onclick="usePresetLocation('tokyo')">Tokyo</button>
-              <button class="preset-btn" onclick="usePresetLocation('hossegor')">Hossegor</button>
-              <button class="preset-btn" onclick="usePresetLocation('maui')">Maui</button>
-              <button class="preset-btn" onclick="usePresetLocation('hoi_an')">Hoi An</button>
-              <button class="preset-btn" onclick="usePresetLocation('rio')">Rio</button>
-            </div>
-          </details>
-          <small>Choose a place first. The next step connects it to the Physical World Model.</small>
-        </div>
-        <button class="btn-outline" onclick="useGeolocation()">Use My Location</button>
-        <div class="city-search">
-          <input type="text" id="citySearch" placeholder="Search city or place..." onkeydown="if(event.key==='Enter')searchCity()">
-          <button class="btn-sm" onclick="searchCity()">Search</button>
-        </div>
-        <select id="spotSelect" onchange="onSpotSelect()">
-          <option value="">Or select sensor location...</option>
-        </select>
-        <div id="locationDisplay" class="location-display"></div>
-      </div>
-
-      <div id="connectCard" class="setup-card">
-        <div class="setup-label">Field / Use Case</div>
-        <select id="fieldSelect" onchange="onFieldChange()" style="margin-bottom:8px">
+      <div id="fieldCard" class="setup-card">
+        <label class="setup-label" for="fieldSelect">Use Case</label>
+        <select id="fieldSelect" onchange="onFieldChange()">
           <option value="drone">Drone / UAV Operations</option>
           <option value="construction">Construction / Outdoor Work</option>
           <option value="agriculture">Agriculture / Farming</option>
@@ -158,109 +160,235 @@
           <option value="events">Outdoor Events</option>
           <option value="general">General Physical-World Query</option>
         </select>
-        <div class="setup-label" style="margin-top:8px">Units & Connection</div>
-        <select id="unitSelect" onchange="onUnitChange()" style="margin-bottom:8px">
-          <option value="metric">Metric (km/h, °C, m)</option>
-          <option value="imperial">Imperial (mph, °F, ft)</option>
-          <option value="knots">Nautical (kts, °C, m)</option>
-          <option value="ms">Scientific (m/s, °C, m)</option>
-        </select>
-        <div id="connectionStatus" class="conn-status disconnected">
-          <span class="conn-dot"></span> Not connected
+      </div>
+
+      <div id="locationCard" class="setup-card">
+        <div class="setup-label" id="locationLabel">Location</div>
+        <div class="city-search">
+          <label class="sr-only" for="citySearch">Search for a place</label>
+          <input type="text" id="citySearch" placeholder="Search any city, beach, mountain, airport..." autocomplete="off" onkeydown="if(event.key==='Enter')searchCity()">
+          <button class="btn-sm" type="button" onclick="searchCity()">Search</button>
         </div>
-        <button id="connectBtn" class="btn-connect" onclick="connectToPWM()">Connect to Physical World</button>
+        <div id="searchResults" class="search-results hidden" aria-live="polite"></div>
+        <button class="btn-outline" type="button" onclick="useGeolocation()">Use My Location</button>
+        <div class="manual-coords">
+          <label class="sr-only" for="manualLat">Latitude</label>
+          <input type="number" id="manualLat" min="-90" max="90" step="0.0001" placeholder="Lat">
+          <label class="sr-only" for="manualLng">Longitude</label>
+          <input type="number" id="manualLng" min="-180" max="180" step="0.0001" placeholder="Lng">
+          <button class="btn-sm" type="button" onclick="useManualCoords()">Pin</button>
+        </div>
+        <label class="sr-only" for="spotSelect">Curated sensor location</label>
+        <select id="spotSelect" aria-labelledby="locationLabel" onchange="onSpotSelect()">
+          <option value="">Or select sensor location...</option>
+        </select>
+        <div id="locationDisplay" class="location-display"></div>
+      </div>
+
+      <div id="connectCard" class="setup-card">
+        <div class="setup-label">Connect</div>
+        <div id="connectionStatus" class="conn-status disconnected" role="status" aria-live="polite">
+          <span class="conn-dot" aria-hidden="true"></span> Not connected
+        </div>
+        <button id="connectBtn" class="btn-connect" type="button" onclick="connectToPWM()">Connect to Physical World</button>
         <div id="connDetails" class="conn-details hidden"></div>
       </div>
+
+      <details id="settingsCard" class="setup-card settings-card">
+        <summary>Settings</summary>
+        <div class="settings-grid">
+          <div id="providerCard" class="settings-group">
+            <label class="setup-label" for="providerSelect">AI Provider</label>
+            <select id="providerSelect" onchange="onProviderChange()">
+              <option value="demo">Demo Mode</option>
+              <option value="profile">Saved profile key (paid BYOK)</option>
+              <option value="anthropic">Claude (your key)</option>
+              <option value="openai">OpenAI (your key)</option>
+              <option value="openrouter">OpenRouter (your key)</option>
+            </select>
+            <div id="profileKeyRow" class="api-key-row hidden">
+              <small id="profileKeyHint">Sign in on the dashboard and save a default model key to use Senlay directly with your own LLM.</small>
+            </div>
+            <div id="apiKeyRow" class="api-key-row hidden">
+              <label class="sr-only" for="userApiKey">Provider API key</label>
+              <input type="password" id="userApiKey" placeholder="Paste your API key" autocomplete="off" spellcheck="false" oninput="onApiKeyInput()">
+              <label class="remember-toggle">
+                <input type="checkbox" id="rememberApiKey" onchange="onRememberApiKeyChange()">
+                <span>Remember this key on this browser</span>
+              </label>
+              <small>Your key is sent over HTTPS to Senlay's server, used only to proxy this chat request to the selected AI provider, and is not saved server-side in this mode. By default it remains in this tab's browser session; “Remember” stores it on this device. See <a href="/privacy.html">Privacy</a>.</small>
+            </div>
+          </div>
+          <div class="settings-group">
+            <label class="setup-label" for="unitSelect">Units</label>
+            <select id="unitSelect" onchange="onUnitChange()">
+              <option value="metric">Metric (km/h, °C, m)</option>
+              <option value="imperial">Imperial (mph, °F, ft)</option>
+              <option value="knots">Nautical (kts, °C, m)</option>
+              <option value="ms">Scientific (m/s, °C, m)</option>
+            </select>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
-  <div id="statusBar" class="status-bar hidden" onclick="toggleSetup()">
-    <span class="conn-dot connected"></span>
+  <button id="statusBar" class="status-bar hidden" type="button" aria-expanded="false" aria-controls="setupPanel" onclick="toggleSetup()">
+    <span class="conn-dot connected" aria-hidden="true"></span>
     <span id="statusBarText">Connected</span>
     <span class="status-expand">Details</span>
-  </div>
+  </button>
 
-  <main id="mainArea" class="main-area hidden">
+  <section id="mainArea" class="main-area hidden" aria-label="Verification results">
     <div class="main-grid">
 
       <div class="chat-panel">
         <div class="chat-header">
-          <span id="chatProviderLabel">Claude + Physical World Model</span>
+          <span id="chatProviderLabel">Physical World Model</span>
         </div>
-        <div id="chatMessages" class="chat-messages">
+        <div id="chatMessages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions text">
         </div>
         <div class="chat-input-bar">
+          <label class="sr-only" for="chatInput">Physical-world question</label>
           <input type="text" id="chatInput" placeholder="Ask a physical-world question about this place..." onkeydown="if(event.key==='Enter')sendMessage()">
-          <button id="sendBtn" onclick="sendMessage()">Send</button>
+          <button id="sendBtn" type="button" onclick="sendMessage()">Send</button>
         </div>
-        <div id="promptChips" class="prompt-chips">
-          <button type="button" onclick="usePrompt('Can a drone safely fly here now? Give a go/no-go answer and explain the physical evidence.')">Drone go/no-go</button>
-          <button type="button" onclick="usePrompt('Which values are measured by sensors, which are forecast/model data, and how fresh are they?')">Source check</button>
-          <button type="button" onclick="usePrompt('Give me the practical action for the next hour based on wind, weather, air quality, terrain, and risk.')">Next hour action</button>
-        </div>
+        <div id="promptChips" class="prompt-chips" role="group" aria-label="Suggested questions for the selected use case"></div>
       </div>
 
       <div class="sensor-panel">
         <div class="sensor-header">
           <span class="pulse-dot"></span> PHYSICAL CONTEXT FEED &mdash; LIVE
         </div>
+        <section class="layer-map-panel" aria-label="Senlay visual layer map">
+          <div class="layer-map-topbar">
+            <div class="layer-map-title-block">
+              <span class="layer-map-kicker">SOURCES + LAYERS</span>
+              <strong id="layerMapTitle">Connect a place</strong>
+            </div>
+            <div class="layer-map-tabs" role="tablist" aria-label="Map layer mode">
+              <button type="button" role="tab" aria-selected="true" class="active" data-map-mode="all" onclick="setLayerMapMode('all')">All</button>
+              <button type="button" role="tab" aria-selected="false" data-map-mode="terrain" onclick="setLayerMapMode('terrain')">Terrain</button>
+              <button type="button" role="tab" aria-selected="false" data-map-mode="marine" onclick="setLayerMapMode('marine')">Marine</button>
+              <button type="button" role="tab" aria-selected="false" data-map-mode="risk" onclick="setLayerMapMode('risk')">Risk state</button>
+            </div>
+          </div>
+          <div id="layerMap" class="layer-map" role="img" aria-label="Map of selected Senlay spot and physical context overlays">
+            <div id="layerMapFallback" class="layer-map-fallback">
+              <span class="layer-map-target"></span>
+              <strong>Select and connect a location</strong>
+            </div>
+          </div>
+          <div id="layerMapLegend" class="layer-map-legend">
+            <span><i class="legend-dot spot"></i>Spot</span>
+            <span><i class="legend-dot source"></i>Source</span>
+            <span><i class="legend-dot risk"></i>Risk state</span>
+            <span><i class="legend-line wind"></i>Wind</span>
+            <span><i class="legend-line terrain"></i>Terrain</span>
+            <span><i class="legend-dot imagery"></i>Imagery</span>
+          </div>
+          <p class="layer-map-note">Map overlays show source locations, the selected-point risk state, and measured wind direction. They do not invent obstacle, reef, coastline, or trajectory geometry.</p>
+        </section>
         <div id="sensorFeed" class="sensor-feed">
           <p class="sensor-placeholder">Connect to see live data</p>
         </div>
-        <div id="sensorTimestamp" class="sensor-timestamp"></div>
+        <div id="sensorTimestamp" class="sensor-timestamp" role="status" aria-live="polite"></div>
       </div>
     </div>
+  </section>
   </main>
 
   <div id="ticker" class="ticker hidden">
     <div class="ticker-track" id="tickerTrack"></div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-shell">
-      <div class="footer-main">
-        <div class="footer-about">
-          <p class="footer-brand">SENLAY</p>
-          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
-          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
-        </div>
-        <div class="footer-nav-grid">
-          <div class="footer-col">
-            <h4>Product</h4>
-            <a href="demo">Demo</a>
-            <a href="/smartsurf/">SmartSurf</a>
-            <a href="docs.html">Docs</a>
-            <a href="agents">For Agents</a>
-            <a href="pricing.html">Pricing</a>
-          </div>
-          <div class="footer-col">
-            <h4>Company</h4>
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
-            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
-          </div>
-        </div>
+  <footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
       </div>
-      <div class="footer-bottom">
-        <span>Open beta for developers, pilots, and agent builders.</span>
-        <div class="footer-bottom-links">
-          <a href="pricing.html">API Access</a>
-          <a href="login.html">Sign In</a>
-          <a href="support.html">Pilot Contact</a>
-        </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
       </div>
-      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
     </div>
-  </footer>
 
-  <script src="/scripts/app.js"></script>
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+  <script src="/vendor/maplibre-gl/maplibre-gl.js"></script>
+  <script src="/scripts/app.js?v=20260709-demo-pwm-labels"></script>
+  <script src="/scripts/header-menu.js"></script>
 </body>
 </html>

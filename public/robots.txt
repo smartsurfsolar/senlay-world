@@ -1,6 +1,25 @@
 User-agent: *
 Allow: /
+Allow: /api/v1/try-sense
+Allow: /agents/live
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /openapi.json
+Allow: /openapi.yaml
+Allow: /agent-manifest.json
+Allow: /sensor-catalog.json
 Disallow: /api/
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login.html
 
-Sitemap: https://senlay.world/sitemap.xml
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://senlay.cloud/sitemap.xml

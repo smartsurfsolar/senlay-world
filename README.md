@@ -2,13 +2,13 @@
   <img src="public/assets/brand/SenlayLogo-header.png" alt="Senlay" width="220">
 </p>
 
-# Senlay — Sensory Intelligence Layer for AI Agents
+# Senlay — Verified Physical Context
 
-**Senlay is a sensory intelligence layer that connects AI agents to the physical world.**
+Senlay provides verified physical context for systems that act outside. This repository contains the public website for the Senlay verification network.
 
 Senlay gives AI agents real-time awareness of weather, ocean, terrain, air quality, satellite data, sensor data, and physical-world context. It is built for developers and AI teams that need current conditions, source, freshness, confidence, and interpretation before software makes a real-world decision.
 
-[senlay.world](https://senlay.world) · [API Docs](public/docs.html) · [Founder Story](public/founder.html) · [Support](public/support.html)
+[senlay.cloud](https://senlay.cloud) · [API Docs](https://senlay.cloud/docs.html) · [Open Network SDK](https://github.com/smartsurfsolar/senlay-platform) · [Founder Story](public/founder.html)
 
 ## Why It Matters
 
@@ -30,6 +30,10 @@ public/
 
 ## Preview Locally
 
+`main` holds stable website releases; `develop` holds public website development. The historical repository name is retained; the website and API domain is `senlay.cloud`.
+
+The backend, authentication, admin services, provider secrets and memory corpus live in the separate private `senlay-platform-core` repository. This repository's license applies to website content; the separate Open Network SDK uses Apache-2.0. Never merge private backend history into this public repository.
+
 ```bash
 cd public
 python3 -m http.server 8080
@@ -40,6 +44,8 @@ Then open:
 ```text
 http://127.0.0.1:8080
 ```
+
+This previews static pages. Use `.html` page URLs locally; extensionless routes, API calls, authentication and `/vendor/maplibre-gl/` assets are supplied by the production backend and are not implemented by Python's static server.
 
 ## Product Pages
 
@@ -53,7 +59,7 @@ http://127.0.0.1:8080
 
 ## Contact
 
-- Email: [viktor@senlay.world](mailto:viktor@senlay.world)
+- Email: [viktor@senlay.cloud](mailto:viktor@senlay.cloud)
 - WhatsApp: [+84 3333 801 68](https://wa.me/84333380168)
 - LinkedIn: [Viktor Kryvotsiuk](https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/)
 - Ko-fi: [ko-fi.com/senlay](https://ko-fi.com/senlay)

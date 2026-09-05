@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay — Get Your API Key</title>
-  <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
-  <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
+  <title>Create Senlay Free API Key - Outdoor Verification</title>
+  <meta name="description" content="Create a free Senlay API key for source-aware outdoor verification, SmartSurf-style safety experiments, and indie developer workflows.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <meta property="og:title" content="Create Senlay Free API Key - Outdoor Verification">
+  <meta property="og:description" content="Create a free Senlay API key for source-aware outdoor verification, SmartSurf-style safety experiments, and indie developer workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://senlay.cloud/register.html">
+  <meta property="og:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Create Senlay Free API Key - Outdoor Verification">
+  <meta name="twitter:description" content="Create a free Senlay API key for source-aware outdoor verification, SmartSurf-style safety experiments, and indie developer workflows.">
+  <link rel="canonical" href="https://senlay.cloud/register.html">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
   <style>
     .reg-container { max-width: 500px; margin: 0 auto; padding: 48px 24px; }
@@ -39,6 +50,10 @@
     .next-steps h4 { font-size: 13px; color: var(--primary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
     .next-steps ol { padding-left: 20px; font-size: 13px; color: var(--text2); line-height: 1.8; }
     .next-steps ol li strong { color: var(--text); }
+    .oauth-divider { display: flex; align-items: center; gap: 12px; color: var(--text2); font-size: 12px; margin: 18px 0; }
+    .oauth-divider::before, .oauth-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+    .google-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border); background: #fff; color: #111827; text-decoration: none; font-weight: 700; font-size: 14px; }
+    .google-mark { width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #4285f4; font-weight: 900; font-family: Arial, sans-serif; }
     @media (max-width: 600px) {
       .reg-container { padding: 32px 14px; }
       .reg-card { padding: 22px 18px; }
@@ -48,92 +63,99 @@
       .ex-code { font-size: 11px; padding: 12px; }
     }
   </style>
-</head>
+<link rel="stylesheet" href="/styles/dark-map-override.css?v=20260516-0536"></head>
 <body>
-  <header class="l-header">
-    <div class="l-header-inner">
-      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
-      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.l-nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
-      <nav class="l-nav">
+    <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+      </div>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
         <a href="/">Home</a>
         <details class="nav-menu">
           <summary>Product</summary>
           <div class="nav-menu-panel">
-            <a href="demo">Demo</a>
-            <a href="agents">For Agents</a>
-            <a href="docs.html">Docs</a>
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
           </div>
         </details>
-        <a href="pricing.html">Pricing</a>
+        <a href="/pricing.html">Pricing</a>
         <details class="nav-menu">
           <summary>Company</summary>
           <div class="nav-menu-panel">
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
           </div>
         </details>
-        <a href="login.html">Sign In</a>
-        <a href="pricing.html" class="nav-cta">Get API Key</a>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
       </nav>
     </div>
   </header>
 
-  <div class="reg-container">
-    <h2 class="reg-title">Get Your API Key</h2>
-    <p class="reg-sub">Connect any AI agent to the Physical World in minutes</p>
+  <main class="reg-container">
+    <h1 class="reg-title">Get Your Verification API Key</h1>
+    <p class="reg-sub">Connect an agent, IoT app, or SmartSurf-style safety workflow to live physical evidence in minutes.</p>
 
-    <div id="alertBox"></div>
+    <div id="alertBox" role="status" aria-live="polite"></div>
 
     <div id="registerForm" class="reg-card">
+      <a class="google-btn google-auth-option hidden" href="/api/auth/google/start?next=/dashboard.html"><span class="google-mark">G</span>Continue with Google</a>
+      <div class="oauth-divider google-auth-option hidden">or create with email</div>
       <div class="form-group">
-        <label>Name (optional)</label>
-        <input type="text" id="regName" placeholder="Your name">
+        <label for="regName">Name (optional)</label>
+        <input type="text" id="regName" placeholder="Your name" autocomplete="name">
       </div>
       <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="regEmail" placeholder="you@example.com">
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email">
       </div>
       <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="regPassword" placeholder="Min 8 characters">
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" placeholder="Min 8 characters" autocomplete="new-password">
       </div>
       <div class="form-group">
-        <label>Confirm Password</label>
-        <input type="password" id="regConfirm" placeholder="Confirm password">
+        <label for="regConfirm">Confirm Password</label>
+        <input type="password" id="regConfirm" placeholder="Confirm password" autocomplete="new-password">
       </div>
-      <button class="btn-primary" style="width:100%;margin-top:8px" onclick="doRegister()">Create Account</button>
+      <p style="font-size:12px;color:var(--text2);line-height:1.55">By creating an account, you agree to the <a href="/terms.html">Terms of Use</a> and acknowledge the <a href="/privacy.html">Privacy Notice</a>.</p>
+      <button class="btn-primary" type="button" style="width:100%;margin-top:8px" onclick="doRegister()">Create Account</button>
     </div>
 
     <div id="successView" class="reg-card hidden">
-      <div class="alert alert-ok">Account created. Here is your API key:</div>
+      <div class="alert alert-ok">Account created. Your agent can now request physical-world verification. Here is your API key:</div>
       <div class="key-display">
         <span id="apiKeyDisplay"></span>
-        <button class="copy-btn-key" onclick="copyKey()">COPY</button>
+        <button class="copy-btn-key" type="button" onclick="copyKey()">COPY</button>
       </div>
-      <p style="font-size:13px;color:#ffa502;margin-bottom:16px">Save this key now — you won't see it in full again.</p>
+      <p style="font-size:13px;color:#ffa502;margin-bottom:16px">Save this key now. Its full value is shown once; the dashboard keeps only a masked preview. If you lose it, create a replacement.</p>
 
       <div class="next-steps">
         <h4>What's Next</h4>
         <ol>
           <li><strong>Save your key</strong> — paste it into your password manager or env file</li>
           <li><strong>Try a request</strong> — pick your language below</li>
-          <li><strong>Read the docs</strong> — see all 21 sensor sources at <a href="docs.html" style="color:var(--primary)">/docs</a></li>
+          <li><strong>Read the docs</strong> — review the 21 source families at <a href="docs.html" style="color:var(--primary)">/docs</a></li>
         </ol>
       </div>
 
       <p style="font-size:14px;color:var(--text2);margin-bottom:6px">Quick start example:</p>
       <div class="ex-tabs">
-        <button class="ex-tab active" onclick="showEx('curl', this)">curl</button>
-        <button class="ex-tab" onclick="showEx('python', this)">Python</button>
-        <button class="ex-tab" onclick="showEx('js', this)">JavaScript</button>
-        <button class="ex-tab" onclick="showEx('claude', this)">Claude SDK</button>
+        <button class="ex-tab active" type="button" onclick="showEx('curl', this)">curl</button>
+        <button class="ex-tab" type="button" onclick="showEx('python', this)">Python</button>
+        <button class="ex-tab" type="button" onclick="showEx('js', this)">JavaScript</button>
+        <button class="ex-tab" type="button" onclick="showEx('claude', this)">Claude SDK</button>
       </div>
 
       <div id="ex-curl" class="ex-pane active">
         <div class="ex-code" id="code-curl">curl -H "Authorization: Bearer YOUR_KEY" \
-  "https://senlay.world/api/v1/sense?lat=36.01&amp;lng=-5.60"</div>
-        <button class="ex-copy" onclick="copyEx('code-curl', this)">COPY</button>
+  "https://senlay.cloud/api/v1/sense?lat=36.01&amp;lng=-5.60"</div>
+        <button class="ex-copy" type="button" onclick="copyEx('code-curl', this)">COPY</button>
       </div>
 
       <div id="ex-python" class="ex-pane">
@@ -144,21 +166,21 @@ headers = {"Authorization": f"Bearer {API_KEY}"}
 
 # Plain text — easiest to inject into LLM context
 r = requests.get(
-    "https://senlay.world/api/v1/sense",
+    "https://senlay.cloud/api/v1/sense",
     headers=headers,
     params={"lat": 36.01, "lng": -5.60}
 )
 print(r.text)
 
-# Or full JSON with all sensor data
+# Or structured JSON with the source data available for this request
 r = requests.get(
-    "https://senlay.world/api/v1/pwm",
+    "https://senlay.cloud/api/v1/pwm",
     headers=headers,
     params={"lat": 36.01, "lng": -5.60}
 )
 data = r.json()
 print(data["context_string"])</div>
-        <button class="ex-copy" onclick="copyEx('code-python', this)">COPY</button>
+        <button class="ex-copy" type="button" onclick="copyEx('code-python', this)">COPY</button>
       </div>
 
       <div id="ex-js" class="ex-pane">
@@ -166,7 +188,7 @@ print(data["context_string"])</div>
 
 // Plain text — drop straight into your prompt
 const res = await fetch(
-  "https://senlay.world/api/v1/sense?lat=36.01&amp;lng=-5.60",
+  "https://senlay.cloud/api/v1/sense?lat=36.01&amp;lng=-5.60",
   { headers: { Authorization: `Bearer ${API_KEY}` } }
 );
 const sensoryContext = await res.text();
@@ -174,25 +196,25 @@ console.log(sensoryContext);
 
 // Or full JSON
 const json = await fetch(
-  "https://senlay.world/api/v1/pwm?lat=36.01&amp;lng=-5.60",
+  "https://senlay.cloud/api/v1/pwm?lat=36.01&amp;lng=-5.60",
   { headers: { Authorization: `Bearer ${API_KEY}` } }
 ).then(r =&gt; r.json());
 console.log(json.context_string);</div>
-        <button class="ex-copy" onclick="copyEx('code-js', this)">COPY</button>
+        <button class="ex-copy" type="button" onclick="copyEx('code-js', this)">COPY</button>
       </div>
 
       <div id="ex-claude" class="ex-pane">
         <div class="ex-code" id="code-claude">import anthropic, requests
 
 senlay = requests.get(
-    "https://senlay.world/api/v1/sense",
+    "https://senlay.cloud/api/v1/sense",
     headers={"Authorization": "Bearer YOUR_KEY"},
     params={"lat": 36.01, "lng": -5.60}
 ).text
 
 client = anthropic.Anthropic()
 msg = client.messages.create(
-    model="claude-sonnet-4-6",
+    model="claude-sonnet-4-20250514",
     max_tokens=1024,
     messages=[{
         "role": "user",
@@ -201,7 +223,7 @@ msg = client.messages.create(
     }]
 )
 print(msg.content[0].text)</div>
-        <button class="ex-copy" onclick="copyEx('code-claude', this)">COPY</button>
+        <button class="ex-copy" type="button" onclick="copyEx('code-claude', this)">COPY</button>
       </div>
 
       <div style="display:flex;gap:12px;margin-top:8px">
@@ -212,61 +234,110 @@ print(msg.content[0].text)</div>
     </div>
 
     <p class="reg-link">Already have an account? <a href="dashboard.html">Sign in</a></p>
-  </div>
+  </main>
 
-  <footer class="l-footer">
-    <div class="footer-shell">
-      <div class="footer-main">
-        <div class="footer-about">
-          <p class="footer-brand">SENLAY</p>
-          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
-          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
-        </div>
-        <div class="footer-nav-grid">
-          <div class="footer-col">
-            <h4>Product</h4>
-            <a href="demo">Demo</a>
-            <a href="/smartsurf/">SmartSurf</a>
-            <a href="docs.html">Docs</a>
-            <a href="agents">For Agents</a>
-            <a href="pricing.html">Pricing</a>
-          </div>
-          <div class="footer-col">
-            <h4>Company</h4>
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
-            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
-          </div>
-        </div>
+  <footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
       </div>
-      <div class="footer-bottom">
-        <span>Open beta for developers, pilots, and agent builders.</span>
-        <div class="footer-bottom-links">
-          <a href="pricing.html">API Access</a>
-          <a href="login.html">Sign In</a>
-          <a href="support.html">Pilot Contact</a>
-        </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
       </div>
-      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
     </div>
-  </footer>
+
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
 
   <script>
+    async function updateGoogleAuthUi() {
+      try {
+        const res = await fetch('/api/auth/google/status', { cache: 'no-store' });
+        const data = await res.json();
+        document.querySelectorAll('.google-auth-option').forEach(el => {
+          el.classList.toggle('hidden', !data.configured);
+        });
+      } catch (_) {}
+    }
+
     function showAlert(msg, type) {
       const box = document.getElementById('alertBox');
-      box.innerHTML = '';
       const div = document.createElement('div');
       div.className = 'alert alert-' + (type === 'error' ? 'err' : 'ok');
       div.textContent = msg;
-      box.appendChild(div);
+      box.replaceChildren(div);
     }
     async function doRegister() {
       const name = document.getElementById('regName').value.trim();
@@ -283,7 +354,9 @@ print(msg.content[0].text)</div>
         document.getElementById('apiKeyDisplay').textContent = data.apiKey;
         document.getElementById('registerForm').classList.add('hidden');
         document.getElementById('successView').classList.remove('hidden');
-        document.getElementById('alertBox').innerHTML = '';
+        document.getElementById('alertBox').replaceChildren();
+        document.getElementById('regPassword').value = '';
+        document.getElementById('regConfirm').value = '';
       } catch (e) { showAlert('Connection error', 'error'); }
     }
     function copyKey() {
@@ -309,6 +382,8 @@ print(msg.content[0].text)</div>
         setTimeout(() => btn.textContent = 'COPY', 2000);
       });
     }
+    updateGoogleAuthUi();
   </script>
+  <script src="/scripts/header-menu.js"></script>
 </body>
 </html>

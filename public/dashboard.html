@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay — Developer Dashboard</title>
-  <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
-  <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
+  <title>Senlay Developer Dashboard - Verification Keys and Sandbox</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Manage Senlay verification API keys, BYOK model keys, sandbox testing, source evidence, and SmartSurf-style risk-aware workflows.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
   <style>
     .dash-container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
@@ -15,8 +18,8 @@
     .dash-card h3 { font-size: 16px; color: var(--primary); margin-bottom: 12px; }
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-size: 13px; color: var(--text2); margin-bottom: 6px; }
-    .form-group input { width: 100%; padding: 10px 14px; background: #0F172A; border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 14px; outline: none; }
-    .form-group input:focus { border-color: var(--primary); }
+    .form-group input, .form-group select { width: 100%; padding: 10px 14px; background: #0F172A; border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 14px; outline: none; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
     .dash-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
     .dash-table th { text-align: left; font-size: 12px; color: var(--text2); padding: 8px 10px; border-bottom: 1px solid var(--border); }
     .dash-table td { font-size: 13px; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text2); }
@@ -36,6 +39,42 @@
     .preset-btn { padding: 6px 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); border-radius: 6px; color: var(--primary); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
     .preset-btn:hover { background: rgba(16,185,129,0.18); transform: translateY(-1px); }
     .preset-label { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; align-self: center; }
+    .llm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    .llm-grid .span-2 { grid-column: 1 / -1; }
+    .llm-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .llm-actions button { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: transparent; color: var(--text2); cursor: pointer; font-size: 12px; }
+    .llm-actions button:hover { color: var(--primary); border-color: var(--primary); }
+    .llm-note { color: var(--text2); font-size: 13px; line-height: 1.55; margin-bottom: 12px; }
+    .llm-status { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .llm-status.enabled { background: rgba(16,185,129,0.14); color: var(--primary); }
+    .llm-status.locked { background: rgba(245,158,11,0.14); color: #f59e0b; }
+    .disabled-card { opacity: 0.62; pointer-events: none; }
+    .oauth-divider { display: flex; align-items: center; gap: 12px; color: var(--text2); font-size: 12px; margin: 18px 0; }
+    .oauth-divider::before, .oauth-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+    .google-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border); background: #fff; color: #111827; text-decoration: none; font-weight: 700; font-size: 14px; }
+    .google-mark { width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #4285f4; font-weight: 900; font-family: Arial, sans-serif; }
+    .account-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+    .one-time-key { margin-top: 12px; padding: 14px; border: 1px solid var(--primary); border-radius: 8px; background: rgba(16,185,129,0.08); }
+    .network-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .network-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .network-note { color:var(--text2); font-size:13px; line-height:1.5; margin-bottom:14px; }
+    .station-actions { display:flex; gap:6px; flex-wrap:wrap; }
+    .station-actions button { padding:5px 8px; font-size:11px; }
+    .trust-pill { display:inline-block; margin-top:4px; padding:2px 7px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; }
+    .trust-pill.good { background:rgba(16,185,129,0.14); color:var(--primary); }
+    .trust-pill.warn { background:rgba(245,158,11,0.14); color:#f59e0b; }
+    .trust-pill.bad { background:rgba(239,68,68,0.12); color:var(--danger); }
+    .commission-box { margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08); }
+    .commission-box code { display:block; margin-top:8px; white-space:pre-wrap; overflow-wrap:anywhere; color:var(--code); }
+    .station-diagnostics { margin-top:14px; padding:16px; border:1px solid var(--border); border-radius:8px; background:#0B1120; }
+    .station-diagnostics-head { display:flex; justify-content:space-between; align-items:start; gap:12px; }
+    .station-diagnostics-head h4 { color:var(--text); font-size:15px; margin:0; }
+    .station-metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:14px 0; }
+    .station-metric { padding:10px; border:1px solid rgba(255,255,255,0.07); border-radius:6px; }
+    .station-metric strong { display:block; color:var(--text); font-size:14px; overflow-wrap:anywhere; }
+    .station-metric span { color:var(--text2); font-size:10px; text-transform:uppercase; letter-spacing:.04em; }
+    .station-warning-list { margin:10px 0 14px 18px; color:#f59e0b; font-size:12px; line-height:1.5; }
+    .station-diagnostics .dash-table { margin-bottom:0; }
     @media (max-width: 600px) {
       .dash-container { padding: 24px 14px; }
       .dash-card { padding: 18px; }
@@ -43,6 +82,10 @@
       #sandboxLat, #sandboxLng { width: calc(50% - 4px) !important; }
       .sandbox-result { font-size: 11px; padding: 12px; }
       .preset-btn { font-size: 11px; padding: 5px 10px; }
+      .llm-grid { grid-template-columns: 1fr; }
+      .llm-grid .span-2 { grid-column: auto; }
+      .network-grid { grid-template-columns:1fr; }
+      .station-metrics { grid-template-columns:1fr 1fr; }
     }
     .waitlist-box { background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02)); border: 1px solid rgba(16,185,129,0.2); border-radius: 10px; padding: 24px; text-align: center; }
     .waitlist-box h4 { font-size: 18px; margin-bottom: 8px; }
@@ -51,59 +94,73 @@
     .waitlist-row input { flex: 1; }
     .hidden { display: none !important; }
   </style>
-</head>
+<link rel="stylesheet" href="/styles/dark-map-override.css?v=20260516-0536"></head>
 <body>
-  <header class="l-header">
-    <div class="l-header-inner">
-      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
-      <button class="hamburger" onclick="this.classList.toggle('active');this.parentElement.querySelector('.l-nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
-      <nav class="l-nav">
+    <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+      </div>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
         <a href="/">Home</a>
         <details class="nav-menu">
           <summary>Product</summary>
           <div class="nav-menu-panel">
-            <a href="demo">Demo</a>
-            <a href="agents">For Agents</a>
-            <a href="docs.html">Docs</a>
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
           </div>
         </details>
-        <a href="pricing.html">Pricing</a>
+        <a href="/pricing.html">Pricing</a>
         <details class="nav-menu">
           <summary>Company</summary>
           <div class="nav-menu-panel">
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
           </div>
         </details>
-        <a href="login.html">Sign In</a>
-        <a href="pricing.html" class="nav-cta">Get API Key</a>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
       </nav>
     </div>
   </header>
 
-  <div class="dash-container">
-    <h2 class="dash-title">Developer Dashboard</h2>
-    <p class="dash-sub">Manage your API keys, test the Physical World Model, and monitor usage.</p>
+  <main class="dash-container">
+    <h1 class="dash-title">Developer Dashboard</h1>
+    <p class="dash-sub">Manage verification API keys, test what your agent receives from the Physical World Model, and inspect the evidence layer behind SmartSurf-style safety workflows.</p>
 
-    <div id="alertBox"></div>
+    <div id="alertBox" role="status" aria-live="polite"></div>
 
     <div id="loginSection" class="dash-card">
       <h3>Sign In</h3>
+      <a class="google-btn google-auth-option hidden" href="/api/auth/google/start?next=/dashboard.html"><span class="google-mark">G</span>Continue with Google</a>
+      <div class="oauth-divider google-auth-option hidden">or use email</div>
       <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="loginEmail" placeholder="you@example.com">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email">
       </div>
       <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="loginPassword" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
       </div>
-      <button class="btn-primary" style="width:100%;margin-top:8px" onclick="doLogin()">Sign In</button>
+      <button class="btn-primary" type="button" style="width:100%;margin-top:8px" onclick="doLogin()">Sign In</button>
       <p class="dash-link">Don't have an account? <a href="register.html">Register</a></p>
     </div>
 
     <div id="dashSection" class="hidden">
-      <div id="welcomeMsg" style="font-size:15px;color:var(--text2);margin-bottom:20px"></div>
+      <div class="account-row"><div id="welcomeMsg" style="font-size:15px;color:var(--text2)"></div><div><button id="adminConsoleButton" class="btn-secondary hidden" type="button" onclick="openAdminConsole()">Admin Console</button> <button class="btn-secondary" type="button" onclick="logout()">Sign Out</button></div></div>
+
+      <div class="dash-card">
+        <h3>Account Security</h3>
+        <div class="form-group"><label for="currentPassword">Current password</label><input id="currentPassword" type="password" autocomplete="current-password"></div>
+        <div class="form-group"><label for="newPassword">New password (12+ characters)</label><input id="newPassword" type="password" minlength="12" autocomplete="new-password"></div>
+        <div class="form-group"><label for="confirmPassword">Confirm new password</label><input id="confirmPassword" type="password" minlength="12" autocomplete="new-password"></div>
+        <button class="btn-primary" type="button" onclick="changePassword()">Change Password</button>
+      </div>
 
       <div class="dash-card">
         <h3>Your API Keys</h3>
@@ -111,103 +168,232 @@
           <thead><tr><th>Key</th><th>Name</th><th>Tier</th><th>Requests</th><th>Status</th></tr></thead>
           <tbody id="keysTable"></tbody>
         </table>
+        <p class="llm-note">Full API keys are shown once, when created. This dashboard keeps only masked previews; create a replacement if a key is lost.</p>
+        <div id="createdKeyNotice" class="one-time-key hidden" role="status" aria-live="polite"></div>
         <div style="display:flex;gap:8px;margin-top:12px">
+          <label class="sr-only" for="newKeyName">New API key name</label>
           <input type="text" id="newKeyName" placeholder="Key name (optional)" style="flex:1;padding:8px 12px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none">
-          <button class="btn-primary" style="padding:8px 16px;font-size:13px" onclick="generateKey()">+ New Key</button>
+          <button class="btn-primary" type="button" style="padding:8px 16px;font-size:13px" onclick="generateKey()">+ New Key</button>
         </div>
       </div>
 
       <div class="dash-card">
-        <h3>PWM Sandbox &mdash; Test the Physical World Model</h3>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:12px">See exactly what your AI will receive. Pick a preset or enter coordinates.</p>
+        <h3>Open Network Stations</h3>
+        <p class="network-note">Register hardware that contributes signed, direct observations to Senlay. Your account session manages providers and stations; each station receives a separate secret that must be saved once and used only for signing.</p>
+        <div class="network-grid">
+          <div>
+            <div class="form-group"><label for="providerName">Provider / network name</label><input id="providerName" type="text" placeholder="My community network"></div>
+            <div class="form-group"><label for="providerSlug">Network slug (optional)</label><input id="providerSlug" type="text" placeholder="my-community-network"></div>
+            <button class="btn-primary" type="button" onclick="createProvider()">Create Provider</button>
+          </div>
+          <div>
+            <div class="form-group"><label for="stationProvider">Provider</label><select id="stationProvider"></select></div>
+            <div class="form-group"><label for="stationName">Station name</label><input id="stationName" type="text" placeholder="Beach wind station"></div>
+            <div class="form-group"><label for="stationType">Sensor type</label><input id="stationType" type="text" value="weather_station"></div>
+            <div class="network-grid"><div class="form-group"><label for="stationLat">Latitude</label><input id="stationLat" type="number" min="-90" max="90" step="0.000001" placeholder="15.8801"></div><div class="form-group"><label for="stationLng">Longitude</label><input id="stationLng" type="number" min="-180" max="180" step="0.000001" placeholder="108.3380"></div></div>
+            <button class="btn-primary" type="button" onclick="registerStation()">Register Station</button>
+          </div>
+        </div>
+        <div id="stationCredentialNotice" class="one-time-key hidden" role="status" aria-live="polite"></div>
+        <table class="dash-table"><thead><tr><th>Station</th><th>Provider</th><th>Location</th><th>Last data</th><th>Credential</th><th>Actions</th></tr></thead><tbody id="stationsTable"></tbody></table>
+        <section id="stationDiagnostics" class="station-diagnostics hidden" aria-live="polite"></section>
+      </div>
+
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px">
+          <h3 style="margin-bottom:0">AI Model Keys</h3>
+          <span id="llmStatus" class="llm-status locked">Pro BYOK</span>
+        </div>
+        <p class="llm-note">Paid users can store their own Anthropic, OpenAI, OpenRouter, or OpenAI-compatible model key and use Senlay directly inside the platform. Keys are encrypted server-side and never shown again after saving.</p>
+        <div id="llmAccessNote" class="alert alert-err hidden"></div>
+        <table class="dash-table">
+          <thead><tr><th>Provider</th><th>Model</th><th>Key</th><th>Default</th><th>Actions</th></tr></thead>
+          <tbody id="llmKeysTable"></tbody>
+        </table>
+        <div id="llmFormWrap">
+          <div class="llm-grid">
+            <div class="form-group">
+              <label for="llmProvider">Provider</label>
+              <select id="llmProvider" onchange="updateLlmProviderForm()">
+                <option value="anthropic">Anthropic Claude</option>
+                <option value="openai">OpenAI</option>
+                <option value="openrouter">OpenRouter</option>
+                <option value="openai-compatible">OpenAI-compatible</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="llmLabel">Label</label>
+              <input type="text" id="llmLabel" placeholder="e.g. Viktor Claude Pro">
+            </div>
+            <div class="form-group">
+              <label for="llmModel">Model</label>
+              <input type="text" id="llmModel" placeholder="claude-sonnet-4-20250514">
+            </div>
+            <div id="llmBaseUrlGroup" class="form-group hidden">
+              <label for="llmBaseUrl">Base URL</label>
+              <input type="text" id="llmBaseUrl" placeholder="https://openrouter.ai/api/v1">
+            </div>
+            <div class="form-group span-2">
+              <label for="llmApiKey">Provider API Key</label>
+              <input type="password" id="llmApiKey" placeholder="Paste provider key">
+            </div>
+            <label class="span-2" style="display:flex;align-items:center;gap:8px;color:var(--text2);font-size:13px">
+              <input type="checkbox" id="llmDefault" checked style="width:auto;accent-color:var(--primary)">
+              Use as default model key in Senlay Demo
+            </label>
+          </div>
+          <button class="btn-primary" type="button" style="padding:10px 18px;font-size:13px;margin-top:8px" onclick="saveLlmKey()">Save Model Key</button>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <h3>PWM Sandbox &mdash; What your agent receives</h3>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:12px">See exactly what your agent will receive: source evidence, freshness, confidence, context_string, and structured physical-world data. Pick a preset or enter coordinates.</p>
         <div class="preset-row">
           <span class="preset-label">Presets:</span>
-          <button class="preset-btn" onclick="fillPreset(36.01,-5.60,'Tarifa, Spain')">Tarifa</button>
-          <button class="preset-btn" onclick="fillPreset(15.88,108.34,'Hoi An, Vietnam')">Hoi An</button>
-          <button class="preset-btn" onclick="fillPreset(39.60,-9.07,'Nazaré, Portugal')">Nazaré</button>
-          <button class="preset-btn" onclick="fillPreset(35.45,139.65,'Tokyo Bay, Japan')">Tokyo Bay</button>
-          <button class="preset-btn" onclick="fillPreset(-33.92,18.42,'Cape Town, SA')">Cape Town</button>
-          <button class="preset-btn" onclick="fillPreset(64.13,-21.94,'Reykjavik, Iceland')">Reykjavik</button>
+          <button class="preset-btn" type="button" onclick="fillPreset(36.01,-5.60,'Tarifa, Spain')">Tarifa</button>
+          <button class="preset-btn" type="button" onclick="fillPreset(15.88,108.34,'Hoi An, Vietnam')">Hoi An</button>
+          <button class="preset-btn" type="button" onclick="fillPreset(39.60,-9.07,'Nazaré, Portugal')">Nazaré</button>
+          <button class="preset-btn" type="button" onclick="fillPreset(35.45,139.65,'Tokyo Bay, Japan')">Tokyo Bay</button>
+          <button class="preset-btn" type="button" onclick="fillPreset(-33.92,18.42,'Cape Town, SA')">Cape Town</button>
+          <button class="preset-btn" type="button" onclick="fillPreset(64.13,-21.94,'Reykjavik, Iceland')">Reykjavik</button>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <input type="number" id="sandboxLat" placeholder="Latitude" step="0.001" value="36.01" style="width:120px;padding:8px 12px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none">
-          <input type="number" id="sandboxLng" placeholder="Longitude" step="0.001" value="-5.60" style="width:120px;padding:8px 12px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none">
-          <button class="btn-primary" style="padding:8px 20px;font-size:13px" onclick="fetchSandbox()">Fetch PWM</button>
-          <button class="btn-secondary" style="padding:8px 14px;font-size:12px" onclick="copySandbox()">Copy Context String</button>
+          <label class="sr-only" for="sandboxLat">Sandbox latitude</label>
+          <input type="number" id="sandboxLat" min="-90" max="90" placeholder="Latitude" step="0.001" value="36.01" style="width:120px;padding:8px 12px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none">
+          <label class="sr-only" for="sandboxLng">Sandbox longitude</label>
+          <input type="number" id="sandboxLng" min="-180" max="180" placeholder="Longitude" step="0.001" value="-5.60" style="width:120px;padding:8px 12px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;outline:none">
+          <button class="btn-primary" type="button" style="padding:8px 20px;font-size:13px" onclick="fetchSandbox()">Fetch PWM</button>
+          <button class="btn-secondary" type="button" style="padding:8px 14px;font-size:12px" onclick="copySandbox()">Copy Context String</button>
         </div>
-        <div id="sandboxMeta" class="sandbox-meta hidden"></div>
+        <div id="sandboxMeta" class="sandbox-meta hidden" role="status" aria-live="polite"></div>
         <div id="sandboxResult" class="sandbox-result hidden"></div>
       </div>
 
       <div class="waitlist-box" style="margin-top:20px">
-        <h4>Pro Tier &mdash; Coming Soon</h4>
-        <p>Higher rate limits, premium sensor data, historical data access, and webhook notifications for condition changes.</p>
+        <h4>Agent / IoT Developer Tier &mdash; Coming Soon</h4>
+        <p>Higher rate limits, premium sensor data, risk_event workflows, historical data access, and webhook notifications for condition changes.</p>
         <div class="waitlist-row">
-          <input type="email" id="waitlistEmail" placeholder="Your email" style="padding:10px 14px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:14px;outline:none">
-          <button class="btn-primary" style="padding:10px 20px;font-size:14px" onclick="joinWaitlist()">Join Waitlist</button>
+          <label class="sr-only" for="waitlistEmail">Waitlist email</label>
+          <input type="email" id="waitlistEmail" placeholder="Your email" autocomplete="email" style="padding:10px 14px;background:#0F172A;border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:14px;outline:none">
+          <button class="btn-primary" type="button" style="padding:10px 20px;font-size:14px" onclick="joinWaitlist()">Request Access</button>
         </div>
-        <div id="waitlistMsg" style="margin-top:8px;font-size:13px"></div>
+        <div id="waitlistMsg" role="status" aria-live="polite" style="margin-top:8px;font-size:13px"></div>
       </div>
+    </div>
+    <p class="dash-link"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  </main>
+
+  <footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
+      </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
     </div>
   </div>
-
-  <footer class="l-footer">
-    <div class="footer-shell">
-      <div class="footer-main">
-        <div class="footer-about">
-          <p class="footer-brand">SENLAY</p>
-          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
-          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
-        </div>
-        <div class="footer-nav-grid">
-          <div class="footer-col">
-            <h4>Product</h4>
-            <a href="demo">Demo</a>
-            <a href="/smartsurf/">SmartSurf</a>
-            <a href="docs.html">Docs</a>
-            <a href="agents">For Agents</a>
-            <a href="pricing.html">Pricing</a>
-          </div>
-          <div class="footer-col">
-            <h4>Company</h4>
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
-            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>Open beta for developers, pilots, and agent builders.</span>
-        <div class="footer-bottom-links">
-          <a href="pricing.html">API Access</a>
-          <a href="login.html">Sign In</a>
-          <a href="support.html">Pilot Contact</a>
-        </div>
-      </div>
-      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
-    </div>
-  </footer>
+</footer>
 
   <script>
     let currentUser = null;
+    let sessionToken = '';
     let sandboxData = null;
+    let networkStationsCache = [];
 
     function showAlert(msg, type) {
       const box = document.getElementById('alertBox');
-      box.innerHTML = '';
       const div = document.createElement('div');
       div.className = 'alert alert-' + (type === 'error' ? 'err' : 'ok');
       div.textContent = msg;
-      box.appendChild(div);
-      setTimeout(() => box.innerHTML = '', 5000);
+      box.replaceChildren(div);
+      setTimeout(() => {
+        if (div.isConnected) div.remove();
+      }, 5000);
+    }
+
+    async function updateGoogleAuthUi() {
+      try {
+        const res = await fetch('/api/auth/google/status', { cache: 'no-store' });
+        const data = await res.json();
+        document.querySelectorAll('.google-auth-option').forEach(el => {
+          el.classList.toggle('hidden', !data.configured);
+        });
+      } catch (_) {}
     }
 
     async function doLogin() {
@@ -219,31 +405,491 @@
         const data = await res.json();
         if (data.error) { showAlert(data.error, 'error'); return; }
         currentUser = data;
-        document.getElementById('loginSection').classList.add('hidden');
-        document.getElementById('dashSection').classList.remove('hidden');
-        document.getElementById('welcomeMsg').textContent = `Welcome, ${data.name || data.email}`;
-        renderKeys(data.apiKeys);
+        sessionToken = data.sessionToken || '';
+        document.getElementById('loginPassword').value = '';
+        try {
+          if (sessionToken) sessionStorage.setItem('senlay_session_token', sessionToken);
+          localStorage.setItem('senlay_email', data.email);
+        } catch (_) {}
+        showDashboard(data);
       } catch (e) { showAlert('Connection error', 'error'); }
     }
 
-    function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+    function showDashboard(data) {
+      currentUser = data;
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('dashSection').classList.remove('hidden');
+      document.getElementById('welcomeMsg').textContent = `Welcome, ${data.name || data.email}`;
+      document.getElementById('adminConsoleButton').classList.toggle('hidden', !['superadmin','admin'].includes(data.role));
+      renderKeys(data.apiKeys || []);
+      renderLlmProfile(data);
+      loadNetwork();
+    }
+
+    async function openAdminConsole() {
+      try {
+        const res = await fetch('/api/admin/session', { method: 'POST', headers: { Authorization: `Bearer ${sessionToken}`, 'Content-Type': 'application/json' }, body: '{}' });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Admin access denied');
+        location.href = '/admin';
+      } catch (error) { showAlert(error.message, 'error'); }
+    }
+
     function renderKeys(keys) {
-      document.getElementById('keysTable').innerHTML = keys.map(k => {
-        const masked = k.key.substring(0, 12) + '...' + k.key.substring(k.key.length - 4);
-        return `<tr><td class="mono">${esc(masked)}</td><td>${esc(k.name)}</td><td>${esc(k.tier)}</td><td>${k.requests_total}</td><td style="color:${k.active?'var(--primary)':'var(--danger)'}">${k.active?'Active':'Inactive'}</td></tr>`;
-      }).join('');
+      const table = document.getElementById('keysTable');
+      table.replaceChildren();
+      if (!keys.length) {
+        const row = table.insertRow();
+        const cell = row.insertCell();
+        cell.colSpan = 5;
+        cell.textContent = 'No API keys yet.';
+        return;
+      }
+
+      keys.forEach(key => {
+        const row = table.insertRow();
+        const previewCell = row.insertCell();
+        previewCell.className = 'mono';
+        previewCell.textContent = key.keyPreview || 'Unavailable';
+        row.insertCell().textContent = key.name || 'Unnamed key';
+        row.insertCell().textContent = key.tier || 'free';
+        row.insertCell().textContent = String(key.requestsTotal ?? key.requests_total ?? 0);
+        const statusCell = row.insertCell();
+        statusCell.textContent = key.active ? 'Active' : 'Inactive';
+        statusCell.style.color = key.active ? 'var(--primary)' : 'var(--danger)';
+      });
+    }
+
+    function authHeaders() {
+      return { 'Content-Type': 'application/json', Authorization: `Bearer ${sessionToken}` };
+    }
+
+    async function loadNetwork() {
+      if (!sessionToken) return;
+      try {
+        const res = await fetch('/api/v1/network/providers', { headers: { Authorization: `Bearer ${sessionToken}` } });
+        const data = await res.json();
+        if (!res.ok || data.error) throw new Error(data.error || 'Unable to load stations');
+        renderNetwork(data.providers || [], data.stations || []);
+      } catch (error) {
+        showAlert(error.message || 'Unable to load Open Network stations', 'error');
+      }
+    }
+
+    function renderNetwork(providers, stations) {
+      networkStationsCache = stations || [];
+      const select = document.getElementById('stationProvider');
+      select.replaceChildren();
+      if (!providers.length) {
+        const option = document.createElement('option'); option.value = ''; option.textContent = 'Create a provider first'; select.append(option);
+      } else providers.forEach(provider => {
+        const option = document.createElement('option'); option.value = provider.id; option.textContent = `${provider.name} (${provider.stationCount} stations)`; select.append(option);
+      });
+      const table = document.getElementById('stationsTable');
+      table.replaceChildren();
+      if (!stations.length) {
+        const row = table.insertRow(); const cell = row.insertCell(); cell.colSpan = 6; cell.textContent = 'No stations registered yet.'; table.append(row); return;
+      }
+      stations.forEach(station => {
+        const row = table.insertRow();
+        const stationCell = row.insertCell();
+        stationCell.textContent = `${station.name} (${station.sensorType})`;
+        if (station.status === 'disabled') {
+          const disabled = document.createElement('span');
+          disabled.className = 'trust-pill bad';
+          disabled.textContent = 'disabled';
+          stationCell.append(document.createElement('br'), disabled);
+        }
+        row.insertCell().textContent = station.providerName;
+        row.insertCell().textContent = `${Number(station.location.lat).toFixed(4)}, ${Number(station.location.lng).toFixed(4)}`;
+        const lastData = row.insertCell();
+        lastData.textContent = station.lastObservedAt ? new Date(station.lastObservedAt).toLocaleString() : 'No observation yet';
+        const health = document.createElement('span');
+        const healthScore = Number(station.health?.score || 0);
+        health.className = 'trust-pill ' + (healthScore >= 75 ? 'good' : healthScore >= 50 ? 'warn' : 'bad');
+        health.textContent = `${station.health?.tier || 'unproven'} ${healthScore}`;
+        lastData.append(document.createElement('br'), health);
+        const credential = row.insertCell(); credential.className = 'mono'; credential.textContent = station.credentialPreview || 'None';
+        const actions = row.insertCell(); actions.className = 'station-actions';
+        const inspect = document.createElement('button'); inspect.type = 'button'; inspect.className = 'btn-secondary'; inspect.textContent = 'Diagnostics';
+        inspect.addEventListener('click', () => loadStationDiagnostics(station.id)); actions.append(inspect);
+        const rotate = document.createElement('button'); rotate.type = 'button'; rotate.className = 'btn-secondary'; rotate.textContent = 'Rotate secret';
+        rotate.disabled = station.status === 'disabled';
+        rotate.addEventListener('click', () => rotateStationSecret(station.id, station.name)); actions.append(rotate);
+        const disable = document.createElement('button'); disable.type = 'button'; disable.className = 'btn-secondary'; disable.textContent = 'Disable';
+        disable.disabled = station.status === 'disabled';
+        disable.addEventListener('click', () => disableStation(station.id, station.name)); actions.append(disable);
+      });
+    }
+
+    function stationAge(value) {
+      if (!value) return 'Never';
+      const seconds = Math.max(0, Math.round((Date.now() - Date.parse(value)) / 1000));
+      if (!Number.isFinite(seconds)) return 'Unknown';
+      if (seconds < 60) return `${seconds}s ago`;
+      if (seconds < 3600) return `${Math.round(seconds / 60)}m ago`;
+      if (seconds < 86400) return `${Math.round(seconds / 3600)}h ago`;
+      return `${Math.round(seconds / 86400)}d ago`;
+    }
+
+    function diagnosticsMetric(label, value) {
+      const item = document.createElement('div'); item.className = 'station-metric';
+      const strong = document.createElement('strong'); strong.textContent = String(value);
+      const span = document.createElement('span'); span.textContent = label;
+      item.append(strong, span); return item;
+    }
+
+    async function loadStationDiagnostics(stationId) {
+      const panel = document.getElementById('stationDiagnostics');
+      panel.classList.remove('hidden'); panel.textContent = 'Loading station diagnostics…';
+      try {
+        const res = await fetch(`/api/v1/stations/${encodeURIComponent(stationId)}/status`, { headers: { Authorization: `Bearer ${sessionToken}` } });
+        const data = await res.json();
+        if (!res.ok || data.error) throw new Error(data.error || 'Unable to load station diagnostics');
+        renderStationDiagnostics(data.station);
+      } catch (error) {
+        panel.textContent = error.message || 'Unable to load station diagnostics';
+      }
+    }
+
+    function renderStationDiagnostics(station) {
+      const panel = document.getElementById('stationDiagnostics'); panel.replaceChildren();
+      const head = document.createElement('div'); head.className = 'station-diagnostics-head';
+      const heading = document.createElement('h4'); heading.textContent = `${station.name} diagnostics`;
+      const close = document.createElement('button'); close.type = 'button'; close.className = 'btn-secondary'; close.textContent = 'Close';
+      close.addEventListener('click', () => panel.classList.add('hidden')); head.append(heading, close); panel.append(head);
+      const health = station.health || {};
+      const metrics = document.createElement('div'); metrics.className = 'station-metrics';
+      metrics.append(
+        diagnosticsMetric('Trust', `${health.tier || 'unknown'} · ${health.score ?? 0}`),
+        diagnosticsMetric('Total accepted', health.sampleCount ?? 0),
+        diagnosticsMetric('Accepted 24h', health.count24h ?? 0),
+        diagnosticsMetric('Accepted 7d', health.count7d ?? 0),
+        diagnosticsMetric('Last observation', stationAge(health.lastObservedAt || station.lastObservedAt)),
+        diagnosticsMetric('Last upload', stationAge(health.lastReceivedAt || station.lastReceivedAt)),
+        diagnosticsMetric('Credential', station.credentialPreview || 'Inactive'),
+        diagnosticsMetric('State', health.status || station.status || 'unknown')
+      );
+      panel.append(metrics);
+      const warnings = Array.isArray(health.warnings) ? health.warnings : [];
+      if (warnings.length) {
+        const list = document.createElement('ul'); list.className = 'station-warning-list';
+        warnings.forEach(warning => { const item = document.createElement('li'); item.textContent = warning; list.append(item); });
+        panel.append(list);
+      } else {
+        const healthy = document.createElement('p'); healthy.className = 'network-note'; healthy.textContent = 'No current station-health warnings.'; panel.append(healthy);
+      }
+      const recent = Array.isArray(station.recentMeasurements) ? station.recentMeasurements : [];
+      const title = document.createElement('strong'); title.textContent = 'Recent accepted measurements'; panel.append(title);
+      if (!recent.length) {
+        const empty = document.createElement('p'); empty.className = 'network-note'; empty.textContent = 'No accepted measurements yet.'; panel.append(empty); return;
+      }
+      const table = document.createElement('table'); table.className = 'dash-table';
+      const thead = table.createTHead(); const header = thead.insertRow();
+      ['Observed', 'Signal', 'Value', 'Quality'].forEach(label => { const cell = document.createElement('th'); cell.textContent = label; header.append(cell); });
+      const tbody = table.createTBody();
+      recent.forEach(measurement => {
+        const row = tbody.insertRow();
+        row.insertCell().textContent = new Date(measurement.observedAt).toLocaleString();
+        row.insertCell().textContent = measurement.phenomenon;
+        row.insertCell().textContent = `${measurement.value} ${measurement.unit}`;
+        row.insertCell().textContent = measurement.quality;
+      });
+      panel.append(table);
+    }
+
+    async function createProvider() {
+      const name = document.getElementById('providerName').value.trim();
+      const slug = document.getElementById('providerSlug').value.trim();
+      if (!name) return showAlert('Enter a provider name', 'error');
+      try {
+        const res = await fetch('/api/v1/providers/register', { method: 'POST', headers: authHeaders(), body: JSON.stringify({ name, slug }) });
+        const data = await res.json(); if (!res.ok || data.error) throw new Error(data.error || 'Unable to create provider');
+        document.getElementById('providerName').value = ''; document.getElementById('providerSlug').value = '';
+        showAlert('Provider created.', 'success'); await loadNetwork();
+      } catch (error) { showAlert(error.message, 'error'); }
+    }
+
+    async function registerStation() {
+      const providerId = document.getElementById('stationProvider').value;
+      const name = document.getElementById('stationName').value.trim();
+      const sensorType = document.getElementById('stationType').value.trim();
+      const lat = Number(document.getElementById('stationLat').value), lng = Number(document.getElementById('stationLng').value);
+      if (!providerId || !name || !sensorType || !Number.isFinite(lat) || !Number.isFinite(lng)) return showAlert('Provider, name, type, latitude, and longitude are required.', 'error');
+      try {
+        const res = await fetch('/api/v1/stations/register', { method: 'POST', headers: authHeaders(), body: JSON.stringify({ providerId, name, sensorType, location: { lat, lng } }) });
+        const data = await res.json(); if (!res.ok || data.error) throw new Error(data.error || 'Unable to register station');
+        document.getElementById('stationName').value = ''; showStationCredential(data.station?.credential, data.station); await loadNetwork();
+      } catch (error) { showAlert(error.message, 'error'); }
+    }
+
+    function bytesToHex(buffer) {
+      return Array.from(new Uint8Array(buffer)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function stationSignature(secret, timestamp, body) {
+      if (!window.crypto?.subtle) throw new Error('Browser crypto is unavailable on this page.');
+      const encoder = new TextEncoder();
+      const derivedKey = await window.crypto.subtle.digest('SHA-256', encoder.encode(secret));
+      const key = await window.crypto.subtle.importKey('raw', derivedKey, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+      const signature = await window.crypto.subtle.sign('HMAC', key, encoder.encode(`${timestamp}.${body}`));
+      return `sha256=${bytesToHex(signature)}`;
+    }
+
+    function buildCommissioningObservation(credential, station) {
+      return {
+        id: `commission-${Date.now()}`,
+        stationId: credential.stationId,
+        observedAt: new Date().toISOString(),
+        location: {
+          lat: Number(station.location.lat),
+          lng: Number(station.location.lng),
+          ...(station.location.altitudeM == null ? {} : { altitudeM: Number(station.location.altitudeM) })
+        },
+        measurements: [
+          { phenomenon: 'wind.speed', value: 0, unit: 'm/s', quality: 'checked' },
+          { phenomenon: 'wind.direction', value: 0, unit: 'deg', quality: 'checked' }
+        ],
+        metadata: { commissioning: true, dryRun: true }
+      };
+    }
+
+    async function testStationCredential(credential, station, output, button) {
+      const body = JSON.stringify(buildCommissioningObservation(credential, station));
+      const timestamp = Math.floor(Date.now() / 1000);
+      button.disabled = true;
+      button.textContent = 'Testing...';
+      try {
+        const signature = await stationSignature(credential.secret, timestamp, body);
+        const res = await fetch(`/api/v1/stations/${encodeURIComponent(credential.stationId)}/test-signature`, {
+          method: 'POST',
+          headers: { ...authHeaders(), 'X-Senlay-Station-Id': credential.stationId, 'X-Senlay-Timestamp': String(timestamp), 'X-Senlay-Signature': signature },
+          body
+        });
+        const data = await res.json();
+        if (!res.ok || data.error) throw new Error(data.error || 'Commissioning test failed');
+        output.textContent = `${data.message}\nStation: ${data.stationId}\nMeasurements checked: ${data.measurementCount}`;
+        showAlert('Station signature test passed.', 'success');
+      } catch (error) {
+        output.textContent = error.message || 'Commissioning test failed';
+        showAlert(output.textContent, 'error');
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send signed test';
+      }
+    }
+
+    function showStationCredential(credential, station = null) {
+      if (!credential?.secret) return;
+      const matchingStation = station || networkStationsCache.find(item => item.id === credential.stationId);
+      const notice = document.getElementById('stationCredentialNotice'); notice.replaceChildren();
+      const title = document.createElement('strong'); title.textContent = 'Save this station secret now. It cannot be displayed again.';
+      const value = document.createElement('code'); value.textContent = credential.secret; value.style.cssText = 'display:block;overflow-wrap:anywhere;margin:10px 0';
+      const copy = document.createElement('button'); copy.type = 'button'; copy.className = 'btn-secondary'; copy.textContent = 'Copy station secret';
+      copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(credential.secret); copy.textContent = 'Copied'; } catch (_) { showAlert('Copy failed. Copy the displayed secret manually.', 'error'); } });
+      notice.append(title, value, copy);
+      if (matchingStation) {
+        const commissioning = document.createElement('div');
+        commissioning.className = 'commission-box';
+        const test = document.createElement('button');
+        test.type = 'button';
+        test.className = 'btn-secondary';
+        test.textContent = 'Send signed test';
+        const output = document.createElement('code');
+        output.textContent = 'Dry-run test verifies signing and payload shape without storing an observation.';
+        test.addEventListener('click', () => testStationCredential(credential, matchingStation, output, test));
+        commissioning.append(test, output);
+        notice.append(commissioning);
+      }
+      notice.classList.remove('hidden');
+    }
+
+    async function rotateStationSecret(stationId, name) {
+      if (!confirm(`Rotate the station secret for ${name}? Existing hardware will stop publishing until updated.`)) return;
+      try {
+        const res = await fetch(`/api/v1/stations/${encodeURIComponent(stationId)}/credentials/rotate`, { method: 'POST', headers: authHeaders(), body: '{}' });
+        const data = await res.json(); if (!res.ok || data.error) throw new Error(data.error || 'Unable to rotate secret');
+        showStationCredential(data.credential); await loadNetwork();
+      } catch (error) { showAlert(error.message, 'error'); }
+    }
+
+    async function disableStation(stationId, name) {
+      if (!confirm(`Disable ${name}? Its active station credential will be revoked and hardware will stop publishing.`)) return;
+      try {
+        const res = await fetch(`/api/v1/stations/${encodeURIComponent(stationId)}/disable`, { method: 'POST', headers: authHeaders(), body: '{}' });
+        const data = await res.json(); if (!res.ok || data.error) throw new Error(data.error || 'Unable to disable station');
+        showAlert(data.station?.warning || 'Station disabled.', 'success'); await loadNetwork();
+      } catch (error) { showAlert(error.message, 'error'); }
+    }
+
+    function renderLlmProfile(data) {
+      const access = data.byokAccess || { allowed: false, message: 'Saved LLM keys are available on paid tiers.' };
+      const status = document.getElementById('llmStatus');
+      const note = document.getElementById('llmAccessNote');
+      const form = document.getElementById('llmFormWrap');
+      status.textContent = access.allowed ? 'Enabled' : 'Pro BYOK';
+      status.className = 'llm-status ' + (access.allowed ? 'enabled' : 'locked');
+      note.textContent = access.allowed ? '' : access.message + ' You can still paste a session-only key on the Demo page.';
+      note.classList.toggle('hidden', access.allowed);
+      form.classList.toggle('disabled-card', !access.allowed);
+      renderLlmKeys(data.llmKeys || []);
+      updateLlmProviderForm();
+    }
+
+    function renderLlmKeys(keys) {
+      const table = document.getElementById('llmKeysTable');
+      table.replaceChildren();
+      if (!keys.length) {
+        const row = table.insertRow();
+        const cell = row.insertCell();
+        cell.colSpan = 5;
+        cell.style.color = 'var(--text2)';
+        cell.textContent = 'No saved model keys yet.';
+        return;
+      }
+      keys.forEach(key => {
+        const row = table.insertRow();
+        const providerCell = row.insertCell();
+        providerCell.append(document.createTextNode(key.label || key.providerLabel || key.provider || 'Provider'));
+        providerCell.append(document.createElement('br'));
+        const providerDetail = document.createElement('span');
+        providerDetail.style.cssText = 'color:var(--text2);font-size:11px';
+        providerDetail.textContent = key.providerLabel || key.provider || '';
+        providerCell.append(providerDetail);
+        row.insertCell().textContent = key.model || '-';
+        const keyCell = row.insertCell();
+        keyCell.className = 'mono';
+        keyCell.textContent = key.keyPreview || 'stored';
+        const defaultCell = row.insertCell();
+        if (key.isDefault) {
+          const badge = document.createElement('span');
+          badge.className = 'badge-sm hw';
+          badge.textContent = 'Default';
+          defaultCell.append(badge);
+        } else {
+          defaultCell.textContent = '-';
+        }
+        const actionCell = row.insertCell();
+        const actions = document.createElement('div');
+        actions.className = 'llm-actions';
+        if (!key.isDefault) {
+          const makeDefault = document.createElement('button');
+          makeDefault.type = 'button';
+          makeDefault.textContent = 'Make default';
+          makeDefault.addEventListener('click', () => setDefaultLlmKey(key.id));
+          actions.append(makeDefault);
+        }
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.textContent = 'Delete';
+        remove.addEventListener('click', () => deleteLlmKey(key.id));
+        actions.append(remove);
+        actionCell.append(actions);
+      });
+    }
+
+    function updateLlmProviderForm() {
+      const provider = document.getElementById('llmProvider')?.value || 'anthropic';
+      const baseUrlGroup = document.getElementById('llmBaseUrlGroup');
+      const model = document.getElementById('llmModel');
+      baseUrlGroup?.classList.toggle('hidden', provider !== 'openai-compatible');
+      if (model) {
+        model.placeholder = provider === 'anthropic'
+          ? 'claude-sonnet-4-20250514'
+          : provider === 'openai'
+            ? 'gpt-4o'
+            : provider === 'openrouter'
+              ? 'openai/gpt-4o'
+              : 'openrouter/auto or provider model id';
+      }
+    }
+
+    async function refreshProfile() {
+      const res = await fetch('/api/profile', { headers: { Authorization: `Bearer ${sessionToken}` } });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      currentUser = { ...currentUser, ...data };
+      renderKeys(data.apiKeys || []);
+      renderLlmProfile(data);
+      loadNetwork();
+    }
+
+    async function saveLlmKey() {
+      if (!sessionToken) { showAlert('Sign in first', 'error'); return; }
+      const body = {
+        provider: document.getElementById('llmProvider').value,
+        label: document.getElementById('llmLabel').value.trim(),
+        model: document.getElementById('llmModel').value.trim(),
+        baseUrl: document.getElementById('llmBaseUrl').value.trim(),
+        apiKey: document.getElementById('llmApiKey').value.trim(),
+        isDefault: document.getElementById('llmDefault').checked
+      };
+      if (!body.apiKey) { showAlert('Paste provider API key', 'error'); return; }
+      try {
+        const res = await fetch('/api/profile/llm-keys', { method: 'POST', headers: authHeaders(), body: JSON.stringify(body) });
+        const data = await res.json();
+        if (data.error) { showAlert(data.error, 'error'); return; }
+        document.getElementById('llmApiKey').value = '';
+        document.getElementById('llmLabel').value = '';
+        showAlert('Model key saved for Senlay Demo.', 'success');
+        await refreshProfile();
+      } catch (e) { showAlert(e.message || 'Error saving model key', 'error'); }
+    }
+
+    async function setDefaultLlmKey(id) {
+      try {
+        const res = await fetch(`/api/profile/llm-keys/${id}/default`, { method: 'POST', headers: authHeaders(), body: '{}' });
+        const data = await res.json();
+        if (data.error) { showAlert(data.error, 'error'); return; }
+        await refreshProfile();
+      } catch (e) { showAlert(e.message || 'Error', 'error'); }
+    }
+
+    async function deleteLlmKey(id) {
+      if (!confirm('Delete this saved model key?')) return;
+      try {
+        const res = await fetch(`/api/profile/llm-keys/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${sessionToken}` } });
+        const data = await res.json();
+        if (data.error) { showAlert(data.error, 'error'); return; }
+        await refreshProfile();
+      } catch (e) { showAlert(e.message || 'Error', 'error'); }
     }
 
     async function generateKey() {
       if (!currentUser) return;
       const name = document.getElementById('newKeyName').value.trim() || 'New Key';
       try {
-        const res = await fetch('/api/keys/create', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({email: currentUser.email, password: document.getElementById('loginPassword').value, keyName: name}) });
+        const res = await fetch('/api/keys/create', { method: 'POST', headers: authHeaders(), body: JSON.stringify({ keyName: name }) });
         const data = await res.json();
         if (data.error) { showAlert(data.error, 'error'); return; }
-        showAlert(`New key created: ${data.apiKey}`, 'success');
-        doLogin();
+        showOneTimeKey(data.apiKey);
+        document.getElementById('newKeyName').value = '';
+        await refreshProfile();
       } catch (e) { showAlert('Error', 'error'); }
+    }
+
+    function showOneTimeKey(apiKey) {
+      const notice = document.getElementById('createdKeyNotice');
+      notice.replaceChildren();
+      const title = document.createElement('strong');
+      title.textContent = 'Copy this API key now. It will not be shown again.';
+      const value = document.createElement('code');
+      value.textContent = apiKey;
+      value.style.cssText = 'display:block;overflow-wrap:anywhere;margin:10px 0';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'btn-secondary';
+      copy.textContent = 'Copy key';
+      copy.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(apiKey);
+          copy.textContent = 'Copied';
+        } catch (_) {
+          showAlert('Copy failed. Select the key and copy it manually.', 'error');
+        }
+      });
+      notice.append(title, value, copy);
+      notice.classList.remove('hidden');
     }
 
     function fillPreset(lat, lng, name) {
@@ -253,12 +899,14 @@
     }
 
     async function fetchSandbox() {
-      const lat = document.getElementById('sandboxLat').value;
-      const lng = document.getElementById('sandboxLng').value;
-      if (!lat || !lng) { showAlert('Enter lat/lng', 'error'); return; }
-      if (!currentUser?.apiKeys?.length) { showAlert('No API key available', 'error'); return; }
+      const lat = Number(document.getElementById('sandboxLat').value);
+      const lng = Number(document.getElementById('sandboxLng').value);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+        showAlert('Enter valid latitude and longitude', 'error');
+        return;
+      }
+      if (!sessionToken) { showAlert('Sign in first', 'error'); return; }
 
-      const key = currentUser.apiKeys[0].key;
       const resultEl = document.getElementById('sandboxResult');
       const metaEl = document.getElementById('sandboxMeta');
       resultEl.classList.remove('hidden');
@@ -267,7 +915,8 @@
 
       const start = Date.now();
       try {
-        const res = await fetch(`/api/v1/pwm?lat=${lat}&lng=${lng}`, { headers: { Authorization: `Bearer ${key}` } });
+        const params = new URLSearchParams({ lat: String(lat), lng: String(lng) });
+        const res = await fetch(`/api/v1/pwm?${params}`, { headers: { Authorization: `Bearer ${sessionToken}` } });
         const data = await res.json();
         const elapsed = Date.now() - start;
         sandboxData = data;
@@ -278,14 +927,17 @@
           resultEl.textContent = JSON.stringify(data, null, 2);
         }
 
-        // Meta info
-        let metaHtml = `<span>Latency: ${elapsed}ms</span><span>Sources: ${data.active_sources || '?'}</span>`;
+        const metaItems = [`Latency: ${elapsed}ms`, `Sources: ${data.active_sources ?? '?'}`];
         if (data.health) {
           const ok = data.health.filter(h => h.has_data).length;
           const total = data.health.length;
-          metaHtml += `<span>Health: ${ok}/${total} active</span>`;
+          metaItems.push(`Health: ${ok}/${total} active`);
         }
-        metaEl.innerHTML = metaHtml;
+        metaEl.replaceChildren(...metaItems.map(item => {
+          const span = document.createElement('span');
+          span.textContent = item;
+          return span;
+        }));
         metaEl.classList.remove('hidden');
       } catch (e) {
         resultEl.textContent = 'Error: ' + e.message;
@@ -303,11 +955,75 @@
       try {
         const res = await fetch('/api/waitlist', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({email}) });
         const data = await res.json();
-        document.getElementById('waitlistMsg').innerHTML = data.success ? '<span style="color:var(--primary)">Added to Pro waitlist.</span>' : `<span style="color:var(--danger)">${data.error}</span>`;
+        const message = document.getElementById('waitlistMsg');
+        message.textContent = data.success ? 'Added to Pro waitlist.' : (data.error || 'Unable to join waitlist.');
+        message.style.color = data.success ? 'var(--primary)' : 'var(--danger)';
       } catch (e) {
-        document.getElementById('waitlistMsg').innerHTML = '<span style="color:var(--danger)">Error</span>';
+        const message = document.getElementById('waitlistMsg');
+        message.textContent = 'Error';
+        message.style.color = 'var(--danger)';
       }
     }
+
+    async function logout() {
+      const token = sessionToken;
+      sessionToken = '';
+      currentUser = null;
+      sandboxData = null;
+      try { sessionStorage.removeItem('senlay_session_token'); localStorage.removeItem('senlay_session_token'); } catch (_) {}
+      document.getElementById('dashSection').classList.add('hidden');
+      document.getElementById('loginSection').classList.remove('hidden');
+      document.getElementById('createdKeyNotice').classList.add('hidden');
+      if (token) {
+        try {
+          await fetch('/api/logout', { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+        } catch (_) {}
+      }
+    }
+
+    async function changePassword() {
+      const currentPassword = document.getElementById('currentPassword').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      if (newPassword.length < 12) return showAlert('New password must contain at least 12 characters.', 'error');
+      if (newPassword !== confirmPassword) return showAlert('New passwords do not match.', 'error');
+      try {
+        const res = await fetch('/api/password/change', { method: 'POST', headers: authHeaders(), body: JSON.stringify({ currentPassword, newPassword }) });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Unable to change password');
+        document.getElementById('currentPassword').value = '';
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+        showAlert(data.message, 'success');
+        setTimeout(logout, 1200);
+      } catch (error) { showAlert(error.message, 'error'); }
+    }
+
+    async function loadStoredSession() {
+      try {
+        const savedEmail = localStorage.getItem('senlay_email');
+        if (savedEmail) document.getElementById('loginEmail').value = savedEmail;
+        sessionToken = sessionStorage.getItem('senlay_session_token') || localStorage.getItem('senlay_session_token') || '';
+        if (sessionToken) sessionStorage.setItem('senlay_session_token', sessionToken);
+        localStorage.removeItem('senlay_session_token');
+      } catch (_) {
+        sessionToken = '';
+      }
+      if (!sessionToken) return;
+      try {
+        const res = await fetch('/api/profile', { headers: { Authorization: `Bearer ${sessionToken}` } });
+        const data = await res.json();
+        if (!res.ok || data.error) throw new Error(data.error || 'Session expired');
+        showDashboard(data);
+      } catch (_) {
+        sessionToken = '';
+        try { sessionStorage.removeItem('senlay_session_token'); localStorage.removeItem('senlay_session_token'); } catch (_) {}
+      }
+    }
+
+    loadStoredSession();
+    updateGoogleAuthUi();
   </script>
+  <script src="/scripts/header-menu.js"></script>
 </body>
 </html>

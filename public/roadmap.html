@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay Roadmap — What We're Building</title>
-  <meta name="description" content="Senlay roadmap for the physical-world context API: evidence, confidence, pilot domains, and infrastructure for AI agents.">
-  <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
-  <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
+  <title>Senlay Roadmap - SmartSurf Safety, Outdoor Verification, Developer Tools</title>
+  <meta name="description" content="Senlay roadmap: SmartSurf safety proof, spot intelligence, Evidence Object v1, risk events, source confidence, sensor disagreement, and outdoor domain packs.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <meta property="og:title" content="Senlay Roadmap - SmartSurf Safety, Outdoor Verification, Developer Tools">
+  <meta property="og:description" content="Senlay roadmap: SmartSurf safety proof, spot intelligence, Evidence Object v1, risk events, source confidence, sensor disagreement, and outdoor domain packs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://senlay.cloud/roadmap.html">
+  <meta property="og:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Senlay Roadmap - SmartSurf Safety, Outdoor Verification, Developer Tools">
+  <meta name="twitter:description" content="Senlay roadmap: SmartSurf safety proof, spot intelligence, Evidence Object v1, risk events, source confidence, sensor disagreement, and outdoor domain packs.">
+  <meta name="twitter:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <link rel="canonical" href="https://senlay.cloud/roadmap.html">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
   <style>
     .road-container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
@@ -33,56 +44,57 @@
     .road-cta h4 { font-size: 18px; margin-bottom: 8px; }
     .road-cta p { color: var(--text2); font-size: 14px; margin-bottom: 16px; }
   </style>
-</head>
+<link rel="stylesheet" href="/styles/dark-map-override.css?v=20260516-0536"></head>
 <body>
-  <header class="l-header">
-    <div class="l-header-inner">
-      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
-      <nav class="l-nav">
+    <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+      </div>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
         <a href="/">Home</a>
         <details class="nav-menu">
           <summary>Product</summary>
           <div class="nav-menu-panel">
-            <a href="demo">Demo</a>
-            <a href="agents">For Agents</a>
-            <a href="docs.html">Docs</a>
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
           </div>
         </details>
-        <a href="pricing.html">Pricing</a>
+        <a href="/pricing.html">Pricing</a>
         <details class="nav-menu">
           <summary>Company</summary>
           <div class="nav-menu-panel">
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
           </div>
         </details>
-        <a href="login.html">Sign In</a>
-        <a href="pricing.html" class="nav-cta">Get API Key</a>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
       </nav>
     </div>
   </header>
 
   <div class="road-container">
     <h2 class="road-title">Roadmap</h2>
-    <p class="road-sub">Where Senlay is today and where it is heading: reliable API access, evidence and confidence, and focused pilots for drone, outdoor, agriculture, marine, and safety software.</p>
+    <p class="road-sub">Senlay is a reciprocal verification network for systems that act outside &mdash; AI agents, drones, robots, and safety systems. Coverage arrives from participants: contribute a sensor and get the whole network back. SmartSurf is the proving ground: rider and board GPS, local spot intelligence, tracker control, risk events, and station workflows, validating the same evidence engine that reasons across every contributed and connected source.</p>
 
     <div class="phase">
       <div class="phase-header">
         <span class="phase-badge badge-live">LIVE</span>
-        <span class="phase-title">Core Platform</span>
+        <span class="phase-title">Open contributor network + Senlay evidence engine</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-text"><strong>Physical World Model API</strong> &mdash; real-time environmental data for any coordinate on Earth via single REST endpoint</span></li>
-        <li><span class="item-text"><strong>21 sensor sources</strong> &mdash; Open-Meteo models, METAR aviation stations, NDBC ocean buoys, NOAA tides, USGS seismic, Sentinel-2 satellite, NWS observations, air quality, water temperature, space weather, radiation monitoring, and more</span></li>
-        <li><span class="item-text"><strong>110 curated sensor locations</strong> &mdash; global coverage across 6 continents, plus city search for any location</span></li>
-        <li><span class="item-text"><strong>Early Modifier Engine</strong> &mdash; working demos of physics-based calculators: terrain-wind hints (ridge speedup, lee rotor, valley channeling), wave modifiers (shoaling, breaking cap), temperature lapse, gust-factor analysis, hazard flags. <em>Proof-of-direction, not yet a fully validated simulation engine.</em></span></li>
-        <li><span class="item-text"><strong>Source &amp; freshness metadata</strong> &mdash; every PWM response surfaces <code>current_source</code> per layer, including which fields were overridden by live hardware vs. model.</span></li>
-        <li><span class="item-text"><strong>Calculated Insights</strong> &mdash; Beaufort scale, gust factor analysis, wave energy index, wind trends (past + forecast), model vs hardware cross-reference, hazard flags</span></li>
-        <li><span class="item-text"><strong>Demo domain prompts</strong> &mdash; drone, outdoor work, agriculture, marine, watersports, hiking, paragliding, fishing, events, and general physical-world queries.</span></li>
-        <li><span class="item-text"><strong>Claude tool calling</strong> &mdash; AI can dynamically refresh sensors for different locations mid-conversation</span></li>
-        <li><span class="item-text"><strong>Developer tools</strong> &mdash; API key management, PWM sandbox, unit conversion (metric/imperial/knots/m&middot;s), system health monitor</span></li>
-        <li><span class="item-text"><strong>Universal LLM compatibility</strong> &mdash; works with Claude, GPT, Gemini, Llama, Mistral &mdash; any model that accepts a system prompt</span></li>
+        <li><span class="item-text"><strong>Open protocol, JS SDK, MQTT bridge, edge gateway</strong> published Apache 2.0 at <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">senlay-platform</a></span></li>
+        <li><span class="item-text"><strong>Provider/station registration + HMAC-signed observation ingestion</strong>, validating independently at each stage</span></li>
+        <li><span class="item-text"><strong>Controlled source-health status</strong>: <code>ok</code>, <code>no_data</code>, <code>out_of_coverage</code>, <code>not_configured</code>, <code>error</code>, <code>timeout</code> &mdash; a source dark for a missing credential is labelled as such</span></li>
+        <li><span class="item-text"><strong>risk_event endpoints</strong> for station, lifeguard, IoT, and audit workflows</span></li>
+        <li><span class="item-text"><strong>model-vs-reality disagreement detection</strong></span></li>
+        <li><span class="item-text"><strong>first water-safety use case</strong>: rider/board GPS + environmental evidence + station escalation</span></li>
       </ul>
     </div>
 
@@ -90,18 +102,13 @@
 
     <div class="phase">
       <div class="phase-header">
-        <span class="phase-badge badge-building">BUILDING</span>
-        <span class="phase-title">Evidence, Reliability, and Pilot Readiness</span>
+        <span class="phase-badge badge-building">NEXT 30 DAYS</span>
+        <span class="phase-title">Signed evidence, external usage, first outside integrations</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-text"><strong>Senlay Evidence Object (v1)</strong> &mdash; structured per-claim payload: source type, source id, distance, freshness, confidence, model disagreement, interpretation, uncertainty. Promotes <code>context_string</code> from prose to traceable evidence.</span></li>
-        <li><span class="item-text"><strong>Confidence scoring &amp; freshness decay</strong> &mdash; per-field confidence levels that decay with distance and time-since-measurement. Sensor agreement metrics across nearby stations.</span></li>
-        <li><span class="item-text"><strong>Sensor / model disagreement detection</strong> &mdash; explicit flags when live measurement diverges from forecast, with delta and direction.</span></li>
-        <li><span class="item-text"><strong>Modifier Engine v1 (validated)</strong> &mdash; promote the early demos into calibrated terrain-wind, wave, coastal and microclimate modifiers with documented assumptions.</span></li>
-        <li><span class="item-text"><strong>Self-hosted weather models</strong> &mdash; run Open-Meteo locally for unlimited API calls, zero dependency on external rate limits.</span></li>
-        <li><span class="item-text"><strong>Historical data layer</strong> &mdash; &ldquo;what were conditions here 3 hours / 3 days / 3 months ago?&rdquo; for trend analysis and anomaly detection.</span></li>
-        <li><span class="item-text"><strong>Webhook alerts</strong> &mdash; &ldquo;notify me when wind at Tarifa exceeds 20 km/h&rdquo; &mdash; condition-based push notifications for AI agents.</span></li>
-        <li><span class="item-text"><strong>Expanded METAR coverage</strong> &mdash; target 100% of curated sensor locations backed by live hardware airport data.</span></li>
+        <li><span class="item-text"><strong>Signed evidence receipts</strong>: every response signed over its hash, issue time, coordinate, source set, and calling key &mdash; a citable, tamper-evident record, zero added friction, works for anonymous callers</span></li>
+        <li><span class="item-text"><strong>OGC SensorThings adapter</strong>: import Things/Sensors/Datastreams/Observations from an existing SensorThings endpoint without touching the provider's hardware &mdash; turns "attach a sensor" into "attach the network you already run"</span></li>
+        <li><span class="item-text"><strong>External API keys issued to people outside the company</strong>, tracked honestly as the decisive early proof</span></li>
       </ul>
     </div>
 
@@ -109,18 +116,16 @@
 
     <div class="phase">
       <div class="phase-header">
-        <span class="phase-badge badge-planned">PLANNED</span>
-        <span class="phase-title">Q3&ndash;Q4 2026</span>
+        <span class="phase-badge badge-building">NEXT 60 DAYS</span>
+        <span class="phase-title">SmartSurf Safety Engine architecture</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-text"><strong>Domain Pack: Drone / UAV Operations</strong> &mdash; pre-flight environmental assessment endpoint: terrain-aware wind at altitude, gust exposure, visibility, precipitation, and operational risk flags.</span></li>
-        <li><span class="item-text"><strong>Domain Pack: Construction / Outdoor Work</strong> &mdash; wind, heat, air-quality, lightning, and site-exposure context for crews and autonomous planning agents.</span></li>
-        <li><span class="item-text"><strong>Domain Pack: Agriculture</strong> &mdash; spray-drift risk, frost prediction, evapotranspiration, soil-moisture proxy, UV crop stress &mdash; precision-farming context without dedicated hardware.</span></li>
-        <li><span class="item-text"><strong>Domain Pack: Marine / Watersports</strong> &mdash; coastal risk modifiers, sea-state interpretation, rider/board safety logic, and route-level context from the SmartSurf proving ground.</span></li>
-        <li><span class="item-text"><strong>Maritime routing layer</strong> &mdash; ship fuel optimisation, wave-current interaction, sea-spray visibility, port-approach wind assessment.</span></li>
-        <li><span class="item-text"><strong>Plausibility / spoofing checks</strong> &mdash; physical-plausibility tests on incoming readings; flag manipulated, stuck, or contextually impossible values before they reach the agent.</span></li>
-        <li><span class="item-text"><strong>Multi-agent shared world model</strong> &mdash; multiple AI agents subscribing to the same location get a synchronised, evidence-tagged environmental picture.</span></li>
-        <li><span class="item-text"><strong>SDK packages</strong> &mdash; Python, JavaScript, Go client libraries for faster integration.</span></li>
+        <li><span class="item-text"><strong>SmartSurf Safety Engine architecture</strong></span></li>
+        <li><span class="item-text"><strong>Live Tracker / Spot Intelligence UI mode</strong></span></li>
+        <li><span class="item-text"><strong>stopped rider, offshore drift, board separation triggers</strong></span></li>
+        <li><span class="item-text"><strong>tracker command registry</strong></span></li>
+        <li><span class="item-text"><strong>battery/signal-aware device modes</strong></span></li>
+        <li><span class="item-text"><strong>Senlay snapshot attached to each risk_event</strong></span></li>
       </ul>
     </div>
 
@@ -128,12 +133,30 @@
 
     <div class="phase">
       <div class="phase-header">
-        <span class="phase-badge badge-planned">PLANNED</span>
-        <span class="phase-title">Q1&ndash;Q2 2027</span>
+        <span class="phase-badge badge-planned">NEXT 90 DAYS</span>
+        <span class="phase-title">Station workflow and pilot readiness</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-text"><strong>Skipper Intelligence</strong> &mdash; teaching LLMs to interpret bathymetry and wind shadows. AI agents will read the ocean floor, coastlines, and terrain the way experienced skippers do &mdash; anticipating choppy water, lee zones, and channel effects from geometry alone.</span></li>
-        <li><span class="item-text"><strong>100+ Certified Ground Truth nodes</strong> &mdash; expansion of verified, high-precision sensor nodes in high-risk maritime zones: Cape of Good Hope, Strait of Gibraltar, Tsugaru Strait, Drake Passage, Malacca Strait. When life is on the line, AI needs data it can trust.</span></li>
+        <li><span class="item-text"><strong>first school/station pilot</strong></span></li>
+        <li><span class="item-text"><strong>station dashboard workflow</strong></span></li>
+        <li><span class="item-text"><strong>acknowledgement / escalation / incident log</strong></span></li>
+        <li><span class="item-text"><strong>phone-first rider app MVP</strong></span></li>
+        <li><span class="item-text"><strong>local spot_profile</strong> for Hoi An / An Bang / Mui Ne / Phan Rang pilot spots</span></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge badge-planned">NEXT 12 MONTHS</span>
+        <span class="phase-title">Paid station pilots and dataset growth</span>
+      </div>
+      <ul class="road-items">
+        <li><span class="item-text"><strong>paid station pilots</strong></span></li>
+        <li><span class="item-text"><strong>proprietary safety dataset</strong> from sessions and alerts</span></li>
+        <li><span class="item-text"><strong>expanded spot intelligence</strong> for surf, SUP, foil, sailing</span></li>
+        <li><span class="item-text"><strong>Senlay API as second channel</strong> after SmartSurf proof</span></li>
       </ul>
     </div>
 
@@ -142,20 +165,20 @@
     <div class="phase">
       <div class="phase-header">
         <span class="phase-badge badge-future">LATER</span>
-        <span class="phase-title">Expansion After Focused Pilots</span>
+        <span class="phase-title">Platform expansion</span>
       </div>
       <ul class="road-items">
-        <li><span class="item-text"><strong>Federated sensor network</strong> &mdash; verified IoT devices can contribute data to the Physical World Model, including potential first-party sensors from SmartSurf hardware.</span></li>
-        <li><span class="item-text"><strong>Additional physical modifiers</strong> &mdash; soil conditions, acoustic propagation, communications interference, building-level urban wind, and solar-farm context after the first domain packs are validated.</span></li>
-        <li><span class="item-text"><strong>Insurance and risk platforms</strong> &mdash; verified microclimate data for parametric risk products, claims verification, and property risk scoring after evidence and confidence objects are mature.</span></li>
-        <li><span class="item-text"><strong>Digital twin integration</strong> &mdash; real-world state sync for simulation environments, RL training, and autonomous-system validation.</span></li>
-        <li><span class="item-text"><strong>Physical-world context infrastructure</strong> &mdash; expand from drones, outdoor work, agriculture, and marine into broader autonomous systems only after API reliability, evidence objects, and paid pilots are proven.</span></li>
+        <li><span class="item-text"><strong>Universal LLM compatibility</strong></span></li>
+        <li><span class="item-text"><strong>Multi-agent shared world model</strong></span></li>
+        <li><span class="item-text"><strong>Any coordinate on Earth</strong></span></li>
+        <li><span class="item-text"><strong>Digital twin integration</strong></span></li>
+        <li><span class="item-text"><strong>Broad autonomous systems</strong></span></li>
       </ul>
     </div>
 
     <div class="mission">
       <h3 class="mission-title">The Mission</h3>
-      <p class="mission-text">Give AI systems reliable physical-world context before they make real-world decisions.</p>
+      <p class="mission-text">Give AI systems reliable physical-world evidence before they make or escalate real-world decisions.</p>
     </div>
 
     <div class="road-cta">
@@ -168,49 +191,90 @@
     </div>
   </div>
 
-  <footer class="l-footer">
-    <div class="footer-shell">
-      <div class="footer-main">
-        <div class="footer-about">
-          <p class="footer-brand">SENLAY</p>
-          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
-          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
-        </div>
-        <div class="footer-nav-grid">
-          <div class="footer-col">
-            <h4>Product</h4>
-            <a href="demo">Demo</a>
-            <a href="/smartsurf/">SmartSurf</a>
-            <a href="docs.html">Docs</a>
-            <a href="agents">For Agents</a>
-            <a href="pricing.html">Pricing</a>
-          </div>
-          <div class="footer-col">
-            <h4>Company</h4>
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
-            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
-          </div>
-        </div>
+  <footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
       </div>
-      <div class="footer-bottom">
-        <span>Open beta for developers, pilots, and agent builders.</span>
-        <div class="footer-bottom-links">
-          <a href="pricing.html">API Access</a>
-          <a href="login.html">Sign In</a>
-          <a href="support.html">Pilot Contact</a>
-        </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
       </div>
-      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
     </div>
-  </footer>
+
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+  <script src="/scripts/header-menu.js"></script>
 </body>
 </html>

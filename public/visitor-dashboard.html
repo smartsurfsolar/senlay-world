@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Visitor Analytics — Senlay</title>
+  <link rel="stylesheet" href="/styles/landing.css?v=4">
+  <style>
+    body{background:#08111f;color:#e5edf7}.wrap{max-width:1120px;margin:auto;padding:36px 20px 70px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:30px}h1{margin:0;color:#34d399;font-size:28px}p{color:#94a3b8}
+    .controls{display:flex;gap:10px;align-items:center}select,button{border:1px solid #26344a;border-radius:7px;background:#111c2e;color:#e5edf7;padding:9px 12px}button{cursor:pointer;background:#059669;border-color:#059669;font-weight:700}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card,.panel{border:1px solid #223149;background:#0e192a;border-radius:10px;padding:19px}.metric{font-size:28px;font-weight:800;color:#fff}.label{font-size:12px;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.panel h2{font-size:16px;margin:0 0 14px}.full{grid-column:1/-1;overflow:auto}
+    table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;border-bottom:1px solid #1d2a3d;font-size:13px;white-space:nowrap}th{color:#94a3b8;font-size:11px;text-transform:uppercase}td{color:#cbd5e1}.identity{color:#34d399}.muted{color:#64748b}.error{padding:15px;border:1px solid #7f1d1d;background:#2b1015;border-radius:8px;color:#fecaca}.hidden{display:none}.bars{display:flex;align-items:end;height:150px;gap:5px}.bar{flex:1;min-width:8px;background:#10b981;border-radius:3px 3px 0 0;position:relative}.bar:hover:after{content:attr(data-tip);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:#020617;padding:5px;white-space:nowrap;font-size:11px}
+    @media(max-width:760px){.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.full{grid-column:auto}header{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body><main class="wrap">
+  <header><div><h1>Visitor Analytics</h1><p>First-party page traffic for Senlay. Times are shown in your local timezone.</p></div><div class="controls"><select id="days" aria-label="Date range"><option value="1">24 hours</option><option value="7">7 days</option><option value="30" selected>30 days</option><option value="90">90 days</option></select><button id="refresh">Refresh</button></div></header>
+  <div id="error" class="error hidden"></div>
+  <section id="content" class="hidden">
+    <div class="cards"><div class="card"><div class="label">Page views</div><div class="metric" id="views">0</div></div><div class="card"><div class="label">Visitors</div><div class="metric" id="visitors">0</div></div><div class="card"><div class="label">Approx. unique IPs</div><div class="metric" id="ips">0</div></div><div class="card"><div class="label">Bot views</div><div class="metric" id="bots">0</div></div></div>
+    <div class="grid"><section class="panel"><h2>Traffic by day</h2><div id="daily" class="bars"></div></section><section class="panel"><h2>Popular pages</h2><table><thead><tr><th>Page</th><th>Views</th><th>Visitors</th></tr></thead><tbody id="pages"></tbody></table></section>
+    <section class="panel full"><h2>Recent visitors</h2><table><thead><tr><th>Time</th><th>Visitor / account</th><th>Page</th><th>Referrer</th><th>Device</th><th>Browser</th></tr></thead><tbody id="recent"></tbody></table><p class="muted">Anonymous IDs are shortened. A name/email appears only after that browser signs in. Raw IP addresses are never stored.</p></section></div>
+  </section>
+</main><script>
+  const token=(()=>{try{return sessionStorage.getItem('senlay_session_token')||localStorage.getItem('senlay_session_token')||''}catch(_){return''}})();
+  const el=id=>document.getElementById(id); const td=value=>{const node=document.createElement('td');node.textContent=value??'—';return node};
+  function tableRows(target,rows,fields){const body=el(target);body.replaceChildren(...rows.map(row=>{const tr=document.createElement('tr');tr.append(...fields.map(field=>td(field(row))));return tr}))}
+  async function load(){el('error').classList.add('hidden');if(!token){location.href='/login.html?next=/visitor-dashboard.html';return}try{const res=await fetch('/api/admin/visitors?days='+encodeURIComponent(el('days').value),{headers:{Authorization:'Bearer '+token}});const data=await res.json();if(!res.ok)throw new Error(data.error||'Unable to load analytics');el('views').textContent=data.summary.pageviews||0;el('visitors').textContent=data.summary.visitors||0;el('ips').textContent=data.summary.approximate_unique_ips||0;el('bots').textContent=data.summary.bot_pageviews||0;tableRows('pages',data.pages,[r=>r.path,r=>r.views,r=>r.visitors]);tableRows('recent',data.recent,[r=>new Date(r.visited_at+'Z').toLocaleString(),r=>r.email?(r.name?r.name+' · ':'')+r.email:'Anonymous '+r.visitor,r=>r.path,r=>r.referrer,r=>r.device,r=>r.browser]);const max=Math.max(1,...data.daily.map(r=>r.views));el('daily').replaceChildren(...data.daily.map(r=>{const b=document.createElement('div');b.className='bar';b.style.height=Math.max(3,r.views/max*100)+'%';b.dataset.tip=r.day+': '+r.views+' views, '+r.visitors+' visitors';return b}));el('content').classList.remove('hidden')}catch(error){el('content').classList.add('hidden');el('error').textContent=error.message;el('error').classList.remove('hidden')}}
+  el('refresh').addEventListener('click',load);el('days').addEventListener('change',load);load();
+</script></body></html>

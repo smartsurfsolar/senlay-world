@@ -1,0 +1,1098 @@
+openapi: 3.1.0
+info:
+  title: Senlay Physical-World Verification API
+  version: 1.0.0-beta
+  description: >
+    Senlay gives AI agents physical-world context with source evidence,
+    freshness, confidence, uncertainty, and agent-ready interpretation.
+    Senlay provides decision support, not final safety authority.
+  contact:
+    name: Senlay Support
+    email: viktor@senlay.cloud
+    url: https://senlay.cloud/support.html
+servers:
+  - url: https://senlay.cloud
+    description: Production
+tags:
+  - name: Trial
+  - name: Agents
+  - name: Physical World Model
+  - name: Layer Stack
+  - name: Risk Events
+  - name: Public
+paths:
+  /api/v1/try-sense:
+    get:
+      tags: [Trial]
+      summary: No-key physical context trial for chat/browser agents
+      description: >
+        Returns a plaintext Senlay context bundle for a coordinate. Rate-limited
+        to 8 requests/minute burst and 60 requests/hour per IP.
+      parameters:
+        - $ref: '#/components/parameters/lat'
+        - $ref: '#/components/parameters/lng'
+        - $ref: '#/components/parameters/field'
+        - $ref: '#/components/parameters/agentName'
+        - $ref: '#/components/parameters/request'
+        - name: view
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [live]
+          description: Use view=live to open the self-updating HTML page.
+      responses:
+        '200':
+          description: Plaintext context bundle or live page
+          content:
+            text/plain:
+              schema:
+                type: string
+            text/html:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /agents/live:
+    get:
+      tags: [Public]
+      summary: Self-updating live context page
+      parameters:
+        - $ref: '#/components/parameters/lat'
+        - $ref: '#/components/parameters/lng'
+        - $ref: '#/components/parameters/field'
+        - $ref: '#/components/parameters/agentName'
+        - $ref: '#/components/parameters/request'
+      responses:
+        '200':
+          description: Live HTML page
+          content:
+            text/html:
+              schema:
+                type: string
+  /api/v1/agent-register:
+    post:
+      tags: [Agents]
+      summary: Register an agent and receive an API key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentRegisterRequest'
+      responses:
+        '200':
+          description: Agent credentials created or rotated. Existing identities require the current recoveryToken and receive newly rotated credentials; old keys are never returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRegisterResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/sense:
+    get:
+      tags: [Agents]
+      summary: Plain-text physical context for LLMs
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/lat'
+        - $ref: '#/components/parameters/lng'
+        - $ref: '#/components/parameters/field'
+      responses:
+        '200':
+          description: Plain-text context_string and evidence summary
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/pwm:
+    get:
+      tags: [Physical World Model]
+      summary: Structured JSON Physical World Model
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/lat'
+        - $ref: '#/components/parameters/lng'
+        - $ref: '#/components/parameters/field'
+      responses:
+        '200':
+          description: Structured physical-world context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PwmResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/layers/catalog:
+    get:
+      tags: [Layer Stack]
+      summary: Versioned Senlay layer catalog
+      description: >
+        Authenticated endpoint returning the layer stack, recommended open/free
+        providers, cadence, license notes, output fields, and request-time cache
+        policy.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Layer catalog metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerCatalogResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/layers/context:
+    get:
+      tags: [Layer Stack]
+      summary: Coordinate-specific layer context
+      description: >
+        Authenticated endpoint returning current layer status and derived terrain,
+        marine, wind, sensor, and risk context for a coordinate. Heavy static
+        layers are reported as missing/next actions unless already cached.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/lat'
+        - $ref: '#/components/parameters/lng'
+        - $ref: '#/components/parameters/field'
+      responses:
+        '200':
+          description: Spot layer context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerContextResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/evidence:
+    get:
+      tags: [Physical World Model]
+      summary: Versioned physical-world evidence
+      description: >
+        Authenticated endpoint returning first-class evidence records with
+        source provenance, trust role, freshness, quality, and cache metadata.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/lat'
+        - $ref: '#/components/parameters/lng'
+        - $ref: '#/components/parameters/field'
+      responses:
+        '200':
+          description: Evidence-backed physical-world context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PwmEvidenceResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/risk-events:
+    get:
+      tags: [Risk Events]
+      summary: Current operational risk events
+      description: >
+        Authenticated endpoint returning active risk_event objects derived from
+        Senlay evidence for station/lifeguard alerting workflows.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/lat'
+        - $ref: '#/components/parameters/lng'
+        - $ref: '#/components/parameters/field'
+      responses:
+        '200':
+          description: Active risk events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskEventsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      tags: [Risk Events]
+      summary: Current operational risk events with tracker context
+      description: >
+        Authenticated endpoint that combines coordinate context with optional
+        SmartSurf tracker, station, and geofence data.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskEventsRequest'
+      responses:
+        '200':
+          description: Active risk events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskEventsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/risk-events/recent:
+    get:
+      tags: [Risk Events]
+      summary: Recent persisted risk events
+      description: >
+        Authenticated endpoint reading durable risk_event records for audit,
+        alert review, and station logs.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/latOptional'
+        - $ref: '#/components/parameters/lngOptional'
+        - $ref: '#/components/parameters/field'
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: severity
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [info, watch, moderate, high, critical]
+        - name: subject_type
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: subject_id
+          in: query
+          required: false
+          schema:
+            type: string
+        - $ref: '#/components/parameters/hours'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Recent risk event records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecentRiskEventsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/risk/taxonomy:
+    get:
+      tags: [Risk Events]
+      summary: SmartSurf risk taxonomy
+      description: SmartSurf alert bands, hazard families, MVP-detectable signals, later Senlay phases, source priorities, and safety wording boundaries.
+      responses:
+        '200':
+          description: SmartSurf risk taxonomy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskTaxonomyResponse'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/evidence/recent:
+    get:
+      tags: [Physical World Model]
+      summary: Recent persisted evidence records
+      description: >
+        Authenticated endpoint reading the durable Senlay evidence store.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/latOptional'
+        - $ref: '#/components/parameters/lngOptional'
+        - $ref: '#/components/parameters/field'
+        - $ref: '#/components/parameters/layer'
+        - $ref: '#/components/parameters/variable'
+        - $ref: '#/components/parameters/hours'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Recent evidence records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecentEvidenceResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/v1/source-health:
+    get:
+      tags: [Physical World Model]
+      summary: Source health summary
+      description: >
+        Authenticated endpoint summarizing recent source health snapshots from
+        persisted Senlay evidence runs.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/hours'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Source health summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceHealthResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Senlay API key
+  parameters:
+    lat:
+      name: lat
+      in: query
+      required: true
+      schema:
+        type: number
+        minimum: -90
+        maximum: 90
+      description: Latitude.
+    lng:
+      name: lng
+      in: query
+      required: true
+      schema:
+        type: number
+        minimum: -180
+        maximum: 180
+      description: Longitude.
+    latOptional:
+      name: lat
+      in: query
+      required: false
+      schema:
+        type: number
+        minimum: -90
+        maximum: 90
+      description: Optional latitude filter. Provide with lng.
+    lngOptional:
+      name: lng
+      in: query
+      required: false
+      schema:
+        type: number
+        minimum: -180
+        maximum: 180
+      description: Optional longitude filter. Provide with lat.
+    field:
+      name: field
+      in: query
+      required: false
+      schema:
+        type: string
+        examples: [drone, kitesurfing, construction, agriculture, sailing, general]
+      description: Reasoning mode or use case.
+    agentName:
+      name: agentName
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Human-readable agent name for the response.
+    request:
+      name: request
+      in: query
+      required: false
+      schema:
+        type: string
+      description: User or agent question to embed in context.
+    layer:
+      name: layer
+      in: query
+      required: false
+      schema:
+        type: string
+        examples: [atmosphere, hydrosphere, terrain, air_quality]
+      description: Optional evidence layer filter.
+    variable:
+      name: variable
+      in: query
+      required: false
+      schema:
+        type: string
+        examples: [wind_speed, wave_height, surface_type]
+      description: Optional evidence variable filter.
+    hours:
+      name: hours
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 168
+        default: 24
+      description: Lookback window in hours.
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+      description: Maximum records to return.
+  schemas:
+    AgentRegisterRequest:
+      type: object
+      required: [agentName]
+      properties:
+        ownerEmail:
+          type: string
+          format: email
+        agentName:
+          type: string
+        recoveryToken:
+          type: string
+          description: Required only to rotate credentials for an existing ownerEmail and agentName identity.
+        purpose:
+          type: string
+    AgentRegisterResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        apiKey:
+          type: string
+          description: Returned only on initial registration or authorized rotation; save it securely.
+        keyPreview:
+          type: string
+        recoveryToken:
+          type: string
+          description: Returned only on initial registration or authorized rotation; save it separately from the API key.
+        agentName:
+          type: string
+        existing:
+          type: boolean
+        rotated:
+          type: boolean
+        message:
+          type: string
+    PwmResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        assessment_state:
+          $ref: '#/components/schemas/AssessmentState'
+        active_sources:
+          type: integer
+        total_sensors:
+          type: integer
+        pwm:
+          $ref: '#/components/schemas/PhysicalWorldModel'
+        extended:
+          type: object
+          additionalProperties: true
+        evidence_summary:
+          $ref: '#/components/schemas/EvidenceSummary'
+        risk_summary:
+          $ref: '#/components/schemas/RiskEventSummary'
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        risk_events:
+          type: array
+          items:
+            $ref: '#/components/schemas/RiskEvent'
+        layer_context:
+          $ref: '#/components/schemas/LayerContext'
+        context_string:
+          type: string
+    LayerCatalogResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        tier:
+          type: string
+        requests_today:
+          type: integer
+          description: Authenticated requests used today by the account across all active Senlay API keys.
+        daily_limit:
+          type: integer
+          description: Account-level daily allowance shared across all active Senlay API keys.
+        catalog:
+          type: object
+          additionalProperties: true
+    LayerContextResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        field:
+          type: string
+        coordinates:
+          type: object
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        cache:
+          type: object
+          additionalProperties: true
+        catalog:
+          type: object
+          additionalProperties: true
+        layer_context:
+          $ref: '#/components/schemas/LayerContext'
+    LayerContext:
+      type: object
+      description: Versioned coordinate-specific layer-stack context. Shape may expand as cached static layers come online.
+      additionalProperties: true
+      properties:
+        layer_stack_version:
+          type: string
+        active_layers:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        contexts:
+          type: object
+          additionalProperties: true
+        missing_or_next_layers:
+          type: array
+          items:
+            type: string
+        recommended_actions:
+          type: array
+          items:
+            type: string
+    ContractRef:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+          examples: ['2026-05-14']
+        description:
+          type: string
+    EvidenceSummary:
+      type: object
+      properties:
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        count:
+          type: integer
+        coverage:
+          $ref: '#/components/schemas/EvidenceCoverage'
+        record:
+          type: object
+          additionalProperties: true
+        link:
+          type: string
+    PwmEvidenceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        view:
+          type: string
+        field:
+          type: string
+        assessment_state:
+          $ref: '#/components/schemas/AssessmentState'
+        coordinates:
+          type: object
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        cache:
+          type: object
+          additionalProperties: true
+        health:
+          type: object
+          additionalProperties: true
+        evidence_record:
+          type: object
+          additionalProperties: true
+        evidence:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceItem'
+        evidence_coverage:
+          $ref: '#/components/schemas/EvidenceCoverage'
+        risk_summary:
+          $ref: '#/components/schemas/RiskEventSummary'
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        risk_events:
+          type: array
+          items:
+            $ref: '#/components/schemas/RiskEvent'
+    EvidenceItem:
+      type: object
+      properties:
+        id:
+          type: string
+          examples: [atmosphere.wind_speed]
+        schema_version:
+          type: string
+          examples: ['2026-05-14']
+        layer:
+          type: string
+        variable:
+          type: string
+        value: {}
+        unit:
+          type: string
+        observed_at:
+          type: string
+          format: date-time
+        coordinates:
+          type: object
+          additionalProperties: true
+        provenance:
+          $ref: '#/components/schemas/EvidenceProvenance'
+        quality:
+          $ref: '#/components/schemas/EvidenceQuality'
+      additionalProperties: true
+    EvidenceProvenance:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum: [hardware, prediction, static_context]
+        source:
+          type: object
+          additionalProperties: true
+        normalized_record:
+          $ref: '#/components/schemas/NormalizedRecordRef'
+      additionalProperties: true
+    NormalizedRecordRef:
+      type: object
+      properties:
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        kind:
+          type: string
+          enum: [observation, prediction, static_context]
+        observed_at:
+          type: [string, 'null']
+          format: date-time
+        valid_at:
+          type: [string, 'null']
+          format: date-time
+    EvidenceQuality:
+      type: object
+      properties:
+        source_mode:
+          type: string
+        trust_role:
+          type: [string, 'null']
+        trust_confidence:
+          type: [string, 'null']
+        normalized_kind:
+          type: string
+          enum: [observation, prediction, static_context]
+        limitations:
+          type: [string, 'null']
+      additionalProperties: true
+    RiskEventsRequest:
+      type: object
+      required: [lat, lng]
+      properties:
+        lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        lng:
+          type: number
+          minimum: -180
+          maximum: 180
+        field:
+          type: string
+          examples: [kitesurfing, surfing, sailing]
+        subject:
+          type: object
+          description: Optional tracker/rider/asset context for SmartSurf-style risk detection.
+          additionalProperties: true
+        station:
+          type: object
+          additionalProperties: true
+        geofence:
+          type: object
+          additionalProperties: true
+    RiskEventsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        view:
+          type: string
+          examples: [risk_events]
+        field:
+          type: string
+        assessment_state:
+          $ref: '#/components/schemas/AssessmentState'
+        coordinates:
+          type: object
+          additionalProperties: true
+        risk_summary:
+          $ref: '#/components/schemas/RiskEventSummary'
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        risk_events:
+          type: array
+          items:
+            $ref: '#/components/schemas/RiskEvent'
+        evidence_summary:
+          $ref: '#/components/schemas/EvidenceSummary'
+        evidence_record:
+          type: object
+          additionalProperties: true
+    RiskAssessment:
+      type: object
+      description: Aggregate deterministic SmartSurf/Senlay risk state. A null score and unknown level mean required evidence cannot support a risk score; they must never be interpreted as low risk. Decision support only; not drowning detection or certified rescue dispatch.
+      properties:
+        assessment_state:
+          $ref: '#/components/schemas/AssessmentState'
+        evidence_coverage:
+          $ref: '#/components/schemas/EvidenceCoverage'
+        session_phase:
+          type: string
+          enum: [pre_session, in_session, post_session]
+        risk_score:
+          type: [integer, 'null']
+          minimum: 0
+          maximum: 100
+        risk_level:
+          type: string
+          enum: [unknown, low, medium, high, critical]
+        alert_band:
+          type: object
+          additionalProperties: true
+        confidence:
+          type: string
+        risk_modifiers:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        reasons:
+          type: array
+          items:
+            type: string
+        recommended_action:
+          type: string
+        escalation_stage:
+          type: string
+        incident_state:
+          type: string
+        source_provenance:
+          type: object
+          additionalProperties: true
+        score_model:
+          type: object
+          additionalProperties: true
+        safety_disclaimer:
+          type: string
+    AssessmentState:
+      type: string
+      enum: [sufficient, partial, insufficient, unknown]
+      description: Whether usable current evidence covers the groups required for the requested activity. Independent emergency signals can still produce a scored critical risk when environmental evidence is incomplete.
+    EvidenceCoverage:
+      type: object
+      properties:
+        assessment_state:
+          $ref: '#/components/schemas/AssessmentState'
+        activity:
+          type: string
+        required_groups:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              any_of:
+                type: array
+                items:
+                  type: string
+        satisfied_groups:
+          type: array
+          items:
+            type: string
+        missing_groups:
+          type: array
+          items:
+            type: string
+        usable_fields:
+          type: array
+          items:
+            type: string
+        coverage_ratio:
+          type: [number, 'null']
+          minimum: 0
+          maximum: 1
+        reason:
+          type: string
+    RiskTaxonomyResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          examples: [ok]
+        taxonomy:
+          type: object
+          additionalProperties: true
+    RiskEventSummary:
+      type: object
+      properties:
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        count:
+          type: integer
+        max_severity:
+          type: string
+          examples: [none, moderate, high, critical]
+        max_score:
+          type: integer
+        alert_required:
+          type: boolean
+        acknowledgement_required:
+          type: boolean
+        notify:
+          type: array
+          items:
+            type: string
+        counts_by_severity:
+          type: object
+          additionalProperties: true
+        active_types:
+          type: array
+          items:
+            type: string
+    RiskEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        schema_version:
+          type: string
+        type:
+          type: string
+          examples: [loss_of_power_drift_risk, offshore_drift_risk]
+        category:
+          type: string
+          examples: [water_safety, human_safety, telemetry]
+        severity:
+          type: string
+          enum: [info, watch, moderate, high, critical]
+        score:
+          type: integer
+          minimum: 0
+          maximum: 100
+        confidence:
+          type: string
+        status:
+          type: string
+          examples: [active]
+        subject:
+          type: object
+          additionalProperties: true
+        location:
+          type: object
+          additionalProperties: true
+        observed_at:
+          type: string
+          format: date-time
+        valid_until:
+          type: string
+          format: date-time
+        title:
+          type: string
+        summary:
+          type: string
+        trigger:
+          type: object
+          additionalProperties: true
+        evidence_refs:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        recommended_action:
+          type: string
+        escalation:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+    RecentEvidenceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        filters:
+          type: object
+          additionalProperties: true
+        count:
+          type: integer
+        records:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    RecentRiskEventsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        filters:
+          type: object
+          additionalProperties: true
+        count:
+          type: integer
+        records:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    SourceHealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        window_hours:
+          type: integer
+        count:
+          type: integer
+        sources:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    PhysicalWorldModel:
+      type: object
+      properties:
+        coordinates:
+          type: object
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+        timestamp:
+          type: string
+          format: date-time
+        layers:
+          type: object
+          additionalProperties: true
+    SourceEvidence:
+      type: object
+      properties:
+        source:
+          type: string
+        source_type:
+          type: string
+        mode:
+          type: string
+        distance_km:
+          type: number
+        timestamp:
+          type: string
+          format: date-time
+        freshness_min:
+          type: number
+        confidence:
+          type: string
+        hardware_model_disagreement:
+          type: string
+        limitations:
+          type: string
+      additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+  responses:
+    BadRequest:
+      description: Invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit reached
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+        text/plain:
+          schema:
+            type: string
+x-source-family-wording: 21 source families
+x-safety-disclaimer: Senlay provides context, evidence, and decision support. It is not a safety authority. Final decisions remain with operators, users, and customer applications.

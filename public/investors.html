@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay Investor Brief - Reciprocal Verification Network</title>
+  <meta name="description" content="Senlay is a verification network that tells systems what is actually happening at a coordinate — and how much to trust the answer — built from sensors contributed by the people who use it. Contributors pay in data; systems that act pay cash.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <meta property="og:title" content="Senlay Investor Brief - Reciprocal Verification Network">
+  <meta property="og:description" content="Senlay is a verification network that tells systems what is actually happening at a coordinate — and how much to trust the answer — built from sensors contributed by the people who use it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://senlay.cloud/investors.html">
+  <meta property="og:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Senlay Investor Brief - Reciprocal Verification Network">
+  <meta name="twitter:description" content="Coverage arrives from participants rather than from capital. Contribute a sensor, get the network. Systems that act on the answer pay cash.">
+  <meta name="twitter:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <link rel="canonical" href="https://senlay.cloud/investors">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
+  <link rel="stylesheet" href="/styles/landing.css?v=4">
+  <link rel="stylesheet" href="/styles/investor.css?v=1">
+<link rel="stylesheet" href="/styles/dark-map-override.css?v=20260516-0536"></head>
+<body class="investor-page">
+    <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+      </div>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <details class="nav-menu">
+          <summary>Product</summary>
+          <div class="nav-menu-panel">
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
+          </div>
+        </details>
+        <a href="/pricing.html">Pricing</a>
+        <details class="nav-menu">
+          <summary>Company</summary>
+          <div class="nav-menu-panel">
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
+          </div>
+        </details>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="investor-hero-v2">
+      <div class="investor-shell investor-hero-grid">
+        <div>
+          <p class="investor-kicker">Investor brief / September 2026 &mdash; reciprocal network model</p>
+          <h1 class="investor-h1">Senlay tells humans and machines what is happening at a specific place, right now &mdash; and shows how much that answer can be trusted.</h1>
+          <p class="investor-lead">Coordinate-level environmental intelligence with uncertainty at its centre. Contribute a sensor where no network reached and you get the whole layer in return. Consume without contributing and you pay.</p>
+          <p class="investor-lead">This is not a pivot away from the API. It is a change in how the API is fed and who pays for it. The verification engine, the trust scoring and the endpoints are unchanged and already in production.</p>
+          <div class="investor-actions">
+            <a href="/demo" class="btn-primary">Watch Senlay answer a physical-world question now</a>
+            <a href="/network.html" class="btn-secondary">See the contributor network</a>
+            <a href="mailto:viktor@senlay.cloud" class="btn-ghost">Contact Viktor</a>
+          </div>
+        </div>
+
+        <aside class="investor-panel" aria-label="Senlay evidence summary">
+          <div class="investor-panel-head">
+            <span>Reciprocal verification network</span>
+            <span>Pre-revenue</span>
+          </div>
+          <div class="investor-panel-body">
+            <div class="signal-row">
+              <div class="signal-label">Contributors</div>
+              <div class="signal-value">A weather station, a school, a research site, a marina, a farm. Attach an instrument, receive verified reasoning across the whole network. Pay in data, not money.</div>
+            </div>
+            <div class="signal-row">
+              <div class="signal-label">Network providers</div>
+              <div class="signal-value">Operators with existing sensor fleets connect them under a reciprocal contract and gain the verification layer plus coverage they do not own.</div>
+            </div>
+            <div class="signal-row">
+              <div class="signal-label">Consumers</div>
+              <div class="signal-value">Drone/BVLOS, robotics, lifting and construction, parametric insurers, marine operations &mdash; systems that act and will never install a weather station. They are the revenue.</div>
+            </div>
+            <div class="signal-row">
+              <div class="signal-label">Proving ground</div>
+              <div class="signal-value">SmartSurf: water-sports safety for riders, boards, schools, and stations &mdash; the first place I could tell instantly whether the answer was true.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="investor-section">
+      <div class="investor-shell">
+        <div class="investor-metrics">
+          <div class="investor-metric">
+            <strong>21</strong>
+            <span>source families</span>
+            <p>Weather, marine, aviation, air quality, terrain, satellite, hydrology, and hazard sources &mdash; the raw material a network reasons over, not the moat itself.</p>
+          </div>
+          <div class="investor-metric">
+            <strong>Live</strong>
+            <span>open contributor protocol</span>
+            <p>Protocol, JS SDK, MQTT bridge, and edge gateway published Apache 2.0. Provider/station registration and HMAC-signed ingestion validate in production today.</p>
+          </div>
+          <div class="investor-metric">
+            <strong>7</strong>
+            <span>controlled source-health statuses</span>
+            <p><code>ok</code>, <code>no_data</code>, <code>out_of_coverage</code>, <code>not_configured</code>, <code>error</code>, <code>timeout</code>. A source dark for a missing credential is labelled as such, never disguised as inapplicable.</p>
+          </div>
+          <div class="investor-metric">
+            <strong>Pre-revenue</strong>
+            <span>no paying customers</span>
+            <p>Said plainly. One person, including Linux deployment. The gap this brief exists to close is external usage from people I have never met.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section investor-section-muted">
+      <div class="investor-shell">
+        <div class="investor-section-head">
+          <p class="investor-kicker">The problem</p>
+          <h2>Operational agents need evidence, not just forecast values.</h2>
+          <p>Agents are starting to plan drone missions, schedule outdoor crews, route vessels, time spraying, and support real-world decisions. Generic forecasts and LLM guesses are not enough when wind, waves, weather, terrain, air quality, and sensor freshness can change the answer.</p>
+        </div>
+        <div class="investor-grid">
+          <div class="investor-card">
+            <span class="investor-label">Agent risk</span>
+            <h3>Training data cannot answer "right now."</h3>
+            <p>An LLM can sound confident while using stale, generic, or cached context for a local decision.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">API gap</span>
+            <h3>Generic weather APIs were built for broad dashboards.</h3>
+            <p>They return values, but usually do not expose source hierarchy, freshness, local disagreement, or domain meaning.</p>
+          </div>
+          <div class="investor-card accent">
+            <span class="investor-label">Senlay thesis</span>
+            <h3>The missing layer is local verification for outdoor decisions.</h3>
+            <p>Agents need measurable conditions with source, distance, confidence, and a plain-language interpretation they can use in a workflow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section">
+      <div class="investor-shell">
+        <div class="investor-section-head">
+          <p class="investor-kicker">Product</p>
+          <h2>One verification request returns conditions, evidence, risk context, and decision meaning.</h2>
+          <p>Senlay is not a consumer weather app. It is infrastructure for SmartSurf, outdoor AI apps, IoT systems, and safety applications that need source-aware physical verification before they act.</p>
+        </div>
+        <div class="investor-grid">
+          <div class="investor-card accent">
+            <span class="investor-label">1</span>
+            <h3>Measured conditions</h3>
+            <p>Wind, gusts, weather, waves, tides, currents, air quality, terrain, hazards, and sensor availability; bathymetry only when a validated layer is configured.</p>
+          </div>
+          <div class="investor-card accent">
+            <span class="investor-label">2</span>
+            <h3>Evidence per value</h3>
+            <p>Source type, station distance, measured timestamp, freshness, trust score, and whether the value is sensor or model derived.</p>
+          </div>
+          <div class="investor-card accent">
+            <span class="investor-label">3</span>
+            <h3>Evidence-ready interpretation</h3>
+            <p>Structured verification output for safety workflows, application code, and audit trails.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section investor-section-muted">
+      <div class="investor-shell">
+        <div class="investor-section-head">
+          <p class="investor-kicker">Named, honestly &mdash; a reviewer will find these in five minutes</p>
+          <h2>Senlay is not another sensor network. It is the verification layer above all of them.</h2>
+          <p>Do not lead with network density &mdash; that race is already lost on density and does not need to be run. Contributed sensor networks already exist and some are large. They are not competitors. They are inputs.</p>
+        </div>
+        <div class="investor-grid">
+          <div class="investor-card">
+            <span class="investor-label">Data vendors</span>
+            <h3>Open-Meteo, Tomorrow.io, Stormglass, Visual Crossing.</h3>
+            <p>Penalized for admitting missing coverage, so their APIs interpolate across gaps and present the result as a measurement. In safety-critical use that is worse than no answer.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">Aggregators with QC</span>
+            <h3>Synoptic Data &mdash; the closest technical neighbour.</h3>
+            <p>Aggregates hundreds of networks without owning stations and flags physically plausible outliers. Synoptic cleans data for analysts. Senlay reasons for systems that act.</p>
+          </div>
+          <div class="investor-card accent">
+            <span class="investor-label">Contributed physical networks</span>
+            <h3>WeatherXM &mdash; roughly 10,000 community stations, 81 countries, ~$13M raised.</h3>
+            <p>A good weather network, rewarding owners in tokens for hardware it manufactures. Senlay is not trying to out-deploy it. WeatherXM is a source family, one input among many reasoned over.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">Physical AI &mdash; the one direct adjacent</span>
+            <h3>Archetype AI &mdash; $13M seed, $35M Series A (Nov 2025, IAG Capital / Hitachi Ventures, Bezos Expeditions, Venrock, Amazon, Samsung).</h3>
+            <p>Newton TimeFusion reasons over sensor streams for an enterprise's own assets inside its own perimeter. Senlay is public outdoor context at a coordinate, aggregated across networks nobody owns, aimed at safety decisions nobody has a commercial reason to open up otherwise.</p>
+          </div>
+        </div>
+        <p style="margin-top:20px;color:var(--text2);font-size:14px;line-height:1.8">Senlay's position is one layer up: the place where readings from every network are cross-checked against each other and against forecast models, weighted by distance, freshness and calibration, and returned with the disagreement made explicit rather than averaged away.</p>
+      </div>
+    </section>
+
+    <section class="investor-section">
+      <div class="investor-shell">
+        <div class="evidence-box">
+          <div>
+            <div class="investor-section-head">
+              <p class="investor-kicker">Evidence Object v1</p>
+              <h2>A proof block attached to physical-world claims.</h2>
+              <p>Evidence Object v1 is the funded milestone that makes each important Senlay value auditable: where it came from, when it was measured, how far away it is, whether sources agree, and why the interpretation was made.</p>
+            </div>
+            <div class="investor-grid two">
+              <div class="investor-card">
+                <span class="investor-label">Without it</span>
+                <h3>"Wind is risky."</h3>
+                <p>The agent receives a conclusion but cannot inspect whether the source was live, nearby, fresh, or trusted.</p>
+              </div>
+              <div class="investor-card accent">
+                <span class="investor-label">With it</span>
+                <h3>"Wind is risky, and here is why."</h3>
+                <p>The answer carries source, timestamp, distance, measured/model status, confidence, disagreement, and interpretation reason.</p>
+              </div>
+            </div>
+          </div>
+          <pre class="evidence-code"><code>{
+  "wind.speed_ms": {
+    "value": 9.4,
+    "unit": "m/s",
+    "evidence": {
+      "source_type": "sensor",
+      "age_min": 6,
+      "distance_km": 4.2,
+      "confidence": "medium-high"
+    },
+    "disagreement": {
+      "alternate_source": "model",
+      "delta": 3.3,
+      "weighting": "live_preferred"
+    }
+  }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section investor-section-muted">
+      <div class="investor-shell">
+        <div class="investor-section-head">
+          <p class="investor-kicker">Market and wedge</p>
+          <h2>Water sports is the wedge, not the ceiling.</h2>
+          <p>SmartSurf is the first proving ground: the domain where I can tell instantly whether the answer is true, after twenty years reading wind and water for other people's safety. The same evidence engine reasons for any system that acts outside and would never install a weather station itself.</p>
+        </div>
+        <div class="investor-grid">
+          <div class="investor-card accent">
+            <span class="investor-label">Beachhead</span>
+            <h3>SmartSurf schools and stations</h3>
+            <p>Clear physical risk, real hardware path, obvious buyer pain, and a visible workflow from GPS trigger to Senlay context to station alert.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">Second wave</span>
+            <h3>AI agents for drones, field ops, agriculture</h3>
+            <p>Weather, heat, wind, humidity, air quality, and terrain affect launch, scheduling, spraying, work safety, and logistics.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">Long term</span>
+            <h3>Marine, SAR, insurance, autonomy</h3>
+            <p>Higher-value workflows after reliability, evidence contracts, SLAs, and domain validation mature.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section">
+      <div class="investor-shell">
+        <div class="investor-section-head">
+          <p class="investor-kicker">Business model</p>
+          <h2>Contribute or pay. The two sides do not compete for the same budget.</h2>
+        </div>
+        <div class="investor-grid">
+          <div class="investor-card accent">
+            <span class="investor-label">1 &middot; Contributors</span>
+            <h3>Attach a sensor, receive the network.</h3>
+            <p>No cash. They are coverage and distribution, not revenue.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">2 &middot; Developer API</span>
+            <h3>Usage-based, self-serve.</h3>
+            <p>Outdoor apps, IoT products, agent frameworks. Free tier with a daily allowance.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">3 &middot; Operational safety</span>
+            <h3>Structured risk events, not raw context.</h3>
+            <p>Schools, stations, fleet operators. Higher value per seat &mdash; the layer SmartSurf validates.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">4 &middot; Vertical evidence</span>
+            <h3>Parametric insurance, precision agriculture, drone ops.</h3>
+            <p>Verified evidence with an audit trail is a compliance requirement and priced accordingly.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">5 &middot; Network providers</span>
+            <h3>Reciprocal fleet integration.</h3>
+            <p>Sensor-network operators and hardware vendors integrate fleets, gaining verification and reach.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">6 &middot; Private instance &mdash; direction</span>
+            <h3>Bring your own sources and your own model.</h3>
+            <p>Their data contracts stay in place; Senlay supplies the trust layer above them. Direction, not a committed timeline.</p>
+          </div>
+        </div>
+        <p style="margin-top:20px;color:var(--text2);font-size:14px;line-height:1.8">Modes 1&ndash;4 are the self-serve business and ship today. Modes 5 and 6 are enterprise motions with different sales cycles &mdash; presented as direction, with no timeline attached. Revenue comes from systems that act and will never install hardware; coverage comes from people who already own instruments and want better answers about their own location.</p>
+      </div>
+    </section>
+
+    <section class="investor-section investor-section-muted">
+      <div class="investor-shell">
+        <div class="investor-section-head">
+          <p class="investor-kicker">Why this compounds</p>
+          <h2>Contributed data quality is the failure mode that has defeated volunteer sensor networks for two decades. Senlay is structurally immune to it.</h2>
+          <p>Instruments end up beside air-conditioning units, in direct sun, or uncalibrated, and every other platform spends years fighting the resulting quality problem. Senlay measures it and prices it in, because trust scoring is already the entire product: distance, freshness, calibration state, and disagreement with both forecast models and neighbouring instruments are computed on every single request today. A poor sensor does not corrupt the answer &mdash; it receives a low weight, and the response says so.</p>
+        </div>
+        <div class="investor-grid">
+          <div class="investor-card accent">
+            <span class="investor-label">Station trust levels</span>
+            <h3>Documentation moves the starting point. Behaviour moves the weight, permanently.</h3>
+            <p>A certified instrument fails like any other. An undocumented one that tracks its neighbours for months gains weight without any paperwork. This is deliberately not purchasable &mdash; the answer to spoofing.</p>
+          </div>
+          <div class="investor-card accent">
+            <span class="investor-label">Place memory</span>
+            <h3>What compounds is not station count. It is place memory.</h3>
+            <p>Every request stores a snapshot for that coordinate. A coordinate queried 61 times returns materially better reasoning than one queried twice &mdash; generated by usage, sold by no vendor.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">Sources are substitutable</span>
+            <h3>Data sources and language models are interchangeable. The judgement is not.</h3>
+            <p>Normalization, distance/freshness scoring, measured-vs-predicted separation, weighting, divergence detection, and refusal to infer all live in one place: the trust engine. It stays closed and non-configurable by design.</p>
+          </div>
+          <div class="investor-card">
+            <span class="investor-label">A data vendor cannot copy this</span>
+            <h3>Giving network access in exchange for data attacks a data vendor's own pricing.</h3>
+            <p>For Senlay it is the growth mechanism. Open protocol, closed trust engine &mdash; shipped, not planned.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section">
+      <div class="investor-shell">
+        <div class="investor-section-head">
+          <p class="investor-kicker">Traction and roadmap</p>
+          <h2>Live platform, public beta, and a path to paid pilots.</h2>
+        </div>
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Milestones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Live today</strong></td>
+              <td>Public site, API docs, interactive demo, developer dashboard, BYOK LLM profile keys, SmartSurf integration path, risk_event endpoints, and Physical World Model responses with source/freshness/confidence concepts.</td>
+            </tr>
+            <tr>
+              <td><strong>Next 6 months</strong></td>
+              <td>Evidence Object v1, drone go/no-go domain pack, outdoor-work domain pack, reliability and monitoring, data quality scoring, and 5-10 paid pilots.</td>
+            </tr>
+            <tr>
+              <td><strong>Next 12 months</strong></td>
+              <td>25-50 paying developer/team customers, 3-5 enterprise pilot conversations or contracts, agriculture domain pack, and private sensor integration path validated.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="investor-section investor-section-muted">
+      <div class="investor-shell">
+        <div class="deck-preview">
+          <div class="deck-preview-frame">
+            <div class="deck-preview-stage">
+              <div>
+                <p class="investor-kicker">19-slide rebuild</p>
+                <h3>Old pitch logic plus new live-evidence story.</h3>
+              </div>
+              <p>SENLAY / investor deck / rebuilt in current style</p>
+            </div>
+          </div>
+          <div>
+            <div class="investor-section-head">
+              <p class="investor-kicker">Slide deck</p>
+              <h2>The full deck now combines both source sets.</h2>
+              <p>The first 12 slides rebuild the reviewed pitch deck. The last 7 slides rebuild the newer investor-brief PDF around live evidence, hardware/model divergence, sensor hierarchy, and founder velocity.</p>
+            </div>
+            <ul class="deck-index-list">
+              <li><span>01-12</span><p>Problem, insight, product, demo, why now, wedge, pricing, moat, founder, roadmap, ask.</p></li>
+              <li><span>13-19</span><p>Live evidence update, Hoi An case, forecast trust, sensor hierarchy, agent-verified fixes, thesis.</p></li>
+            </ul>
+            <div class="investor-actions">
+              <a href="/investors/deck" class="btn-primary">Open Full Deck</a>
+              <a href="/assets/investor-brief/slide-01.png" class="btn-secondary">View New Slide Assets</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section">
+      <div class="investor-shell">
+        <div class="investor-grid two">
+          <div>
+            <div class="investor-section-head">
+              <p class="investor-kicker">Founder-market fit</p>
+              <h2>20 years reading wind, water, and risk in real conditions.</h2>
+              <p>Viktor Kryvotsiuk is the sole human founder in Hoi An, Vietnam. Senlay grew out of water-sports instruction, marine safety decisions, and SmartSurf hardware work before becoming a horizontal API for agents.</p>
+            </div>
+            <div class="investor-quote">The advantage is not knowing more weather data. It is knowing what conditions mean when someone has to decide.</div>
+          </div>
+          <div class="investor-card accent">
+            <span class="investor-label">Credentials</span>
+            <h3>Viktor Kryvotsiuk</h3>
+            <ul>
+              <li>20+ years certified kitesurfing and water-sports instruction across Ukraine, Vietnam, Egypt, and Sri Lanka.</li>
+              <li>IYT International Bareboat Skipper, Power &amp; Sail up to 24 m.</li>
+              <li>1NCE Certified IoT Integrator.</li>
+              <li>Built SmartSurf GPS tracker hardware for riders and boards.</li>
+              <li>Shipped Senlay as a live public beta with an AI-agent coding team.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section investor-section-muted">
+      <div class="investor-shell">
+        <div class="investor-section-head center">
+          <p class="investor-kicker">Investor FAQ</p>
+          <h2>Hard questions, direct answers.</h2>
+        </div>
+        <div class="investor-faq">
+          <details open>
+            <summary>Is this just another weather API?</summary>
+            <p>No. Weather APIs return values for dashboards. Senlay returns evidence-bearing context for agent reasoning: source, freshness, distance, confidence, disagreement, and domain interpretation.</p>
+          </details>
+          <details>
+            <summary>If contributors don't pay, who does?</summary>
+            <p>Systems that actuate commercial decisions and will never contribute hardware: drone and BVLOS operators, robotics fleets, lifting and construction, parametric insurers, marine operations. They need the answer, not the network.</p>
+            <p>Water-sports schools and stations validate the operational-safety tier through SmartSurf first &mdash; the proving ground, not the ceiling.</p>
+          </details>
+          <details>
+            <summary>Isn't this just a failed network four years late? WeatherXM already has 10,000 stations.</summary>
+            <p>The most dangerous misreading. WeatherXM is an input, not an opponent &mdash; Senlay reasons across networks rather than owning one. The open contributor protocol exists for the places no network reached; density is raw material, not the target. Never lead with node counts.</p>
+          </details>
+          <details>
+            <summary>Why not sell to every vertical immediately?</summary>
+            <p>The first wedge is narrow on purpose. Drone go/no-go and field operations are concrete enough to demo quickly. The horizontal market comes from adding domain packs on the same evidence layer.</p>
+          </details>
+          <details>
+            <summary>Could a large platform build this?</summary>
+            <p>They could build pieces. The hard work is fragmented, operational, and domain-specific: source normalization, freshness, confidence, live/model disagreement, domain rules, and field interpretation.</p>
+          </details>
+          <details>
+            <summary>How does Senlay handle safety?</summary>
+            <p>Senlay is not a safety authority. It provides auditable context. The customer application or operator makes the final decision, which is why source, freshness, confidence, and limits matter.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="investor-section">
+      <div class="investor-shell investor-final">
+        <h2>$500K pre-seed to prove the reciprocal network with real external usage.</h2>
+        <p>Use of funds: signed evidence receipts, contributor onboarding and the OGC SensorThings adapter, API reliability and monitoring, SmartSurf risk-event proof as the operational-safety tier, domain packs, and senior backend support. Pre-revenue, no paying customers &mdash; said plainly.</p>
+        <div class="investor-actions" style="justify-content:center">
+          <a href="/investors/deck" class="btn-primary">View Deck</a>
+          <a href="mailto:viktor@senlay.cloud" class="btn-secondary">viktor@senlay.cloud</a>
+          <a href="/docs.html" class="btn-ghost">Read Docs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
+      </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+  <script src="/scripts/header-menu.js"></script>
+</body>
+</html>

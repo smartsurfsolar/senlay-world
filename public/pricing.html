@@ -3,10 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senlay Pricing — API Plans for AI Agents</title>
-  <meta name="description" content="Senlay pricing for developers, startups, and teams building AI agents that need live physical-world context.">
-  <link rel="icon" type="image/png" href="/assets/brand/LogoTransparentBackground.png?v=4">
-  <link rel="apple-touch-icon" href="/assets/brand/LogoTransparentBackground.png?v=4">
+  <title>Senlay Pricing - Contribute a Sensor or Pay for Verification</title>
+  <meta name="description" content="Contribute a sensor and receive the whole verification network back, at no cost. Systems that act on the answer without contributing hardware pay cash instead. Reciprocal pricing for Senlay's verification API.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <meta property="og:title" content="Senlay Pricing - Contribute a Sensor or Pay for Verification">
+  <meta property="og:description" content="Contribute a sensor and receive the whole verification network back, at no cost. Systems that act on the answer without contributing hardware pay cash instead.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://senlay.cloud/pricing.html">
+  <meta property="og:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Senlay Pricing - Contribute a Sensor or Pay for Verification">
+  <meta name="twitter:description" content="Contribute a sensor and receive the whole verification network back, at no cost. Systems that act on the answer without contributing hardware pay cash instead.">
+  <meta name="twitter:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <link rel="canonical" href="https://senlay.cloud/pricing.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "name": "Senlay Reciprocal Verification Network",
+        "description": "A verification network for physical-world context. Contribute a sensor and receive the network back at no cost; systems that act on the answer without contributing hardware pay cash.",
+        "offers": [
+          { "@type": "Offer", "name": "Contribute a Sensor", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+          { "@type": "Offer", "name": "Free Developer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+          { "@type": "Offer", "name": "Outdoor App Developer", "price": "29", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is Senlay free?", "acceptedAnswer": { "@type": "Answer", "text": "Contributing a sensor is free forever and returns verified reasoning across the whole network. The developer API also has a free tier and a shared account allowance of 100 authenticated API calls/day." } },
+          { "@type": "Question", "name": "Who pays for Senlay?", "acceptedAnswer": { "@type": "Answer", "text": "Contributors pay in data, not money. Systems that act on the answer and will never install hardware — drone operators, robotics fleets, lifting and construction, parametric insurers, marine operations — pay cash." } },
+          { "@type": "Question", "name": "Can teams run pilots?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Team and enterprise pilots are available by discussion for production or safety-critical use cases." } }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
   <link rel="stylesheet" href="/styles/landing.css?v=4">
   <style>
     .price-container { max-width: 1120px; margin: 0 auto; padding: 48px 24px; }
@@ -43,90 +79,119 @@
     @media (max-width: 980px) { .plans-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) { .plans-grid { grid-template-columns: 1fr; } }
   </style>
-</head>
+<link rel="stylesheet" href="/styles/dark-map-override.css?v=20260516-0536"></head>
 <body>
-  <header class="l-header">
-    <div class="l-header-inner">
-      <a href="/" class="l-logo-link" aria-label="Senlay home"><span class="l-logo-wordmark">SENLAY</span></a>
-      <nav class="l-nav">
+    <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+      </div>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
         <a href="/">Home</a>
         <details class="nav-menu">
           <summary>Product</summary>
           <div class="nav-menu-panel">
-            <a href="demo">Demo</a>
-            <a href="agents">For Agents</a>
-            <a href="docs.html">Docs</a>
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
           </div>
         </details>
-        <a href="pricing.html">Pricing</a>
+        <a href="/pricing.html">Pricing</a>
         <details class="nav-menu">
           <summary>Company</summary>
           <div class="nav-menu-panel">
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
           </div>
         </details>
-        <a href="login.html">Sign In</a>
-        <a href="pricing.html" class="nav-cta">Get API Key</a>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
       </nav>
     </div>
   </header>
 
   <div class="price-container">
-    <h2 class="price-title">Pricing</h2>
-    <p class="price-sub">Pricing is designed for developers and teams building agents that need live physical-world context. Open beta is free while the API is validated with real use cases.</p>
+    <h1 class="price-title">Contribute or pay</h1>
+    <p class="price-sub">Senlay is reciprocal. Attach a sensor and receive verified reasoning across the whole network &mdash; not just your own readings &mdash; at no cost. Systems that act on the answer but will never install hardware pay cash instead.</p>
+    <p class="price-sub">SmartSurf station pilots are handled through SmartSurf pilot pricing; this page is for Senlay's contributor network and API/evidence-engine access.</p>
 
     <div class="beta-banner">
-      <h3>Open Beta &mdash; Free Developer Access</h3>
-      <p>Use Senlay now to test real agent workflows: drone pre-flight checks, outdoor work planning, agriculture timing, marine routing, and coastal safety. Beta users help shape production limits and pilot features before paid launch.</p>
+      <h3>The closest paid buyer is a system that acts</h3>
+      <p>Drone and BVLOS operators, robotics fleets, lifting and construction, parametric insurers, and marine operations need the answer, not the network, and will never contribute hardware. Contributors &mdash; stations, schools, marinas, sensor-network operators &mdash; pay in data and are coverage, not revenue.</p>
     </div>
+
+    <div class="plans-grid" style="grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 40px;">
+      <div class="plan-card featured">
+        <span class="future-label">RECIPROCAL &mdash; LIVE NOW</span>
+        <div class="plan-name">Contribute a Sensor</div>
+        <div class="plan-price">$0 <span>forever</span></div>
+        <div class="plan-note">Attach an instrument, receive the network back.</div>
+        <ul class="plan-features">
+          <li>No cash, no token &mdash; pay in data, not money</li>
+          <li>Verified reasoning across every instrument around your station, not just your own readings</li>
+          <li>Open protocol, JavaScript SDK, MQTT bridge, edge gateway (Apache 2.0)</li>
+          <li>HMAC-signed observation ingestion, live in production today</li>
+          <li>Station trust builds on observed behavior, not paperwork</li>
+          <li>For operators with existing fleets: reciprocal integration, see below</li>
+        </ul>
+        <a href="network.html" class="plan-btn plan-btn-primary">Connect a station</a>
+      </div>
+    </div>
+
+    <p class="price-sub" style="margin: 0 0 28px;">Cash tiers below are for consumers &mdash; systems that call the API without contributing hardware.</p>
 
     <div class="plans-grid">
       <div class="plan-card">
-        <div class="plan-name">Free Beta</div>
+        <div class="plan-name">Free Developer</div>
         <div class="plan-price">$0 <span>/month</span></div>
-        <div class="plan-note">Available now. No credit card.</div>
+        <div class="plan-note">Available now. Verify one workflow in minutes.</div>
         <ul class="plan-features">
-          <li>100 API calls/day</li>
-          <li>All 21 sensor sources</li>
-          <li>Full Physical World Model</li>
-          <li>Agent-ready context string</li>
+          <li>100 API calls/day, shared across account keys</li>
+          <li>21 source families where available</li>
+          <li>Full spot-level verification response</li>
+          <li>Structured verification output with source provenance</li>
           <li>Source, freshness, and confidence metadata</li>
+          <li>Basic risk and hazard context</li>
           <li>Calculated insights and hazard flags</li>
           <li>System health monitoring</li>
           <li>Community support</li>
         </ul>
-        <a href="register.html" class="plan-btn plan-btn-primary">Get Free API Key</a>
+        <a href="register.html" class="plan-btn plan-btn-primary">Create free API key — test one coordinate in 60 seconds</a>
       </div>
 
       <div class="plan-card featured">
         <span class="future-label">AFTER LAUNCH</span>
-        <div class="plan-name">Pro Developer</div>
+        <div class="plan-name">Outdoor App Developer</div>
         <div class="plan-price">$29 <span>/month</span></div>
-        <div class="plan-note">For developers shipping prototypes and early products.</div>
+        <div class="plan-note">For developers shipping prototypes, agents, and early products.</div>
         <ul class="plan-features">
-          <li>10,000 API calls/month</li>
+          <li>10,000 API calls/day, shared across account keys</li>
           <li>Everything in Free</li>
           <li>Higher rate limits</li>
           <li>Batch location queries</li>
           <li>Saved locations and reusable prompts</li>
           <li>Source/freshness/confidence details</li>
+          <li>risk_event preview for alert workflows</li>
           <li>Email support</li>
         </ul>
         <a href="register.html" class="plan-btn plan-btn-secondary">Get Free Key (Pro later)</a>
       </div>
 
       <div class="plan-card">
-        <span class="future-label">AFTER LAUNCH</span>
-        <div class="plan-name">Startup / Team</div>
-        <div class="plan-price">From $199</div>
-        <div class="plan-note">For teams running pilots or early products.</div>
+        <span class="future-label">PILOT</span>
+        <div class="plan-name">Safety Pilot</div>
+        <div class="plan-price">From $199 <span>/month</span></div>
+        <div class="plan-note">For teams validating operational risk workflows.</div>
         <ul class="plan-features">
-          <li>100,000+ API calls/month</li>
+          <li>10,000 API calls/day by default; custom pilot limits by agreement</li>
           <li>Everything in Pro</li>
           <li>Team API keys and usage controls</li>
-          <li>Pilot support for drone, outdoor, agriculture, marine, or safety workflows</li>
+          <li>Pilot support for SmartSurf, drone, outdoor, agriculture, marine, or safety workflows</li>
+          <li>risk_event tuning, cooldowns, and fallback behavior</li>
           <li>Custom limits and private sensor options</li>
         </ul>
         <a href="support.html" class="plan-btn plan-btn-secondary">Talk to Senlay</a>
@@ -134,7 +199,7 @@
 
       <div class="plan-card">
         <span class="future-label">PILOT</span>
-        <div class="plan-name">Enterprise</div>
+        <div class="plan-name">Outdoor Verification</div>
         <div class="plan-price">Custom</div>
         <div class="plan-note">For production, safety, and high-volume deployments.</div>
         <ul class="plan-features">
@@ -142,6 +207,7 @@
           <li>Dedicated support and pilot planning</li>
           <li>Private sensor and data-source integration</li>
           <li>Domain pack development for your workflow</li>
+          <li>Audit, monitoring, and evidence retention planning</li>
           <li>SLA options after production validation</li>
         </ul>
         <a href="support.html" class="plan-btn plan-btn-secondary">Discuss Pilot</a>
@@ -158,28 +224,33 @@
 
       <div class="faq-item">
         <h4>Will free tier always exist?</h4>
-        <p>Yes. A free tier with reasonable limits will remain available so developers can test physical-world context before buying.</p>
+        <p>Yes. A free tier with reasonable limits will remain available so developers can test spot-level verification before buying.</p>
       </div>
 
       <div class="faq-item">
         <h4>What counts as an API call?</h4>
-        <p>One call to <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">/api/v1/pwm</code> = one API call. This returns the Physical World Model &mdash; live and model data, source/freshness metadata, confidence signals, interpretation, and a <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">context_string</code> ready for any LLM.</p>
+        <p>One authenticated verification request to <code style="color:var(--primary);background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px">/api/v1/pwm</code> counts as one account request, including cache hits. Daily usage is shared across all active API keys on the account. The endpoint returns available live and model data, source/freshness metadata, confidence signals, interpretation, uncertainty, and structured evidence for software or AI workflows.</p>
       </div>
 
       <div class="faq-item">
         <h4>Can I use Senlay commercially during beta?</h4>
-        <p>Yes, for prototypes and pilots. For production or safety-critical deployments, talk to us first so we can define reliability, fallback behavior, and support expectations.</p>
+        <p>Yes, for prototypes and pilots. Production and safety-critical deployments require pilot discussion, reliability expectations, fallback behavior, and domain validation.</p>
       </div>
 
       <div class="faq-item">
-        <h4>Who is Senlay priced for first?</h4>
-        <p>First paid customers are teams building AI agents or applications where physical conditions affect a real decision: drones, outdoor work, agriculture, marine routing, coastal safety, and field operations.</p>
+        <h4>Who pays first?</h4>
+        <p>Contributors do not pay cash &mdash; a sensor is the payment, and what they receive back is coverage, not revenue. The closest paid buyer is a system that acts on the answer and will never install hardware: drone operators, robotics fleets, lifting and construction, parametric insurers, marine operations, SmartSurf schools and stations, and IoT teams that need to explain a physical-world alert. The two sides do not compete for the same budget.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>If I contribute a sensor, do I still need a paid plan?</h4>
+        <p>Contributor access is arranged during pilot onboarding. Registering a station does not automatically change your API tier or remove account limits. Contact Senlay to agree the contributor allowance and any additional API access your operation needs.</p>
       </div>
     </div>
 
     <div class="pilot-section">
-      <h4>Need higher limits or pilot access?</h4>
-      <p>If you are evaluating Senlay for drone, outdoor work, agriculture, marine, or safety software, contact us for beta limits, pilot support, and launch pricing.</p>
+      <h4>Need higher limits, risk_event support, or pilot access?</h4>
+      <p>If you are evaluating Senlay for SmartSurf-style safety, drone, outdoor work, agriculture, marine, SAR, or IoT software, contact us for beta limits, risk-event design, fallback behavior, pilot support, and launch pricing.</p>
       <div class="pilot-actions">
         <a href="support.html" class="plan-btn plan-btn-primary" style="width:auto;min-width:180px">Talk to Senlay</a>
         <a href="docs.html" class="plan-btn plan-btn-secondary" style="width:auto;min-width:180px">Review API Docs</a>
@@ -187,49 +258,90 @@
     </div>
   </div>
 
-  <footer class="l-footer">
-    <div class="footer-shell">
-      <div class="footer-main">
-        <div class="footer-about">
-          <p class="footer-brand">SENLAY</p>
-          <p class="footer-sub">Physical-world context API for AI agents and applications that need live measurable conditions.</p>
-          <p class="footer-copy">&copy; 2026 Senlay. Built in Vietnam.</p>
-        </div>
-        <div class="footer-nav-grid">
-          <div class="footer-col">
-            <h4>Product</h4>
-            <a href="demo">Demo</a>
-            <a href="/smartsurf/">SmartSurf</a>
-            <a href="docs.html">Docs</a>
-            <a href="agents">For Agents</a>
-            <a href="pricing.html">Pricing</a>
-          </div>
-          <div class="footer-col">
-            <h4>Company</h4>
-            <a href="founder.html">Founder</a>
-            <a href="roadmap.html">Roadmap</a>
-            <a href="support.html">Contact</a>
-            <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener">Platform Overview</a>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:viktor@senlay.world">viktor@senlay.world</a>
-            <a href="https://wa.me/84333380168" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://www.linkedin.com/in/viktor-kryvotsiuk-0b7449151/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/smartsurfsolar/senlay-world" target="_blank" rel="noopener">Website Source</a>
-          </div>
-        </div>
+  <footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
       </div>
-      <div class="footer-bottom">
-        <span>Open beta for developers, pilots, and agent builders.</span>
-        <div class="footer-bottom-links">
-          <a href="pricing.html">API Access</a>
-          <a href="login.html">Sign In</a>
-          <a href="support.html">Pilot Contact</a>
-        </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
       </div>
-      <p class="footer-attrib">Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> where used.</p>
     </div>
-  </footer>
+
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+  <script src="/scripts/header-menu.js"></script>
 </body>
 </html>

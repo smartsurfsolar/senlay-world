@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms of Use | Senlay</title>
+  <meta name="description" content="Terms for using the Senlay website, demo, accounts, and physical-world verification API.">
+  <link rel="canonical" href="https://senlay.cloud/terms.html">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles/public-rebuild.css">
+  <style>
+    .legal-hero { padding: 64px clamp(18px, 4vw, 54px) 36px; border-bottom: 1px solid var(--line); }
+    .legal-hero h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
+    .legal { max-width: 820px; margin: 0 auto; padding: 48px 18px 84px; }
+    .legal h2 { margin: 42px 0 12px; font-size: 1.55rem; }
+    .legal p, .legal li { color: var(--muted); line-height: 1.75; }
+    .legal li + li { margin-top: 8px; }
+    .legal .notice { padding: 18px; border: 1px solid var(--line); border-left: 4px solid var(--coral); background: var(--white); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">S</span><span>SENLAY</span></a>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation">Menu</button>
+    <nav class="site-nav" data-nav aria-label="Primary navigation">
+      <a href="/demo">Demo</a><a href="/docs.html">Docs</a><a href="/pricing.html">Pricing</a><a href="/support.html">Contact</a><a href="/login.html" class="nav-strong">Sign in</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="legal-hero"><div class="wrap narrow"><span class="eyebrow">Legal</span><h1>Terms of Use</h1><p class="lead">Rules and boundaries for the Senlay website, demo, accounts, and API.</p><p>Effective: July 11, 2026</p></div></section>
+    <article class="legal">
+      <p class="notice"><strong>Safety boundary:</strong> Senlay is decision-support software. It is not an emergency service, certified safety instrument, official forecast or warning authority, rescue dispatcher, medical device, or substitute for trained human judgment.</p>
+
+      <h2>1. Agreement and eligibility</h2>
+      <p>By using Senlay, you agree to these terms and the <a href="/privacy.html">Privacy Notice</a>. If you use Senlay for an organization, you represent that you can bind it. Do not use the service if you cannot legally enter this agreement.</p>
+
+      <h2>2. Accounts and credentials</h2>
+      <p>You are responsible for accurate registration data, activity under your account, and keeping passwords, session tokens, API keys, provider keys, and agent recovery credentials secret. Full Senlay credentials may be shown only once. Store them securely, revoke or rotate exposed credentials, and do not embed secrets in public client code, URLs, repositories, logs, or posts.</p>
+
+      <h2>3. Acceptable use</h2>
+      <p>You may build and evaluate applications using Senlay within your plan and applicable provider terms. You must not:</p>
+      <ul>
+        <li>Bypass quotas or access controls, probe other users' accounts, scrape credentials, disrupt the service, or conceal abusive traffic.</li>
+        <li>Use Senlay for unlawful activity, surveillance without authority, harmful automation, or misleading claims that an output is a certified warning or guaranteed observation.</li>
+        <li>Redistribute upstream data in violation of its license, attribution, caching, or commercial-use rules.</li>
+        <li>Rely on Senlay as the sole trigger for emergency dispatch, rescue, medical, navigation, aviation, maritime, or life-critical decisions.</li>
+      </ul>
+
+      <h2>4. Data sources and output limitations</h2>
+      <p>Senlay combines models, public datasets, configured commercial services, live observations, cached values, user/device telemetry, and derived logic. Sources can be delayed, missing, wrong, moved, out of coverage, or inconsistent. Confidence and freshness fields are aids, not guarantees. “Hardware” identifies a measurement source but does not prove that the station is current, nearby, calibrated, or representative.</p>
+      <p>You must verify important decisions against authoritative local warnings, direct observation, competent operators, and appropriate equipment. Customer applications remain responsible for their claims, interfaces, alert thresholds, testing, and human escalation procedures.</p>
+
+      <h2>5. Quotas, caching, and availability</h2>
+      <p>Unless a response or plan states otherwise, every authenticated API request presented for processing counts toward the account's quota. Daily usage is shared across the account's active Senlay API keys; creating another key does not create another allowance. A cached response can reduce upstream calls and latency, but it does not make the customer request free. Invalid requests and upstream failures may still consume quota after authentication, so validate inputs and handle errors.</p>
+      <p>Limits, beta access, routes, providers, fields, and prices may change. We may throttle, suspend, or discontinue features to protect the service, comply with provider terms, or operate pilots. No uptime commitment applies unless a separate signed agreement says otherwise.</p>
+
+      <h2>6. Bring-your-own keys and third parties</h2>
+      <p>When you use your own model or data-provider credential, you authorize Senlay to proxy the selected request to that provider. You remain responsible for the provider account, charges, permissions, model output, and provider terms. Third-party links, maps, models, sensors, and datasets are controlled by their respective operators.</p>
+
+      <h2>7. Intellectual property and feedback</h2>
+      <p>Senlay and its software, branding, interfaces, and derived methods remain owned by Senlay or its licensors. Upstream data remains subject to its source license. These terms grant only a limited, revocable right to use the service. You retain rights in data you lawfully submit and grant us permission to process it to operate, secure, and support the service. Feedback may be used without restriction or payment.</p>
+
+      <h2>8. Suspension and termination</h2>
+      <p>You may stop using Senlay at any time. We may suspend or terminate access for security risk, abuse, non-payment, legal obligations, provider restrictions, or material breach. Provisions that by nature should survive—including credential responsibility, intellectual property, disclaimers, and liability limits—continue after termination.</p>
+
+      <h2>9. Disclaimers</h2>
+      <p>To the maximum extent permitted by law, Senlay is provided “as is” and “as available.” We disclaim implied warranties of merchantability, fitness for a particular purpose, accuracy, non-infringement, availability, and uninterrupted operation. Beta and pilot features may contain defects and are not production commitments.</p>
+
+      <h2>10. Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, Senlay and its operators will not be liable for indirect, incidental, special, consequential, exemplary, or punitive damages; loss of data, profit, opportunity, or goodwill; or injury or property damage arising from reliance on environmental output. Our aggregate liability for claims relating to the service is limited to the amount you paid Senlay for the service during the six months before the event giving rise to the claim, or US$100 if you paid nothing, unless applicable law requires otherwise.</p>
+
+      <h2>11. Changes and contact</h2>
+      <p>We may update these terms as the service changes. Continued use after an update takes effect means you accept the revised terms. Material commercial commitments require a separate written agreement. Questions can be sent to <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div><strong>SENLAY</strong><p>Spot-level physical-world verification. Decision support only.</p></div><div><a href="/privacy.html">Privacy</a><a href="/terms.html" aria-current="page">Terms</a><a href="/support.html">Contact</a><a href="/">Home</a></div></footer>
+  <script src="/scripts/public-rebuild.js"></script>
+</body>
+</html>

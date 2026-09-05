@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senlay Open Network - Connect a Station</title>
+  <meta name="description" content="Attach a sensor to the Senlay Open Network and receive verified reasoning across the whole network. Open protocol, signed ingestion, and an honest account of what stays closed.">
+  <meta name="product-system" content="Senlay is the spot-level verification engine behind SmartSurf water-sports safety and outdoor/indie developer workflows.">
+  <meta property="og:title" content="Senlay Open Network - Connect a Station">
+  <meta property="og:description" content="Attach a sensor to the Senlay Open Network and receive verified reasoning across the whole network. Open protocol, signed ingestion, and an honest account of what stays closed.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://senlay.cloud/network.html">
+  <meta property="og:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Senlay Open Network - Connect a Station">
+  <meta name="twitter:description" content="Attach a sensor to the Senlay Open Network and receive verified reasoning across the whole network. Open protocol, signed ingestion, and an honest account of what stays closed.">
+  <meta name="twitter:image" content="https://senlay.cloud/assets/brand/SenlayLogo-header.png">
+  <link rel="canonical" href="https://senlay.cloud/network.html">
+  <link rel="icon" type="image/png" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
+  <link rel="stylesheet" href="/styles/landing.css?v=4">
+  <style>
+    .network-container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+    .network-title { font-size: 32px; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 8px; }
+    .network-sub { color: var(--text2); font-size: 15px; text-align: center; line-height: 1.8; margin-bottom: 48px; }
+    .network-section { margin-bottom: 44px; }
+    .network-section h2 { font-size: 22px; margin: 0 0 14px; }
+    .network-section p { color: var(--text2); font-size: 15px; line-height: 1.8; margin-bottom: 14px; }
+    .network-divider { height: 1px; background: var(--border); margin: 40px 0; }
+    .secret-callout {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin: 18px 0;
+      padding: 16px 18px;
+      background: rgba(255, 111, 97, 0.1);
+      border: 1px solid rgba(255, 111, 97, 0.35);
+      border-radius: 10px;
+    }
+    .secret-callout .icon { font-size: 18px; line-height: 1; margin-top: 1px; }
+    .secret-callout p { color: var(--text); font-size: 14px; line-height: 1.7; margin: 0; }
+    .secret-callout strong { color: var(--coral); }
+    .boundary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+    .boundary-card { padding: 18px 20px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+    .boundary-card h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px; }
+    .boundary-card.open h3 { color: var(--primary); }
+    .boundary-card.closed h3 { color: var(--text2); }
+    .boundary-card p { color: var(--text2); font-size: 14px; line-height: 1.7; margin: 0; }
+    .status-banner {
+      margin-top: 6px;
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      color: var(--text2);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .network-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; }
+    .network-links a {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .network-links a:hover { border-color: var(--primary); color: var(--primary); }
+    @media (max-width: 640px) {
+      .boundary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+<link rel="stylesheet" href="/styles/dark-map-override.css?v=20260516-0536"></head>
+<body>
+    <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="/" class="logo-link" aria-label="Senlay home"><span class="logo-wordmark">SENLAY</span></a>
+      </div>
+      <button class="hamburger" type="button" onclick="this.classList.toggle('active');this.parentElement.querySelector('.nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <details class="nav-menu">
+          <summary>Product</summary>
+          <div class="nav-menu-panel">
+            <a href="/demo">Demo</a>
+            <a href="/agents">For Agents</a>
+            <a href="https://smartsurf.cloud/">SmartSurf</a>
+            <a href="/network.html">Network</a>
+            <a href="/docs.html">Docs</a>
+          </div>
+        </details>
+        <a href="/pricing.html">Pricing</a>
+        <details class="nav-menu">
+          <summary>Company</summary>
+          <div class="nav-menu-panel">
+            <a href="/founder.html">Founder</a>
+            <a href="/roadmap.html">Roadmap</a>
+            <a href="/support.html">Contact</a>
+          </div>
+        </details>
+        <a href="/login.html">Sign In</a>
+        <a href="/pricing.html" class="nav-cta">Start Free API</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="network-container">
+    <h1 class="network-title">Senlay Open Network</h1>
+    <p class="network-sub">Attach a sensor, publish signed observations, and read verified evidence back &mdash; from every station on the network, not just your own.</p>
+
+    <section class="network-section" id="what-you-get">
+      <h2>Attach a sensor. Get the whole network.</h2>
+      <p>Senlay is reciprocal. Contribute an instrument and you receive verified reasoning across the entire network &mdash; not just your own readings. A single station buys access to everything around it.</p>
+      <p>Your station's accepted observations appear in later verification responses as explicitly labelled direct station evidence, alongside the sources already covering that coordinate.</p>
+      <p><strong>Pilot access:</strong> contributor access is arranged with Senlay during onboarding. Registering a station does not automatically remove your account's API limits.</p>
+    </section>
+
+    <section class="network-section" id="quality">
+      <h2>Bad sensors do not break this.</h2>
+      <p>Volunteer sensor networks normally drown in noise. Instruments end up beside air-conditioning units, in direct sun, or uncalibrated, and the platforms hosting them spend years fighting the resulting quality problem.</p>
+      <p>Senlay reports source distance, freshness and available model disagreement. Community stations also have reporting-health checks. Calibration-document review and continuous comparison of community stations against neighbouring instruments are still in development.</p>
+    </section>
+
+    <div class="network-divider"></div>
+
+    <section class="network-section" id="connect">
+      <h2>Connect a station</h2>
+      <p>Create a Senlay account, register a provider, register a station under it, then publish signed observations. This is the live sequence from the <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">senlay-platform</a> repository README.</p>
+
+      <div class="code-block-wrap">
+        <div class="code-header">1 &middot; Create a provider with your account API key <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre class="code-block">curl -sS -X POST https://senlay.cloud/api/v1/providers/register \
+  -H "Authorization: Bearer $API_KEY" -H 'content-type: application/json' \
+  --data '{"name":"My community network","slug":"my-community-network"}'</pre>
+      </div>
+
+      <div class="code-block-wrap">
+        <div class="code-header">2 &middot; Register a station under that provider <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre class="code-block">curl -sS -X POST https://senlay.cloud/api/v1/stations/register \
+  -H "Authorization: Bearer $API_KEY" -H 'content-type: application/json' \
+  --data '{"providerId":"prv_REPLACE_ME","name":"Beach wind station","sensorType":"weather_station","location":{"lat":15.8801,"lng":108.3380}}'</pre>
+      </div>
+
+      <div class="secret-callout">
+        <span class="icon">&#9888;</span>
+        <p><strong>Save the station secret when it is returned.</strong> The server retains only a non-recoverable hash and cannot show it again. If you lose it, rotate the secret in the dashboard and update the device configuration.</p>
+      </div>
+
+      <p>Before publishing live data, use the dashboard's <em>Send signed test</em> action to verify the station secret and payload shape without storing a fake observation. Then publish signed observations:</p>
+
+      <div class="code-block-wrap">
+        <div class="code-header">3 &middot; Publish a signed observation <button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre class="code-block">curl -sS -X POST https://senlay.cloud/api/v1/observations \
+  -H "X-Senlay-Station-Id: stn_REPLACE_ME" \
+  -H "X-Senlay-Timestamp: $TIMESTAMP" \
+  -H "X-Senlay-Signature: $SIGNATURE" \
+  -H 'content-type: application/json' \
+  --data '{"id":"obs_2026...","stationId":"stn_REPLACE_ME","observedAt":"2026-09-05T12:00:00Z","location":{"lat":15.8801,"lng":108.3380},"measurements":[{"phenomenon":"wind.speed","value":7.4,"unit":"m/s"}]}'</pre>
+      </div>
+
+      <p>The <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">senlay-platform</a> JavaScript SDK computes the <code>X-Senlay-*</code> signature headers for you. Header formats, signing rules, and the full observation schema are documented in <a href="https://github.com/smartsurfsolar/senlay-platform/blob/main/docs/NETWORK_PROTOCOL.md" target="_blank" rel="noopener noreferrer">the network protocol document</a>.</p>
+
+      <div class="network-links">
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">senlay-platform on GitHub</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform/blob/main/docs/NETWORK_PROTOCOL.md" target="_blank" rel="noopener noreferrer">Network protocol document</a>
+        <a href="/register.html">Create a free account</a>
+      </div>
+    </section>
+
+    <div class="network-divider"></div>
+
+    <section class="network-section" id="boundary">
+      <h2>Open protocol, closed engine</h2>
+      <p>State the boundary plainly, because a clear line is easier to trust than a vague one.</p>
+      <div class="boundary-grid">
+        <div class="boundary-card open">
+          <h3>Open &mdash; Apache 2.0</h3>
+          <p>The observation envelope and JSON Schema, deterministic validation and normalization, HMAC request signing, the JavaScript SDK, the MQTT bridge, and the edge gateway.</p>
+        </div>
+        <div class="boundary-card closed">
+          <h3>Private</h3>
+          <p>The aggregation engine, divergence scoring, the global registry, authentication, billing, provider credentials, the accumulated place-memory corpus, and risk models.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="network-divider"></div>
+
+    <section class="network-section" id="status">
+      <h2>Status</h2>
+      <div class="status-banner">The protocol and ingestion path are live. The network itself is at its start &mdash; there are no coverage guarantees and no service-level commitments yet.</div>
+    </section>
+  </div>
+
+  <footer class="senlay-unified-footer" aria-label="Senlay site footer">
+  <div class="senlay-footer-shell">
+    <div class="senlay-footer-lead">
+      <div>
+        <a class="senlay-footer-brand" href="/">SENLAY</a>
+        <p>A reciprocal verification network. Contribute a sensor and receive verified reasoning across the whole network; consume without contributing and pay.</p>
+      </div>
+      <div class="senlay-footer-cta">
+        <a href="https://smartsurf.cloud/">Explore SmartSurf</a>
+        <a href="/demo">Try Live Demo</a>
+        <a href="/docs.html">Read Docs</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-grid">
+      <div class="senlay-footer-col">
+        <h4>Senlay Product</h4>
+        <a href="/">Home</a>
+        <a href="/demo">Live verification demo</a>
+        <a href="/agents">For outdoor agents</a>
+        <a href="/network.html">Open network</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/roadmap.html">Roadmap</a>
+        <a href="/live-agent.html">Live agent page</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Build</h4>
+        <a href="/docs.html">API docs</a>
+        <a href="/docs.html#verification-glossary">Verification glossary</a>
+        <a href="/openapi.json">OpenAPI JSON</a>
+        <a href="/openapi.yaml">OpenAPI YAML</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/agent-manifest.json">Agent manifest</a>
+        <a href="https://github.com/smartsurfsolar/senlay-platform" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/dashboard.html">Developer dashboard</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Verification Terms</h4>
+        <a href="/docs.html#term-evidence-object-v1">Evidence Object v1</a>
+        <a href="/docs.html#term-source-provenance">Source provenance</a>
+        <a href="/docs.html#term-freshness">Freshness</a>
+        <a href="/docs.html#term-confidence">Confidence</a>
+        <a href="/docs.html#term-uncertainty">Uncertainty</a>
+        <a href="/docs.html#term-model-vs-reality">Model-vs-reality check</a>
+        <a href="/docs.html#term-risk-event">risk_event</a>
+        <a href="/docs.html#term-decision-support">Decision-support boundary</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>SmartSurf</h4>
+        <a href="https://smartsurf.cloud/">SmartSurf landing</a>
+        <a href="https://smartsurf.cloud/#schools">School safety workflow</a>
+        <a href="https://smartsurf.cloud/#senlay">How Senlay powers SmartSurf</a>
+        <a href="https://smartsurf.cloud/#shop">Tracker hardware</a>
+        <a href="https://smartsurf.cloud/#pricing">SmartSurf pricing</a>
+        <a href="https://app.smartsurf.global/">Open rider app</a>
+      </div>
+      <div class="senlay-footer-col">
+        <h4>Company</h4>
+        <a href="/founder.html">Founder story</a>
+        <a href="/investors.html">Investor brief</a>
+        <a href="/investors/deck">Investor deck</a>
+        <a href="/support.html">Contact / pilots</a>
+        <a href="mailto:viktor@senlay.cloud">viktor@senlay.cloud</a>
+        <a href="https://wa.me/84333380168" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="senlay-footer-col senlay-footer-sources">
+        <h4>Source Networks</h4>
+        <p>Coverage depends on coordinate, freshness, and upstream availability.</p>
+        <a href="/sensor-catalog.json">Sensor catalog JSON</a>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        <a href="https://www.ndbc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA NDBC</a>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA CO-OPS</a>
+        <a href="https://aviationweather.gov/" target="_blank" rel="noopener noreferrer">AviationWeather METAR</a>
+        <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener noreferrer">USGS</a>
+        <a href="https://dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a>
+        <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA EONET</a>
+      </div>
+    </div>
+
+    <div class="senlay-footer-bottom">
+      <span>&copy; 2026 Senlay. Built in Vietnam. Decision support only, not final safety authority.</span>
+      <span><a href="/login.html">Sign in</a> <a href="/register.html">Create free API key</a> <a href="/support.html">Pilot contact</a> <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrap').querySelector('.code-block');
+      navigator.clipboard.writeText(code.textContent).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+  </script>
+  <script src="/scripts/header-menu.js"></script>
+</body>
+</html>

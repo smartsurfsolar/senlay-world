@@ -20,7 +20,7 @@ Senlay does not replace weather providers, and it is not a competitor to contrib
 
 ## Reciprocal network
 
-Senlay is also an open contributor network. Anyone can attach a signed sensor station under the Apache-2.0 protocol at https://github.com/smartsurfsolar/senlay-platform and receive verified reasoning across the whole network in return, not just their own station's readings (https://senlay.cloud/network.html). Operators with existing sensor fleets can integrate under a reciprocal contract instead of contributing hardware directly. Contributed sensor quality does not degrade the product: distance, freshness, calibration state, and disagreement with neighbouring instruments and forecast models are computed on every request, so a poor sensor is weighted low rather than rejected or allowed to corrupt the answer.
+Senlay is also building an open contributor network. Operators can review the Apache-2.0 station protocol at https://github.com/smartsurfsolar/senlay-platform and request onboarding at https://senlay.cloud/network.html. Operators with existing sensor fleets can discuss a reciprocal pilot instead of contributing hardware directly. Contributed observations remain evidence with uncertainty: distance, freshness and source disagreement are surfaced where available, while calibration and neighbour-quality checks are still being validated.
 
 ## Public routes
 

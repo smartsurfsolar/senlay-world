@@ -1,0 +1,11 @@
+{
+  "maxStationAgeMinutes": 30,
+  "localRadiusKm": 2,
+  "minorDifferenceKmh": 3,
+  "majorDifferenceKmh": 8,
+  "spots": [
+    {"id":"hoi-an","name":"Hoi An","lat":15.8801,"lng":108.3380,"localNote":"","noteAuthor":""},
+    {"id":"tarifa","name":"Tarifa","lat":36.0128,"lng":-5.6015,"localNote":"","noteAuthor":""}
+  ],
+  "kiteRanges": []
+}

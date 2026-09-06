@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Senlay Spot — Forecast vs instruments</title>
+  <meta name="description" content="Compare forecast wind with nearby instruments. See source distance, age and gaps before choosing your session.">
+  <link rel="stylesheet" href="/styles/public-rebuild.css">
+  <link rel="stylesheet" href="/spot/vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="/spot/spot.css">
+  <script defer src="/spot/vendor/maplibre-gl.js"></script>
+  <script defer src="/spot/spot.js"></script>
+</head>
+<body>
+<main class="spot-screen">
+  <div id="map" aria-label="Spot and wind measurement map"></div>
+  <div class="spot-toolbar"><a class="brand" href="/">SENLAY</a><label><span class="sr-only">Choose spot</span><select id="spots"><option>Loading spots…</option></select></label><button id="profile-open" type="button">My gear</button></div>
+  <p id="map-status">Loading map · tap the map to select a location</p>
+  <section class="answer" aria-live="polite" aria-busy="true">
+    <div class="answer-top"><span id="spot-name">Checking this spot</span><button id="refresh" type="button">Refresh</button></div>
+    <h1 id="verdict">Checking instruments…</h1>
+    <div class="comparison"><div class="predicted"><span>FORECAST · MODEL</span><strong id="forecast">—</strong></div><div class="measured"><span>NEARBY · MEASURED</span><strong id="measured">—</strong></div></div>
+    <p id="evidence">Waiting for live evidence. No reading assumed.</p>
+    <p id="age">Measurement age pending</p>
+    <p id="note" hidden></p>
+    <p id="kite">Kite sizing waits for verified local wind.</p>
+    <small>Decision support. Humans remain the final authority.</small>
+    <details><summary>Sources and limits</summary><div id="sources"></div><p>Nearby stations can have different exposure from the beach. Agreement does not certify safe riding. Wind arrows show values at their source locations, not an interpolated wind field.</p><p>Anonymous visits, spot views and answer states are counted on this server for 90 days. Gear stays in this browser; only whether you use the controls is counted.</p></details>
+  </section>
+</main>
+<dialog id="profile"><form method="dialog" id="profile-form"><h2>Your riding setup</h2><p>Remembered on this device.</p><label>Weight (kg)<input id="weight" type="number" min="25" max="200" step="1" inputmode="decimal"></label><label>Board<select id="board"><option value="twin-tip">Twin-tip</option><option value="directional">Directional</option><option value="foil">Foil</option></select></label><fieldset><legend>Your kite sizes (m²)</legend><div id="quiver"></div></fieldset><p id="storage-note"></p><button type="submit">Save setup</button><button type="button" id="profile-close">Cancel</button></form></dialog>
+<noscript><p class="no-script">Enable JavaScript to load current evidence. No wind or kite recommendation is available without it.</p></noscript>
+</body></html>
